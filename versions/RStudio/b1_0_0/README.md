@@ -4,48 +4,51 @@
 
 ## update log:
 ## 28-03-2022 - create b0_6
-##            - implemented cross validation
-## 12-04-2022 - created b0_9
-##            - this is the best version
-##            - improve replicability of results though
-## 15-04-2022 - created b0_12
-##            - implemented dataloaders
-##            - implemented dataloaders with random selection of observation data
-##            - implemented bootstrapping of observation data in the cross validation and training process
-## 25-04-2022 - created b0_13
-##            - simplify and clean code
-##              simplified code drastically (1000 -> 500 lines in function file)
-##              the code of the observation model is quite clean
-##              the code of the process model is still a bit messy (esp crossval)
-##            - cleaned module names
-##              harmonise the file names in the repository (quite messy)
-##            - fixate sd and mean of data in dataloader (think about what it means to standardise each response and predictive variable coming for the observation distribution)
-##            - fix error in train model (sd and mean are not matching the predictions to the right data)
-##              if too much sampling is required for crossvalidation with random dataloader then can use expectation of data 
-##              for this make sure that many samples are taken for the observation model (to ensure repeatability of mean)
-##            - improve management of output folder (rn it is called by the dataloader which is not good)
 
-## to do next:
-##            - think about method
-##            - test further the repeatability of crossvalidation and results
-##            - can use also just b0_9 and increase the size of the samples taken for interpolation to increase repeatability of results
-##            - investigate nonlinearity in LV4
+#######################
+## FIT PROCESS MODEL ##
+#######################
 
-## method:
-## 1. Observation model - works well but generate more samples
-## 2. Process model 
-##    * crossvalidation on expectation of observation model (otherwise requires too many 
-##      samples)
-##    * train process model with uncertainty of the observation model
+## goal: fit process model (i.e. explain the per-capita growth rate of the populations calculated as 1/Y*dY/dt as a function of the states Y(t))
 
-## goals:
-## x strip code to essential elements (remove any extra functions)
-## x fix errors in code
-## * re-think the structure of the repository to allow modularity and parallelisation
-## * ensure repeatability of model by re-running approach a second time (esp for cross
-##   validation on expectation of observation model)
-## * assess capacity of model to recover linear response for linear model
-## * assess capacity of model to recover nonlinear response for nonlinear model
+## notes: 
+## - the user could use state interpolations and interpolated dynamics obtained via other methods (e.g. Fourier series, cubic splines)
+## - the user could even use raw difference in the data as an estimate of the dynamics
+
+## parameters of process model
+'''
+K_p   = 10                                            # number of models to fit
+W_p   = rep(10,N)                                     # number of neurons in single layer perceptron (SLP)
+N_p   = 2 * W_p * (2+N)                               # number of parameters in process model
+sd1_p = 0.1                                           # standard deviation of model likelihood
+sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.15,N_p[1]/2)),  # standard deviation of prior distributions (second half concerns nonlinear functions)
+             c(rep(1.0,N_p[2]/2),rep(.01,N_p[2]/2)),
+             c(rep(1.0,N_p[3]/2),rep(.075,N_p[3]/2)))
+'''
+
+## train process model
+
+'''
+model_p    = trainModel_p(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p)
+Yhat_p     = model_p$Yhat_p     
+ddx.Yhat_p = model_p$ddx.Yhat_p 
+Geber_p    = model_p$Geber_p   
+Omega_p    = model_p$Omega_p   
+'''
+
+## visualise process model
+'''
+pdf(paste(pathToOut,"/fig_predictions_p.pdf",sep=""))
+plotModel_p(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
+dev.off()
+
+## store results 
+'''
+save(Yhat_p       ,file=paste(pathToOut,"/","Yhat_p.RData"    ,sep=""))
+save(ddx.Yhat_p   ,file=paste(pathToOut,"/","ddx.Yhat_p.RData",sep=""))
+save(Geber_p      ,file=paste(pathToOut,"/","Geber_p.RData"   ,sep=""))
+save(Omega_p      ,file=paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
+'''
 
 #
 ###
