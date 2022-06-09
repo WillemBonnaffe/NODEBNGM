@@ -16,7 +16,7 @@
 ## - the user could even use raw difference in the data as an estimate of the dynamics
 
 ## parameters of process model
-```python
+```R
 K_p   = 10                                            # number of models to fit
 W_p   = rep(10,N)                                     # number of neurons in single layer perceptron (SLP)
 N_p   = 2 * W_p * (2+N)                               # number of parameters in process model
@@ -28,7 +28,7 @@ sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.15,N_p[1]/2)),  # standard deviation of pr
 
 ## train process model
 
-```python
+```R
 model_p    = trainModel_p(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p)
 Yhat_p     = model_p$Yhat_p     
 ddx.Yhat_p = model_p$ddx.Yhat_p 
@@ -37,14 +37,14 @@ Omega_p    = model_p$Omega_p
 ```
 
 ## visualise process model
-```python
+```R
 pdf(paste(pathToOut,"/fig_predictions_p.pdf",sep=""))
 plotModel_p(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
 dev.off()
 ```
 
 ## store results 
-```python
+```R
 save(Yhat_p       ,file=paste(pathToOut,"/","Yhat_p.RData"    ,sep=""))
 save(ddx.Yhat_p   ,file=paste(pathToOut,"/","ddx.Yhat_p.RData",sep=""))
 save(Geber_p      ,file=paste(pathToOut,"/","Geber_p.RData"   ,sep=""))
