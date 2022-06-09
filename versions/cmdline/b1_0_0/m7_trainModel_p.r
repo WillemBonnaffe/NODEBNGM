@@ -2,28 +2,12 @@
 ## m7_trainModel_p.r ##
 #######################
 
-## goal: apply process model to analyse interaction between variables driving temporal dynamics of system 
+## goal: apply process model to analyse interactions between variables driving temporal dynamics of system 
 
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 08-04-2022 - created v0_0
-## 14-04-2022 - created v0_1
-##            - loading different observation data at every iteration
-## 15-04-2022 - simplified code
-##            - evaluate predictions for all Omega_p_ik
-##            - created v0_2
-##            - simplified model training
-## 25-04-2022 - created v0_3
-##            - re-introduced marginal posterior
-## 30-05-2022 - created v0_4
-##            - implemented standard regularisation again with specific priors for each variables
-##            - this is to control to tease apart the importance of nonlinearity in individual variables
-##            - implemented marginal posterior again as greatly improves fitting
-##            - implemented variable specific network size (cross validation performed on network size instead of "slider")
-##            - removed weight parameter given that hyperparameter is now size of network
-## 31-05-2022 - created v0_5
-##            - re-introduced weight parameter as found essential to limit nonlinearity in other time series
+# 09-06-2022 - created v0_0
 
 ##############
 ## INITIATE ##
@@ -59,7 +43,7 @@ for(i in 1:N)
 	{   
 
 		## dataloader 
-		source("m5_loadData_p.r")
+		source("m5_loadData_p.r") # placed in loop in case stochastic training enabled
 
 		## fit
 	    Omega_0      = rnorm(N_p[i],0,0.001)
@@ -74,7 +58,7 @@ for(i in 1:N)
 	    logPost_f    = logLik(X_,Y_[,i],Yhat,Omega_f,sd1_p)
 	    # logPost_0    = logMarLik(X_,Y_[,i],Yhat,Omega_0)
 	    # logPost_f    = logMarLik(X_,Y_[,i],Yhat,Omega_f)
-	    message(paste(k,"/",K_p,"\t",
+	    message(paste(k,"/",K_p," logPost: ","\t",
 	            format(round(logPost_0,2),nsmall=2),"\t","-->","\t",
 	            format(round(logPost_f,2),nsmall=2),sep=""))
 	}

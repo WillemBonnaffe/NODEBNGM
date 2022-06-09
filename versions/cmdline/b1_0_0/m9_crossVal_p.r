@@ -7,23 +7,7 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 08-04-2022 - created v0_0
-## 14-04-2022 - created v0_1
-##            - loading different observation data at every iteration
-## 15-04-2022 - simplified code
-##            - evaluate predictions for all Omega_p_ik
-## 25-04-2022 - created v0_2
-##            - updated functions to work with v0_55 of functions
-## 26-05-2022 - created v0_3
-##            - performed validation on weight parameter, not on regularisation parameter
-##            - renamed to m9_crossVal.r
-## 30-05-2022 - created v0_4
-##            - performed validation on network size instead of weight parameter
-##            - removed weight parameter as parameter considered for cross validation is now network size 
-## 31-05-2022 - created v0_5 
-##            - re-introduced weight parameter
-##            - removed weight parameter again
-##            - re-introduced cross validation on prior standard
+## 09-04-2022 - created v0_0
 
 ##############
 ## INITIATE ##
@@ -37,7 +21,7 @@ source("m6_loadModel_p.r")
 ## parameters
 K_p             = 10
 folds           = list(c(1/2,1)) # list(c(0,1/3),c(1/3,2/3),c(2/3,3/3))
-crossValParVect = seq(0.1,1,0.1)
+crossValParVect = seq(0.01,.5,0.025)
 
 #
 ###
@@ -86,22 +70,11 @@ for(i in 1:N)
 				X_t = X_[s,]
 				Y_t = Y_[s,]
 
-                ## TO MODULARISE ##
-                sd2_p = list(c(rep(1.0,N_p[1]/2),rep(crossValParVect[k],N_p[1]/2)),
-                             c(rep(1.0,N_p[2]/2),rep(crossValParVect[k],N_p[2]/2)),
-                             c(rep(1.0,N_p[3]/2),rep(crossValParVect[k],N_p[3]/2)))
-                #
-                ## remove second variable in second time series
-                sd2_p[[2]][(N_p[2]/2-W_p[2]):(N_p[2]/2)-W_p[2]] = 0.001
-                sd2_p[[2]][(N_p[2]-W_p[2]):N_p[2]-W_p[2]] = 0.001
-                # 
-                ## remove third variable in third time series
-                sd2_p[[3]][(N_p[3]/2-W_p[3]):(N_p[3]/2)] = 0.001
-                sd2_p[[3]][(N_p[3]-W_p[3]):N_p[3]] = 0.001
-                ##
+                ## regularisation on nonlinear part of model
+                sd2_p[[i]][(N_p[i]/2+1):N_p[i]] = rep(crossValParVect[k],N_p[i]/2) 
 
 			    ## fit
-			    Omega_0      = rnorm(2 * W_p[i] * (2+N),0,0.1)
+			    Omega_0      = rnorm(N_p[i],0,0.01)
                 Yhat         = function(X,Omega) f_p.eval(X,Omega)
                 ddOmega.Yhat = function(X,Omega) ddOmega.f_p.eval(X,Omega)
 			    # Omega_f      = argmax.logMarPost(X_l,Y_l[,i],Yhat,ddOmega.Yhat,Omega_0,1/W_p[i])
@@ -140,7 +113,7 @@ for(i in 1:N)
 		crossVal_i     = rbind(crossVal_i,c(crossValParVect[k],E.crossVal_ik,sd.crossVal_ik))
 		message(paste("logLik l vs t: ",
         		format(round(E.crossVal_ik[1],2),nsmall=2),"\t",
-        		format(round(E.crossVal_ik[2],2),nsmall=2),sep=""))
+        		format(round(E.crossVal_ik[2],2),nsmall=2),"\n",sep=""))
 
 	}
 

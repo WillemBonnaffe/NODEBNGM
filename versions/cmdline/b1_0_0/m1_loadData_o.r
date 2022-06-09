@@ -7,10 +7,7 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 06-04-2022 - created v0_0
-## 15-04-2022 - renamed file m1_loadData_o.r
-##            - created v0_1
-##            - implemented peparation of data in the dataloader
+## 09-06-2022 - created v0_0
 
 ##############
 ## INITIATE ##
@@ -20,7 +17,7 @@
 
 ## TS 3DLV ##
 ## load data
-TS = read.table("data/TS_3DLV.csv",sep=";",header=T)
+TS = read.table("data/TS.csv",sep=";",header=T)
 TS = TS[20:50,]
 #
 ## make out directory

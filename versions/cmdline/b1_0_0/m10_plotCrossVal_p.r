@@ -7,12 +7,7 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 15-04-2022 - created v0_0 from m7_visModel_p.r
-##            - specific plot for cross validation
-## 26-05-2022 - created v0_1
-##            - adapted plot to work with marginal likelihood
-## 31-05-2022 - created v0_2
-##            - adapted script back for likelihood
+## 09-06-2022 - created v0_0
 
 ##############
 ## INITIATE ##

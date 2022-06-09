@@ -7,25 +7,7 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 10-04-2022 - created v0_0
-##            - allow modularity in process model (create new f_p function in loadModel script)
-##            - fix number of parameters issue
-## 14-04-2022 - created v0_1
-##            - fitting of process model is done on a different ensemble member of Yhat_o at every iteration
-## 15-04-2022 - simplified code
-## 26-05-2022 - created v0_2
-##            - moved functions of observation model to this script
-##            - implemented weight parameter controlling for degree of nonlinearity
-## 30-05-2022 - created v0_3
-##            - implemented diffirential regularisation parameters
-##              this is to allow reducing constraints on linear model
-##              and increasing constraints on specific variables
-##            - removed "slider"/weight parameter
-## 31-05-2022 - created v0_4 
-##            - re-introduced weight parameter
-##            - re-introduced the ridge regression approach instead of the marginal posterior
-##              to have more control over the nonlinearity in specific variables
-##            - removed the weight parameter
+## 09-06-2022 - created v0_0
 
 ##############
 ## INITIATE ##
@@ -34,11 +16,11 @@
 ## goal: initiate the process model
 
 ## imports
-source("f_NODE_GM_v0_58.r")
+source("f_NODE_GM.r")
 source("m5_loadData_p.r")
 
 ## parameters process model
-K_p   = 100
+K_p   = 10
 W_p   = rep(10,N)
 N_p   = 2 * W_p * (2+N)
 sd1_p = 0.1
@@ -46,13 +28,13 @@ sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.3,N_p[1]/2)),
              c(rep(1.0,N_p[2]/2),rep(.3,N_p[2]/2)),
              c(rep(1.0,N_p[3]/2),rep(.3,N_p[3]/2)))
 
-## remove second variable in second time series
-sd2_p[[2]][(N_p[2]/2-W_p[2]):(N_p[2]/2)-W_p[2]] = 0.001
-sd2_p[[2]][(N_p[2]-W_p[2]):N_p[2]-W_p[2]] = 0.001
-
-## remove third variable in third time series
-sd2_p[[3]][(N_p[3]/2-W_p[3]):(N_p[3]/2)] = 0.001
-sd2_p[[3]][(N_p[3]-W_p[3]):N_p[3]] = 0.001
+# ## remove second variable in second time series
+# sd2_p[[2]][(N_p[2]/2-W_p[2]):(N_p[2]/2)-W_p[2]] = 0.001
+# sd2_p[[2]][(N_p[2]-W_p[2]):N_p[2]-W_p[2]] = 0.001
+# 
+# ## remove third variable in third time series
+# sd2_p[[3]][(N_p[3]/2-W_p[3]):(N_p[3]/2)] = 0.001
+# sd2_p[[3]][(N_p[3]-W_p[3]):N_p[3]] = 0.001
 
 #
 ###

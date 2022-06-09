@@ -264,4 +264,3 @@ argmax.logMarPost = function(X,Y,f,df,Omega,c=1)
 
 #
 ###
-

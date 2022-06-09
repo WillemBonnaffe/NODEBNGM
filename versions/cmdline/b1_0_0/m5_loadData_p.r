@@ -7,9 +7,7 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 15-04-2022 - created v0_0
-## 25-04-2022 - created v0_1
-##            - loading and processing ensemble instead of pre-computed mean
+## 09-06-2022 - created v0_0
 
 ##############
 ## INITIATE ##
@@ -24,17 +22,17 @@ pathToOut = "out"
 load(paste(pathToOut,"/","Yhat_o.RData",sep=""))
 load(paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
 
-## data specs 
-N   = length(Yhat_o)
-n   = ncol(Yhat_o[[1]])
-K_o = nrow(Yhat_o[[1]])
-
 #
 ###
 
 ##################
 ## PREPARE DATA ##
 ##################
+
+## data specs 
+N   = length(Yhat_o)
+n   = ncol(Yhat_o[[1]])
+K_o = nrow(Yhat_o[[1]])
 
 ## predictive variable
 E.X_p     = NULL
@@ -45,11 +43,11 @@ ddt.X_p   = NULL
 Y_p       = NULL
 for(j in 1:N)
 {   
-	## select random ensemble element
-    v       = sample(1:K_o,1)
-    X_p     = cbind(X_p,        Yhat_o[[j]][v,])
-    ddt.X_p = cbind(ddt.X_p,ddt.Yhat_o[[j]][v,])
-    Y_p     = cbind(Y_p,1/Yhat_o[[j]][v,]*ddt.Yhat_o[[j]][v,])
+	# ## select random ensemble element (for stochastic training)
+    # v       = sample(1:K_o,1)
+    # X_p     = cbind(X_p,        Yhat_o[[j]][v,])
+    # ddt.X_p = cbind(ddt.X_p,ddt.Yhat_o[[j]][v,])
+    # Y_p     = cbind(Y_p,1/Yhat_o[[j]][v,]*ddt.Yhat_o[[j]][v,])
 
 	## mean of ensemble
     E.X_p     = cbind(E.X_p,     apply(Yhat_o[[j]],2,mean))

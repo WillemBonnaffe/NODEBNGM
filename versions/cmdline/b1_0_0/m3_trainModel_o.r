@@ -7,16 +7,7 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 08-04-2022 - created v0_0
-## 14-04-2022 - created v0_1
-##            - added transformation of ensemble
-## 15-04-2022 - added dataloader
-##            - simplified code
-## 25-04-2022 - created v0_2
-##            - not relying on function fit anymore
-##            - simplified code by transforming ensemble rather than each derived quantity
-## 08-06-2022 - created v0_3
-##            - implemented rejection of samples too close to initial conditions
+## 09-06-2022 - created v0_0
 
 ##############
 ## INITIATE ##
@@ -78,7 +69,7 @@ for (i in 1:N)
 	}
 
     ## sort by best models
-    s = rev(order(logPost_o_i))[1:5]
+    s = rev(order(logPost_o_i))[1:round(rho*K_o)]
     Omega_o_i = Omega_o_i[s,]
 
 	## store ensemble
