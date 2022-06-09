@@ -17,8 +17,8 @@
 
 ## TS 3DLV ##
 ## load data
-TS = read.table("data/TS.csv",sep=";",header=T)
-TS = TS[20:50,]
+TS = read.table("data/TS_1.csv",sep=";",header=T)
+for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
 #
 ## make out directory
 pathToOut = "out/"
