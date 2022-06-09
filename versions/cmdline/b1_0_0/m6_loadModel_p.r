@@ -24,9 +24,9 @@ K_p   = 30
 W_p   = rep(10,N)
 N_p   = 2 * W_p * (2+N)
 sd1_p = 0.1
-sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.1,N_p[1]/2)),
-             c(rep(1.0,N_p[2]/2),rep(.1,N_p[2]/2)),
-             c(rep(1.0,N_p[3]/2),rep(.1,N_p[3]/2)))
+sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.2,N_p[1]/2)),
+             c(rep(1.0,N_p[2]/2),rep(.01,N_p[2]/2)),
+             c(rep(1.0,N_p[3]/2),rep(.01,N_p[3]/2)))
 
 # ## remove second variable in second time series
 # sd2_p[[2]][(N_p[2]/2-W_p[2]):(N_p[2]/2)-W_p[2]] = 0.001

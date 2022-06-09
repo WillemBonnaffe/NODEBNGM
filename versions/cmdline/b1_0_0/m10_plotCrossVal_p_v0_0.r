@@ -47,32 +47,30 @@ for(i in 1:N)
 	#
 	## plot
 	x    = crossVal[,"sd"]
-	# y    = crossVal[,c("logLik_l","logLik_t")]
-	# sd.y = crossVal[,c("sd.logLik_l","sd.logLik_t")]
-    xlab = "Std. prior"
-	ylab = if(i <= 2) "Log likelihood" else ""
+	y    = crossVal[,c("logLik_l","logLik_t")]
+	sd.y = crossVal[,c("sd.logLik_l","sd.logLik_t")]
+	xlab = if(i == N) "Std. prior" else ""
+	ylab = "Log likelihood"
+	plot(x,rep(0,length(x)),ylim=c(min(y-sd.y)-0.5*abs(min(y-sd.y)),max(y+sd.y)+0.5*abs(max(y+sd.y))),type="l",lty=3,xlab=xlab,ylab=ylab)
 	#
 	## training line
 	col  = colVect[1]
 	y    = crossVal[,"logLik_l"] 
 	sd.y = crossVal[,"sd.logLik_l"]
-	plot(x,rep(0,length(x)),ylim=c(min(y-sd.y)-0.5*abs(min(y-sd.y)),max(y+sd.y)+0.5*abs(max(y+sd.y))),type="l",lty=3,xlab="",ylab=ylab)
 	lines(x,y,col=col)
 	polygon(x=c(x,rev(x)),y=c(y-sd.y,rev(y+sd.y)),col=adjustcolor(col,0.25),border=NA)
 	#
-    ## legend
-	legend("bottom",legend=c("Training","Testing")[1],col=colVect[1],lty=1,bty="n",cex=1.5,horiz=T)
+	plot(x,rep(0,length(x)),ylim=c(min(y-sd.y)-0.5*abs(min(y-sd.y)),max(y+sd.y)+0.5*abs(max(y+sd.y))),type="l",lty=3,xlab=xlab,ylab=ylab)
     #
 	## testing line
 	col  = colVect[2]	
 	y    = crossVal[,"logLik_t"]
 	sd.y = crossVal[,"sd.logLik_t"]
-	plot(x,rep(0,length(x)),ylim=c(min(y-sd.y)-0.5*abs(min(y-sd.y)),max(y+sd.y)+0.5*abs(max(y+sd.y))),type="l",lty=3,xlab=xlab,ylab=ylab)
 	lines(x,y,col=col)
 	polygon(x=c(x,rev(x)),y=c(y-sd.y,rev(y+sd.y)),col=adjustcolor(col,0.25),border=NA)
 	#
 	## legend
-	legend("bottom",legend=c("Training","Testing")[2],col=colVect[2],lty=1,bty="n",cex=1.5,horiz=T)
+	legend("bottom",legend=c("Training","Testing"),col=colVect,lty=1,bty="n",cex=1.5,horiz=T)
 	legend("topright",legend=index[i],bty="n",cex=1.5)
 }
 
