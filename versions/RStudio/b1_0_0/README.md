@@ -15,6 +15,8 @@
 ## - the user could use state interpolations and interpolated dynamics obtained via other methods (e.g. Fourier series, cubic splines)
 ## - the user could even use raw difference in the data as an estimate of the dynamics
 
+$$ \dot{Y} = f(Y,\Omega) $$
+
 ## parameters of process model
 ```R
 K_p   = 10                                            # number of models to fit
