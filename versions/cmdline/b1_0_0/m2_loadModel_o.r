@@ -19,11 +19,11 @@
 source("f_NODE_GM.r")
 
 ## parameters observation model
-K_o      = 30
-W_o      = c(100,100,100)
+K_o      = 10
+W_o      = rep(100,N)
 N_o      = W_o * 3
 sd1_o    = 0.1
-sd2_o    = c(0.001,0.001,0.001) 
+sd2_o    = rep(0.001,N) 
 rho      = 1 
 
 #
