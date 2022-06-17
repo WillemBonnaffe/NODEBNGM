@@ -8,6 +8,8 @@
 
 ## update log:
 ## 09-06-2022 - created v0_0
+## 16-06-2022 - created v0_1
+##            - introduced calculation of average effects and total contributions
 
 ##############
 ## INITIATE ##
@@ -141,6 +143,45 @@ finalTable = round(finalTable,2)
 
 ## combine in table
 write.table(finalTable,file=paste(pathToOut,"/","summaryTable.csv",sep=""),sep=";",row.names=F)
+
+#
+###
+
+##########################################
+## MEAN EFFECTS AND TOTAL CONTRIBUTIONS ##
+##########################################
+
+## goal: compute the mean effect and relative contribution matrices
+
+effectsMat = NULL
+contribMat = NULL
+for(i in 1:N)
+{
+	## effects 
+    E.ddx.Yhat_p   = t(matrix(apply(ddx.Yhat_p[[i]],2,mean),ncol=nrow(X)))
+	q05.ddx.Yhat_p = t(matrix(apply(ddx.Yhat_p[[i]],2,quantile,p=0.05),ncol=nrow(X)))
+	q95.ddx.Yhat_p = t(matrix(apply(ddx.Yhat_p[[i]],2,quantile,p=0.95),ncol=nrow(X)))
+
+    ## contributions
+	E.Geber_p      = t(matrix(apply(Geber_p[[i]],2,mean),ncol=nrow(X)))
+	q05.Geber_p    = t(matrix(apply(Geber_p[[i]],2,quantile,p=0.05),ncol=nrow(X)))
+	q95.Geber_p    = t(matrix(apply(Geber_p[[i]],2,quantile,p=0.95),ncol=nrow(X)))
+
+    ## average/sum of square across time steps
+    mean.E.ddx.Yhat_p = apply(E.ddx.Yhat_p,2,mean) 
+    mean.E.Geber_p    = apply(E.Geber_p   ,2,function(x) sum(x^2))
+
+    ## store
+    effectsMat = rbind(effectsMat,mean.E.ddx.Yhat_p)
+    contribMat = rbind(contribMat,mean.E.Geber_p)
+}
+
+## compute relative contributions
+contribMat = t(apply(contribMat,1,function(x)x/sum(x)))
+
+## save matrices
+write.table(round(effectsMat,2),file=paste(pathToOut,"/","effectsTable.csv",sep=""),sep=";",row.names=F)
+write.table(round(contribMat,2),file=paste(pathToOut,"/","contribTable.csv",sep=""),sep=";",row.names=F)
 
 #
 ###

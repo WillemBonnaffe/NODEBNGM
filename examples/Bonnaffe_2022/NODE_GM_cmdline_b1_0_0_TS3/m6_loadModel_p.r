@@ -29,23 +29,25 @@ sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.1,N_p[1]/2)),
              c(rep(1.0,N_p[3]/2),rep(.075,N_p[3]/2)))
 
 # ## model_1 - remove first variable in first time series
-# i = 1 
-# j = 1 
+# i = 1  # time seris
+# j = 1  # variable
 # sd2_p[[i]][(N_p[i]/2-W_p[i]*(N-j+1)):(N_p[i]/2 -W_p[i]*(N-j))] = 0.001
 # sd2_p[[i]][(N_p[i]  -W_p[i]*(N-j+1)):(N_p[i]   -W_p[i]*(N-j))] = 0.001
 # #
-# ## remove secondvariable in second time series
-# i = 2 # third time series
-# j = 2 # third variable
+# ## remove second variable in second time series
+# i = 2 
+# j = 2 
+# sd2_p[[i]][(N_p[i]/2-W_p[i]*(N-j+1)):(N_p[i]/2 -W_p[i]*(N-j))] = 0.001
+# sd2_p[[i]][(N_p[i]  -W_p[i]*(N-j+1)):(N_p[i]   -W_p[i]*(N-j))] = 0.001
+# #
+# ## remove second variable in third time series
+# i = 3 
+# j = 2 
 # sd2_p[[i]][(N_p[i]/2-W_p[i]*(N-j+1)):(N_p[i]/2 -W_p[i]*(N-j))] = 0.001
 # sd2_p[[i]][(N_p[i]  -W_p[i]*(N-j+1)):(N_p[i]   -W_p[i]*(N-j))] = 0.001
 
-# ## model_2 ##
-# ## remove first variable in first time series
-# i = 1 
-# j = 1 
-# sd2_p[[i]][(N_p[i]/2-W_p[i]*(N-j+1)):(N_p[i]/2 -W_p[i]*(N-j))] = 0.001
-# sd2_p[[i]][(N_p[i]  -W_p[i]*(N-j+1)):(N_p[i]   -W_p[i]*(N-j))] = 0.001
+## model_f ##
+## no deletions as substantial drop in model likelihood 
 
 #
 ###
