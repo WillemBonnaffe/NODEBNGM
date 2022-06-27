@@ -1,0 +1,102 @@
+%%%%%
+%% %%
+%%%%%
+
+%% author: Willem Bonnaffe (w.bonnaffe@gmail.com)
+
+%% update log:
+
+%%%%%%%%%%%%%%
+%% INITIATE %%
+%%%%%%%%%%%%%%
+
+%% setup
+\documentclass[multi=page]{standalone}
+%
+%% tikzipicture
+\usepackage{tikz}
+%
+% %% to use sans serif font
+% \renewcommand{\familydefault}{\sfdefault}
+% \usepackage{helvet}
+\usepackage{mathptmx} % (times)
+
+\begin{document}
+
+%%%%%%%%%%%%%%
+%% COMMANDS %%
+%%%%%%%%%%%%%%
+
+%% figurePage
+%% goal: create a new figure page
+% @arg1 - scaling of content of figure page
+% @arg2 - content of figure page
+\newcommand{\figurePage}[2]{
+	\begin{page}
+		\begin{tikzpicture}
+			\node [minimum size = 18cm,rectangle,fill=white] at (0,0) {}; %% frame
+			\node [scale=#1] at (0,0) {
+				#2
+			};
+		\end{tikzpicture}
+	\end{page}
+}
+
+%% cropMask
+%% goal: create a crop mask function
+% @arg1 - width of mask
+% @arg2 - height of mask
+% @arg3 - x center of mask content
+% @arg4 - y center of mask content
+% @arg5 - x position of mask 
+% @arg6 - y position of mask
+% @arg7 - content of mask
+\newcommand{\cropMask}[7]{
+	\node [minimum width=#1,minimum height=#2,path picture={
+			\node at (#3,#4) {
+				#7
+			};
+		}] at (#5,#6) {};
+}
+
+%
+%%%
+
+%%%%%%%%%%%%%
+%% FIGURES %%
+%%%%%%%%%%%%%
+
+%% FIGURE 1 %%  
+\figurePage{.9}{
+	\includegraphics[page=1]{"supporting/fig_overview/main.pdf"}
+}
+
+%% FIGURE 2 %%
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf"}
+}
+
+%% FIGURE 3 %% 
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf"}
+}
+
+%% FIGURE 4 %%
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1/fig_predictions_p.pdf"}
+}
+
+%% FIGURE 5 %%
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_f/fig_predictions_p.pdf"}
+}
+
+%% FIGURE 6
+\figurePage{.9}{
+	\includegraphics[page=1]{"supporting/fig_network/main.pdf"}
+}
+
+%
+%%%
+
+\end{document}

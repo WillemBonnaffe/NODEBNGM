@@ -1,0 +1,3363 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{Adamson2013}{article}{}
+    \name{author}{2}{}{%
+      {{hash=AMW}{%
+         family={Adamson},
+         familyi={A\bibinitperiod},
+         given={Matthew\bibnamedelima W.},
+         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=MAY}{%
+         family={Morozov},
+         familyi={M\bibinitperiod},
+         given={Andrew\bibnamedelima Y.},
+         giveni={A\bibinitperiod\bibinitdelim Y\bibinitperiod},
+      }}%
+    }
+    \keyw{Local bifurcation,Predator-prey model,Sensitivity analysis,Structural
+  sensitivity,System stability,Uncertainty,structural sensitivity}
+    \strng{namehash}{AMWMAY1}
+    \strng{fullhash}{AMWMAY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2013}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{abstract}{%
+    It is well recognized that models in the life sciences can be sensitive to
+  small variations in their model functions, a phenomenon known as 'structural
+  sensitivity'. Conventionally, modelers test for sensitivity by varying
+  parameters for a specific formulation of the model functions, but models can
+  show structural sensitivity to the choice of functional representations used:
+  a particularly concerning problem when system processes are too complex, or
+  insufficiently understood, to theoretically justify specific
+  parameterizations. Here we propose a rigorous test for the detection of
+  structural sensitivity in a system with respect to the local stability of
+  equilibria, the main idea being to project infinite dimensional function
+  space onto a finite dimensional space by considering the local properties of
+  the model functions. As an illustrative example, we use our test to
+  demonstrate structural sensitivity in the seminal Rosenzweig-MacArthur
+  predator-prey model, and show that the conventional parameterbased approach
+  can fail to do so. We also consider some implications that structural
+  sensitivity has for ecological modelling: we argue that when the model
+  exhibits structural sensitivity but experimental results remain consistent it
+  may indicate that there is a problem with the model construction, and that in
+  some cases trying to find an 'optimal' parameterization of a model function
+  may simply be impossible when the model exhibits structural sensitivity.
+  Finally, we suggest that the phenomenon of structural sensitivity in
+  biological models may help explain the irregular oscillations often observed
+  in real ecosystems. {\textcopyright} 2012 The Author(s) Published by the
+  Royal Society. All rights reserved.%
+    }
+    \verb{doi}
+    \verb 10.1098/rspa.2012.0500
+    \endverb
+    \field{issn}{14712946}
+    \field{number}{2149}
+    \field{pages}{1\bibrangedash 19}
+    \field{title}{{When can we trust our model predictions? Unearthing
+  structural sensitivity in biological systems}}
+    \field{volume}{469}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Adamson, Morozov - 2013 - When can we trust our model predictions U
+    \verb nearthing structural sensitivity in biological systems.pdf:pdf
+    \endverb
+    \field{journaltitle}{Proceedings of the Royal Society A: Mathematical,
+  Physical and Engineering Sciences}
+    \field{annotation}{%
+    * Preliminary read - The authors propose a test for evaluating structural
+  sensitivity of the model. - I see this as potentially useful for discussing
+  the "mechanistic pitfall". - I think other papers on the "mechanistic
+  pitfall" are also good, such as Wood 2001, Jost and Ellner 2000, etc. * Notes
+  - In the abstract the authors say that sensitivty should not only be
+  performed on parameters, but also on model structure. And that this is often
+  not done. - they define structural sensitivity as change in model behaviour
+  with mathematical forumlation of the model. - They state that conventional
+  model search in a subset of pre-defined parameters is subjective. - They
+  state that generalising from well-observed populations (e.g. in the lab) to
+  natural populations may not work. I see that they do not even question
+  whether across the same replicates it may be possible. - They state that
+  uncertainty arises because of experimental errors but also biological
+  variation. Results can further vary because of model structural sensitivity.
+  References 42-46 may be interesting for supporting that. - They state that
+  functional relations between system component are not consistent in time, due
+  to a change in unobserved variables (environment, internal state, evolution)
+  which may require a change in the model structure. That is reminding me that
+  no model should be fixed ideally, or at least complex enough to allow for
+  change.%
+    }
+    \field{year}{2013}
+  \endentry
+
+  \entry{Arndt1993}{article}{}
+    \name{author}{1}{}{%
+      {{hash=AH}{%
+         family={Arndt},
+         familyi={A\bibinitperiod},
+         given={Hartmut},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \keyw{bacteria,ciliates,feeding,heterotrophic flagellates,microbial
+  web,rotifers}
+    \strng{namehash}{AH1}
+    \strng{fullhash}{AH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1993}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{abstract}{%
+    Recent investigations have shown that processes within the planktonic
+  microbial web are of great significance for the functioning of limnetic
+  ecosystems. However, the general importance of protozoans and bacteria as
+  food sources for rotifers, a major component of planktonic habitats, has
+  seldom been evaluated. Results of feeding experiments and the analysis of the
+  food size spectrum of rotifers suggest that larger bacteria, heterotrophic
+  flagellates and small ciliates should be a common part of the food of most
+  rotifer species. About 10-40 per cent of rotifers' food can consist of
+  heterotrophic organisms of the microbial web. Field experiments have
+  indicated that rotifer grazing should generally play a minor role in bacteria
+  consumption compared to feeding by coexisting protozoans. However, according
+  to recent experiments regarding food selection, rotifers should be efficient
+  predators on protozoans. Laboratory experiments have revealed that even
+  nanophagous rotifers can feed on ciliates. Preliminary microcosm and
+  chemostat experiments have indicated that rotifers, due to their relatively
+  low community grazing rates compared to the growth rates of bacteria and
+  protozoans, should generally not be able (in contrast to some cladocerans) to
+  suppress the microbial web via grazing, though they may structure it.
+  Filter-feeding nanophagous rotifers (e.g. brachionids) seem to be significant
+  feeders on the smaller organisms of the microbial web (bacteria, flagellates,
+  small ciliates), whereas grasping species (e.g. synchaetids and asplanchnids)
+  seem to be efficient predators on larger organisms (esp. ciliates). Another
+  important role of rotifers is their feedback effect on the microbial web.
+  Rotifers provide degraded algae, bacteria and protozoans to the microbial web
+  and may promote microbial activity. Additional experimental work is necessary
+  for a better understanding of the function of rotifers in aquatic ecosystems.
+  {\textcopyright} 1993 Kluwer Academic Publishers.%
+    }
+    \verb{doi}
+    \verb 10.1007/BF00025844
+    \endverb
+    \field{issn}{15735117}
+    \field{number}{1}
+    \field{pages}{231\bibrangedash 246}
+    \field{title}{{Rotifers as predators on components of the microbial web
+  (bacteria, heterotrophic flagellates, ciliates) - a review}}
+    \field{volume}{255-256}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Arndt - 1993 - Rotifers as predators on components of the microbial
+    \verb  web (bacteria, heterotrophic flagellates, ciliates) - a review.pdf:p
+    \verb df
+    \endverb
+    \field{journaltitle}{Hydrobiologia}
+    \field{annotation}{%
+    * Takeaway - Rotifers do feed on cilliates%
+    }
+    \field{year}{1993}
+  \endentry
+
+  \entry{Becks2010}{article}{}
+    \name{author}{4}{}{%
+      {{hash=BL}{%
+         family={Becks},
+         familyi={B\bibinitperiod},
+         given={Lutz},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=JLE}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Laura\bibnamedelima E.},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \keyw{Adaptive variation,Brachionus,Chlamydomonas,Eco-evolutionary
+  dynamics,Evolutionary cycles,Genetic variability,ODE,Polymorphism,Potential
+  NODE application,Predator-prey dynamics,eco-evolutionary
+  dynamics,experimental,microcosm,phenotype,time series}
+    \strng{namehash}{BL+1}
+    \strng{fullhash}{BLESPJLEHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2010}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    Adaptive variation in the traits determining ecological interactions can
+  lead to evolution so rapid that ecological dynamics change course while in
+  progress (i.e., 'eco-evolutionary dynamics'). However, little is known about
+  how the qualitative properties of eco-evolutionary dynamics (e.g., cycling,
+  equilibrium, etc.) are affected by the amount of heritable variation present.
+  Here, we show that a change in the range of variation in a heritable prey
+  defense trait determines what dynamics are observed in an experimental
+  predator-prey system. We combine modelling and laboratory experiments to show
+  that initial defense trait variation determines whether populations exhibit
+  eco-evolutionary cycles in which heritable variation is maintained, or
+  converge to an equilibrium at which the prey population becomes monomorphic.
+  Our results show how small changes in the amount of adaptive genetic variance
+  initially present can radically alter eco-evolutionary dynamics, and can
+  ultimately determine whether heritable variation is maintained or lost.%
+    }
+    \verb{doi}
+    \verb 10.1111/j.1461-0248.2010.01490.x
+    \endverb
+    \field{isbn}{1461-0248 (Electronic) 1461-023X (Linking)}
+    \field{issn}{14610248}
+    \field{number}{8}
+    \field{pages}{989\bibrangedash 997}
+    \field{title}{{Reduction of adaptive genetic diversity radically alters
+  eco-evolutionary community dynamics}}
+    \field{volume}{13}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Becks et al. - 2010 - Reduction of adaptive genetic diversity radic
+    \verb ally alters eco-evolutionary community dynamics.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology Letters}
+    \field{annotation}{%
+    Takeaway - Paper shows that the amount of initial genetic architecture
+  constrains the eco-evolutionary dynamics of the system. Namely, different
+  initial phenotypes can lead to differenc eco-evolutionary dynamics. Grazed
+  leads to oscillations, ungrazed leads to stable equilibrium. Note - This may
+  be interesting also to highlight that we do not really know whether same
+  initial phenotypes may also lead to different eco-evolutionary dynamics (e.g.
+  your rotifer paper).%
+    }
+    \field{year}{2010}
+  \endentry
+
+  \entry{Becks2012}{article}{}
+    \name{author}{4}{}{%
+      {{hash=BL}{%
+         family={Becks},
+         familyi={B\bibinitperiod},
+         given={Lutz},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=JLE}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Laura\bibnamedelima E.},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \keyw{Chemostat dynamics,Eco-evolutionary dynamics,Eco-evolutionary
+  feedback loop,Microarray,Microcosm,Predator-prey,ecological dynamics,genetic
+  architecture}
+    \strng{namehash}{BL+1}
+    \strng{fullhash}{BLESPJLEHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    Feedbacks between ecological and evolutionary change may play important
+  roles in community and ecosystem functioning, but a complete eco-evolutionary
+  feedback loop has not been demonstrated at the community level, and we know
+  little about molecular mechanisms underlying this kind of eco-evolutionary
+  dynamics. In predator-prey (rotifer-alga) microcosms, cyclical changes in
+  predator abundance generated fluctuating selection for a heritable prey
+  defence trait, cell clumping. Predator population growth was affected more by
+  prey evolution than by changes in prey abundance, and changes in predator
+  abundance drove further prey evolution, completing the feedback loop. Within
+  a predator-prey cycle, genes up-regulated as clumping declined were
+  down-regulated as clumping increased, and vice-versa. Genes changing most in
+  expression tended to be associated with defence or its cost. Expression
+  patterns of individual genes differed greatly between consecutive cycles
+  (often reversing direction), suggesting that a particular phenotype may be
+  produced by several (perhaps many) different gene transcription pathways.%
+    }
+    \verb{doi}
+    \verb 10.1111/j.1461-0248.2012.01763.x
+    \endverb
+    \field{isbn}{1461-0248 (Electronic)\r1461-023X (Linking)}
+    \field{issn}{1461023X}
+    \field{number}{5}
+    \field{pages}{492\bibrangedash 501}
+    \field{title}{{The functional genomics of an eco-evolutionary feedback
+  loop: Linking gene expression, trait evolution, and community dynamics}}
+    \field{volume}{15}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Becks et al. - 2012 - The functional genomics of an eco-evolutionar
+    \verb y feedback loop Linking gene expression, trait evolution, and communi
+    \verb .pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology Letters}
+    \field{annotation}{%
+    Takeaway - "direct" evidence for feedback effects. Clumb size affects the
+  growth rate of the predator. The predator density affect the growth rate of
+  the prey (not demonstrated in the study though). - They show that the pattern
+  of gene expression varies across cycles. This means that the dynamics of the
+  traits are governed by highly complex genetic pathways, which are
+  inconsistent in time. Note - I still see that as qualitative evidence. The
+  complete feedback is not demonstrated. - Might be a good paper to use in your
+  introduction as an example of eco-evo feedback. - This article makes me think
+  that redundancy in the pathways for phenotypic change may be one mechanism to
+  maintain genetic variation. 1. Introduction - Genomics + observing fast
+  evolution => set the possibility to dissect microscopic structure of
+  evolution with ecological time series. 2. Methods - Experimental microcosm in
+  lab (rotifer algal system). - Trait is algae clumping up to resist predators,
+  but reduce amount of nitrogen they receive individually. - Monitor
+  populations densities, and expression of annotated gene sequences +
+  correlation with trait expression. - Evolution (trait change) contributes to
+  ecological dynamics. 3. Results - Theoretical predictions match observed
+  dynamics in the lab. - Gene expression underlying phenotype expression
+  changes from one cycle to the next despite same trait and population
+  dynamics... 4. Discussion - although genetic structure is identified, gene
+  expression changes in opposite manner from one cycle to the next. - Could be
+  due to changes in allele densities, and/or, changes in expression level of
+  regulatory elements. - Should be more complex in nature... need to understand
+  under what circumstances eco-evo feedbacks arise. 5. Comments: - would be a
+  nice data set to test models on. - shows that genotype phenotype map may
+  change... => (i) reinforces the need for controlling eco-evo dynamics when
+  studying genotype phenotype maps. => (ii) scary because means that the
+  genetic architecture of eco-evo feedbacks may change on the fly.%
+    }
+    \field{year}{2012}
+  \endentry
+
+  \entry{Bonnaffe2021b}{article}{}
+    \name{author}{4}{}{%
+      {{hash=BW}{%
+         family={Bonnaff{\'{e}}},
+         familyi={B\bibinitperiod},
+         given={Willem},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Danet},
+         familyi={D\bibinitperiod},
+         given={Alain},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=LS}{%
+         family={Legendre},
+         familyi={L\bibinitperiod},
+         given={St{\'{e}}phane},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=EE}{%
+         family={Edeline},
+         familyi={E\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \keyw{body size,fish community,ontogenetic diet shifts,temperature,trophic
+  networks}
+    \strng{namehash}{BW+1}
+    \strng{fullhash}{BWDALSEE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    It is predicted that warmer conditions should lead to a loss of trophic
+  levels, as larger bodied consumers, which occupy higher trophic levels,
+  experience higher metabolic costs at high temperature. Yet, it is unclear
+  whether this prediction is consistent with the effect of warming on the
+  trophic structure of natural systems. Furthermore, effects of temperature at
+  the species level, which arise through a change in species composition, may
+  differ from those at the population level, which arise through a change in
+  population structure. We investigate this by building species-level trophic
+  networks, and size-structured trophic networks, as a proxy for population
+  structure, for 18 648 stream fish communities, from 4 145 234 individual fish
+  samples, across 7024 stream locations in France from 1980 to 2008. We
+  estimated effects of temperature on total trophic diversity (total number of
+  nodes), vertical trophic diversity (mean and maximum trophic level) and
+  distribution of biomass across trophic level (correlation between trophic
+  level and biomass) in these networks. We found a positive effect of
+  temperature on total trophic diversity in both species- and size-structured
+  trophic networks. We found that maximum trophic level and biomass
+  distribution decreased in species-level and size-structured trophic networks,
+  but the mean trophic level decreased only in size-structured trophic
+  networks. These results show that warmer temperatures associate with a lower
+  vertical trophic diversity in size-structured networks, and a higher one in
+  species-level networks. This suggests that vertical trophic diversity is
+  shaped by antagonistic effects of temperature on population structure and on
+  species composition. Our results hence demonstrate that effects of
+  temperature do not only differ across trophic levels, but also across levels
+  of biological organisation, from population to species level, implying
+  complex changes in network structure and functioning with warming.%
+    }
+    \verb{doi}
+    \verb 10.1111/oik.08173
+    \endverb
+    \field{issn}{16000706}
+    \field{number}{8}
+    \field{pages}{1297\bibrangedash 1309}
+    \field{title}{{Comparison of size-structured and species-level trophic
+  networks reveals antagonistic effects of temperature on vertical trophic
+  diversity at the population and species level}}
+    \field{volume}{130}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Bonnaff{\'{e}} et al. - 2021 - Comparison of size-structured and sp
+    \verb ecies-level trophic networks reveals antagonistic effects of temperat
+    \verb ur(2).pdf:pdf
+    \endverb
+    \field{journaltitle}{Oikos}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Bonnaffe2021a}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BW}{%
+         family={Bonnaff{\'{e}}},
+         familyi={B\bibinitperiod},
+         given={Willem},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=SBC}{%
+         family={Sheldon},
+         familyi={S\bibinitperiod},
+         given={Ben\bibnamedelima C.},
+         giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=CT}{%
+         family={Coulson},
+         familyi={C\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \keyw{NODE,article type,artificial neural
+  networks,dynamics,eco-evolutionary dynamics,eco-evolutionary
+  feedbacks,ecological dynamics,evolutionary dynamics,geber,method,neural
+  ordinary differential equations,ordinary differential equations,prey predator
+  dynamics,prey-predator,prey-predator oscillations,research article,time
+  series,time series analysis}
+    \strng{namehash}{BWSBCCT1}
+    \strng{fullhash}{BWSBCCT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \verb{doi}
+    \verb 10.1111/2041-210x.13606
+    \endverb
+    \field{issn}{2041-210X}
+    \field{pages}{1\bibrangedash 46}
+    \field{title}{{Neural ordinary differential equations for ecological and
+  evolutionary time series analysis}}
+    \field{volume}{2}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Bonnaff{\'{e}}, Sheldon, Coulson - 2021 - Neural ordinary different
+    \verb ial equations for ecological and evolutionary time series analysis.pd
+    \verb f:pdf
+    \endverb
+    \field{journaltitle}{Methods in Ecology and Evolution}
+    \field{annotation}{%
+    Note - You know what is in it because it is your paper%
+    }
+    \field{year}{2021}
+  \endentry
+
+  \entry{Bonsall2003}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BMB}{%
+         family={Bonsall},
+         familyi={B\bibinitperiod},
+         given={Michael\bibnamedelima B.},
+         giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=VE}{%
+         family={{Van Der Meijden}},
+         familyi={V\bibinitperiod},
+         given={Ed},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=CMJ}{%
+         family={Crawley},
+         familyi={C\bibinitperiod},
+         given={Michael\bibnamedelima J.},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \keyw{ecological interaction,gam,growth rate,population
+  dynamics,semi-specified model}
+    \strng{namehash}{BMBVECMJ1}
+    \strng{fullhash}{BMBVECMJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2003}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    Long-term studies of two-species interactions under field conditions are
+  unusual; most long-term field studies are of single species dynamics (1-6).
+  Concurrent long-term studies on the dynamics of the same two interacting
+  species in different locations are very rare. This result has led to the
+  tacit assumption that diffehjkrent cases of the same two-species interaction
+  would involve essentially quantitative differences (e.g., context-specific
+  differences in the numeric values of demographic parameters like fecundity or
+  death rates). Here, we show that for one of the best-known two-species
+  systems (ragwort and cinnabar moth), this finding does not hold. The
+  interaction between the plant and its herbivore is fundamentally different in
+  coastal dunes in The Netherlands and in grasslands in Southeast England. In
+  the first case, the dynamics are cyclic and the interaction involves both
+  direct and delayed density dependence; in the second case, the insect has
+  little impact on plant dynamics and there are no time lags in density
+  dependence. The difference is caused by differences in the importance of
+  seed-limitation in plant recruitment in the two locations.%
+    }
+    \verb{doi}
+    \verb 10.1073/pnas.2535677100
+    \endverb
+    \field{issn}{00278424}
+    \field{number}{25}
+    \field{pages}{14932\bibrangedash 14936}
+    \field{title}{{Contrasting dynamics in the same plant-herbivore
+  interaction}}
+    \field{volume}{100}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Bonsall, Van Der Meijden, Crawley - 2003 - Contrasting dynamics in
+    \verb the same plant-herbivore interaction.pdf:pdf
+    \endverb
+    \field{journaltitle}{Proceedings of the National Academy of Sciences of the
+  United States of America}
+    \field{annotation}{%
+    Takeaway - They state that the same interaction can vary in direction
+  because of context dependence caused by the environment. Note - Good paper to
+  demonstrate the usefulness of non-parametric approaches in studying
+  ecological dynamics from time series.%
+    }
+    \field{year}{2003}
+  \endentry
+
+  \entry{Bruijning2019}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BM}{%
+         family={Bruijning},
+         familyi={B\bibinitperiod},
+         given={Marjolein},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=JE}{%
+         family={Jongejans},
+         familyi={J\bibinitperiod},
+         given={Eelke},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=TMM}{%
+         family={Turcotte},
+         familyi={T\bibinitperiod},
+         given={Martin\bibnamedelima M.},
+         giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian,eco-evolutionary dynamics,fitting,inverse modelling,matrix
+  population model,population growth rate,population model,rapid
+  evolution,sensitivity analysis,vital rates}
+    \strng{namehash}{BMJETMM1}
+    \strng{fullhash}{BMJETMM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    1. Changes in population dynamics due to interacting evolutionary and
+  ecological processes are the direct result of responses in vital rates, that
+  is stage-specific growth, survival and fecundity. Quantifying through which
+  vital rates population fitness is affected, instead of focusing on population
+  trends only, can give a more mechanistic understanding of eco-evolutionary
+  dynamics. 2. The aim of this study was to estimate the underlying demographic
+  rates of aphid (Myzus persicae) populations. We analysed unpublished
+  stage-structure population dynamics data of a field experiment with caged and
+  uncaged populations in which rapid evolutionary dynamics were observed, as
+  well as unpublished results from an individual life table experiment
+  performed in a glasshouse. 3. Using data on changes in population abundance
+  and stage distributions over time, we estimated transition matrices with
+  inverse modelling techniques, in a Bayesian framework. The model used to fit
+  across all experimental treatments included density as well as clone-specific
+  caging effects. We additionally used individual life table data to inform the
+  model on survival, growth and reproduction. 4. Results suggest that clones
+  varied considerably in vital rates, and imply trade-offs between reproduction
+  and survival. Responses to densities also varied between clones. Negative
+  density dependence was found in growth and reproduction, and the presence of
+  predators and competitors further decreased these two vital rates, while
+  survival estimates increased. Under uncaged conditions, population growth
+  rates of the evolving populations were increased compared to the expectation
+  based on the pure clones. 5. Our inverse modelling approach revealed how much
+  vital rates contributed to the eco-evolutionary dynamics. The decomposition
+  analysis showed that variation in population growth rates in the evolving
+  populations was to a large extent shaped by plant size. Yet, it also revealed
+  an impact of evolutionary changes in clonal composition. Finally, we discuss
+  that inverse modelling is a complex problem, as multiple combinations of
+  individual rates can result in the same dynamics. We discuss assumptions and
+  limitations, as well as opportunities, of this approach. K E Y W O R D S
+  population growth rate, population model, rapid evolution, sensitivity
+  analysis, vital rates This is an open access article under the terms of the
+  Creative Commons Attribution License, which permits use, distribution and
+  reproduction in any medium, provided the original work is properly cited.%
+    }
+    \verb{doi}
+    \verb 10.1111/1365-2656.12966
+    \endverb
+    \field{issn}{13652656}
+    \field{number}{5}
+    \field{pages}{768\bibrangedash 779}
+    \field{title}{{Demographic responses underlying eco-evolutionary dynamics
+  as revealed with inverse modelling}}
+    \field{volume}{88}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Bruijning, Jongejans, Turcotte - 2019 - Demographic responses under
+    \verb lying eco-evolutionary dynamics as revealed with inverse modelling.pd
+    \verb f:pdf
+    \endverb
+    \field{journaltitle}{Journal of Animal Ecology}
+    \field{annotation}{%
+    - Use Bayesian statistics to estimate eco-evo parameters. - But it does not
+  connect it to the existing/state of the art theory. * Note - They estimate
+  vital rates of different aphid populations in different context with
+  parametric inverse modelling. They demonstrate that vital rates, and thereby
+  dynamics, vary across clones and context (predator exclusion or not). - I see
+  this as a useful paper to demonstrate how phenotypic variation and context
+  dependence can prevent generalisation.%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{Calder2003}{article}{}
+    \name{author}{4}{}{%
+      {{hash=CC}{%
+         family={Calder},
+         familyi={C\bibinitperiod},
+         given={Catherine},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=LM}{%
+         family={Lavine},
+         familyi={L\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MP}{%
+         family={M{\"{u}}ller},
+         familyi={M\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=CJS}{%
+         family={Clark},
+         familyi={C\bibinitperiod},
+         given={James\bibnamedelima S.},
+         giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian,Markov chain Monte Carlo (MCMC) simulation,Nonlinear
+  models,Normal dynamic linear models,Observation error,Population
+  dynamics,State-space,Time-series,Uncertainty}
+    \strng{namehash}{CC+1}
+    \strng{fullhash}{CCLMMPCJS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2003}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    Many standard statistical models used to examine population dynamics ignore
+  significant sources of stochasticity. Usually only process error is included,
+  and uncertainty due to errors in data collection is omitted or not directly
+  specified in the model. We show how standard time-series models for
+  population dynamics can be extended to include both observational and process
+  error and how to perform inference on parameters in these models in the
+  Bayesian setting. Using simulated data, we show how ignoring observation
+  error can be misleading. We argue that the standard Bayesian techniques used
+  to perform inference, including freely available software, are generally
+  applicable to a variety of time-series models.%
+    }
+    \verb{doi}
+    \verb 10.1890/0012-9658(2003)084[1395:IMSOSI]2.0.CO;2
+    \endverb
+    \field{issn}{00129658}
+    \field{number}{6}
+    \field{pages}{1395\bibrangedash 1402}
+    \field{title}{{Incorporating multiple sources of stochasticity into dynamic
+  population models}}
+    \field{volume}{84}
+    \verb{file}
+    \verb :Users/willhem/Desktop/calder-et-al.-2003.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Cawley2007}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CGC}{%
+         family={Cawley},
+         familyi={C\bibinitperiod},
+         given={Gavin\bibnamedelima C.},
+         giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=TNLC}{%
+         family={Talbot},
+         familyi={T\bibinitperiod},
+         given={Nicola L.\bibnamedelima C.},
+         giveni={N\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim
+  C\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian regularisation,Kernel methods,Model selection}
+    \strng{namehash}{CGCTNLC1}
+    \strng{fullhash}{CGCTNLC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2007}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    While the model parameters of a kernel machine are typically given by the
+  solution of a convex optimisation problem, with a single global optimum, the
+  selection of good values for the regularisation and kernel parameters is much
+  less straightforward. Fortunately the leave-one-out cross-validation
+  procedure can be performed or a least approximated very efficiently in closed
+  form for a wide variety of kernel learning methods, providing a convenient
+  means for model selection. Leave-one-out cross-validation based estimates of
+  performance, however, generally exhibit a relatively high variance and are
+  therefore prone to over-fitting. In this paper, we investigate the novel use
+  of Bayesian regularisation at the second level of inference, adding a
+  replarisation term to the model selection criterion corresponding to a prior
+  over the hyper-parameter values, where the additional regularisation
+  parameters are integrated out analytically. Results obtained on a suite of
+  thirteen real-world and synthetic benchmark data sets clearly demonstrate the
+  benefit of this approach.%
+    }
+    \field{issn}{15324435}
+    \field{pages}{841\bibrangedash 861}
+    \field{title}{{Preventing over-fitting during model selection via bayesian
+  regularisation of the hyper-parameters}}
+    \field{volume}{8}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Cawley, Talbot - 2007 - Preventing over-fitting during model select
+    \verb ion via bayesian regularisation of the hyper-parameters.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Machine Learning Research}
+    \field{year}{2007}
+  \endentry
+
+  \entry{Chen1993}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CT}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Tianping},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=CH}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Hong},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \keyw{ANN,theory}
+    \strng{namehash}{CTCH1}
+    \strng{fullhash}{CTCH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1993}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    The paper gives several strong results on neural network representation in
+  an explicit form. Under very mild conditions a functional defined on a
+  compact set in C[a, b] or L(p)[a, b], spaces of infinite dimensions, can be
+  approximated arbitrarily well by a neural network with one hidden layer. The
+  results are a significant development beyond earlier work, where theorems of
+  approximating continuous functions defined on a finite-dimensional real space
+  by neural networks with one hidden layer were given. All the results are
+  shown to be applicable to the approximation of the output of dynamic systems
+  at any particular time.%
+    }
+    \verb{doi}
+    \verb 10.1109/72.286886
+    \endverb
+    \field{issn}{19410093}
+    \field{number}{6}
+    \field{pages}{910\bibrangedash 918}
+    \field{title}{{Approximations of Continuous Functionals by Neural Networks
+  with Application to Dynamic Systems}}
+    \field{volume}{4}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Chen, Chen - 1993 - Approximations of Continuous Functionals by Neu
+    \verb ral Networks with Application to Dynamic Systems.pdf:pdf
+    \endverb
+    \field{journaltitle}{IEEE Transactions on Neural Networks}
+    \field{annotation}{%
+    Takeaway - Classic paper showing that any arbitrary function can be
+  approximated arbitrarily well by a one hidden layer network Note - Can be
+  used to support the choice of activation functions and that NODEs can
+  approximate dynamical systems.%
+    }
+    \field{year}{1993}
+  \endentry
+
+  \entry{Dallas2021}{article}{}
+    \name{author}{4}{}{%
+      {{hash=DT}{%
+         family={Dallas},
+         familyi={D\bibinitperiod},
+         given={Tad},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=MBA}{%
+         family={Melbourne},
+         familyi={M\bibinitperiod},
+         given={Brett\bibnamedelima A.},
+         giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=LG}{%
+         family={Legault},
+         familyi={L\bibinitperiod},
+         given={Geoffrey},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Hastings},
+         familyi={H\bibinitperiod},
+         given={Alan},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DT+1}
+    \strng{fullhash}{DTMBALGHA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{abstract}{%
+    Summary 1. Predicting competitive outcomes in communities frequently
+  involves inferences based on deterministic population models since these
+  provide clear criteria for exclusion (e.g., R* rule) or long-term coexistence
+  (e.g., mutual invasibility). 2. However, incorporating stochasticity into
+  population- or community-level processes into models is necessary if the goal
+  is to explain variation in natural systems, which are inherently stochastic.
+  3. Similarly, in systems with demographic or environmental stochasticity,
+  weaker competitors have the potential to exclude superior competitors,
+  contributing to what is known as 'competitive indeterminancy'. The importance
+  of such effects for natural communities is unknown, in part because it is
+  difficult to demonstrate that multiple forms of stochasticity are present in
+  these communities. Moreover, the effects of multiple forms of stochasticity
+  on competitive outcomes are largely untested, even in theory. 4. Here, we
+  address these issues by examining the role of stochasticity in replicated
+  communities of flour beetles (Tribolium sp.). To do so, we developed a set of
+  two-species stochastic Ricker models incorporating four distinct forms of
+  stochasticity: environmental stochasticity, demographic stochasticity,
+  demographic heterogeneity, and stochastic sex determination. 5. By fitting
+  models to experimental data, and simulating fit models to examine long term
+  behavior, we found that both the duration of tranisent coexistence and the
+  degree of competitive indeterminacy were sensitive to the forms of
+  stochasticity included in our models. These findings suggest current
+  estimates of extinction risk, coexistence, and time until competitive
+  exclusion in communities may not be accurate when based on models that
+  exclude relevant forms of stochasticity.%
+    }
+    \verb{doi}
+    \verb 10.1111/1365-2656.13485
+    \endverb
+    \field{issn}{0021-8790}
+    \field{pages}{1\bibrangedash 26}
+    \field{title}{{Initial abundance and stochasticity influence competitive
+  outcome in communities}}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Dallas et al. - 2021 - Initial abundance and stochasticity influenc
+    \verb e competitive outcome in communities.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Animal Ecology}
+    \field{year}{2021}
+  \endentry
+
+  \entry{DeMeester2019}{article}{}
+    \name{author}{11}{}{%
+      {{hash=DL}{%
+         family={{De Meester}},
+         familyi={D\bibinitperiod},
+         given={Luc},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=BKI}{%
+         family={Brans},
+         familyi={B\bibinitperiod},
+         given={Kristien\bibnamedelima I.},
+         giveni={K\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+      {{hash=GL}{%
+         family={Govaert},
+         familyi={G\bibinitperiod},
+         given={Lynn},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Souffreau},
+         familyi={S\bibinitperiod},
+         given={Caroline},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=MS}{%
+         family={Mukherjee},
+         familyi={M\bibinitperiod},
+         given={Shinjini},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=VH}{%
+         family={Vanvelk},
+         familyi={V\bibinitperiod},
+         given={H{\'{e}}l{\'{e}}ne},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=KK}{%
+         family={Korzeniowski},
+         familyi={K\bibinitperiod},
+         given={Konrad},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=KL}{%
+         family={Kilsdonk},
+         familyi={K\bibinitperiod},
+         given={Laurens},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=DE}{%
+         family={Decaestecker},
+         familyi={D\bibinitperiod},
+         given={Ellen},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Stoks},
+         familyi={S\bibinitperiod},
+         given={Robby},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=UMC}{%
+         family={Urban},
+         familyi={U\bibinitperiod},
+         given={Mark\bibnamedelima C.},
+         giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \keyw{community dynamics,cryptic eco-evolutionary dynamics,eco-evolutionary
+  dynamics,eco-evolutionary feedbacks,evolving metacommunities,food web
+  interactions,multi-species guild,nature,regional dynamics,review}
+    \strng{namehash}{DL+1}
+    \strng{fullhash}{DLBKIGLSCMSVHKKKLDESRUMC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{abstract}{%
+    Abstract The field of eco-evolutionary dynamics is developing rapidly, with
+  a growing number of well-designed experiments quantifying the impact of
+  evolution on ecological processes and patterns, ranging from population
+  demography to community composition and ecosystem functioning. The key
+  challenge remains to transfer the insights of these proof-of-principle
+  experiments to natural settings, where multiple species interact and the
+  dynamics are far more complex than those studied in most experiments. Here,
+  we discuss potential pitfalls of building a framework on eco-evolutionary
+  dynamics that is based on data on single species studied in isolation from
+  interspecific interactions, which can lead to both under- and overestimation
+  of the impact of evolution on ecological processes. Underestimation of
+  evolution-driven ecological changes could occur in a single-species approach
+  when the focal species is involved in co-evolutionary dynamics, whereas
+  overestimation might occur due to increased rates of evolution following
+  ecological release of the focal species. In order to develop a multi-species
+  perspective on eco-evolutionary dynamics, we discuss the need for a
+  broad-sense definition of ?eco-evolutionary feedbacks? that includes any
+  reciprocal interaction between ecological and evolutionary processes, next to
+  a narrow-sense definition that refers to interactions that directly feed back
+  on the interactor that evolves. We discuss the challenges and opportunities
+  of using more natural settings in eco-evolutionary studies by gradually
+  adding complexity: (a) multiple interacting species within a guild, (b) food
+  web interactions and (c) evolving metacommunities in multiple habitat patches
+  in a landscape. A literature survey indicated that only a few studies on
+  microbial systems so far developed a truly multi-species approach in their
+  analysis of eco-evolutionary dynamics, and mostly so in artificially
+  constructed communities. Finally, we provide a road map of methods to study
+  eco-evolutionary dynamics in more natural settings. Eco-evolutionary studies
+  involving multiple species are necessarily demanding and might require
+  intensive collaboration among research teams, but are highly needed. A plain
+  language summary is available for this article.%
+    }
+    \verb{doi}
+    \verb 10.1111/1365-2435.13261
+    \endverb
+    \field{issn}{13652435}
+    \field{number}{1}
+    \field{pages}{43\bibrangedash 59}
+    \field{title}{{Analysing eco-evolutionary dynamics—The challenging
+  complexity of the real world}}
+    \field{volume}{33}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/De Meester et al. - 2019 - Analysing eco-evolutionary dynamics—Th
+    \verb e challenging complexity of the real world.pdf:pdf
+    \endverb
+    \field{journaltitle}{Functional Ecology}
+    \field{annotation}{%
+    * takeaways - Need for studies in systems with multiple species. - Need for
+  studies in systems in a natural setting. * Notes - They state that
+  contingencies on starting conditions lead to strong differences in
+  trajectories. They further state that this prevents generalisation. - They
+  state that evolution, possible with phenotpyic variation, will increase
+  contingency.%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{Demyanov2006}{article}{}
+    \name{author}{3}{}{%
+      {{hash=DV}{%
+         family={Demyanov},
+         familyi={D\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=WSN}{%
+         family={Wood},
+         familyi={W\bibinitperiod},
+         given={S.\bibnamedelima N.},
+         giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=KTJ}{%
+         family={Kedwards},
+         familyi={K\bibinitperiod},
+         given={T.\bibnamedelima J.},
+         giveni={T\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \keyw{Differential equation model,Ecological prediction,Ecological risk
+  assessment,Population dynamic model}
+    \strng{namehash}{DVWSNKTJ1}
+    \strng{fullhash}{DVWSNKTJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2006}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{abstract}{%
+    Population dynamic modelling often entails parameterizing quite
+  sophisticated biological and ecological mechanisms. For models of moderate
+  mechanistic complexity, this has traditionally been done in an ad hoc manner,
+  with different parameters being estimated independently. The point estimates
+  so obtained are then used for model simulation, perhaps with some further ad
+  hoc adjustment based on comparison with any available data on population
+  dynamics. Quantitative assessments of model adequacy and prediction
+  uncertainty are not easily made using this approach. As an alternative, the
+  paper investigates the practical feasibility of fitting a moderately complex
+  population dynamic model directly and simultaneously to all the data
+  available for parameterization of the model, and to all available data on the
+  population dynamics of the target animal. This alternative approach allows us
+  to combine all available quantitative information on the target species, to
+  assess the viability of the model, the mutual consistency of model and
+  different sources of data and to estimate the uncertainties that are
+  associated with model-based predictions. The target organism in this study is
+  the freshwater amphipod Gammarus pulex (L.), which we model using a
+  stage-structured population dynamic model, implemented via a set of delay
+  differential equations describing the basic demography of the population.
+  Target data include population dynamic data from two sites, information on
+  basic physiological relationships and environmental temperature data. Fitting
+  is performed by using a non-linear least squares approach supplemented with a
+  bootstrapping method for avoiding small scale local minima in the least
+  squares objective function. Variance estimation is performed by further
+  bootstrapping. Interest in Gammarus pulex population dynamics in this case is
+  primarily related to likely population level responses to chemical stressors,
+  and for this we examine predicted 'recovery times' following exposure to a
+  known toxicant. {\textcopyright} 2006 Royal Statistical Society.%
+    }
+    \verb{doi}
+    \verb 10.1111/j.1467-9876.2005.00527.x
+    \endverb
+    \field{issn}{00359254}
+    \field{number}{1}
+    \field{pages}{41\bibrangedash 62}
+    \field{title}{{Improving ecological impact assessment by statistical data
+  synthesis using process-based models}}
+    \field{volume}{55}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Demyanov, Wood, Kedwards - 2006 - Improving ecological impact asses
+    \verb sment by statistical data synthesis using process-based models.pdf:pd
+    \verb f
+    \endverb
+    \field{journaltitle}{Journal of the Royal Statistical Society. Series C:
+  Applied Statistics}
+    \field{annotation}{%
+    * Perliminary read - This looks interesting as they seem to be fitting a
+  model to all available data for two sites, as a way to identify a suitable
+  generalisation. - Does not look super solid overall... no conclusion in the
+  abstract, ad hoc manuscript structure, figures are not clear. - They state
+  that fitting to the complete dataset makes parameters more identifiable, and
+  that the traditional approach increases the range of possibilities by
+  ignoring inter-dependences between parameters. - They still highlight
+  problems with underfitting and overfitting some time series which is due to
+  making a compromise between the two locations. I see that as a problem
+  because you do not accurately describe the dynamics of each system well
+  then... One possible reason is precisely because generalisation is not
+  possible. - In the end the paper might be useful to show that fitting
+  globally across replicates may not lead to optimal results because
+  generalisation is tricky in natural populations. You can hence use it as an
+  example of non-generalisation.%
+    }
+    \field{year}{2006}
+  \endentry
+
+  \entry{Ellner2002}{article}{}
+    \name{author}{3}{}{%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=SY}{%
+         family={Seifu},
+         familyi={S\bibinitperiod},
+         given={Yodit},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=SRH}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={Robert\bibnamedelima H.},
+         giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \keyw{blowflies,gradient matching,lucilia cuprina,lucilia sericata,model
+  fitting,partially,population dynamics,semimechanistic models,semiparametric
+  models,specified models,stage struc-}
+    \strng{namehash}{ESPSYSRH1}
+    \strng{fullhash}{ESPSYSRH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \verb{doi}
+    \verb 10.2307/3072057
+    \endverb
+    \field{issn}{00129658}
+    \field{number}{8}
+    \field{pages}{2256}
+    \field{title}{{Fitting Population Dynamic Models to Time-Series Data by
+  Gradient Matching}}
+    \field{volume}{83}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Ellner, Seifu, Smith - 2002 - Fitting Population Dynamic Models to
+    \verb Time-Series Data by Gradient Matching.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology}
+    \field{annotation}{%
+    * Preliminary read - the authors seem to infer dynamical gradients with
+  nonparametric functions in dynamical models - They also infer nonparametric
+  functions for population density in growth and death rates - I see this as
+  the best possible application of the methodology to single time series of
+  population densities. - this study rejoins other studies Moe et al. 2002 -
+  They discarded the chunk of the time series were replicates differed. They
+  hence did not address generalisation across replicates.%
+    }
+    \field{year}{2002}
+  \endentry
+
+  \entry{Ezard2009}{article}{}
+    \name{author}{3}{}{%
+      {{hash=ETHG}{%
+         family={Ezard},
+         familyi={E\bibinitperiod},
+         given={Thomas H.\bibnamedelima G.},
+         giveni={T\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim
+  G\bibinitperiod},
+      }}%
+      {{hash=CSD}{%
+         family={C{\^{o}}t{\'{e}}},
+         familyi={C\bibinitperiod},
+         given={Steeve\bibnamedelima D.},
+         giveni={S\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=PF}{%
+         family={Pelletier},
+         familyi={P\bibinitperiod},
+         given={Fanie},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \keyw{Eco-evolutionary
+  dynamics,Ecology,Evolution,Geber,Phenotype,Population,eco-evolutionary
+  dynamics,eco-evolutionary feedbacks,soay sheep}
+    \strng{namehash}{ETHGCSDPF1}
+    \strng{fullhash}{ETHGCSDPF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2009}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{abstract}{%
+    Decomposing variation in population growth into contributions from both
+  ecological and evolutionary processes is of fundamental concern, particularly
+  in a world characterized by rapid responses to anthropogenic threats.
+  Although the impact of ecological change on evolutionary response has long
+  been acknowledged, the converse has predominantly been neglected, especially
+  empirically. By applying a recently published conceptual framework, we assess
+  and contrast the relative importance of phenotypic and environmental
+  variability on annual population growth in five ungulate populations. In four
+  of the five populations, the contribution of phenotypic variability was
+  greater than the contribution of environmental variability, although not
+  significantly so. The similarity in the contributions of environment and
+  phenotype suggests that neither is worthy of neglect. Population growth is a
+  consequence of multiple processes, which strengthens arguments advocating
+  integrated approaches to assess how populations respond to their
+  environments. {\textcopyright} 2009 The Royal Society.%
+    }
+    \verb{doi}
+    \verb 10.1098/rstb.2009.0006
+    \endverb
+    \field{issn}{14712970}
+    \field{number}{1523}
+    \field{pages}{1491\bibrangedash 1498}
+    \field{title}{{Eco-evolutionary dynamics: Disentangling phenotypic,
+  environmental and population fluctuations}}
+    \field{volume}{364}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Ezard, C{\^{o}}t{\'{e}}, Pelletier - 2009 - Eco-evolutionary dynami
+    \verb cs Disentangling phenotypic, environmental and population fluctuation
+    \verb s.pdf:pdf
+    \endverb
+    \field{journaltitle}{Philosophical Transactions of the Royal Society B:
+  Biological Sciences}
+    \field{annotation}{%
+    * takeaways: - understand how much changes in heritable phenotypic traits
+  influence population demography - Use the discrete geber method and soay
+  sheep - found that environment and phenotype both contributed equally much,
+  and interacted * critique: - like gamelon et al. 2019, it's a two step
+  approach which does not allow to account for feedbacks, namely indirect
+  effects. * Notes - They state that generalisation of feedbacks across
+  populations may not be possible due to variation in phenotypic traits and
+  environment.%
+    }
+    \field{year}{2009}
+  \endentry
+
+  \entry{Fox2002}{article}{}
+    \name{author}{2}{}{%
+      {{hash=FGA}{%
+         family={Fox},
+         familyi={F\bibinitperiod},
+         given={Gordon\bibnamedelima A.},
+         giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=KBE}{%
+         family={Kendall},
+         familyi={K\bibinitperiod},
+         given={Bruce\bibnamedelima E.},
+         giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \keyw{Conservation biology,Demography,Extinction risk,Homogeneous
+  populations,Population viability analysis,Stochastic demography,Variance
+  reduction effect}
+    \strng{namehash}{FGAKBE1}
+    \strng{fullhash}{FGAKBE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{abstract}{%
+    Demographic stochasticity is almost universally modeled as sampling
+  variance in a homogeneous population, although it is defined as arising from
+  random variation among individuals. This can lead to serious misestimation of
+  the extinction risk in small populations. Here, we derive analytical
+  expressions showing that the misestimation for each demographic parameter is
+  exactly (in the case of survival) or approximately (in the case of fecundity)
+  proportional to the among-individual variance in that parameter. We also show
+  why this misestimation depends on systematic variation among individuals,
+  rather than random variation. These results indicate that correctly assessing
+  the importance of demographic stochasticity requires (1) an estimate of the
+  variance in each demographic parameter; (2) information on the qualitative
+  shape (convex or concave) of the mean-variance relationship; and (3)
+  information on the mechanisms generating among-individual variation. An
+  important consequence is that almost all population viability analyses (PVAs)
+  overestimate the importance of demographic stochasticity and, therefore, the
+  risk of extinction.%
+    }
+    \verb{doi}
+    \verb 10.1890/0012-9658(2002)083[1928:DSATVR]2.0.CO;2
+    \endverb
+    \field{issn}{00129658}
+    \field{number}{7}
+    \field{pages}{1928\bibrangedash 1934}
+    \field{title}{{Demographic stochasticity and the variance reduction
+  effect}}
+    \field{volume}{83}
+    \verb{file}
+    \verb :Users/willhem/Desktop/qt06h8891s.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology}
+    \field{year}{2002}
+  \endentry
+
+  \entry{Funahashi1993}{article}{}
+    \name{author}{2}{}{%
+      {{hash=FKi}{%
+         family={Funahashi},
+         familyi={F\bibinitperiod},
+         given={Ken-ichi},
+         giveni={K\bibinithyphendelim i\bibinitperiod},
+      }}%
+      {{hash=NY}{%
+         family={Nakamura},
+         familyi={N\bibinitperiod},
+         given={Yuichi},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \keyw{Approximation,Autonomous system,Continuous curve,Continuous time
+  recurrent neural network,Dynamical system,Hidden unit,Internal
+  state,NODE,Trajectory}
+    \strng{namehash}{FKiNY1}
+    \strng{fullhash}{FKiNY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1993}
+    \field{labeldatesource}{}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{abstract}{%
+    In this paper, we prove that any finite time trajectory of a given
+  n-dimensional dynamical system can be approximately realized by the internal
+  state of the output units of a continuous time recurrent neural network with
+  n output units, some hidden units, and an appropriate initial condition. The
+  essential idea of the proof is to embed the n-dimensional dynamical system
+  into a higher dimensional one which defines a recurrent neural network. As a
+  corollary, we also show that any continuous curve can be approximated by the
+  output of a recurrent neural network. {\textcopyright} 1993 Pergamon Press
+  Ltd.%
+    }
+    \verb{doi}
+    \verb 10.1016/S0893-6080(05)80125-X
+    \endverb
+    \field{issn}{08936080}
+    \field{number}{6}
+    \field{pages}{801\bibrangedash 806}
+    \field{title}{{Approximation of dynamical systems by continuous time
+  recurrent neural networks}}
+    \field{volume}{6}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Funahashi, Nakamura - 1993 - Approximation of dynamical systems by
+    \verb continuous time recurrent neural networks.pdf:pdf
+    \endverb
+    \field{journaltitle}{Neural Networks}
+    \field{annotation}{%
+    - Proves that continuous time recurrent ANN can be used to model dynamical
+  systems.%
+    }
+    \field{year}{1993}
+  \endentry
+
+  \entry{Fussmann2005}{article}{}
+    \name{author}{2}{}{%
+      {{hash=FGF}{%
+         family={Fussmann},
+         familyi={F\bibinitperiod},
+         given={Gregor\bibnamedelima F.},
+         giveni={G\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=BB}{%
+         family={Blasius},
+         familyi={B\bibinitperiod},
+         given={Bernd},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \keyw{Community dynamics,Model structure,Paradox of
+  enrichment,Super-sensitivity}
+    \strng{namehash}{FGFBB1}
+    \strng{fullhash}{FGFBB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{abstract}{%
+    Biologists use mathematical functions to model, understand and predict
+  nature. For most biological processes, however, the exact analytical form is
+  not known. This is also true for one of the most basic life processes: the
+  uptake of food or resources. We show that the use of several nearly
+  indistinguishable functions, which can serve as phenomenological descriptors
+  of resource uptake, may lead to alarmingly different dynamical behaviour in a
+  simple community model. More specifically, we demonstrate that the degree of
+  resource enrichment needed to destabilize the community dynamics depends
+  critically on the mathematical nature of the uptake function.
+  {\textcopyright} 2004 The Royal Society.%
+    }
+    \verb{doi}
+    \verb 10.1098/rsbl.2004.0246
+    \endverb
+    \field{issn}{1744957X}
+    \field{number}{1}
+    \field{pages}{9\bibrangedash 12}
+    \field{title}{{Community response to enrichment is highly sensitive to
+  model structure}}
+    \field{volume}{1}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Fussmann, Blasius - 2005 - Community response to enrichment is high
+    \verb ly sensitive to model structure.pdf:pdf
+    \endverb
+    \field{journaltitle}{Biology Letters}
+    \field{year}{2005}
+  \endentry
+
+  \entry{Gamelon2019}{article}{}
+    \name{author}{9}{}{%
+      {{hash=GM}{%
+         family={Gamelon},
+         familyi={G\bibinitperiod},
+         given={Marl{\`{e}}ne},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=VSJG}{%
+         family={Vriend},
+         familyi={V\bibinitperiod},
+         given={Stefan J.\bibnamedelima G.},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim
+  G\bibinitperiod},
+      }}%
+      {{hash=ES}{%
+         family={Engen},
+         familyi={E\bibinitperiod},
+         given={Steinar},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=AF}{%
+         family={Adriaensen},
+         familyi={A\bibinitperiod},
+         given={Frank},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=DAA}{%
+         family={Dhondt},
+         familyi={D\bibinitperiod},
+         given={Andr{\'{e}}\bibnamedelima A.},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=ESR}{%
+         family={Evans},
+         familyi={E\bibinitperiod},
+         given={Simon\bibnamedelima R.},
+         giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=ME}{%
+         family={Matthysen},
+         familyi={M\bibinitperiod},
+         given={Erik},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=SBC}{%
+         family={Sheldon},
+         familyi={S\bibinitperiod},
+         given={Ben\bibnamedelima C.},
+         giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=SBE}{%
+         family={S{\ae}ther},
+         familyi={S\bibinitperiod},
+         given={Bernt\bibnamedelima Erik},
+         giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \keyw{Competitive interactions,Cyanistes caeruleus,IPM,Parus major,blue
+  tit,competition,density dependence,density
+  regulation,density-dependence,great tit,inter-specific
+  density-dependence,intra-specific density-dependence,population growth rate}
+    \strng{namehash}{GM+1}
+    \strng{fullhash}{GMVSJGESAFDAAESRMESBCSBE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{abstract}{%
+    Understanding species coexistence has long been a major goal of ecology.
+  Coexistence theory for two competing species posits that intraspecific
+  density dependence should be stronger than interspecific density dependence.
+  Great tits and blue tits are two bird species that compete for food resources
+  and nesting cavities. On the basis of long-term monitoring of these two
+  competing species at sites across Europe, combining observational and
+  manipulative approaches, we show that the strength of density regulation is
+  similar for both species, and that individuals have contrasting abilities to
+  compete depending on their age. For great tits, density regulation is driven
+  mainly by intraspecific competition. In contrast, for blue tits,
+  interspecific competition contributes as much as intraspecific competition,
+  consistent with asymmetric competition between the two species. In addition,
+  including age-specific effects of intra- and interspecific competition in
+  density-dependence models improves predictions of fluctuations in population
+  size by up to three times.%
+    }
+    \verb{doi}
+    \verb 10.1111/ele.13237
+    \endverb
+    \field{issn}{14610248}
+    \field{number}{5}
+    \field{pages}{797\bibrangedash 806}
+    \field{title}{{Accounting for interspecific competition and age structure
+  in demographic analyses of density dependence improves predictions of
+  fluctuations in population size}}
+    \field{volume}{22}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Gamelon et al. - 2019 - Accounting for interspecific competition an
+    \verb d age structure in demographic analyses of density dependence improve
+    \verb .pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology Letters}
+    \field{annotation}{%
+    - very similar approach to Stenseth et al. 2015, namely a gompertz model -
+  the difference is that they quantify intra-specific density-dependence
+  ({\ss}, and omega accounts for inter-specific competition) - they found
+  density regulation in gt due to intra-specific effects, both intra and inter
+  effects operate in bt - confirms the idea that competition between bt and gt
+  is asymetric in favour of GT%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{Gilbert1976}{article}{}
+    \name{author}{1}{}{%
+      {{hash=GJJ}{%
+         family={Gilbert},
+         familyi={G\bibinitperiod},
+         given={John\bibnamedelima J},
+         giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GJJ1}
+    \strng{fullhash}{GJJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1976}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{9}
+    \field{pages}{3233\bibrangedash 3237}
+    \field{title}{{Selective cannibalism in the rotifer Asplanchna sieboldi:
+  Contact recognition of morphotype and clone}}
+    \field{volume}{73}
+    \verb{file}
+    \verb :Users/willhem/Desktop/3233.full.pdf:pdf
+    \endverb
+    \field{journaltitle}{Proceedings of the National Academy of Sciences}
+    \field{year}{1976}
+  \endentry
+
+  \entry{Gross2005}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GK}{%
+         family={Gross},
+         familyi={G\bibinitperiod},
+         given={Kevin},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=IAR}{%
+         family={Ives},
+         familyi={I\bibinitperiod},
+         given={Anthony\bibnamedelima R.},
+         giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=NEV}{%
+         family={Nordheim},
+         familyi={N\bibinitperiod},
+         given={Erik\bibnamedelima V.},
+         giveni={E\bibinitperiod\bibinitdelim V\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian statistics,Biological control,Host-parasitoid
+  dynamics,Markov chain Monte Carlo,Pea aphid,State-space models,Time-series
+  data}
+    \strng{namehash}{GKIARNEV1}
+    \strng{fullhash}{GKIARNEV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{abstract}{%
+    Many ecological time series describe population dynamics. Indirectly, these
+  data also provide information about the vital rates (e.g., birth rates,
+  mortality rates) underlying these dynamics, but extracting this information
+  from the data can be difficult. Here, we present a method for estimating
+  fluctuating vital rates from ecological time series by using a model to
+  re-code information in observed dynamics into information about unobserved
+  vital rates. This model construction differs from most current models by
+  replacing strong assumptions about the functional relationships dictating
+  population dynamics with more conservative assumptions about how vital rates
+  change with time. Thus, this method is a tool for analyzing time-series data
+  that avoids strong assumptions about the mechanisms driving population
+  dynamics. Our work is motivated by studying the biological control of pea
+  aphids in alfalfa in south-central Wisconsin. Pea aphid populations are
+  consistently held below economic threshold, although the source of this
+  regulation is unclear. Here, we analyze monitoring data to understand the
+  role that a specialist parasitoid plays in aphid biocontrol. Our modeling
+  methodology allows us to estimate the vital rates that determine aphid
+  dynamics (in particular, parasitism) without making arbitrary assumptions
+  about the relationship between parasitism and aphid or parasitoid density. We
+  find that, while parasitism depresses aphid population growth rate
+  substantially, declines in aphid population growth rates do not coincide with
+  increases in parasitism. Therefore, parasitism cannot be responsible for the
+  density-dependent regulation of aphid populations observed in the field.
+  {\textcopyright} 2005 by the Ecological Society of America.%
+    }
+    \verb{doi}
+    \verb 10.1890/03-4085
+    \endverb
+    \field{issn}{00129658}
+    \field{number}{3}
+    \field{pages}{740\bibrangedash 752}
+    \field{title}{{Estimating fluctuating vital rates from time-series data: A
+  case study of aphid biocontrol}}
+    \field{volume}{86}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Gross, Ives, Nordheim - 2005 - Estimating fluctuating vital rates f
+    \verb rom time-series data A case study of aphid biocontrol.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology}
+    \field{annotation}{%
+    * Preliminary read - The authors seem to estimate time varying vital rates
+  in a structured population dynamics model for aphid. - I see that the
+  construction used by the authors differs radically from that originally
+  proposed by Wood in 2001. The model seems to be more hierarchical bayesian in
+  nature than nonparametric. - The paper shows that vital rates and parasitism
+  are sensitive to density, and therefore not consistent in time. This can be a
+  source of context-dependence. - The conclusion of the paper is still unclear
+  to me and confusing. - May still be useful to support the idea that vital
+  rates are not constant in time (which rejoins Adamson et al. 2013).%
+    }
+    \field{year}{2005}
+  \endentry
+
+  \entry{Hairston2005}{article}{}
+    \name{author}{5}{}{%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=GMA}{%
+         family={Geber},
+         familyi={G\bibinitperiod},
+         given={Monica\bibnamedelima A.},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=YT}{%
+         family={Yoshida},
+         familyi={Y\bibinitperiod},
+         given={Takehito},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=FJA}{%
+         family={Fox},
+         familyi={F\bibinitperiod},
+         given={Jennifer\bibnamedelima A.},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \keyw{Adaptation,Bill size,Darwin's finches,Diapause timing,Ecological
+  rate,Evolutionary rate,Geber,Geospiza fortis,Haldane,Onychodiaptomus
+  sanguineus}
+    \strng{namehash}{HNGJ+1}
+    \strng{fullhash}{HNGJESPGMAYTFJA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{abstract}{%
+    Recent studies have documented rates of evolution of ecologically important
+  phenotypes sufficiently fast that they have the potential to impact the
+  outcome of ecological interactions while they are underway. Observations of
+  this type go against accepted wisdom that ecological and evolutionary
+  dynamics occur at very different time scales. While some authors have
+  evaluated the rapidity of a measured evolutionary rate by comparing it to the
+  overall distribution of measured evolutionary rates, we believe that
+  ecologists are mainly interested in rapid evolution because of its potential
+  to impinge on ecological processes. We therefore propose that rapid evolution
+  be defined as a genetic change occurring rapidly enough to have a measurable
+  impact on simultaneous ecological change. Using this definition we propose a
+  framework for decomposing rates of ecological change into components driven
+  by simultaneous evolutionary change and by change in a non-evolutionary
+  factor (e.g. density dependent population dynamics, abiotic environmental
+  change). Evolution is judged to be rapid in this ecological context if its
+  contribution to ecological change is large relative to the contribution of
+  other factors. We provide a worked example of this approach based on a
+  theoretical predator– prey interaction [Abrams, P. & Matsuda, H. (1997).
+  Evolution, 51, 1740], and find that in this system the impact of prey
+  evolution on predator per capita growth rate is 63% that of internal
+  ecological dynamics. We then propose analytical methods for measuring these
+  contributions in field situations, and apply them to two long-term data sets
+  for which suitable ecological and evolutionary data exist. For both data sets
+  relatively high rates of evolutionary change have been found when measured as
+  character change in standard deviations per generation (haldanes). For
+  Darwin's finches evolving in response to fluctuating rainfall [Grant, P.R. &
+  Grant, B.R. (2002). Science, 296, 707], we estimate that evolutionary change
+  has been more rapid than ecological change by a factor of 2.2. For a
+  population of freshwater copepods whose life history evolves in response to
+  fluctuating fish predation [Hairston, N.G. Jr & Dillon, T.A. (1990).
+  Evolution, 44, 1796], we find that evolutionary change has been about one
+  quarter the rate of ecological change – less than in the finch example, but
+  nevertheless substantial. These analyses support the view that in order to
+  understand temporal dynamics in ecological processes it is critical to
+  consider the extent to which the attributes of the system under investigation
+  are simultaneously changing as a result of rapid evolution.%
+    }
+    \verb{doi}
+    \verb 10.1111/j.1461-0248.2005.00812.x
+    \endverb
+    \field{isbn}{1461-023X}
+    \field{issn}{1461023X}
+    \field{number}{10}
+    \field{pages}{1114\bibrangedash 1127}
+    \field{title}{{Rapid evolution and the convergence of ecological and
+  evolutionary time}}
+    \field{volume}{8}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Hairston et al. - 2005 - Rapid evolution and the convergence of eco
+    \verb logical and evolutionary time.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology Letters}
+    \field{annotation}{%
+    - Elegant framework - quite simple - they use the chain rule to compute
+  contirbutions of times series on each other. They apply it to concrete
+  empirical evidence of feedbacks by discretizing the framework. The interest
+  of discretizing the method, is that it frees them from the need to identify
+  equations, and thus a mechanisms. They can test directly the interdependences
+  between the time series. - They apply it to real system in a discrete
+  fashion, which complicates the maths and thus the applicability of the
+  framwork to real time series. - It provides ways to quantify contributions of
+  direct effects. But not indirect effects. - This is an excellent paper from
+  which to extract data.%
+    }
+    \field{year}{2005}
+  \endentry
+
+  \entry{Hiltunen2013}{article}{}
+    \name{author}{4}{}{%
+      {{hash=HT}{%
+         family={Hiltunen},
+         familyi={H\bibinitperiod},
+         given={Teppo},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=JLE}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Laura\bibnamedelima E.},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \keyw{algae,brachionus plicatilis,chemostat,chlorella
+  autrophica,eco-evolutionary dynamics,ecological
+  dynamics,flagellates,intermediate,intraguild predation,laboratory
+  microcosm,mathematical models,microcosm,oxyrrhis marina,predator,prey
+  dynamics,prey predator dynamics,prey-predator
+  oscillations,rotifer,rotifers,time series,tri-trophic food web,tri-trophic
+  networks}
+    \strng{namehash}{HT+1}
+    \strng{fullhash}{HTJLEESPHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2013}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{number}{4}
+    \field{pages}{773\bibrangedash 779}
+    \field{title}{{Temporal dynamics of a simple community with intraguild
+  predation: an experimental test}}
+    \field{volume}{94}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Hiltunen et al. - 2013 - Temporal dynamics of a simple community wi
+    \verb th intraguild predation an experimental test.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecology}
+    \field{annotation}{%
+    - Only if you need an example of dynamics from which to infer trophic
+  interactions. * Notes - The author adress how intraguild predation affects
+  prey-predator cycles. - They claim that they demonstrate dynamics that are in
+  accordance with theory algae -> flagellate -> rotifer. But they state that
+  flagellate growth rate is primarily driven by rotifers, rather than by algae.
+  - I can use this paper to justify using a three-species trophic network,
+  because it is a fundamental component of natural food webs. - The author
+  state that there are few empirical demonstrations of population dynamics for
+  three-species systems. I deduce from it that at that point, it was not even
+  possible to assess generalisation. - Flagellates did tend to go extinct, so
+  they pumped them artificially at around 4 % pday. - The authors state that
+  they reported only runs with no evidence of prey defense evolution, but that
+  evolution was common in their runs. - Looking at their equations I realised I
+  did not consider the possibility for fluctuations in resource availability.
+  This is one of the hidden variables. I will need to think about that. -
+  Overall, they state that results are "exactly" as predicted. I would argue
+  that qualitatively this is seems correct but quantitatively the story may be
+  different. - They state that the peak of flagellate being so close to the
+  algae can be due to a strong dominant drive by the rotifer population, though
+  they only hypothesise that. This seems to be the case in other
+  microzooplankton systems. Your results confirm this and potentially increase
+  the complexity of the interactions. - They still argue that prey evolution
+  played at best a minor role in explaining the dynamics. However, they do
+  admit that they did not have direct evidence for supporting constant
+  interaction strength. I can that being useful in your paper which seems to
+  point in fact at quite important implications for evolution in explaining
+  differences across replicates and preventing generalisation.%
+    }
+    \field{year}{2013}
+  \endentry
+
+  \entry{Jia2019}{article}{}
+    \name{author}{2}{}{%
+      {{hash=JJ}{%
+         family={Jia},
+         familyi={J\bibinitperiod},
+         given={Junteng},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=BAR}{%
+         family={Benson},
+         familyi={B\bibinitperiod},
+         given={Austin\bibnamedelima R.},
+         giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{JJBAR1}
+    \strng{fullhash}{JJBAR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{abstract}{%
+    Many time series are effectively generated by a combination of
+  deterministic continuous flows along with discrete jumps sparked by
+  stochastic events. However, we usually do not have the equation of motion
+  describing the flows, or how they are affected by jumps. To this end, we
+  introduce Neural Jump Stochastic Differential Equations that provide a
+  data-driven approach to learn continuous and discrete dynamic behavior, i.e.,
+  hybrid systems that both flow and jump. Our approach extends the framework of
+  Neural Ordinary Differential Equations with a stochastic process term that
+  models discrete events. We then model temporal point processes with a
+  piecewise-continuous latent trajectory, where the discontinuities are caused
+  by stochastic events whose conditional intensity depends on the latent state.
+  We demonstrate the predictive capabilities of our model on a range of
+  synthetic and real-world marked point process datasets, including classical
+  point processes (such as Hawkes processes), awards on Stack Overflow, medical
+  records, and earthquake monitoring.%
+    }
+    \verb{eprint}
+    \verb 1905.10403
+    \endverb
+    \field{issn}{10495258}
+    \field{number}{NeurIPS}
+    \field{title}{{Neural jump stochastic differential equations}}
+    \field{volume}{32}
+    \verb{file}
+    \verb :Users/willhem/Desktop/NeurIPS-2019-neural-jump-stochastic-differenti
+    \verb al-equations-Paper.pdf:pdf
+    \endverb
+    \field{journaltitle}{Advances in Neural Information Processing Systems}
+    \field{eprinttype}{arXiv}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Jost2000}{article}{}
+    \name{author}{2}{}{%
+      {{hash=JC}{%
+         family={Jost},
+         familyi={J\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \keyw{Functional response,ML applications,Non-parametric
+  reconstruction,Predator dependence,Predator-prey,Prey dependence,Ratio
+  dependence}
+    \strng{namehash}{JCESP1}
+    \strng{fullhash}{JCESP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2000}
+    \field{labeldatesource}{}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{abstract}{%
+    The functional response is a key element in all predator-prey interactions.
+  Although functional responses are traditionally modelled as being a function
+  of prey density only, evidence is accumulating that predator density also has
+  an important effect. However, much of the evidence comes from artificial
+  experimental arenas under conditions not necessarily representative of the
+  natural system, and neglecting the temporal dynamics of the organism (in
+  particular the effects of prey depletion on the estimated functional
+  response). Here we present a method that removes these limitations by
+  reconstructing the functional response non-parametrically from predator-prey
+  time-series data. This method is applied to data on a protozoan predator-prey
+  interaction, and we obtain significant evidence of predator dependence in the
+  functional response. A crucial element in this analysis is to include
+  time-lags in the prey and predator reproduction rates, and we show that these
+  delays improve the fit of the model significantly. Finally, we compare the
+  non-parametrically reconstructed functional response to parametric forms, and
+  suggest that a modified version of the Hassell-Varley predator interference
+  model provides a simple and flexible function for theoretical investigation
+  and applied modelling.%
+    }
+    \verb{doi}
+    \verb 10.1098/rspb.2000.1186
+    \endverb
+    \field{issn}{14712970}
+    \field{number}{1453}
+    \field{pages}{1611\bibrangedash 1620}
+    \field{title}{{Testing for predator dependence in predator-prey dynamics: A
+  non-parametric approach}}
+    \field{volume}{267}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Jost, Ellner - 2000 - Testing for predator dependence in predator-p
+    \verb rey dynamics A non-parametric approach.pdf:pdf
+    \endverb
+    \field{journaltitle}{Proceedings of the Royal Society B: Biological
+  Sciences}
+    \field{annotation}{%
+    * Notes - The authors talk about the risk of misquantifying an interaction
+  because of a wrong choice of parametric function. This justifies using
+  nonparametric functions. - Useful paper to support the efficiency of
+  interpolating the data first, looking at log densities to get per-capita
+  growth rates. - They smooth real data to get gradients, population growth
+  rates, and then fit parametric and non parametric models to infer density
+  dependence in growth rates. - They had technical issues with the non
+  parametric models and had to make them functions of single variables, which
+  is a bummer. Overall the method looks quite complicated due to the use of
+  splines. They also ran into problems comparing non parametric model
+  constructions. - They used cross validation to choose the degree of
+  smoothing, which is good. - They state that spatial dynamics is not really a
+  cause of variation in dynamics, because in lab settings the population is
+  well mixed and movements are random. - Overall, they demonstrate the
+  usefulness of non parametric methods for studying population dynamics as they
+  are able to conclude about their hypothesis without knowing the adequate
+  functional form.%
+    }
+    \field{year}{2000}
+  \endentry
+
+  \entry{Kendall2005}{article}{}
+    \name{author}{7}{}{%
+      {{hash=KBE}{%
+         family={Kendall},
+         familyi={K\bibinitperiod},
+         given={Bruce\bibnamedelima E.},
+         giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=ME}{%
+         family={McCauley},
+         familyi={M\bibinitperiod},
+         given={Edward},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=WSN}{%
+         family={Wood},
+         familyi={W\bibinitperiod},
+         given={Simon\bibnamedelima N.},
+         giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=BCJ}{%
+         family={Briggs},
+         familyi={B\bibinitperiod},
+         given={Cheryl\bibnamedelima J.},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=MWW}{%
+         family={Murdoch},
+         familyi={M\bibinitperiod},
+         given={William\bibnamedelima W.},
+         giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=TP}{%
+         family={Turchin},
+         familyi={T\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \keyw{Food quality,Host-parasitoid dynamics,Maternal effects,Nonlinear
+  dynamics,Population cycles}
+    \strng{namehash}{KBE+1}
+    \strng{fullhash}{KBEESPMEWSNBCJMWWTP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{abstract}{%
+    The forest insect pest Bupalus piniarius (pine looper moth) is a classic
+  example of a natural population cycle. As is typical for populations that
+  exhibit regular oscillations in density, there are several biological
+  mechanisms that are hypothesized to be responsible for the cycles; but
+  despite several decades of detailed study there has been no definite
+  conclusion as to which mechanism is most important. We evaluated three
+  hypotheses for which there was direct experimental evidence: (1) food quality
+  (nutritional value of pine needles affected by defoliation); (2) parasitoids
+  (trophic interactions with specialist parasitoids); and (3) maternal effects
+  (maternal body size affects the performance of offspring). We reviewed the
+  empirical evidence for each of these hypotheses and expressed each hypothesis
+  in the form of a mechanistic dynamic model. We used a nonlinear forecasting
+  approach to fit each model to three long-term population time series in
+  Britain that exhibit some degree of regular cycling, and we used parametric
+  bootstrap to evaluate the significance of differences between models in their
+  goodness of fit to the data. The results differed among the three forests: at
+  Culbin, the parasitoid and maternal effects models fit equally well; at
+  Roseisle, the food quality and maternal effects models fit equally well; and
+  at Tentsmuir, the parasitoid model fit best. However, the best-fit parasitism
+  models required that the parasitism rate vary between nearly 0 and nearly 1
+  during a cycle, greatly exceeding the range of parasitism rates that have
+  been observed in the field. In contrast, the required variation in the
+  observable maternal quality variable (pupal mass) was within the range of
+  empirical observations. Under mild constraints on the parasitism rate (though
+  allowing a much wider range than has been measured in B. piniarius at any
+  location), the fit of the parasitism model fell off dramatically. The
+  maternal effects model then had uniformly strong support, outperforming the
+  constrained parasitism model at all three sites and the food quality model at
+  two; it performed slightly better than the food quality model at the
+  remaining site. This represents the first system in which the maternal
+  effects hypothesis for population cycles has been supported by both strong
+  biological and dynamical evidence. {\textcopyright} 2005 by the Ecological
+  Society of America.%
+    }
+    \verb{doi}
+    \verb 10.1890/03-4056
+    \endverb
+    \field{issn}{00129615}
+    \field{number}{2}
+    \field{pages}{259\bibrangedash 276}
+    \field{title}{{Population cycles in the pine looper moth: Dynamical tests
+  of mechanistic hypotheses}}
+    \field{volume}{75}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Kendall et al. - 2005 - Population cycles in the pine looper moth D
+    \verb ynamical tests of mechanistic hypotheses.pdf:pdf
+    \endverb
+    \field{journaltitle}{Ecological Monographs}
+    \field{annotation}{%
+    * Preliminary read - The authors seem to be using a nonparametric/nonlinear
+  lag model to estimate density dependence, but it is extremely unclear to me
+  how this relates in any way to the work of wood 2001. - I see this as a
+  simple example of mechanistic population dynamical modelling. - This is a
+  good example of variation in dynamical process across natural populations.%
+    }
+    \field{year}{2005}
+  \endentry
+
+  \entry{Lawton1999}{article}{}
+    \name{author}{1}{}{%
+      {{hash=LJH}{%
+         family={Lawton},
+         familyi={L\bibinitperiod},
+         given={John\bibnamedelima H.},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LJH1}
+    \strng{fullhash}{LJH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1999}
+    \field{labeldatesource}{}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{number}{2}
+    \field{pages}{177\bibrangedash 192}
+    \field{title}{{Are There General Laws in Ecology ?}}
+    \field{volume}{84}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Lawton - 1999 - Nordic Society Oikos Are There General Laws in Ecol
+    \verb ogy.pdf:pdf
+    \endverb
+    \field{journaltitle}{Oikos}
+    \field{year}{1999}
+  \endentry
+
+  \entry{Pearce2018}{article}{}
+    \name{author}{5}{}{%
+      {{hash=PT}{%
+         family={Pearce},
+         familyi={P\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=LF}{%
+         family={Leibfried},
+         familyi={L\bibinitperiod},
+         given={Felix},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Brintrup},
+         familyi={B\bibinitperiod},
+         given={Alexandra},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=ZM}{%
+         family={Zaki},
+         familyi={Z\bibinitperiod},
+         given={Mohamed},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NA}{%
+         family={Neely},
+         familyi={N\bibinitperiod},
+         given={Andy},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian ANNs}
+    \strng{namehash}{PT+1}
+    \strng{fullhash}{PTLFBAZMNA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{abstract}{%
+    Understanding the uncertainty of a neural network's (NN) predictions is
+  essential for many purposes. The Bayesian framework provides a principled
+  approach to this, however applying it to NNs is challenging due to large
+  numbers of parameters and data. Ensembling NNs provides an easily
+  implementable, scalable method for uncertainty quantification, however, it
+  has been criticised for not being Bayesian. This work proposes one
+  modification to the usual process that we argue does result in approximate
+  Bayesian inference; regularising parameters about values drawn from a
+  distribution which can be set equal to the prior. A theoretical analysis of
+  the procedure in a simplified setting suggests the recovered posterior is
+  centred correctly but tends to have an underestimated marginal variance, and
+  overestimated correlation. However, two conditions can lead to exact
+  recovery. We argue that these conditions are partially present in NNs.
+  Empirical evaluations demonstrate it has an advantage over standard
+  ensembling, and is competitive with variational methods.%
+    }
+    \verb{eprint}
+    \verb 1810.05546
+    \endverb
+    \field{pages}{1\bibrangedash 10}
+    \field{title}{{Uncertainty in Neural Networks: Approximately Bayesian
+  Ensembling}}
+    \verb{url}
+    \verb http://arxiv.org/abs/1810.05546
+    \endverb
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Pearce et al. - 2018 - Uncertainty in Neural Networks Approximately
+    \verb  Bayesian Ensembling.pdf:pdf
+    \endverb
+    \field{journaltitle}{arXiv}
+    \field{eprinttype}{arXiv}
+    \field{year}{2018}
+  \endentry
+
+  \entry{Pontarp2019}{article}{}
+    \name{author}{3}{}{%
+      {{hash=PM}{%
+         family={Pontarp},
+         familyi={P\bibinitperiod},
+         given={Mikael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Br{\"{a}}nnstr{\"{o}}m},
+         familyi={B\bibinitperiod},
+         given={{\AA}ke},
+         giveni={{\AA}\bibinitperiod},
+      }}%
+      {{hash=POL}{%
+         family={Petchey},
+         familyi={P\bibinitperiod},
+         given={Owen\bibnamedelima L.},
+         giveni={O\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \keyw{ABC,biogeography,community assembly,community
+  structure,eco-evolutionary dynamics,ecology,evolution,process inference}
+    \strng{namehash}{PMBAPOL1}
+    \strng{fullhash}{PMBAPOL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{abstract}{%
+    Abstract Statistical techniques exist for inferring community assembly
+  processes from community patterns. Habitat filtering, competition, and
+  biogeographical effects have, for example, been inferred from signals in
+  phenotypic and phylogenetic data. The usefulness of current inference
+  techniques is, however, debated as a mechanistic and causal link between
+  process and pattern is often lacking, and evolutionary processes and trophic
+  interactions are ignored. Here, we revisit the current knowledge on community
+  assembly across scales and, in line with several reviews that have outlined
+  challenges associated with current inference techniques, we identify a
+  discrepancy between the current paradigm of eco-evolutionary community
+  assembly and current inference techniques that focus mainly on competition
+  and habitat filtering. We argue that trait-based dynamic eco-evolutionary
+  models in combination with recently developed model fitting and model
+  evaluation techniques can provide avenues for more accurate, reliable, and
+  inclusive inference. To exemplify, we implement a trait-based, spatially
+  explicit eco-evolutionary model and discuss steps of model modification,
+  fitting, and evaluation as an iterative approach enabling inference from
+  diverse data sources. Through a case study on inference of prey and predator
+  niche width in an eco-evolutionary context, we demonstrate how inclusive and
+  mechanistic approaches?eco-evolutionary modelling and Approximate Bayesian
+  Computation (ABC)?can enable inference of assembly processes that have been
+  largely neglected by traditional techniques despite the ubiquity of such
+  processes. Much literature points to the limitations of current inference
+  techniques, but concrete solutions to such limitations are few. Many of the
+  challenges associated with novel inference techniques are, however, already
+  to some extent resolved in other fields and thus ready to be put into action
+  in a more formal way for inferring processes of community assembly from
+  signals in various data sources.%
+    }
+    \verb{doi}
+    \verb 10.1111/2041-210X.13129
+    \endverb
+    \field{issn}{2041210X}
+    \field{number}{4}
+    \field{pages}{450\bibrangedash 460}
+    \field{title}{{Inferring community assembly processes from macroscopic
+  patterns using dynamic eco-evolutionary models and Approximate Bayesian
+  Computation (ABC)}}
+    \field{volume}{10}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Pontarp, Br{\"{a}}nnstr{\"{o}}m, Petchey - 2019 - Inferring communi
+    \verb ty assembly processes from macroscopic patterns using dynamic eco-evo
+    \verb lutionary.pdf:pdf
+    \endverb
+    \field{journaltitle}{Methods in Ecology and Evolution}
+    \field{annotation}{%
+    Summary - they build an eco-evo patch-based and trait-based ODE model were
+  dispersion on the phenotypic space is modelled by a mutation kernel. - They
+  simulate the model from priors over a given time period and compare model
+  outcome to observations. Through an rejection scheme they retain only the
+  best solutions, which gives parameter estimations. Notes - the authors state
+  that there is a need for inferring processes from observations, given that
+  not every processes can be accounted for in experiments due to the complexity
+  of natural systems. - I see that this paper calls for inference technique
+  that rely on a more mechanistic modelling of the dynamics of ecosystem
+  comunities. - The author states that identifying processes in communities is
+  complicated because there are multiple processes that can produce the same
+  patterns, and often these processes do interplay. - Authors state that
+  community dynmaics rarely consider both spatial and temporal dynamics,
+  trophic interactions, and evolution. - they state the approach should be
+  accompanied by model selection => I see that as a potential limit to the
+  framework given the complexity of the processes considered. - Though their
+  data was simulated on 5000 evolutionary steps, they do not mention how long
+  was the predictive model simulated for. It is hence unclear how that would be
+  overcome in practice. - I think the statistical scheme is interesting in the
+  context of your NODE paper. You could invoke the ABC rejection principle to
+  justify the recovery of approximate posterior distribution of the parameters.
+  However, you would still need the optimisation step otherwise the fit would
+  be crap. - On this last note, I think this approach is only suitable for very
+  well specified models in well known systems. Indeed they only simulate from
+  priors, if they infer only two parameters there is a good chance they would
+  sample accidentally a good scenario, this become virtually impossible for
+  higher dimensional models. Hence, you would need at least an optimisation
+  step. But I guess this would work for "simple" model, or for really not
+  greedy "inferences" (i.e. getting at only a few parameters). - There is alot
+  of shadows surrounding the choice of initial conditions, time period on which
+  to run the model, as this is likely to affect the model output as much if not
+  more than parameter specifications. For instance for the same parameters, if
+  you simulate the model for a short amount of time you would obtain an output
+  close to initial conditions, if you simulate the model for a really long time
+  you will get something different. - What about model stochasticity? I guess
+  this is accounted for in the ABC rejection scheme.%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{Posey2006}{article}{}
+    \name{author}{3}{}{%
+      {{hash=PMH}{%
+         family={Posey},
+         familyi={P\bibinitperiod},
+         given={Martin\bibnamedelima H.},
+         giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=ATD}{%
+         family={Alphin},
+         familyi={A\bibinitperiod},
+         given={Troy\bibnamedelima D.},
+         giveni={T\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=CL}{%
+         family={Cahoon},
+         familyi={C\bibinitperiod},
+         given={Lawrence},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \keyw{Benthos,Eutrophication,North Carolina,Nutrient enhancement,Trophic
+  controls}
+    \strng{namehash}{PMHATDCL1}
+    \strng{fullhash}{PMHATDCL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2006}
+    \field{labeldatesource}{}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{abstract}{%
+    Potential community effects of nutrient enhancement are a topic of
+  theoretical interest and increasing management concern in coastal marine
+  systems. While increased nutrient levels may lead to increased microalgal
+  production and biomass, studies have provided variable evidence regarding the
+  existence of upward cascade effects on macrofauna. In benthic marine
+  communities, limitation by predation or factors preventing recruitment
+  response may contribute to weak coupling between resource availability and
+  macrobenthos abundances. We conducted blocked nutrient addition and predator
+  exclusion experiments in the intertidal of two estuaries that varied in
+  background nutrient concentrations (Cape Fear and White Oak, southeastern
+  North Carolina). Benthic community comparisons were also made among these and
+  two other North Carolina estuaries to examine correlations in distribution
+  patterns. Cape Fear, which had the highest background nitrogen and phosphorus
+  concentrations, also had highest ambient benthic microalgal biomass. There
+  was no significant response of microalgal biomass to local nutrient additions
+  in Cape Fear and only one macrofaunal taxon during one season exhibited
+  abundance responses to nutrient additions. White Oak, with lower background
+  nutrient levels, was characterized by significant microalgal responses to
+  nutrient additions and significant macrofauna abundance responses for 50% of
+  the species examined during summer experiments. However, all of these
+  macrofauna declined in abundance with nutrient enhancement while biomass
+  remained constant or significantly increased with nutrient additions. This
+  suggests a complex response of macrofauna to nutrient additions in this
+  estuary with greater biomass per individual but a corresponding decline in
+  abundances. Top-down/bottom-up interactive effects were observed for
+  haustoriid amphipods, which were uncommon or absent when predators had
+  access, but exhibited strong biomass responses to nutrient enhancement when
+  predators were excluded. These results support a growing body of literature
+  that indicates the importance of background conditions in regulating benthic
+  community responses to nutrient enhancement. However, responses may be
+  complex with biomass per individual rather than densities being the primary
+  response variable for some taxa and predator moderation of responses
+  occurring for some taxa but not others. {\textcopyright} 2005 Elsevier B.V.
+  All rights reserved.%
+    }
+    \verb{doi}
+    \verb 10.1016/j.jembe.2005.12.020
+    \endverb
+    \field{issn}{00220981}
+    \field{number}{1}
+    \field{pages}{105\bibrangedash 118}
+    \field{title}{{Benthic community responses to nutrient enrichment and
+  predator exclusion: Influence of background nutrient concentrations and
+  interactive effects}}
+    \field{volume}{330}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Posey, Alphin, Cahoon - 2006 - Benthic community responses to nutri
+    \verb ent enrichment and predator exclusion Influence of background nutrien
+    \verb .pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Experimental Marine Biology and Ecology}
+    \field{year}{2006}
+  \endentry
+
+  \entry{Raeymaekers2017}{article}{}
+    \name{author}{8}{}{%
+      {{hash=RJAM}{%
+         family={Raeymaekers},
+         familyi={R\bibinitperiod},
+         given={Joost A.\bibnamedelima M.},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim
+  M\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Chaturvedi},
+         familyi={C\bibinitperiod},
+         given={Anurag},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=HPI}{%
+         family={Habl{\"{u}}tzel},
+         familyi={H\bibinitperiod},
+         given={Pascal\bibnamedelima I.},
+         giveni={P\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+      {{hash=VI}{%
+         family={Verdonck},
+         familyi={V\bibinitperiod},
+         given={Io},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=HB}{%
+         family={Hellemans},
+         familyi={H\bibinitperiod},
+         given={Bart},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=MGE}{%
+         family={Maes},
+         familyi={M\bibinitperiod},
+         given={Gregory\bibnamedelima E.},
+         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=DL}{%
+         family={{De Meester}},
+         familyi={D\bibinitperiod},
+         given={Luc},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=VFAM}{%
+         family={Volckaert},
+         familyi={V\bibinitperiod},
+         given={Filip A.\bibnamedelima M.},
+         giveni={F\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim
+  M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer US}%
+    }
+    \keyw{empirical,evolution,genetic architecture,genomics,repeatable
+  evolution}
+    \strng{namehash}{RJAM+1}
+    \strng{fullhash}{RJAMCAHPIVIHBMGEDLVFAM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{abstract}{%
+    Species in a common landscape often face similar selective environments.
+  The capacity of organisms to adapt to these environments may be largely
+  species specific. Quantifying shared and unique adaptive responses across
+  species within landscapes may thus improve our understanding of
+  landscape-moderated biodiversity patterns. Here we test to what extent
+  populations of two coexisting and phylogenetically related
+  fishes—three-spined and nine-spined stickleback—differ in the strength
+  and nature of neutral and adaptive divergence along a salinity gradient.
+  Phenotypic differentiation, neutral genetic differentiation and genomic
+  signatures of adaptation are stronger in the three-spined stickleback. Yet,
+  both species show substantial phenotypic parallelism. In contrast, genomic
+  signatures of adaptation involve different genomic regions, and are thus
+  non-parallel. The relative contribution of spatial and environmental drivers
+  of population divergence in each species reflects different strategies for
+  persistence in the same landscape. These results provide insight in the
+  mechanisms underlying variation in evolutionary versatility and ecological
+  success among species within landscapes.%
+    }
+    \verb{doi}
+    \verb 10.1038/s41467-017-00256-6
+    \endverb
+    \field{issn}{20411723}
+    \field{number}{1}
+    \field{pages}{1\bibrangedash 8}
+    \field{title}{{Adaptive and non-adaptive divergence in a common landscape}}
+    \verb{url}
+    \verb http://dx.doi.org/10.1038/s41467-017-00256-6
+    \endverb
+    \field{volume}{8}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Raeymaekers et al. - 2017 - Adaptive and non-adaptive divergence in
+    \verb  a common landscape.pdf:pdf
+    \endverb
+    \field{journaltitle}{Nature Communications}
+    \field{annotation}{%
+    Takeaway - Main takeaway is that they find strong phenotypic parallelism
+  between sticklebacks that have evolved in different locations. But they find
+  non-parallel differences in the genomics. Note - This is a bit contradictory
+  to the genomics study on sticklebacks by Nicol et al. - It is in line with
+  the paper by Becks (?) on virus evolution that showed that different genetic
+  architecture could be involved in the evolution of the virus. - You can use
+  that to say that it may be impossible to identif a single genetic
+  architecture driving the evolutionary response of different populations.%
+    }
+    \field{year}{2017}
+  \endentry
+
+  \entry{Reznick1990a}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RDN}{%
+         family={Reznick},
+         familyi={R\bibinitperiod},
+         given={David\bibnamedelima N.},
+         giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=BH}{%
+         family={Bryga},
+         familyi={B\bibinitperiod},
+         given={Heather},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=EJA}{%
+         family={Endler},
+         familyi={E\bibinitperiod},
+         given={John\bibnamedelima A.},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \keyw{Experimental,evolution,guppy,invasion,life history
+  traits,mesocosm,phenotype,predation,rapid evolution,traits,trophic
+  interactions}
+    \strng{namehash}{RDNBHEJA1}
+    \strng{fullhash}{RDNBHEJA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1990}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{abstract}{%
+    na%
+    }
+    \verb{doi}
+    \verb 10.1038/346357a0
+    \endverb
+    \verb{eprint}
+    \verb 0801.3609
+    \endverb
+    \field{isbn}{0028-0836 (Print)\r0028-0836 (Linking)}
+    \field{issn}{0028-0836}
+    \field{number}{6282}
+    \field{pages}{357\bibrangedash 359}
+    \field{title}{{Experimentally induced life-history evolution in a natural
+  population}}
+    \verb{url}
+    \verb papers2://publication/doi/10.1038/346183a0 http://www.nature.com/doif
+    \verb inder/10.1038/346357a0
+    \endverb
+    \field{volume}{346}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Reznick, Bryga, Endler - 1990 - Experimentally induced life-history
+    \verb  evolution in a natural population.pdf:pdf
+    \endverb
+    \field{journaltitle}{Nature}
+    \field{annotation}{%
+    - HP guppy introduced in LP locations upstream evole LHT comparable to
+  guppies from LP locations. - Predation is fundamental in shaping phenotype of
+  guppy. - evolution can be fairly fast ($\sim$10 years).%
+    }
+    \field{eprinttype}{arXiv}
+    \field{year}{1990}
+  \endentry
+
+  \entry{Rosenbaum2019}{article}{}
+    \name{author}{5}{}{%
+      {{hash=RB}{%
+         family={Rosenbaum},
+         familyi={R\bibinitperiod},
+         given={Benjamin},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=RM}{%
+         family={Raatz},
+         familyi={R\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=WG}{%
+         family={Weithoff},
+         familyi={W\bibinitperiod},
+         given={Guntram},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=FGF}{%
+         family={Fussmann},
+         familyi={F\bibinitperiod},
+         given={Gregor\bibnamedelima F.},
+         giveni={G\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=GU}{%
+         family={Gaedke},
+         familyi={G\bibinitperiod},
+         given={Ursula},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian,Bayesian inference,Chemostat experiments,ODE,ODE
+  fit,Ordinary differential equation,Parameter estimation,Population
+  dynamics,Predator prey,Time series analysis,Trait
+  variability,chemostat,methods,population dynamics,prey predator dynamics}
+    \strng{namehash}{RB+1}
+    \strng{fullhash}{RBRMWGFGFGU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{abstract}{%
+    Empirical time series of interacting entities, e.g. species abundances, are
+  highly useful to study ecological mechanisms. Mathematical models are
+  valuable tools to further elucidate those mechanisms and underlying
+  processes. However, obtaining an agreement between model predictions and
+  experimental observations remains a demanding task. As models always abstract
+  from reality one parameter often summarizes several properties. Parameter
+  measurements are performed in additional experiments independent of the ones
+  delivering the time series. Transferring these parameter values to different
+  settings may result in incorrect parametrizations. On top of that, the
+  properties of organisms and thus the respective parameter values may vary
+  considerably. These issues limit the use of a priori model parametrizations.
+  In this study, we present a method suited for a direct estimation of model
+  parameters and their variability from experimental time series data. We
+  combine numerical simulations of a continuous-time dynamical population model
+  with Bayesian inference, using a hierarchical framework that allows for
+  variability of individual parameters. The method is applied to a
+  comprehensive set of time series from a laboratory predator-prey system that
+  features both steady states and cyclic population dynamics. Our model
+  predictions are able to reproduce both steady states and cyclic dynamics of
+  the data. Additionally to the direct estimates of the parameter values, the
+  Bayesian approach also provides their uncertainties. We found that fitting
+  cyclic population dynamics, which contain more information on the process
+  rates than steady states, yields more precise parameter estimates. We
+  detected significant variability among parameters of different time series
+  and identified the variation in the maximum growth rate of the prey as a
+  source for the transition from steady states to cyclic dynamics. By lending
+  more flexibility to the model, our approach facilitates parametrizations and
+  shows more easily which patterns in time series can be explained also by
+  simple models. Applying Bayesian inference and dynamical population models in
+  conjunction may help to quantify the profound variability in organismal
+  properties in nature.%
+    }
+    \verb{doi}
+    \verb 10.3389/fevo.2018.00234
+    \endverb
+    \field{issn}{2296701X}
+    \field{number}{234}
+    \field{pages}{1\bibrangedash 14}
+    \field{title}{{Estimating parameters from multiple time series of
+  population dynamics using bayesian inference}}
+    \field{volume}{6}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Rosenbaum et al. - 2019 - Estimating parameters from multiple time
+    \verb series of population dynamics using bayesian inference.pdf:pdf
+    \endverb
+    \field{journaltitle}{Frontiers in Ecology and Evolution}
+    \field{annotation}{%
+    From Duplicate 2 (Estimating parameters from multiple time series of
+  population dynamics using bayesian inference - Rosenbaum, Benjamin; Raatz,
+  Michael; Weithoff, Guntram; Fussmann, Gregor F.; Gaedke, Ursula) Takeaway: -
+  the authors examplify the use of Bayesian ODE fitting to time series to
+  recover ecological parameters of interest in a prey-predator chemostat
+  system. Notes: - The author state that they rely on HMC to fit their models
+  while mentionning that the likelihood is evaluated numerically. I see that as
+  a big problem and one that is not reasurring when it comes to the reliability
+  of the work. - The author use a hierarchical model to fit the model to
+  different time series. I find this quite elegant. - I find that the model fit
+  are rubbish, which is a second point that advise caution. - I realise that
+  this is not completely novel, there have been applications of the method
+  recently, it exists in other fields, the authors barely acknowledge this. -
+  The author fitted a deterministic ODE model to 18 different time series of
+  the same system. They found variation in the vital rates across time series.
+  They however only briefly conclude that it may be due to differences in
+  phenotpyic structure of populations. Not more. - There are several key
+  differences with your work on rotifer (1) the time series display more
+  variations in dynamics, potentially in line with the fact that they did not
+  use very similar populations (experiment performed over 7 years!), so not
+  really true replicates in this sense, rather different populations; (2) they
+  use only 2 species ; (3) they use a single parametric model, the fit of which
+  is not even that good, which may be biasing a lot the results (dixit
+  structural sensitivity), your approaches is non parametric and therefore
+  better in this case ; (4) they do not really discuss that - You can
+  potentially position yourself by stating that this is close to a replicated
+  system but not completely, what about populations that are actually almost
+  identical? - It seems that the time series come from different experiments,
+  so technically not really replicates and differences in dynamics and
+  dynamical processes are expected. The origin and differences among these time
+  series is unclear and we cannot draw conclusions regarding the source of
+  variability in dynamical processes. This is however a very interesting
+  stepping stone to jump from.%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{Shurin2012}{article}{}
+    \name{author}{5}{}{%
+      {{hash=SJB}{%
+         family={Shurin},
+         familyi={S\bibinitperiod},
+         given={Jonathan\bibnamedelima B.},
+         giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=CJL}{%
+         family={Clasen},
+         familyi={C\bibinitperiod},
+         given={Jessica\bibnamedelima L.},
+         giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=GHS}{%
+         family={Greig},
+         familyi={G\bibinitperiod},
+         given={Hamish\bibnamedelima S.},
+         giveni={H\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=KP}{%
+         family={Kratina},
+         familyi={K\bibinitperiod},
+         given={Pavel},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=TPL}{%
+         family={Thompson},
+         familyi={T\bibinitperiod},
+         given={Patrick\bibnamedelima L.},
+         giveni={P\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \keyw{Animals,Biomass,Canada,Eutrophication,Fishes,Fishes:
+  metabolism,Fishes: physiology,Food Chain,Fresh Water,Global Warming,Linear
+  Models,Oxygen,Oxygen: metabolism,Phytoplankton,Phytoplankton:
+  metabolism,Phytoplankton: physiology,Ponds,Predatory
+  Behavior,Smegmamorpha,Smegmamorpha: metabolism,Smegmamorpha:
+  physiology,Temperature,Water Microbiology,climate warming,eutrophication,food
+  web structure,microbial loop,predator,prey,size ratio,trophic cascade}
+    \strng{namehash}{SJB+1}
+    \strng{fullhash}{SJBCJLGHSKPTPL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    1. The effects of global and local environmental changes are transmitted
+  through networks of interacting organisms to shape the structure of
+  communities and the dynamics of ecosystems. 2. We tested the impact of
+  elevated temperature on the top-down and bottom-up forces structuring
+  experimental freshwater pond food webs in western Canada over 16 months.
+  Experimental warming was crossed with treatments manipulating the presence of
+  planktivorous fish and eutrophication through enhanced nutrient supply. 3. We
+  found that higher temperatures produced top-heavy food webs with lower
+  biomass of benthic and pelagic producers, equivalent biomass of zooplankton,
+  zoobenthos and pelagic bacteria, and more pelagic viruses. Eutrophication
+  increased the biomass of all organisms studied, while fish had cascading
+  positive effects on periphyton, phytoplankton and bacteria, and reduced
+  biomass of invertebrates. Surprisingly, virus biomass was reduced in the
+  presence of fish, suggesting the possibility for complex mechanisms of
+  top-down control of the lytic cycle. Warming reduced the effects of
+  eutrophication on periphyton, and magnified the already strong effects of
+  fish on phytoplankton and bacteria. Warming, fish and nutrients all increased
+  whole-system rates of net production despite their distinct impacts on the
+  distribution of biomass between producers and consumers, plankton and
+  benthos, and microbes and macrobes. 4. Our results indicate that warming
+  exerts a host of indirect effects on aquatic food webs mediated through
+  shifts in the magnitudes of top-down and bottom-up forcing.%
+    }
+    \verb{doi}
+    \verb 10.1098/rstb.2012.0243
+    \endverb
+    \field{isbn}{1471-2970}
+    \field{issn}{1471-2970}
+    \field{number}{1605}
+    \field{pages}{3008\bibrangedash 17}
+    \field{title}{{Warming shifts top-down and bottom-up control of pond food
+  web structure and function.}}
+    \verb{url}
+    \verb http://rstb.royalsocietypublishing.org/cgi/doi/10.1098/rstb.2012.0243
+    \verb  http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3479752&to
+    \verb ol=pmcentrez&rendertype=abstract
+    \endverb
+    \field{volume}{367}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Shurin et al. - 2012 - Warming shifts top-down and bottom-up contro
+    \verb l of pond food web structure and function(2).pdf:pdf
+    \endverb
+    \field{journaltitle}{Philosophical transactions of the Royal Society of
+  London. Series B, Biological sciences}
+    \field{annotation}{%
+    From Duplicate 2 (Warming shifts top-down and bottom-up control of pond
+  food web structure and function. - Shurin, Jonathan B.; Clasen, Jessica L.;
+  Greig, Hamish S.; Kratina, Pavel; Thompson, Patrick L.) 1. Introduction -
+  Need to improve our ability to forecast the state of our ecosystems. - Direct
+  + indirect effects of temperature. - Freshwater systems particularly impacted
+  by warming (check article for list of factors). - Temperature disrupts
+  trophic interactions (top-down and bottom-up control). - T -> affects body
+  size. @ Reasons why effects of T are potentially unpredictable - In
+  freshwater systems pellagic and benthic are different, and interconnected. No
+  classic size structure in benthic trophic interactions. => disrupt effects of
+  T on the whole food web. - Indirect effects of T on microbial community
+  unknown. 2. M&M - Mesocosm experiment in tanks. - Microbial communities +
+  periphyton + phytoplankton + zooplankton + invertebrates. - Treatments:
+  warming (control, + 3 degrees); nutrients (control, enriched); fishes
+  (control, addition of 5 sticklebacks = top predator). - 16 months + sampling
+  on regular basis. - Measure biomass. 3. Results - Warming and nutrients
+  amplified effects of fish. - Fish produce bottom heavy food webs (boosts
+  periphyton, etc.). - Warming reduces phytopl biomass. 4. Discussion - Effect
+  of temperature depend on food web structure. - Warming decrease the biomass
+  of producers, does not affect that of consumers => top heavy food webs <-
+  consistent with metabolic theory :: warming boosts metabolism => boosts
+  enegetic demand => greater consumption of intermediate TL by fish =>
+  relaxation of grazing pressure. - Mk for effects of nutrients reduced at high
+  T unknown. - Size of top predator important to consider. @ CONCL - Warming
+  may strengthen top down control.%
+    }
+    \field{year}{2012}
+  \endentry
+
+  \entry{Snell1986}{article}{}
+    \name{author}{2}{}{%
+      {{hash=STW}{%
+         family={Snell},
+         familyi={S\bibinitperiod},
+         given={Terry\bibnamedelima W.},
+         giveni={T\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=GBL}{%
+         family={Garman},
+         familyi={G\bibinitperiod},
+         given={Brian\bibnamedelima L.},
+         giveni={B\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \keyw{encounter probability,mating,rotifers}
+    \strng{namehash}{STWGBL1}
+    \strng{fullhash}{STWGBL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1986}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    The relationship between population density and sexual reproduction is
+  explored for planktonic rotifer populations. It has been argued that
+  selection favors sex at population maxima because of favorable probabilities
+  of encounter. Factors determining the probability of encounter are examined.
+  Experimentally determined parameters for males and females (swimming speed,
+  duration of fertility, net fecundity, and encounter distance) are used to
+  investigate density effects on the probability of encounter. As population
+  density increases, the probability of encounter also increases sigmoidally.
+  The probability of a female encountering a male during her fertile period
+  begins to increase rapidly at ≈ 50 males/1. The increase continues until it
+  becomes asymptotic at ≈ 1000 males/1, where the probability of a female
+  encountering, at least one male during her fertile period approaches one. The
+  duration of female fertility is less than that of males, causing the female
+  curve to be displaced toward higher population densities. Critical density,
+  the population density where Ro′ is exactly equal to one, for males and
+  females is 11.7 and 141 individuals/1, respectively. The precision of the
+  model was evaluated by observing the frequency of male-female encounters
+  during 212 5-min observation periods. The observed encounter rate was
+  1.49/min, compared to a predicted rate of 1.53/ min. These values are not
+  significantly different as determined by t-test. The constraints placed on
+  the timing of sex by population density are discussed. {\textcopyright}
+  1986.%
+    }
+    \verb{doi}
+    \verb 10.1016/0022-0981(86)90243-1
+    \endverb
+    \field{issn}{00220981}
+    \field{number}{3}
+    \field{pages}{221\bibrangedash 230}
+    \field{title}{{Encounter probabilities between male and female rotifers}}
+    \field{volume}{97}
+    \verb{file}
+    \verb :Users/willhem/Desktop/1-s2.0-0022098186902431-main.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Experimental Marine Biology and Ecology}
+    \field{year}{1986}
+  \endentry
+
+  \entry{Thompson1997}{article}{}
+    \name{author}{3}{}{%
+      {{hash=TCE}{%
+         family={Thompson},
+         familyi={T\bibinitperiod},
+         given={Claire\bibnamedelima E.},
+         giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=TEB}{%
+         family={Taylor},
+         familyi={T\bibinitperiod},
+         given={Eric\bibnamedelima B.},
+         giveni={E\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=MJD}{%
+         family={Mcphail},
+         familyi={M\bibinitperiod},
+         given={J.\bibnamedelima Donald},
+         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TCETEBMJD1}
+    \strng{fullhash}{TCETEBMJD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1997}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{abstract}{%
+    Three drainage systems in British Columbia, Canada, contain divergent
+  parapatric lake-stream pairs of threespine sticklebacks (Gasterosteus
+  aculeatus): Drizzle and Mayer Lakes on Graham Island, Queen Charlotte
+  Islands, and Misty Lake on northeastern Vancouver Island. Ecological and
+  morphological differences between members of all three lake-stream pairs are
+  strikingly similar; lake fish are melanistic and slim bodied with smaller
+  mouths and more gill rakers than the mottled-brown and robust-bodied stream
+  sticklebacks. We estimated the level of genetic divergence between lake and
+  stream fish in Misty Lake and tested hypotheses of single versus multiple
+  origins of the pairs by assaying mitochondrial DNA (mtDNA) restriction site
+  variation in samples from the three lake systems. MtDNA analysis revealed the
+  existence of two highly divergent lineages differing by 2.7% in sequence. One
+  lineage predom- inated in Misty stream fish (73%), whereas the other lineage
+  predominated in Misty Lake samples (96%). Comparable forms (lake or stream)
+  in the different lakes did not cluster together in terms of mtDNA nucleotide
+  divergence, suggesting that the pairs have had independent origins. We
+  concluded that: (1) divergent mtDNA lineages in North Pacific sticklebacks
+  stem from historical isolation in the two major glacial refugia proposed for
+  the North Pacific (Beringia and Cascadia); (2) the stream and lake pair in
+  Misty Lake are distinct gene pools; (3) the divergence between parapatric
+  lake and stream Gasterosteus represents parallel evolution having occurred at
+  least twice in the North Pacific; and (4) different scales of evolutionary
+  divergence exist in North Pacific Gasterosteus, that is, a relatively ancient
+  divergence of mtDNA clades as well as recent (i.e., postglacial) divergence
+  of ecotypes within major clades.%
+    }
+    \field{number}{6}
+    \field{pages}{1955\bibrangedash 1965}
+    \field{title}{{Parallel Evolution of Lake-Stream Pairs of Threespine
+  Sticklebacks (Gasterosteus) Inferred from Mitochondrial DNA Variation}}
+    \field{volume}{51}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Thompson, Taylor, Mcphail - 1997 - Parallel Evolution of Lake-Strea
+    \verb m Pairs of Threespine Sticklebacks ( Gasterosteus ) Inferred from Mit
+    \verb .pdf:pdf
+    \endverb
+    \field{journaltitle}{Evolution}
+    \field{annotation}{%
+    - Well essentially they are just saying that fishes from different lakes
+  diverged. - They demonstrate that the stream and lake ecotypes (i.e.
+  adaptations to a lake and river habitat) has occurred at least twice. This
+  establishes that evolution in the wild can be conserved, and thus
+  identifiable.%
+    }
+    \field{year}{1997}
+  \endentry
+
+  \entry{Wu2005}{article}{}
+    \name{author}{3}{}{%
+      {{hash=WJ}{%
+         family={Wu},
+         familyi={W\bibinitperiod},
+         given={Jun},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=FM}{%
+         family={Fukuhara},
+         familyi={F\bibinitperiod},
+         given={Makoto},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=TT}{%
+         family={Takeda},
+         familyi={T\bibinitperiod},
+         given={Tatsuoki},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \keyw{Data assimilation,Delay differential equation,NODE application,Neural
+  network,Parameter estimation,Predator-prey dynamics,Residual minimization
+  training}
+    \strng{namehash}{WJFMTT1}
+    \strng{fullhash}{WJFMTT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{abstract}{%
+    So far a considerable number of studies have been carried out on estimating
+  parameters and completing imperfect parts of dynamical equations of an
+  ecological system from a set of observation data. This paper presents a new
+  method for such purposes by using a multi-layer neural network with residual
+  minimization training, where an object function composed of a sum of squared
+  residuals of supposed governing equations at collocation points and squared
+  deviations of the solutions from observation data is minimized. Firstly, we
+  applied this method to analysis of "model observation data" produced by
+  numerical integration of equations of a predator-prey system. As a result the
+  parameters included in the model equations are recovered with considerably
+  high accuracy even when artificial random noises are added to the original
+  solutions. Then, we applied it successfully to real time-series data of
+  protozoan populations. It is concluded that the new method can be effectively
+  applied to analyses of time-series data in the field of the ecological
+  science. {\textcopyright} 2005 Elsevier B.V. All rights reserved.%
+    }
+    \verb{doi}
+    \verb 10.1016/j.ecolmodel.2005.04.013
+    \endverb
+    \field{issn}{03043800}
+    \field{number}{3-4}
+    \field{pages}{289\bibrangedash 304}
+    \field{title}{{Parameter estimation of an ecological system by a neural
+  network with residual minimization training}}
+    \field{volume}{189}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Wu, Fukuhara, Takeda - 2005 - Parameter estimation of an ecological
+    \verb  system by a neural network with residual minimization training.pdf:p
+    \verb df
+    \endverb
+    \field{journaltitle}{Ecological Modelling}
+    \field{annotation}{%
+    -- - Quite interesting, they apply the method of approximating the solution
+  of the ODE with an ANN, then inferring the parameter values of a known
+  equation given the approximated solution... or something like that... You
+  should read it more carefully. - It constitutes a nice example of application
+  of ANN to solving an ODE system modelling ecological dynamics. - The
+  difference to your work is that they assume a priori knowledge about the
+  ecology of the system. They do not use the neural network to find it... Quite
+  different. - The networks are not embedded within the mathematical framework,
+  it's a bit like an approach in steps. - It's quite unclear still, but it
+  seems that it is exactly what you do => what you need to do is present it as
+  a first attempt, and find reasons why it's not good enough. --%
+    }
+    \field{year}{2005}
+  \endentry
+
+  \entry{Yoshida2007}{article}{}
+    \name{author}{6}{}{%
+      {{hash=YT}{%
+         family={Yoshida},
+         familyi={Y\bibinitperiod},
+         given={Takehito},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=JLE}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Laura\bibnamedelima E.},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=BBJM}{%
+         family={Bohannan},
+         familyi={B\bibinitperiod},
+         given={Brendan J.\bibnamedelima M.},
+         giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim
+  M\bibinitperiod},
+      }}%
+      {{hash=LRE}{%
+         family={Lenski},
+         familyi={L\bibinitperiod},
+         given={Richard\bibnamedelima E.},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \keyw{Experimental,ODE,chemostat,eco-evolutionary dynamics,eco-evolutionary
+  feedbacks,population dynamics,prey-predator oscillations}
+    \strng{namehash}{YT+1}
+    \strng{fullhash}{YTESPJLEBBJMLREHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2007}
+    \field{labeldatesource}{}
+    \field{sortinit}{Y}
+    \field{sortinithash}{Y}
+    \field{abstract}{%
+    Trophic relationships, such as those between predator and prey or between
+  pathogen and host, are key interactions linking species in ecological food
+  webs. The structure of these links and their strengths have major
+  consequences for the dynamics and stability of food webs. The existence and
+  strength of particular trophic links has often been assessed using
+  observational data on changes in species abundance through time. Here we show
+  that very strong links can be completely missed by these kinds of analyses
+  when changes in population abundance are accompanied by contemporaneous rapid
+  evolution in the prey or host species. Experimental observations, in
+  rotifer-alga and phage-bacteria chemostats, show that the predator or
+  pathogen can exhibit large-amplitude cycles while the abundance of the prey
+  or host remains essentially constant. We know that the species are tightly
+  linked in these experimental microcosms, but without this knowledge, we would
+  infer from observed patterns in abundance that the species are weakly or not
+  at all linked. Mathematical modeling shows that this kind of cryptic dynamics
+  occurs when there is rapid prey or host evolution for traits conferring
+  defense against attack, and the cost of defense (in terms of tradeoffs with
+  other fitness components) is low. Several predictions of the theory that we
+  developed to explain the rotifer-alga experiments are confirmed in the
+  phage-bacteria experiments, where bacterial evolution could be tracked.
+  Modeling suggests that rapid evolution may also confound experimental
+  approaches to measuring interaction strength, but it identifies certain
+  experimental designs as being more robust against potential confounding by
+  rapid evolution. {\textcopyright} 2007 Yoshida et al.%
+    }
+    \verb{doi}
+    \verb 10.1371/journal.pbio.0050235
+    \endverb
+    \field{issn}{15449173}
+    \field{number}{9}
+    \field{pages}{1868\bibrangedash 1879}
+    \field{title}{{Cryptic population dynamics: Rapid evolution masks trophic
+  interactions}}
+    \field{volume}{5}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Yoshida et al. - 2007 - Cryptic population dynamics Rapid evolution
+    \verb  masks trophic interactions.pdf:pdf
+    \endverb
+    \field{journaltitle}{PLoS Biology}
+    \field{annotation}{%
+    Takeaways: - evolution of anti-predation defense can lead to a shift from
+  prey-predator cycles to stationary densities - rapid evolution can lead to
+  dynamics that are in appearence inconsistent with an ecological interaction
+  between the two species. - They show that the prey density remains identical
+  but there is shuffling in the structure of the population (variation in the
+  abundance of the genotypes) so that the apparent link between the two
+  population is not detectable.%
+    }
+    \field{year}{2007}
+  \endentry
+
+  \entry{Yoshida2003}{article}{}
+    \name{author}{5}{}{%
+      {{hash=YT}{%
+         family={Yoshida},
+         familyi={Y\bibinitperiod},
+         given={Takehito},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=JLE}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Laura\bibnamedelima E.},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=FGF}{%
+         family={Fussmann},
+         familyi={F\bibinitperiod},
+         given={Gregor\bibnamedelima F.},
+         giveni={G\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \keyw{algae,eco-evolutionary dynamics,experimental,genetic
+  structure,microcosm,prey predator dynamics,rotifer,theoretical}
+    \strng{namehash}{YT+1}
+    \strng{fullhash}{YTJLEESPFGFHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2003}
+    \field{labeldatesource}{}
+    \field{sortinit}{Y}
+    \field{sortinithash}{Y}
+    \field{abstract}{%
+    Ecological and evolutionary dynamics can occur on similar timescales1–7 .
+  However, theoretical predictions of how rapid evolution can affect ecological
+  dynamics8 are inconclusive and often depend on untested model assumptions8 .
+  Here we report that rapid prey evolution in response to oscillating predator
+  density affects predator–prey (rotifer–algal) cycles in laboratory
+  microcosms. Our experiments tested explicit predictions from a model for our
+  system that allows prey evolution9 .We verified the predicted existence of an
+  evolutionary tradeoff between algal competitive ability and defence against
+  consumption, and exam- ined its effects on cycle dynamics by manipulating the
+  evolution- ary potential of the prey population. Single-clone algal cultures
+  (lacking genetic variability) produced short cycle periods and typical
+  quarter-period phase lags between prey and predator densities, whereas
+  multi-clonal (genetically variable) algal cul- tures produced long cycles
+  with prey and predator densities nearly out of phase, exactly as predicted.
+  These results confirm that prey evolution can substantially alter
+  predator–prey dynamics, and therefore that attempts to understand
+  population oscillations in nature10,11 cannot neglect potential effects from
+  ongoing rapid evolution.%
+    }
+    \verb{doi}
+    \verb 10.1038/nature01767
+    \endverb
+    \field{isbn}{0028-0836}
+    \field{issn}{00280836}
+    \field{number}{July}
+    \field{pages}{303\bibrangedash 306}
+    \field{title}{{Rapid evolution drives ecological dynamics in a predator –
+  prey system}}
+    \field{volume}{424}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Yoshida et al. - 2003 - Rapid evolution drives ecological dynamics
+    \verb in a predator – prey system.pdf:pdf
+    \endverb
+    \field{journaltitle}{Nature}
+    \field{annotation}{%
+    - Evolutionary response of the prey (i.e. tendency to clump up) slows down
+  predation cycles. This is an experimental evidence of a simple eco-evo
+  feedback. - Also points at the fact that eco-evo feedbacks might be common
+  and that we cannot neglect rapid evolution in natural systems. 1.
+  Introduction - Test effect of genetic variation on population dynamics in
+  prey predator system 2. Methods - Mathematical model (ODE) predicting shifts
+  in population dynamics with genetic diversity in prey. (long cycles for
+  diverse preys, short lotka-voltera cycles for clonal populations). Phenotype:
+  trade off between competitivity and resistance to predation. - Experimentally
+  tested model prediction in microcosm. Manipulated prey genetic variation:
+  population of a miture of small predator resistant preys (less competitive)
+  and bigger less resistant preys, or clonal of either phenotype. And monitor
+  population dynamics. Small phenotype is an evolutionary of the prey to
+  exposure to the predator. 3. Results - Find long cycles in polymorphic
+  populations. - Short cycles in oligomorphic populations. 4. Discussion -
+  Shows importance of phenotypic variation for population dynamics. - Moreover
+  as phenotype is obtained by an evolutionary response, and it implies shifts
+  in genetic structure, results implies that fast evolutionary response can be
+  a mechanism underlying observed population dynamics. - YET, this is caused by
+  changes in standing genetic variation, namely displacement of biomass on
+  phenotypic axis, this is simply selection, a very restraint form of
+  evolutionary response.%
+    }
+    \field{year}{2003}
+  \endentry
+\enddatalist
+\endinput
