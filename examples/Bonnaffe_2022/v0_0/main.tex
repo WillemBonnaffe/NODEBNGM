@@ -177,15 +177,16 @@ We then compute ecological interactions as the sensitivity of these dynamics to 
 
 A NODE is a class of ordinary differential equation (ODE) that is partly or entirely defined as an artificial neural network (ANN).
 They are useful to infer dynamical processes non-parametrically from time series data (\cite{Bonnaffe2021a}).
-We choose NODEs over standard statistical approaches because they offers two advantages. 
+We choose NODEs over standard statistical approaches because they offer two advantages. 
 The first is that NODEs approximate the dynamics of populations non-parametrically.
 NODEs are therefore not subjected to incorrect model specifications (\cite{Jost2000,Adamson2013}).
-This provides an objective estimation of the inter-dependences between state variables. 
+This provides a more objective estimation of the inter-dependences between state variables. 
 The second advantage is that it is a dynamical systems approach. 
 So that the approach includes lag effects through interacting state variables, not only direct effects between them. 
 
 For the sake of simplicity, we first consider a two-species NODE system: 
 
+\vspace{-0.5cm}
 \begin{equation} \left \{ \begin{aligned}
 	& \frac{dR}{dt} = r_R(R,N,\beta_R) R \\
 	& \frac{dN}{dt} = r_N(R,N,\beta_N) N \\
@@ -198,11 +199,12 @@ The shape of the non-parametric functions is controlled by the parameter vectors
 Traditionally, each non-parametric function is defined as an ANN function of the state variables.
 The most common class of ANN used for NODEs are single layer perceptrons (SLPs): 
 
+\vspace{-0.5cm}
 \begin{equation}
     r_N(R, N, \beta_N) := \beta_0 + \sum_{i=1}^{I} \beta_{i} f_{\sigma} \left( \beta_{i0} + \beta_{i1} R + \beta_{i2} N \right) 
 \end{equation}
 
-which map the density of each species $R$ and $N$ to the corresponding per-capita growth rate through a single hidden layer.
+which feature a single layer that  maps the inputs, here the species densities $R$ and $N$, to a single output, the per-capita growth rate.
 The parameter vector $\beta_R$ and $\beta_N$ are the weights of the connections in the SLPs.
 SLPs can be viewed as weighted sums of basis functions $f_\sigma$.
 % We consider sigmoid basis functions, as they are commonly used and their capacity to approximate any continuous function is well established theoretically (\cite{Funahashi1993}). 
@@ -219,24 +221,25 @@ Then we would compute the error between the predictions of the NODE model and th
 Finally, we would change the weights of the NODEs to minimise this error. 
 There are two caveats with this approach.
 The first caveat is that the NODE system has to be simulated over the entire range of the data at every step of the optimisation.
-This step is computanionally expensive to perform.
-Second, the simulation prevents the computation of gradients of the posterior distribution of the model.
+This step is computationally expensive to perform.
+Second, the numerical integration prevents the computation of gradients of the posterior distribution of the model.
 This prevents the use of efficient gradient descent approaches.
 
 Instead, we propose to use a \textit{gradient matching} approach to fit NODEs, which relies on data interpolation to approximate states and dynamics.
 The method we propose here is derived from the \textit{gradient matching} approach that Ellner and colleagues developed to fit ODEs (\cite{Ellner2002, Wu2005}).
 We proceed in three steps, presented graphically in Fig. 1 and detailed in the following sections. 
 First, we interpolate the time series data and dynamics of each species in the system. 
-Second, we fit each NODE directly to interpolated dynamics, thereby avoiding the simulation step of the previous method. 
-This amounts to fitting the interpolated per-capita growth rates with ANNs taking as input the density of each population.
-Finally, we derive the direction and strength of ecological interactions by computing the intra- and inter-specific sensitivities and contributions.
+Second, we train each NODE to satisfy the interpolated dynamics, thereby avoiding the simulation step of the previous method. 
+This amounts to fitting ANNs that take the density of each population as input to the interpolated per-capita growth rates.
+% Finally, we derive the direction and strength of ecological interactions by computing the intra- and inter-specific sensitivities and contributions.
 
 %%
-\textbf{Interpolating the data}
+\textbf{Data interpolation}
 
 We interpolate the time series and differentiate it with respect to time in order to approximate the dynamics of the system.
 We perform the interpolation via non-parametric regression of the interpolating function on the time series data
 
+\vspace{-0.5cm}
 \begin{equation}
     \epsilon^{(o)}_{N,~t} = N_t - \tilde{N}(t,\Omega_N)
 \end{equation}
@@ -253,12 +256,14 @@ The interpolation parameter vector $\Omega_N$ contains the weights $\omega_{i0}$
 We found sinusoid activation functions to be most efficient for interpolating population dynamics compared to other functions (such as sigmoid, hyperbolic).
 Following this approach we obtain directly an approximation of the dynamics of the state variable by differentiating the SLP with respect to time
 
+\vspace{-0.5cm}
 \begin{equation}
 	\frac{\partial}{\partial t} \tilde{N}(t, \Omega_N) = \sum_{i=1}^{I} \omega_{i0} \pi \omega_{i2} cos \left(\pi (\omega_{i1} + \omega_{i2} t) \right) \exp \left \{ \sum_{i=1}^{I} \omega_{i0} sin \left(\pi (\omega_{i1} + \omega_{i2} t) \right) \right \}
 \end{equation}
 
 as well as an analytical expression of the interpolated per-capita growth rate of the populations, by combining equation (4) and (5)
 
+\vspace{-0.5cm}
 \begin{equation}
     \tilde{r}_N (t,\Omega_N) := \frac{1}{\tilde{N}} \frac{\partial \tilde{N}}{\partial t} = \sum_{i=1}^{I} \omega_{i0} \pi \omega_{i2} cos \left(\pi (\omega_{i1} + \omega_{i2} t) \right)
 \end{equation}
@@ -269,11 +274,12 @@ as well as an analytical expression of the interpolated per-capita growth rate o
 % This is to facilitate the training of the NODE by bringing the parameters in the neural network on the same scale.
 
 %%
-\textbf{Fitting NODEs to the interpolated data}
+\textbf{Fitting NODEs to interpolated data}
 
-The second step is to match the NODE system (1) to the interpolated dynamics, given the interpolated state variables.
-Thanks to the interpolation of the data, this simply amounts to performing a non-parametric regression of the NODE approximation of the per-capita growth rate (equation 2) on the interpolated per-capita growth rate (equation 6)
+In a second step, we train the NODE system (1) to satisfy the interpolated dynamics, given the interpolated state variables.
+Thanks to the interpolation step, this simply amounts to performing a non-parametric regression of the NODE-approximated per-capita growth rate (equation 2) on the interpolated per-capita growth rate (equation 6)
 
+\vspace{-0.5cm}
 \begin{equation}
     \epsilon^{(p)}_{N,~t} = \tilde{r}_N (t,\Omega_N) - r_N \left( \tilde{R},\tilde{N},\beta_N \right)
 \end{equation}
@@ -290,6 +296,7 @@ Second, we fit the NODE per-capita growth rate by finding the parameter vector $
 % The following section describes how to recover the parameters for the interpolation and NODE system that best describe the time series, while controlling for overfitting. 
 The fitting of the models is performed in a Bayesian framework, considering normal error structure for the residuals, and normal prior density distributions on the parameters
 
+\vspace{-0.5cm}
 \begin{equation}
 	p(\theta | \mathcal{D}) \propto  p(\mathcal{D} | \theta) p(\theta)
 \end{equation}
@@ -299,6 +306,7 @@ where $\theta$ is the parameter vector of the model, and $\mathcal{D}$ the evide
 % In the case of fitting the NODE model to the interpolated data, the evidence is the interpolated per-capita growth rate of each population, either $\tilde{r}_R$, $\tilde{r}_G$, or $\tilde{r}_B$, and the parameters are the weights $\beta_R$, $\beta_G$, and $\beta_B$ in the non-parametric per-capita growth rates $r_R$, $r_G$, and $r_B$.
 Assuming a normal likelihood for the residuals given the evidence we get
 
+\vspace{-0.5cm}
 \begin{equation}
 	p( \mathcal{D} | \theta) = \prod_{i=1}^{I} \frac{1}{\sqrt{2\pi\sigma^2}}  \exp \left\{ -\frac{e_i(\mathcal{D},\theta)^2}{2\sigma^2}  \right\}
 \end{equation}
@@ -311,6 +319,7 @@ $I$ is the number of data points, either observations in the case of the interpo
 
 The prior probability density functions for the parameters are given by
 
+\vspace{-0.5cm}
 \begin{equation}
 	p(\theta) = \prod_{j=1}^{J} \frac{1}{\sqrt{2\pi\delta^2}}  \exp \left\{ -\frac{\theta_j^2}{2\delta_j^2}  \right\}
 \end{equation}
@@ -326,14 +335,17 @@ This means that we are finding the optimal value of $\delta$, in addition to opt
 We do this by optimising the marginal posterior density of the parameters, obtained by averaging out $\delta$ following a modification of the approach developped by Cawley and Talbot (\cite{Cawley2007}). 
 This yields the following expression for the marginal log posterior density of the parameters 
 
+\vspace{-0.5cm}
 \begin{equation}
 	\log P(\theta | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} e_i(\mathcal{D},\theta)^2\right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \theta_{j}^2 \right)
 \end{equation}
 
+\vspace{-0.5cm}
 \begin{equation}
     \log P(\Omega | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_i \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
 \end{equation}
 
+\vspace{-0.5cm}
 \begin{equation}
     \log p(\beta | \Omega) \propto - \frac{1}{2} \sum_{i=1}^{I} \left( \frac{\epsilon^{(p)}_i}{\sigma} \right)^2 - \frac{1}{2} \sum_{j=1}^{J} \left( \frac{\beta_j}{\delta_j} \right)^2
 \end{equation}
