@@ -92,7 +92,7 @@ Our study hence suggests that generalisation of dynamical processes across syste
 This is a problem because if we are not able to make generalisations in a simple artificial system, how can we make generalisation in the real world?
 
 \newpage
-\pagenumbering{gobble}
+\pagenumbering{arabic}
 \setcounter{page}{1}
 \linenumbers
 
@@ -188,14 +188,13 @@ For the sake of simplicity, we first consider a two-species NODE system:
 
 \vspace{-0.5cm}
 \begin{equation} \left \{ \begin{aligned}
-	& \frac{dR}{dt} = r_R(R,N,\beta_R) R \\
-	& \frac{dN}{dt} = r_N(R,N,\beta_N) N \\
+	& \frac{dR}{dt} := r_R(R,N,\beta_R) R \\
+	& \frac{dN}{dt} := r_N(R,N,\beta_N) N \\
 \end{aligned} \right . \end{equation}
 
 where $dR/dt$ and $dN/dt$ denote the change in the density of prey ($R \in \mathcal{R}^+$), and predator ($N \in \mathcal{R}^+$), in continuous time.
 The per-capita growth rates $r_R$ and $r_N$ are non-parametric functions of the density of each species.
 The shape of the non-parametric functions is controlled by the parameter vectors $\beta_R$ and $\beta_N$.
-
 Traditionally, each non-parametric function is defined as an ANN function of the state variables.
 The most common class of ANN used for NODEs are single layer perceptrons (SLPs): 
 
@@ -231,7 +230,6 @@ We proceed in three steps, presented graphically in Fig. 1 and detailed in the f
 First, we interpolate the time series data and dynamics of each species in the system. 
 Second, we train each NODE to satisfy the interpolated dynamics, thereby avoiding the simulation step of the previous method. 
 This amounts to fitting ANNs that take the density of each population as input to the interpolated per-capita growth rates.
-% Finally, we derive the direction and strength of ecological interactions by computing the intra- and inter-specific sensitivities and contributions.
 
 %%
 \textbf{Data interpolation}
@@ -241,14 +239,15 @@ We perform the interpolation via non-parametric regression of the interpolating 
 
 \vspace{-0.5cm}
 \begin{equation}
-    \epsilon^{(o)}_{N,~t} = N_t - \tilde{N}(t,\Omega_N)
+    \epsilon^{(o)}_{N,~t}(\Omega_N | N_t) := N_t - \tilde{N}(t,\Omega_N)
 \end{equation}
 
 where $\epsilon^{(o)}_{N,~t}$, the observation error, is defined as the difference between $N_t$, the observed value of the variable at time $t$, and $\tilde{N}(t,\Omega_N)$, the value predicted by the interpolating function. 
 The interpolating function is chosen to be a SLP with sinusoid activation functions
 
+\vspace{-0.5cm}
 \begin{equation}
-    \tilde{N}(t,\Omega_N) = \exp \left \{ \sum_{i=1}^{I} \omega_{i0} sin \left(\pi (\omega_{i1} + \omega_{i2} t) \right) \right \}
+    \tilde{N}(t,\Omega_N) := \exp \left \{ \sum_{i=1}^{I} \omega_{i0} sin \left(\pi (\omega_{i1} + \omega_{i2} t) \right) \right \}
 \end{equation}
 
 where $\tilde{N}(t,\Omega_N)$ is the interpolated state variable, defined as a weighted sum of sinusoid functions of time.
@@ -281,78 +280,76 @@ Thanks to the interpolation step, this simply amounts to performing a non-parame
 
 \vspace{-0.5cm}
 \begin{equation}
-    \epsilon^{(p)}_{N,~t} = \tilde{r}_N (t,\Omega_N) - r_N \left( \tilde{R},\tilde{N},\beta_N \right)
+    \epsilon^{(p)}_{N,~t}(\beta_N | \Omega) := \tilde{r}_N (t,\Omega_N) - r_N \left( \tilde{R},\tilde{N},\beta_N \right)
 \end{equation}
 
 where the process error, $\epsilon^{(p)}_{N,~t}$, is defined as the difference between the interpolated growth rate $\tilde{r}_N$ and the NODE approximation $r_N$. 
 
 %%
-\textbf{Statistical modelling approach}
+\textbf{Statistical modelling}
 
 Overall, fitting the NODE system (1) comes down to two steps. 
 First, we interpolate the data by finding the parameter vector $\Omega$ that minimises the observation error $\epsilon^{(o)}$ in equation (3).
-Second, we fit the NODE per-capita growth rate by finding the parameter vector $\beta$ that minimises the process error $\epsilon^{(p)}$ in equation (7).
+Second, we fit the approximated per-capita growth rate by finding the parameter vector $\beta$ that minimises the process error $\epsilon^{(p)}$ in equation (7).
 
-% The following section describes how to recover the parameters for the interpolation and NODE system that best describe the time series, while controlling for overfitting. 
-The fitting of the models is performed in a Bayesian framework, considering normal error structure for the residuals, and normal prior density distributions on the parameters
+We use a Bayesian framework to perform Bayesian regularisation and control for over-fitting (\cite{Cawley2007}).
+First, we fit the interpolating functions to the time series data.
+We assume normal distributions for the observation error, $\epsilon^{(o)}_i \sim \mathcal{N}(0,\sigma^{(o)})$, and for the prior density of the parameters, $\Omega_j \sim \mathcal{N}(0,\gamma_j)$.
+For the interpolation, we are only interested in fitting the time series accurately, irrespective of the value of $\sigma^{(o)}$ and $\gamma_j$.
+So we perform inference on the second level, by optimising the marginal posterior distribution.
+To do this, we use the approach developed by Cawley and Talbot to average out the value of the parameters $\sigma^{(o)}$ and $\gamma_j$ in the full posterior distribution (\cite{Cawley2007}), assuming gamma hyperpriors $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi \right\}$.
+This yields the following expression for the log marginal posterior density of the parameters 
 
-\vspace{-0.5cm}
-\begin{equation}
-	p(\theta | \mathcal{D}) \propto  p(\mathcal{D} | \theta) p(\theta)
-\end{equation}
-
-where $\theta$ is the parameter vector of the model, and $\mathcal{D}$ the evidence, namely the data that the model is fitted to.
-% In the case of the interpolation, the evidence is the population densities, either $R(t)$, $G(t)$, or $B(t)$, and the parameters are the weights $\Omega$ in the sinusoid SLPs.
-% In the case of fitting the NODE model to the interpolated data, the evidence is the interpolated per-capita growth rate of each population, either $\tilde{r}_R$, $\tilde{r}_G$, or $\tilde{r}_B$, and the parameters are the weights $\beta_R$, $\beta_G$, and $\beta_B$ in the non-parametric per-capita growth rates $r_R$, $r_G$, and $r_B$.
-Assuming a normal likelihood for the residuals given the evidence we get
-
-\vspace{-0.5cm}
-\begin{equation}
-	p( \mathcal{D} | \theta) = \prod_{i=1}^{I} \frac{1}{\sqrt{2\pi\sigma^2}}  \exp \left\{ -\frac{e_i(\mathcal{D},\theta)^2}{2\sigma^2}  \right\}
-\end{equation}
-
-where $e_i(\mathcal{D},\theta)$ are the residuals of the model given the parameters, and the evidence. 
-In the case of the interpolation, the residuals correspond to the observation error $\epsilon^{(o)}$ (equation 3).
-In the case of the NODE approximation, they correspond to the process error $\epsilon^{(p)}$ (equation 7).
-% The dispersion term $\sigma$ in the likelihood is measured by the parameters $\sigma_1$ in the case of the interpolation, and $\sigma_2$ in the case of the NODE fitting.
-$I$ is the number of data points, either observations in the case of the interpolation, or interpolated points in the case of the NODE fitting.
-
-The prior probability density functions for the parameters are given by
+% \vspace{-0.5cm}
+% \begin{equation}
+%     \log p(\Omega_N | N_0, N_1, ..., N_I) \propto - \frac{1}{2} \sum_{i=1}^{I} \left( \frac{\epsilon^{(o)}_{N,i}}{\sigma^{(o)}} \right)^2 - \frac{1}{2} \sum_{j=1}^{J} \left( \frac{\Omega_j}{\gamma_j} \right)^2
+% \end{equation}
 
 \vspace{-0.5cm}
 \begin{equation}
-	p(\theta) = \prod_{j=1}^{J} \frac{1}{\sqrt{2\pi\delta^2}}  \exp \left\{ -\frac{\theta_j^2}{2\delta_j^2}  \right\}
+    \log P(\Omega_N | N_0, N_1, ..., N_I) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_{N,i} \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
 \end{equation}
 
-where $J$ is the number of parameters in the models.
-The parameter $\delta_j$ controls the dispersion of the priors, and thereby the complexity/level of constraint of the model.
+where $P$ denotes the marginal posterior distribution,
+$N_i$ corresponds to the observed density at time $i$, 
+$I$ is the total number of time steps in the time series, 
+$\epsilon^{(o)}_{N,i}$ is the observation error at time step $i$, 
+% $\sigma^{(o)}$ is the standard deviation of the likelihood, 
+$J$ is the total number of parameters. 
+%$\gamma_j$ is the standard deviation of the prior distribution of parameter $\Omega_j$.
+More details on how to derive this expression can be found in a supplementary file (Supplementary A).
 
-There is no standard approach for choosing $\delta$.
-Low values of dispersion may increase constraint on parameters too drastically, which would lead to underfitting, and result in a reduction of the variance of parameter estimates and bias mean estimates towards 0.
-In contrast, too high values of dispersion may lead to overfitting, by allowing for more complex shapes.
-To account for this, we optimise the models on the second-level of inference.
-This means that we are finding the optimal value of $\delta$, in addition to optimising the model parameters. 
-We do this by optimising the marginal posterior density of the parameters, obtained by averaging out $\delta$ following a modification of the approach developped by Cawley and Talbot (\cite{Cawley2007}). 
-This yields the following expression for the marginal log posterior density of the parameters 
+% \vspace{-0.5cm}
+% \begin{equation}
+%     \log P(\Omega | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_i \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
+% \end{equation}
+
+Then, we fit the non-parametric approximation of the growth rates to the interpolated growth rate.
+We assume normal distributions for the observation error, $\epsilon^{(p)}_i \sim \mathcal{N}(0,\sigma^{(p)})$, and for the prior density of the parameters, $\beta_j \sim \mathcal{N}(0,\delta_j)$.
+This gives the following expression for the log posterior distribution of the parameters given the interpolations
 
 \vspace{-0.5cm}
 \begin{equation}
-	\log P(\theta | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} e_i(\mathcal{D},\theta)^2\right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \theta_{j}^2 \right)
+    \log p(\beta_N | \Omega) \propto - \frac{1}{2} \sum_{i=1}^{I} \left( \frac{\epsilon^{(p)}_{N,i}}{\sigma^{(p)}} \right)^2 - \frac{1}{2} \sum_{j=1}^{J} \left( \frac{\beta_j}{\delta_j} \right)^2
 \end{equation}
 
-\vspace{-0.5cm}
-\begin{equation}
-    \log P(\Omega | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_i \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
-\end{equation}
+where $\Omega$ corresponds to the interpolation parameters of all the variables in the system (here $\Omega_R$ and $\Omega_N$), 
+$\epsilon^{(p)}_{N,i}$ is the process error at time step $i$, 
+$\sigma^{(p)}$ is the standard deviation of the likelihood, 
+$J$ is the total number of parameters, 
+$\delta_j$ is the standard deviation of the prior distribution of parameter $\beta_j$.
 
-\vspace{-0.5cm}
-\begin{equation}
-    \log p(\beta | \Omega) \propto - \frac{1}{2} \sum_{i=1}^{I} \left( \frac{\epsilon^{(p)}_i}{\sigma} \right)^2 - \frac{1}{2} \sum_{j=1}^{J} \left( \frac{\beta_j}{\delta_j} \right)^2
-\end{equation}
+%%
+\subsection{Inference and uncertainty quantification}
 
+This allows us to calculate the gradient of the posterior distributions with respect to each parameter.
+We can hence use efficient optimisation algorithms, such as BFGS, to optimise the posterior distributions.
 
-which amounts to optimising the log of the sum of squared residuals rather than the sum of squared residuals. $P(\theta | \mathcal{D})$ designates the marginal posterior distribution. 
-More details on how to derive this expression from equation (8) can be found in a supplementary file (See supplementary A).
+This approach also allows us to control for over-fitting by adjusting the constraint on the parameters, which is controlled by the standard deviation of the parameter prior distributions, $\delta_j$.
+This can be used to control the degree of non-linearity in the response, but also to eliminate specific variables from the model by constraining their parameters to be close to zero.
+We identify the appropriate degree of constraint $\delta_j$ on NODE parameters via cross-validation. 
+We train the NODE model on the first half of the interpolated data and we predict the remaining half.
+We repeat this process for various values of $\delta_j$.
 
 Finally, we estimate uncertainty in parameter values through anchor sampling, which produces approximate Bayesian estimates of the posterior distribution of the parameters (\cite{Pearce2018}).
 The technique is simple in that it requires sampling a parameter vector from the prior distributions, and then optimising the posterior distribution from this starting point.
@@ -784,6 +781,61 @@ The \% of total contributions is obtained by summing the square of contributions
 
 \section{Bayesian regularisation}
 
+The fitting of the models is performed in a Bayesian framework, considering normal error structure for the residuals, and normal prior density distributions on the parameters
+
+\vspace{-0.5cm}
+\begin{equation}
+	p(\theta | \mathcal{D}) \propto  p(\mathcal{D} | \theta) p(\theta)
+\end{equation}
+
+where $\theta$ is the parameter vector of the model, and $\mathcal{D}$ the evidence, namely the data that the model is fitted to.
+% In the case of the interpolation, the evidence is the population densities, either $R(t)$, $G(t)$, or $B(t)$, and the parameters are the weights $\Omega$ in the sinusoid SLPs.
+% In the case of fitting the NODE model to the interpolated data, the evidence is the interpolated per-capita growth rate of each population, either $\tilde{r}_R$, $\tilde{r}_G$, or $\tilde{r}_B$, and the parameters are the weights $\beta_R$, $\beta_G$, and $\beta_B$ in the non-parametric per-capita growth rates $r_R$, $r_G$, and $r_B$.
+Assuming a normal likelihood for the residuals given the evidence we get
+
+\vspace{-0.5cm}
+\begin{equation}
+	p( \mathcal{D} | \theta) = \prod_{i=1}^{I} \frac{1}{\sqrt{2\pi\sigma^2}}  \exp \left\{ -\frac{e_i(\mathcal{D},\theta)^2}{2\sigma^2}  \right\}
+\end{equation}
+
+where $e_i(\mathcal{D},\theta)$ are the residuals of the model given the parameters, and the evidence. 
+In the case of the interpolation, the residuals correspond to the observation error $\epsilon^{(o)}$ (equation 3).
+In the case of the NODE approximation, they correspond to the process error $\epsilon^{(p)}$ (equation 7).
+% The dispersion term $\sigma$ in the likelihood is measured by the parameters $\sigma_1$ in the case of the interpolation, and $\sigma_2$ in the case of the NODE fitting.
+$I$ is the number of data points, either observations in the case of the interpolation, or interpolated points in the case of the NODE fitting.
+
+The prior probability density functions for the parameters are given by
+
+\vspace{-0.5cm}
+\begin{equation}
+	p(\theta) = \prod_{j=1}^{J} \frac{1}{\sqrt{2\pi\delta^2}}  \exp \left\{ -\frac{\theta_j^2}{2\delta_j^2}  \right\}
+\end{equation}
+
+where $J$ is the number of parameters in the models.
+The parameter $\delta_j$ controls the dispersion of the priors, and thereby the complexity/level of constraint of the model.
+
+There is no standard approach for choosing $\delta$.
+Low values of dispersion may increase constraint on parameters too drastically, which would lead to underfitting, and result in a reduction of the variance of parameter estimates and bias mean estimates towards 0.
+In contrast, too high values of dispersion may lead to overfitting, by allowing for more complex shapes.
+To account for this, we optimise the models on the second-level of inference.
+This means that we are finding the optimal value of $\delta$, in addition to optimising the model parameters. 
+We do this by optimising the marginal posterior density of the parameters, obtained by averaging out $\delta$ following a modification of the approach developped by Cawley and Talbot (\cite{Cawley2007}). 
+This yields the following expression for the marginal log posterior density of the parameters 
+
+\vspace{-0.5cm}
+\begin{equation}
+    \log P(\Omega | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_i \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
+\end{equation}
+
+\vspace{-0.5cm}
+\begin{equation}
+    \log p(\beta | \Omega) \propto - \frac{1}{2} \sum_{i=1}^{I} \left( \frac{\epsilon^{(p)}_i}{\sigma} \right)^2 - \frac{1}{2} \sum_{j=1}^{J} \left( \frac{\beta_j}{\delta_j} \right)^2
+\end{equation}
+
+
+which amounts to optimising the log of the sum of squared residuals rather than the sum of squared residuals. $P(\theta | \mathcal{D})$ designates the marginal posterior distribution. 
+More details on how to derive this expression from equation (8) can be found in a supplementary file (See supplementary A).
+
 In this section we describe how to derive the modified model selection critieria developed by Cawley and Talbot (\cite{Cawley2007}).
 Bayesian regularisation simply amounts to constraining the values of the parameters in the model to be close to a desired value. 
 Usually, parameters are constrained by choosing normal priors centered about 0.
@@ -794,7 +846,7 @@ They proposed to optimise the marginal posterior distribution by averaging out t
 With an appropriate choice of prior, the dispersion can be integrated out, leaving us with a formula for the posterior that only depends on the parameters of the model,
 
 \begin{equation}
-	\log P(\theta | \mathcal{D}) \propto \frac{I}{2} \log \left(\sum_{i=1}^{I} e_i(\mathcal{D},\theta)^2\right) + \frac{J}{2} \log \left(\sum_{j=1}^{J} \theta_{j}^2 \right)
+	\log P(\theta | \mathcal{D}) \propto - \frac{I}{2} \log \left(\sum_{i=1}^{I} e_i(\mathcal{D},\theta)^2\right) - \frac{J}{2} \log \left(\sum_{j=1}^{J} \theta_{j}^2 \right)
 \end{equation}
 
 where $P(\theta|\mathcal{D})$ denotes the marginal posterior density, $\mathcal{D}$ denotes the evidence, $I$ and $J$ denote the number of data points and parameters, respectively, $e_i$ denote the residuals of the model, and $\theta$ denote the parameters of the model.
@@ -804,7 +856,7 @@ The issue with this formula is that the marginal posterior density is infinity w
 In this paper we use a modified criterion, which corrects for that problem 
 
 \begin{equation}
-	\log P(\theta | \mathcal{D}) \propto \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} e_i(\mathcal{D},\theta)^2\right) + \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \theta_{j}^2 \right)
+	\log P(\theta | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} e_i(\mathcal{D},\theta)^2\right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \theta_{j}^2 \right)
 \end{equation}
 
 where the marginal posterior density depends only on the residuals of the model when the parameters are equal to 0, and otherwise depends on both the parameters and the residudals. 
