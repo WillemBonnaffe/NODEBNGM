@@ -36,7 +36,7 @@
      }
 
 
-\title{Inferring ecological interactions from time series data using neural ordinary differential equations fitted by gradient matching}
+\title{Inferring ecological interactions from time series data using neural ordinary differential equations fitted by Bayesian neural gradient matching}
 \author{Willem Bonnaff\'e$^{1,2}$, Ben Sheldon$^1$, \& Tim Coulson$^2$}
 \date{}
 
@@ -158,6 +158,23 @@ We find that the interaction between the rotifer and algae is consistent through
 Our study suggests that dynamical processes may sometimes not be consistent and generalisable across systems, even when they are as close to identical as experimentation permits. % that's not new
 We discuss these results and hint at the underlying impact of evolution driving differences in these systems.
 
+%% GRADIENT MATCHING %%
+In previous work, we developed a simulation-based approach to fit NODE systems to time series data (\cite{Bonnaffe2021a}).
+We would first simulate the NODE system over the entire time series.
+Then we would compute the error between the predictions of the NODE model and the observations. 
+Finally, we would change the weights of the NODEs to minimise this error. 
+There are two caveats with this approach.
+The first caveat is that the NODE system has to be simulated over the entire range of the data at every step of the optimisation, which is computationally expensive to perform.
+Second, the numerical integration prevents the computation of gradients of the posterior distribution of the model, which prevents the use of efficient gradient descent approaches.
+
+Ellner and colleagues introduced a technique called \textit{gradient matching} to fit ODEs (\cite{Ellner2002}).
+The approach involves two steps. 
+First, they interpolate the time series of each state variable with cubic splines to obtain interpolated states and dynamics. 
+Second, they train each ODE to satisfy the interpolated state and dynamics. 
+The interpolation allows them to bypass the simulation of the ODE system, and further makes the error function mathematically tractable, allowing for the computation of gradients. 
+%
+%% talk about DGM
+
 %% 
 \section{Material and Methods}
 
@@ -167,10 +184,6 @@ We discuss these results and hint at the underlying impact of evolution driving 
 We aim to provide a nonparametric method for estimating ecological interactions from time series data of species density. 
 We do this by approximating the dynamics of each species with neural ordinary differential equations (NODEs, \cite{Bonnaffe2021a}). 
 We then compute ecological interactions as the sensitivity of these dynamics to a change in the respective species densities.
-
-% The aim of the modelling approach is to infer the drivers of the dynamics of each species from the time series data. 
-% More specifically, we want to quantify the effect of a change in the density of one species on the dynamics of the other species.
-% In this way we can understand which, and to what extent, species interactions drive population dynamics.
 
 %%
 \subsection{Neural ordinary differential equation}
@@ -186,171 +199,122 @@ So that the approach includes lag effects through interacting state variables, n
 
 We first consider a general NODE system,
 
-% \vspace{-0.5cm}
-% \begin{equation}
-%     \frac{dy_i}{dt} := \psi\left(y,\theta_i \right) \\
-% \end{equation}
+\vspace{-0.5cm}
+\begin{equation}
+    \frac{dy_i}{dt} = f_p \left(y,\theta_i \right), \\
+\end{equation}
+
+where $dy_i/dt$ denotes the temporal change in the $i^{th}$ variable of the system, $y_i$, as a function of the other state variables $y = \{ y_1, y_2, ..., y_I\}$.
+The function $f_p$ is a nonparametric function of the state variables and its shape is controlled by the parameter vector $\theta_i$.
+In the context of NODEs, non-parametric functions are ANNs.
+The most common class of ANN used in NODEs are single-layer fully connected feedforward ANNs (e.g. \cite{Wu2005}), also referred to by single layer perceptrons (SLPs, \cite{Bonnaffe2021a}),
 
 \vspace{-0.5cm}
 \begin{equation}
-    \frac{dy_i}{dt} = f_p \left(\mathbf{y},\mathbf{\theta}_i \right) \\
+    f_p \left(y, \theta_i \right) = f_\lambda \left( \theta_i^{(0)} + \sum_{j=1}^{J} \theta^{(1)}_{ij} f_\sigma \left( \theta^{(2)}_{ij} + \sum_{k=1}^{K} \theta^{(3)}_{ijk} y_k \right) \right),
 \end{equation}
 
-
-where $dN_i/dt$ denotes the change in the density of $i^{th}$ species, $N_i \in \mathcal{R}^+$, in continuous time, as a function of the density of other species $N = \{ N_1, N_2, ..., N_I\}$.
-The per-capita growth rate $r_i$ is a non-parametric function of the density of each species.
-The shape of the non-parametric function is controlled by the parameter vectors $\Theta_i$.
-In the context of NODEs, each non-parametric function is defined as an ANN function of the state variables.
-The most common class of ANN used for NODEs are single layer perceptrons (SLPs),
-
-\vspace{-0.5cm}
-\begin{equation}
-    f_p \left(\mathbf{y}, \mathbf{\theta}_i \right) := f_\lambda \left( \theta_i^{(0)} + \sum_{j=1}^{J} \theta^{(1)}_{ij} f_\sigma \left( \theta^{(2)}_{ij} + \sum_{k=1}^{K} \theta^{(3)}_{ijk} y_k \right) \right)
-\end{equation}
-
-which feature a single layer that  maps the inputs, here the species densities $N$, to a single output, the per-capita growth rate of the focal population $r_i$.
-The parameter vector $\Theta_i$ contains the weights $\theta^{(l)}_{jk}$ of the connections in the SLPs.
-SLPs can be viewed as weighted sums of activation functions $f_\sigma$.
-% We consider sigmoid basis functions, as they are commonly used and their capacity to approximate any continuous function is well established theoretically (\cite{Funahashi1993}). 
-% The number of units in the hidden layer $I$ is typically 10 (e.g. \cite{Wu2005}). 
-More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
+which feature a single layer, containing $J$ neurons, that maps the inputs, here the state variables $y$, to a single output, the dynamics of state variable $i$, $dy_i/dt$.
+The parameter vector $\theta_i$ contains the weights $\theta^{(l)}$ of the connections in the SLPs.
+SLPs can be viewed as weighted sums of activation functions $f_\sigma$, which are usually chosen to be \textit{sigmoid} functions $f(x) = 1/(1+\exp(-x))$.
+The link function $f_\lambda$ allows to map the output of the network to a specific domain, for instance applying \textit{tanh} will constrain the dynamics between -1 and 1, $dy_i/dt \in~]-1,1[$. 
 
 %%
-\subsection{Fitting NODEs by Bayesian gradient matching}
+\subsection{Fitting NODEs by Bayesian neural gradient matching}
 
-This section describes how to estimate the parameters $\Theta$ of the NODE system given a set of time series.
-In previous work, we developed a simulation-based approach to fit NODE systems to time series data (\cite{Bonnaffe2021a}).
-We would first simulate the NODE system over the entire time series.
-Then we would compute the error between the predictions of the NODE model and the observations. 
-Finally, we would change the weights of the NODEs to minimise this error. 
-There are two caveats with this approach.
-The first caveat is that the NODE system has to be simulated over the entire range of the data at every step of the optimisation.
-This step is computationally expensive to perform.
-Second, the numerical integration prevents the computation of gradients of the posterior distribution of the model.
-This prevents the use of efficient gradient descent approaches.
-
-In this study, we propose to use a novel approach, \textit{Bayesian gradient matching} (BGM), to fit NODEs, which relies on data interpolation to approximate states and dynamics, and Bayesian regularisation to limit overfitting and quantify uncertainty.
-The method we propose here is derived from the \textit{gradient matching} approach that Ellner and colleagues developed to fit ODEs (\cite{Ellner2002, Wu2005}).
-We proceed in two steps, presented graphically in Fig. 1 and detailed in the following sections. 
-First, we interpolate the time series of each variable, to obtain interpolated states and dynamics. 
-Second, we train each NODE to satisfy the interpolated state and dynamics, thereby avoiding the simulation step of the previous method. 
+In this section, we describe how to estimate the parameters $\theta$ of the NODE system given a set of time series. 
+Fitting NODEs can be highly computationally intensive, which hinders uncertainty quantification, cross-validation, and model selection (\cite{Bonnaffe2021a}).
+We solve this issue by introducing \textit{Bayesian neural gradient matching} (BNGM), a computationally efficient approach to fit NODEs.
+The approach involves two steps (Fig. 1).
+First, we interpolate the state variables and their dynamics with neural networks.
+Second, we train each NODE to satisfy the interpolated state and dynamics.
+This bypasses the costly numerical integration of the NODE system and provides a fully mathematically tractable expression for the posterior distribution of the parameter vector $\theta$. 
+We coin the term BNGM to emphasise two important refinements of the standard gradient matching algorithm. 
+The first is that we use neural networks as interpolation functions, and the second is that we use Bayesian regularisation to limit overfitting and estimate uncertainty around parameters.
 
 %%
-\textbf{Data interpolation}
+\textbf{Interpolating the time series}
 
-We interpolate the time series and differentiate it with respect to time in order to approximate the state and dynamics of the system.
+The first step is to interpolate the time series and differentiate it with respect to time in order to approximate the state and dynamics of the variables.
 We perform the interpolation via non-parametric regression of the interpolating functions on the time series data,
 
-% \vspace{-0.5cm}
-% \begin{equation}
-%     \epsilon^{(o)}_{it}(\omega_i ~|~ Y_{it}) := Y_{it} - \tilde{y}_i(t,\omega_i)
-% \end{equation}
+\vspace{-0.5cm}
+\begin{equation}
+    Y_{it} = \tilde{y}_i(t,\omega_i) + \epsilon^{(o)}_{it},
+\end{equation}
+
+where $Y_{it}$ is observed value of the state variable $i$ at time $t$, $\tilde{y}_i(t,\omega_i)$ is the value predicted by the interpolation function given the parameter vector $\omega_i$, and $\epsilon^{(o)}_{it}$ is the observation error between the observation and prediction. 
+The interpolation function is chosen to be a neural network,
 
 \vspace{-0.5cm}
 \begin{equation}
-    Y_{it} = \tilde{y}_i(t,\omega_i) + \epsilon^{(o)}_{it}
+    \tilde{y}_i (t,\omega_i) = f_\lambda \left( \omega_i^{(0)} + \sum_{j=1}^{J} \omega^{(1)}_{ij} f_\sigma \left( \omega^{(2)}_{ij} + \omega^{(3)}_{ij} t \right) \right),
 \end{equation}
 
-
-where the observation error, $\epsilon^{(o)}_{it}$, is defined as the difference between the observed value of the variable at time $t$, $n_{it}$, and the value predicted by the interpolating function $\tilde{N}_i(t,\Omega_i)$. 
-The interpolating function is chosen to be a SLP,
+where the parameter vector $\omega_i$ contains the weights $\omega^{(l)}$ of the network.
+We can further differentiate this expression with respect to time to obtain an interpolation of the dynamics of the state variables, 
 
 \vspace{-0.5cm}
 \begin{equation}
-    \tilde{y}_i (t,\omega_i) = f_\lambda \left( \omega_i^{(0)} + \sum_{j=1}^{J} \omega^{(1)}_{ij} f_\sigma \left( \omega^{(2)}_{ij} + \omega^{(3)}_{ij} t \right) \right)
+    \frac{d\tilde{y}_i}{dt} (t, \omega_i) = \sum_{j=1}^{J} \omega^{(1)}_{ij} \omega^{(3)}_{ij} \frac{\partial f_\sigma}{\partial t} \left(\omega^{(2)}_{ij} + \omega^{(3)}_{ij} t \right) \frac{\partial f_\lambda}{\partial t} \left ( \omega^{(0)}_{i} + \sum_{k=1}^{J} \omega^{(1)}_{ik} f_\sigma \left( \omega^{(2)}_{ik} + \omega^{(3)}_{ik} t \right) \right ). 
 \end{equation}
-
-where $\tilde{N}(t,\Omega_i)$ is the interpolated state variable, defined as a weighted sum of activation functions of time.
-The interpolation parameter vector $\Omega_i$ contains the weights $\omega$ of the SLP.
-If $f_\sigma := sin$, then the weights $\omega^{(1)}_{j}$, $\omega^{(2)}_{j}$, and $\omega^{(3)}_{j}$ control the amplitude, shift, and frequency of the oscillations in the time series, respectively.
-% We found sinusoid activation functions to be most efficient for interpolating population dynamics compared to other functions (such as sigmoid, hyperbolic).
-Following this approach we obtain directly an approximation of the dynamics of the state variable by differentiating the SLP with respect to time,
-
-\vspace{-0.5cm}
-\begin{equation}
-    \Rightarrow \frac{d\tilde{y}_i}{dt} (t, \omega_i) = \sum_{j=1}^{J} \omega^{(1)}_{ij} \omega^{(3)}_{ij} \frac{\partial f_\sigma}{\partial t} \left(\omega^{(2)}_{ij} + \omega^{(3)}_{ij} t \right) \frac{\partial f_\lambda}{\partial t} \left ( \omega^{(0)}_{i} + \sum_{k=1}^{J} \omega^{(1)}_{ik} f_\sigma \left( \omega^{(2)}_{ik} + \omega^{(3)}_{ik} t \right) \right ) 
-\end{equation}
-
-% as well as an analytical expression of the interpolated per-capita growth rate of the populations, by combining equation (4) and (5)
-% 
-% \vspace{-0.5cm}
-% \begin{equation}
-%     \tilde{r}_N (t,\Omega_N) := \frac{1}{\tilde{N}} \frac{\partial \tilde{N}}{\partial t} = \sum_{i=1}^{I} \omega_{i0} \pi \omega_{i2} cos \left(\pi (\omega_{i1} + \omega_{i2} t) \right)
-% \end{equation}
-
-% In practice, we log-transform the densities, to cast the variables on the real number space. 
-% This also allows us to re-write equation (6) in a more compact form, namely $\tilde{r}_Y = \frac{\partial }{\partial t} \log \tilde{Y}$.
-% We standardise the log-densities with respect the their mean and standard deviation (i.e. $Z=(log(Y)-\mu)/\sigma$).
-% This is to facilitate the training of the NODE by bringing the parameters in the neural network on the same scale.
 
 %%
-\textbf{Fitting NODEs to interpolated data}
+\textbf{Fitting NODEs to the interpolated time series}
 
-In a second step, we train the NODE system (1) to satisfy the interpolated dynamics.
-Thanks to the interpolation step, this simply amounts to performing a non-parametric regression of each NODE (equation 1) on the interpolated dynamics (equation 5),
+The second step is to train the NODE system (Eq. 1) to satisfy the interpolated dynamics.
+Thanks to the interpolation step, this simply amounts to performing a non-parametric regression of each NODE (Eq. 1) on the interpolated dynamics (Eq. 5),
 
-% \vspace{-0.5cm}
-% \begin{equation}
-%     \epsilon^{(p)}_{it}(\Theta_i ~|~ \Omega) := \frac{\partial \tilde{N}_i}{\partial t} (t, \Omega_i) - \frac{dN_i}{dt} \left( \tilde{N},\Theta_i \right)
-% \end{equation}
- 
 \vspace{-0.5cm}
 \begin{equation}
-    \frac{\partial \tilde{y}_i}{\partial t} (t, \omega_i) = \frac{dy_i}{dt} \left( \tilde{y},\theta_i \right) + \epsilon^{(p)}_{it}
+    \frac{\partial \tilde{y}_i}{\partial t} (t, \omega_i) = \frac{dy_i}{dt} \left( \tilde{y},\theta_i \right) + \epsilon^{(p)}_{it},
 \end{equation}
 
-
-where the process error, $\epsilon^{(p)}_{it}$, is defined as the difference between the interpolated dynamics $\partial \tilde{N}_i/\partial t$ and the NODE $dN_i/dt$, given the interpolated state variables $\tilde{N}$. 
+where $\epsilon^{(p)}_{it}$ is the process error, namely the difference between the interpolated dynamics, $\partial \tilde{y}_i/\partial t$ and the NODE, $dy_i/dt$, given the interpolated state variables $\tilde{y} = \{\tilde{y}_1,\tilde{y}_2, ...,\tilde{y}_I\}$. 
 
 %%
 \textbf{Bayesian regularisation}
 
-In the context of standard gradient matching, equations (3) and (6) would be sufficient to fit the NODE system (1) to the time series via standard optimisation.
-More specifically, we could find the parameter vector $\Omega_i$ and $\Theta_i$ that minimise the sum of squared observation and process errors, $\epsilon_{it}^{(o)}$ and $\epsilon_{it}^{(p)}$, in equation (3) and (6).
-However, this approach may be prone to overfitting, and would not provide estimates of uncertainty around model predictions. 
-To account for this, we introduce Bayesian gradient matching, by combining gradient matching with Bayesian regularisation. 
-This allows us to control for overfitting by constraining parameters with prior distributions (\cite{Cawley2007}), and to root our interpretation of uncertainty in a statistically sound framework.
+In the context of standard gradient matching, defining the observation model (Eq. 3) and process model (Eq. 6) would be sufficient to fit the NODE system (Eq. 1) to the time series via optimisation.
+We could find the parameter vector $\omega_i$ and $\theta_i$ that minimise the sum of squared observation and process errors, $\epsilon_{it}^{(o)}$ and $\epsilon_{it}^{(p)}$ (Eq. 3 and 6).
+However, this approach is prone to overfitting, and does not provide estimates of uncertainty around model predictions. 
+To account for this, we introduce Bayesian regularisation, which allows us to control for overfitting by constraining parameters with prior distributions (\cite{Cawley2007}), and to root our interpretation of uncertainty in a statistically sound framework.
 
-First, we define a simple Bayesian model to fit the interpolating functions to the time series data.
-We assume normal distributions for the observation error, $\epsilon^{(o)}_{ij} \sim \mathcal{N}(0,\sigma_i)$, and for the prior density of the parameters, $\Omega_{ij} \sim \mathcal{N}(0,\gamma_{ij})$.
-We are only interested in fitting the time series accurately, irrespective of the value of $\sigma_i$ and $\gamma_{ij}$.
-So we perform inference on the second level, by optimising the marginal posterior distribution.
-To do this, we use the approach developed by Cawley and Talbot to average out the value of the parameters $\sigma_i$ and $\gamma_{ij}$ in the full posterior distribution (\cite{Cawley2007}), assuming gamma hyperpriors $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi \right\}$ for both parameters.
+First, we define a simple Bayesian model to fit the interpolation functions (Eq. 3) to the time series data.
+We assume normal distributions for the observation error, $\epsilon^{(o)}_{ij} \sim \mathcal{N}(0,\sigma_i)$, and for the parameters, $\omega_{ij} \sim \mathcal{N}(0,\gamma_{ij})$.
+Here, we are only interested in interpolating the time series accurately, irrespective of the value of $\sigma_i$ and $\gamma_{ij}$.
+% So we perform inference on the second level, by optimising the marginal posterior distribution.
+Therefore, we use the approach developed by Cawley and Talbot to average out the value of the parameters $\sigma_i$ and $\gamma_{ij}$ in the full posterior distribution (\cite{Cawley2007}), assuming gamma hyperpriors $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi \right\}$ for both parameters.
 This yields the following expression for the log marginal posterior density of the parameters,
 
 \vspace{-0.5cm}
 \begin{equation}
-    \log P(\Omega_i ~|~ n_i) \propto - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \left( \epsilon^{(o)}_{ij} \right)^2 \right) - \frac{K}{2} \log \left(1 + \sum_{k=1}^{K} \Omega_{ik}^2 \right)
+    \log P(\omega_i ~|~ Y_i) \propto - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \left( \epsilon^{(o)}_{ij} \right)^2 \right) - \frac{K}{2} \log \left(1 + \sum_{k=1}^{K} \omega_{ik}^2 \right)
 \end{equation}
 
-where $P$ denotes the marginal posterior density,
-$n_i$ corresponds to the vector of observed densities of species $i$, 
+where $P$ is the marginal posterior density,
+$\omega_i = \{\omega_{i1},\omega_{i2},...,\omega_{iK}\}$ is the observation parameter vector controlling the interpolation function,
+$Y_i = \{Y_{i1},Y_{i2},...,Y_{iJ}\}$ corresponds to the sequence of observations of state variable $i$ at time step $j$, 
 $J$ is the total number of time steps in the time series, 
-$\epsilon^{(o)}_{ij}$ is the observation error at time step $j$ for species $i$, 
-% $\sigma^{(o)}$ is the standard deviation of the likelihood, 
+$\epsilon^{(o)}_{ij}$ is the observation error at time step $j$ between the interpolated and observed  value of variable $i$, 
 $K$ is the total number of parameters. 
-%$\gamma_j$ is the standard deviation of the prior distribution of parameter $\Omega_j$.
 More details on how to derive this expression can be found in a supplementary file (Supplementary A).
 
-% \vspace{-0.5cm}
-% \begin{equation}
-%     \log P(\Omega | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_i \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
-% \end{equation}
-
 Then, we define a simple Bayesian model to fit the NODEs to the interpolated dynamics, given the interpolated states.
-We assume normal distributions for the observation error, $\epsilon^{(p)}_{ij} \sim \mathcal{N}(0,\sigma_i)$, and for the prior density of the parameters, $\Theta_{jk} \sim \mathcal{N}(0,\delta_{jk})$.
+We assume normal distributions for the observation error, $\epsilon^{(p)}_{ij} \sim \mathcal{N}(0,\sigma_i)$, and parameters, $\theta_{ik} \sim \mathcal{N}(0,\delta_{ik})$.
 This gives the following expression for the log posterior density of the parameters given the interpolations,
 
 \vspace{-0.5cm}
 \begin{equation}
-    \log p(\Theta_i ~|~ \Omega) \propto - \frac{1}{2} \sum_{J=1}^{J} \left( \frac{\epsilon^{(p)}_{ij}}{\sigma_i} \right)^2 - \frac{1}{2} \sum_{k=1}^{K} \left( \frac{\Theta_{ik}}{\delta_{ik}} \right)^2
+    \log p(\theta_i ~|~ \omega) \propto - \frac{1}{2} \sum_{J=1}^{J} \left( \frac{\epsilon^{(p)}_{ij}}{\sigma_i} \right)^2 - \frac{1}{2} \sum_{k=1}^{K} \left( \frac{\theta_{ik}}{\delta_{ik}} \right)^2
 \end{equation}
 
-where $\Omega$ corresponds to the interpolation parameters, 
-$\epsilon^{(p)}_{ij}$ is the process error at time step $j$ for species $i$, 
+where $\theta_i = \{\theta_{i1},\theta_{i2},...,\theta_{iK}\}$ are the NODE parameters of the $i^{th}$ variable,
+$\omega = \{\omega_1,\omega_2,...,\omega_I\}$ are the interpolation parameters of each state variable, 
+$\epsilon^{(p)}_{ij}$ is the process error of variable $i$ at time step $j$ between the interpolated dynamics and NODE prediction, 
 $\sigma_i$ is the standard deviation of the likelihood, 
 $K$ is the total number of parameters, 
-$\delta_{ik}$ is the standard deviation of the prior distribution of parameter $\Theta_{ik}$.
+$\delta_{ik}$ is the standard deviation of the prior distribution of parameter $\theta_{ik}$.
 
 This approach allows us to limit overfitting by adjusting the constraint on the parameters, which is controlled by the standard deviation of the parameter prior distributions, $\delta_{ik}$ (\cite{Cawley2007, Bonnaffe2021a}).
 This can be used to control the degree of non-linearity in the response, but also to eliminate specific variables from the model by constraining their parameters to be close to zero.
@@ -361,34 +325,37 @@ We repeat this process for increasing values of $\delta_{i}$, until we find the 
 %%
 \subsection{Inference and uncertainty quantification}
 
-This allows us to calculate the gradient of the posterior distributions with respect to each parameter.
-We can hence use efficient optimisation algorithms, such as BFGS, to optimise the posterior distributions.
-
-
-Finally, we estimate uncertainty in parameter values through anchor sampling, which produces approximate Bayesian estimates of the posterior distribution of the parameters (\cite{Pearce2018}).
-The technique is simple in that it requires sampling a parameter vector from the prior distributions, and then optimising the posterior distribution from this starting point.
-By repeatedly taking samples, the sampled distribution approaches the posterior distribution and provides estimates and error around the quantities that can be derived from the models.
-The expectation of the quantities can then be approached by computing the mean of the approximated posterior distributions.
+Finally, we estimate uncertainty in parameter values by \textit{anchored ensembling}, which produces approximate Bayesian estimates of the posterior distribution of the parameters (\cite{Pearce2018}).
+The technique requires sampling a parameter vector from the prior distributions, $\theta_{i} \sim \mathcal{N}(0,\delta_{i})$, and then optimising the posterior distribution from this starting point, $\theta^*_i = \underset{\theta_i}{argmax}~\log p(\theta_i~|~\omega)$.
+By repeatedly taking samples, the sampled distribution $\theta^*$ approaches the posterior distribution and provides estimates and error around the quantities that can be derived from the models.
+The expectation and uncertainty around derived quantities can then be obtained by computing the mean and variance of the approximated posterior distributions.
 The great strength of this approach is that it is unlikely to get stuck in local maxima and provides a more robust optimisation of the posterior.
-In this study, we took 100 posterior samples for each time series, namely a hundred samples for the interpolation, and another hundred for the fitting of the NODE.
-The initial value of the parameters were picked from a random normal distribution with parameters $\sigma \geq 0.4$, which prevented underfitting the time series.
-We insured that there was moderate temporal autocorrelation and normality by visualising the residuals of the models.
-We also insured that the results were repeatable by running the entire fitting process a second time.
-We did not perform cross validation of results as we were only interested in estimating effects within the time series considered, rather than predicting future time steps.
-
 
 %%
-\subsection{Model analysis}
+\subsection{Analysing NODEs}
 
-We analyse the shape of the per-capita growth rates to recover the interaction between the three species in the system.
-In particular, we look at the effect and contribution of each species to the dynamics of the other.
-The effect is computed as the sensitivity (i.e. the gradient) of the per-capita growth rate of a given species with respect to the density of the other species.
-The contribution is computed following the Geber method (\cite{Hairston2005}), which comes down to multiplying the dynamics of a variable by its effects on the other variables.
-We further compute the importance of a species in driving the dynamics of another by computing its relative contribution compared to other species at each time step.
-More details on how to recover these quantities can be found in our previous study (\cite{Bonnaffe2021a}).
+In this study we are mainly interested in two outcome of NODEs, namely inferring the direction (or effect) and strength (or contribution) of interactions between the state variables (\cite{Bonnaffe2021a}).
+We define the direction of the interaction between variable $y_i$ and $y_j$ as the derivative of the dynamics of $y_j$ with respect to $y_i$, and vice versa, 
+
+\vspace{-0.5cm}
+\begin{equation}
+    e_{ijt} = \frac{\partial}{\partial y_j} \frac{dy_i}{dt}.
+\end{equation}
+
+Knowing the direction, however, is not sufficient to determine the importance of a variable for the dynamics of another. 
+Given the same effects, a variable that fluctuates a lot will have a greater impact on the dynamics of a focal variable, compared to a variable that remains quasi-constant.
+We hence compute the strength of the interaction by multiplying the dynamics of a variable $y_j$ by its effect on the focal variable $y_i$, also known as the Geber method (\cite{Hairston2005}),
+
+\vspace{-0.5cm}
+\begin{equation}
+    c_{ijt} = \frac{dy_j}{dt} \frac{\partial}{\partial y_j} \frac{dy_i}{dt}.
+\end{equation}
+
+To summarise results across the entire time series we can compute the mean effects $e_{ij}$ by averaging $e_{ijt}$ across the entire time series, $e_{ij} = K^{-1} \sum_k e_{ijk}$, as well as the relative total contribution, $c_{ij}$, of a variable to the dynamics of another by computing the relative sum of square contributions, $c_{ij} = \left( \sum_{ijk} c_{ijk}^{2} \right)^{-1} \sum_t c_{ijt}^2$. By computing the direction and strength of interactions between all the variables in the system we can build dynamically informed ecological interaction networks (See case study below for examples).
+Other metrics can be computed by analysing the NODEs, such as equilibrium states, these are discussed in our previous work (\cite{Bonnaffe2021a}). 
 
 %%
-\section{Case study}
+\section{Case study 3: rotifer, algae, and flagellate}
 
 %%
 \subsection{System}
@@ -396,16 +363,17 @@ More details on how to recover these quantities can be found in our previous stu
 We consider a three-species laboratory microcosm consisting of an algal prey (\textit{Chlorella autrophica}), a flagellate intermediate predator (\textit{Oxyrrhis marina}), and a rotifer top predator (\textit{Brachionus plicatilis}).
 The algal prey is consumed by the intermediate and top predator, the top predator also consumes the intermediate predator (\cite{Arndt1993}).
 The dynamics of this system, here the daily change in the density of each species, were recorded in three replicated time series experiments performed by Hiltunen and colleagues (\cite{Hiltunen2013}, Fig. 1).
-The aim of their experiment was to determine which type of population dynamics would arise in a system with two predators competing for the same resource (the algae), where one predator (the rotifer) would also be able to consume its competitor (the flagellate).
-According to their expectations, they found prey-predator oscillations, where the lag between the density peaks of each species reflected their position in the food web.
-Namely that the peak of algae preceded the flagellate peak, which itself preceded the rotifer peak.
-
-Their microcosms are close to true replicates in that environmental conditions, namely temperature, salinity, and nutrient influx, where maintained constant, and initial conditions, that is the initial density of each species, were shared across all replicates. 
-In spite of that, they still found evidence for algae evolution in some parts of the time series, which resulted in a shift of the dynamics from fast prey-predator cycles to slower oscillations, similar to those documented in previous studies on similar systems (\cite{Yoshida2003, Becks2010}), even in lineages where genetic variation in predator defense traits was eliminated at the start of the experiment. 
-Consequently, the time series that they reported are the ones that did not present evidence of evolution, and therefore displayed purely ecological dynamics.
 
 We use their time series because they describe a simple yet biologically realistic ecosystem, and because the quality of the replication of their microcosm reduces as much as possible observational and experimental error, and rules out environmental variation (\cite{Hiltunen2013}).
 We digitised these time series by extracting by hand the coordinates of every points in the referential of the axis of the graph of the original study, and analysed them.
+
+% The aim of their experiment was to determine which type of population dynamics would arise in a system with two predators competing for the same resource (the algae), where one predator (the rotifer) would also be able to consume its competitor (the flagellate).
+% According to their expectations, they found prey-predator oscillations, where the lag between the density peaks of each species reflected their position in the food web.
+% Namely that the peak of algae preceded the flagellate peak, which itself preceded the rotifer peak.
+% 
+% Their microcosms are close to true replicates in that environmental conditions, namely temperature, salinity, and nutrient influx, where maintained constant, and initial conditions, that is the initial density of each species, were shared across all replicates. 
+% In spite of that, they still found evidence for algae evolution in some parts of the time series, which resulted in a shift of the dynamics from fast prey-predator cycles to slower oscillations, similar to those documented in previous studies on similar systems (\cite{Yoshida2003, Becks2010}), even in lineages where genetic variation in predator defense traits was eliminated at the start of the experiment. 
+% Consequently, the time series that they reported are the ones that did not present evidence of evolution, and therefore displayed purely ecological dynamics.
 
 %%
 \subsection{Model specifications}
@@ -447,6 +415,40 @@ The SLP can be viewed as a weighted sum of basis functions $f_\sigma$ of the sta
 In this study we consider sigmoid basis functions, as they are commonly used and their capacity to approximate any continuous function is well established theoretically (\cite{Funahashi1993}). 
 The number of units in the hidden layer $N$ is chosen to be 10, as this is a commonly used number for systems of that size (e.g. \cite{Wu2005}). 
 More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
+
+% If $f_\sigma := sin$, then the weights $\omega^{(1)}_{j}$, $\omega^{(2)}_{j}$, and $\omega^{(3)}_{j}$ control the amplitude, shift, and frequency of the oscillations in the time series, respectively.
+% We found sinusoid activation functions to be most efficient for interpolating population dynamics compared to other functions (such as sigmoid, hyperbolic).
+
+% as well as an analytical expression of the interpolated per-capita growth rate of the populations, by combining equation (4) and (5)
+% 
+% \vspace{-0.5cm}
+% \begin{equation}
+%     \tilde{r}_N (t,\Omega_N) := \frac{1}{\tilde{N}} \frac{\partial \tilde{N}}{\partial t} = \sum_{i=1}^{I} \omega_{i0} \pi \omega_{i2} cos \left(\pi (\omega_{i1} + \omega_{i2} t) \right)
+% \end{equation}
+
+% In practice, we log-transform the densities, to cast the variables on the real number space. 
+% This also allows us to re-write equation (6) in a more compact form, namely $\tilde{r}_Y = \frac{\partial }{\partial t} \log \tilde{Y}$.
+% We standardise the log-densities with respect the their mean and standard deviation (i.e. $Z=(log(Y)-\mu)/\sigma$).
+% This is to facilitate the training of the NODE by bringing the parameters in the neural network on the same scale.
+
+% %% move this to application section
+% We would like to stress that this general form can be changed to represent biological constraints on the state variables.
+% In particular for population dynamics, the state variables are strictly positive population densities, $y_i = N_i \in~\mathcal{R^+}$.
+% We could hence re-write equation (1) as, $dN_i/dt = f_p(N,\theta_i)N_i$, where the SLPs approximate the per-capita growth rate of the populations.
+% More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
+
+% In this study, we took 100 posterior samples for each time series, namely a hundred samples for the interpolation, and another hundred for the fitting of the NODE.
+% The initial value of the parameters were picked from a random normal distribution with parameters $\sigma \geq 0.4$, which prevented underfitting the time series.
+% We insured that there was moderate temporal autocorrelation and normality by visualising the residuals of the models.
+% We also insured that the results were repeatable by running the entire fitting process a second time.
+% We did not perform cross validation of results as we were only interested in estimating effects within the time series considered, rather than predicting future time steps.
+ 
+% We analyse the shape of the per-capita growth rates to recover the interaction between the three species in the system.
+% In particular, we look at the effect and contribution of each species to the dynamics of the other.
+% The effect is computed as the sensitivity (i.e. the gradient) of the per-capita growth rate of a given species with respect to the density of the other species.
+% The contribution is computed following the Geber method (\cite{Hairston2005}), which comes down to multiplying the dynamics of a variable by its effects on the other variables.
+% We further compute the importance of a species in driving the dynamics of another by computing its relative contribution compared to other species at each time step.
+% More details on how to recover these quantities can be found in our previous study (\cite{Bonnaffe2021a}).
 
 %%
 \section{Results}
