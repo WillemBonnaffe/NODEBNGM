@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  29 JUN 2022 23:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  29 JUN 2022 23:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -667,76 +667,76 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 203.
  [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17]
-[18] [19] [20] [21] [22] [23] [24] [25]
-Overfull \hbox (37.03731pt too wide) in paragraph at lines 599--600
+[18] [19] [20] [21] [22] [23] [24]
+Overfull \hbox (37.03731pt too wide) in paragraph at lines 594--595
 []\OT1/ptm/m/n/10.95 All data and code will be made fully avail-able at https:/
 /github.com/WillemBonnaffe/NODER/rotifer. 
  []
 
-[26]
-Overfull \hbox (3.92645pt too wide) in paragraph at lines 608--608
+
+Overfull \hbox (3.92645pt too wide) in paragraph at lines 603--603
 [][]\OT1/ptm/m/n/10.95 Arndt, H. (1993). ``Ro-tifers as preda-tors on com-po-ne
 nts of the mi-cro-bial web (bac-te-ria, het-erotrophic
  []
 
-[27] [28] [29]
-Overfull \hbox (1.30032pt too wide) in paragraph at lines 608--608
+[25] [26] [27]
+Overfull \hbox (1.30032pt too wide) in paragraph at lines 603--603
 \OT1/ptm/m/n/10.95 non-parametric ap-proach''. In: \OT1/ptm/m/it/10.95 Pro-ceed
 -ings of the Royal So-ci-ety B: Bi-o-log-i-cal Sci-ences \OT1/ptm/m/n/10.95 267
 .1453,
  []
 
-[30] [31]
-<figures/main.pdf, id=118, page=1, 7452.10712pt x 4670.36543pt>
+[28] [29] [30]
+<figures/main.pdf, id=115, page=1, 7452.10712pt x 4670.36543pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 1>
-Package pdftex.def Info: figures/main.pdf , page1 used on input line 616.
+Package pdftex.def Info: figures/main.pdf , page1 used on input line 611.
 (pdftex.def)             Requested size: 430.00462pt x 269.44897pt.
  [1 <./figures/main.pdf>]
-<figures/main.pdf, id=176, page=2, 517.15009pt x 512.14938pt>
+<figures/main.pdf, id=173, page=2, 517.15009pt x 512.14938pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 2>
-Package pdftex.def Info: figures/main.pdf , page2 used on input line 635.
+Package pdftex.def Info: figures/main.pdf , page2 used on input line 630.
 (pdftex.def)             Requested size: 430.00462pt x 425.86536pt.
 
 Overfull \vbox (15.38884pt too high) has occurred while \output is active []
 
 
 [2 <./figures/main.pdf>]
-<figures/main.pdf, id=192, page=3, 517.15009pt x 512.14938pt>
+<figures/main.pdf, id=189, page=3, 517.15009pt x 512.14938pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 3>
-Package pdftex.def Info: figures/main.pdf , page3 used on input line 655.
+Package pdftex.def Info: figures/main.pdf , page3 used on input line 650.
 (pdftex.def)             Requested size: 430.00462pt x 425.86536pt.
 
 Overfull \vbox (28.98885pt too high) has occurred while \output is active []
 
 
 [3 <./figures/main.pdf>]
-<figures/main.pdf, id=208, page=4, 517.15009pt x 512.14938pt>
+<figures/main.pdf, id=205, page=4, 517.15009pt x 512.14938pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 4>
-Package pdftex.def Info: figures/main.pdf , page4 used on input line 674.
+Package pdftex.def Info: figures/main.pdf , page4 used on input line 669.
 (pdftex.def)             Requested size: 430.00462pt x 425.86536pt.
 
 Overfull \vbox (1.78883pt too high) has occurred while \output is active []
 
 
 [4 <./figures/main.pdf>]
-<figures/main.pdf, id=225, page=5, 517.15009pt x 512.14938pt>
+<figures/main.pdf, id=221, page=5, 517.15009pt x 512.14938pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 5>
-Package pdftex.def Info: figures/main.pdf , page5 used on input line 691.
+Package pdftex.def Info: figures/main.pdf , page5 used on input line 686.
 (pdftex.def)             Requested size: 430.00462pt x 425.86536pt.
 
 Overfull \vbox (15.38884pt too high) has occurred while \output is active []
 
 
 [5 <./figures/main.pdf>]
-<figures/main.pdf, id=241, page=6, 5184.13202pt x 2203.75812pt>
+<figures/main.pdf, id=238, page=6, 5184.13202pt x 2203.75812pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 6>
-Package pdftex.def Info: figures/main.pdf , page6 used on input line 708.
+Package pdftex.def Info: figures/main.pdf , page6 used on input line 703.
 (pdftex.def)             Requested size: 430.00462pt x 182.79419pt.
  [6 <./figures/main.pdf>]
 Overfull \vbox (12.72311pt too high) has occurred while \output is active []
@@ -748,10 +748,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13607 strings out of 478268
- 256369 string characters out of 5846347
- 828684 words of memory out of 5000000
- 31655 multiletter control sequences out of 15000+600000
+ 13578 strings out of 478268
+ 255651 string characters out of 5846347
+ 825257 words of memory out of 5000000
+ 31626 multiletter control sequences out of 15000+600000
  511000 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,8n,68p,1849b,1203s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -767,10 +767,10 @@ ts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
 
-Output written on main.pdf (44 pages, 492549 bytes).
+Output written on main.pdf (43 pages, 489384 bytes).
 PDF statistics:
- 337 PDF objects out of 1000 (max. 8388607)
- 226 compressed objects within 3 object streams
+ 334 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -803,65 +803,6 @@
     \field{year}{2007}
   \endentry
 
-  \entry{Chen1993}{article}{}
-    \name{author}{2}{}{%
-      {{hash=CT}{%
-         family={Chen},
-         familyi={C\bibinitperiod},
-         given={Tianping},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=CH}{%
-         family={Chen},
-         familyi={C\bibinitperiod},
-         given={Hong},
-         giveni={H\bibinitperiod},
-      }}%
-    }
-    \keyw{ANN,theory}
-    \strng{namehash}{CTCH1}
-    \strng{fullhash}{CTCH1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{labelyear}{1993}
-    \field{labeldatesource}{}
-    \field{sortinit}{C}
-    \field{sortinithash}{C}
-    \field{abstract}{%
-    The paper gives several strong results on neural network representation in
-  an explicit form. Under very mild conditions a functional defined on a
-  compact set in C[a, b] or L(p)[a, b], spaces of infinite dimensions, can be
-  approximated arbitrarily well by a neural network with one hidden layer. The
-  results are a significant development beyond earlier work, where theorems of
-  approximating continuous functions defined on a finite-dimensional real space
-  by neural networks with one hidden layer were given. All the results are
-  shown to be applicable to the approximation of the output of dynamic systems
-  at any particular time.%
-    }
-    \verb{doi}
-    \verb 10.1109/72.286886
-    \endverb
-    \field{issn}{19410093}
-    \field{number}{6}
-    \field{pages}{910\bibrangedash 918}
-    \field{title}{{Approximations of Continuous Functionals by Neural Networks
-  with Application to Dynamic Systems}}
-    \field{volume}{4}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Chen, Chen - 1993 - Approximations of Continuous Functionals by Neu
-    \verb ral Networks with Application to Dynamic Systems.pdf:pdf
-    \endverb
-    \field{journaltitle}{IEEE Transactions on Neural Networks}
-    \field{annotation}{%
-    Takeaway - Classic paper showing that any arbitrary function can be
-  approximated arbitrarily well by a one hidden layer network Note - Can be
-  used to support the choice of activation functions and that NODEs can
-  approximate dynamical systems.%
-    }
-    \field{year}{1993}
-  \endentry
-
   \entry{Dallas2021}{article}{}
     \name{author}{4}{}{%
       {{hash=DT}{%
@@ -1374,65 +1315,6 @@
     \endverb
     \field{journaltitle}{Ecology}
     \field{year}{2002}
-  \endentry
-
-  \entry{Funahashi1993}{article}{}
-    \name{author}{2}{}{%
-      {{hash=FKi}{%
-         family={Funahashi},
-         familyi={F\bibinitperiod},
-         given={Ken-ichi},
-         giveni={K\bibinithyphendelim i\bibinitperiod},
-      }}%
-      {{hash=NY}{%
-         family={Nakamura},
-         familyi={N\bibinitperiod},
-         given={Yuichi},
-         giveni={Y\bibinitperiod},
-      }}%
-    }
-    \keyw{Approximation,Autonomous system,Continuous curve,Continuous time
-  recurrent neural network,Dynamical system,Hidden unit,Internal
-  state,NODE,Trajectory}
-    \strng{namehash}{FKiNY1}
-    \strng{fullhash}{FKiNY1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{labelyear}{1993}
-    \field{labeldatesource}{}
-    \field{sortinit}{F}
-    \field{sortinithash}{F}
-    \field{abstract}{%
-    In this paper, we prove that any finite time trajectory of a given
-  n-dimensional dynamical system can be approximately realized by the internal
-  state of the output units of a continuous time recurrent neural network with
-  n output units, some hidden units, and an appropriate initial condition. The
-  essential idea of the proof is to embed the n-dimensional dynamical system
-  into a higher dimensional one which defines a recurrent neural network. As a
-  corollary, we also show that any continuous curve can be approximated by the
-  output of a recurrent neural network. {\textcopyright} 1993 Pergamon Press
-  Ltd.%
-    }
-    \verb{doi}
-    \verb 10.1016/S0893-6080(05)80125-X
-    \endverb
-    \field{issn}{08936080}
-    \field{number}{6}
-    \field{pages}{801\bibrangedash 806}
-    \field{title}{{Approximation of dynamical systems by continuous time
-  recurrent neural networks}}
-    \field{volume}{6}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Funahashi, Nakamura - 1993 - Approximation of dynamical systems by
-    \verb continuous time recurrent neural networks.pdf:pdf
-    \endverb
-    \field{journaltitle}{Neural Networks}
-    \field{annotation}{%
-    - Proves that continuous time recurrent ANN can be used to model dynamical
-  systems.%
-    }
-    \field{year}{1993}
   \endentry
 
   \entry{Fussmann2005}{article}{}

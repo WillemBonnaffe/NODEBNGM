@@ -355,6 +355,22 @@ To summarise results across the entire time series we can compute the mean effec
 Other metrics can be computed by analysing the NODEs, such as equilibrium states, these are discussed in our previous work (\cite{Bonnaffe2021a}). 
 
 %%
+\section{Case study 1: artificial time series}
+
+\subsection{System}
+
+\vspace{-0.5cm}
+\begin{equation} \begin{aligned}
+	& \frac{dR}{dt} = r_R(R,G,B,\beta_R) R \\
+	& \frac{dG}{dt} = r_G(R,G,B,\beta_G) G \\
+	& \frac{dB}{dt} = r_B(R,G,B,\beta_B) B,
+\end{aligned} \end{equation}
+
+\begin{equation}
+\end{equation}
+
+
+%%
 \section{Case study 3: rotifer, algae, and flagellate}
 
 %%
@@ -379,42 +395,37 @@ We digitised these time series by extracting by hand the coordinates of every po
 \subsection{Model specifications}
 
 The aim of the modelling approach is to infer the drivers of the dynamics of each species from the time series data. 
-More specifically, we want to quantify the effect of a change in the density of one species on the dynamics of the other species.
-In this way we can understand which, and to what extent, species interactions drive population dynamics.
-To do this we use neural ordinary differential equation (NODEs), which is a novel methodology allowing us to infer dynamical processes non-parametrically from time series data (\cite{Bonnaffe2021a}).
-We choose this methodology over traditional approaches because it offers two advantages. 
-The first lies in the fact that NODEs approximate the dynamics of populations non-parametrically, and are therefore not subject to incorrect model specifications (\cite{Jost2000,Adamson2013}).
-This is important as it offers an objective estimation of the inter-dependences between state variables, and hence a reliable assessment of whether a species is contributing to the dynamics of another. 
-The second advantage is that it is a dynamical systems approach, which means that the effects are estimated in a dynamically consistent system of ODEs (\cite{Bonnaffe2021a}). 
-This is useful because it accounts for the dynamical nature of the system, so that it includes lag effects, not just direct correlations between variables. 
+More specifically, we want to quantify the effect of a change in the density of one species on the growth rate of the other species.
+We define a simple NODE system for the three-species system described previously,
 
-We define a simple NODE system for the three-species system described previously
+% In this way we can understand which, and to what extent, species interactions drive population dynamics.
+% To do this we use neural ordinary differential equation (NODEs), which is a novel methodology allowing us to infer dynamical processes non-parametrically from time series data (\cite{Bonnaffe2021a}).
+% We choose this methodology over traditional approaches because it offers two advantages. 
+% The first lies in the fact that NODEs approximate the dynamics of populations non-parametrically, and are therefore not subject to incorrect model specifications (\cite{Jost2000,Adamson2013}).
+% This is important as it offers an objective estimation of the inter-dependences between state variables, and hence a reliable assessment of whether a species is contributing to the dynamics of another. 
+% The second advantage is that it is a dynamical systems approach, which means that the effects are estimated in a dynamically consistent system of ODEs (\cite{Bonnaffe2021a}). 
+% This is useful because it accounts for the dynamical nature of the system, so that it includes lag effects, not just direct correlations between variables. 
 
+\vspace{-0.5cm}
 \begin{equation} \begin{aligned}
 	& \frac{dR}{dt} = r_R(R,G,B,\beta_R) R \\
 	& \frac{dG}{dt} = r_G(R,G,B,\beta_G) G \\
-	& \frac{dB}{dt} = r_B(R,G,B,\beta_B) B
+	& \frac{dB}{dt} = r_B(R,G,B,\beta_B) B,
 \end{aligned} \end{equation}
 
 where $dR/dt$, $dG/dt$, and $dB/dt$ denote the change in rotifer ($R$), algae ($G$), and flagellate ($B$) density in continuous time.
-The per-capita growth rates $r_R$, $r_G$, and $r_B$ are non-parametric functions of the density $R$, $G$, $B$ of each species.
-The shapes of the non-parametric functions are controlled by the parameter vectors $\beta_R$, $\beta_G$, and $\beta_B$.
-Fitting the NODE system (1) amounts to finding the parameter vectors, and thereby the per-capita growth rates, that best describe the changes in density observed in the time series data. 
+The per-capita growth rates $r_R$, $r_G$, and $r_B$ are non-parametric functions of the density $R$, $G$, $B$ of each species, 
 
-Each non-parametric functions is an artificial neural network (ANN).
-ANNs are powerful mathematical objects that can be trained to approximate the shape of dynamical processes (\cite{Funahashi1993, Chen1993}).
-For the sake of simplicity, we consider the simplest form of an ANN which contains a single hidden layer, namely a single layer peceptron (SLP)
-
+\vspace{-0.5cm}
 \begin{equation}
 	r_R = \sum_{i=1}^{N} \beta_{i} f_{\sigma} \left( \beta_{i0} + \beta_{i1} R + \beta_{i2} G + \beta_{i3} B \right) 
 \end{equation}
 
-which takes as input the density of each species $R$, $G$, and $B$, and output the corresponding per-capita growth rate.
-The parameter vector $\beta_R$, $\beta_G$, $\beta_B$, contain the weight of the connections in the ANNs.
-The SLP can be viewed as a weighted sum of basis functions $f_\sigma$ of the state variables of the system.
-In this study we consider sigmoid basis functions, as they are commonly used and their capacity to approximate any continuous function is well established theoretically (\cite{Funahashi1993}). 
-The number of units in the hidden layer $N$ is chosen to be 10, as this is a commonly used number for systems of that size (e.g. \cite{Wu2005}). 
-More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
+where the parameter vectors $\beta_R$, $\beta_G$, and $\beta_B$, control the shape of the growth rates.
+
+% In this study we consider sigmoid basis functions, as they are commonly used and their capacity to approximate any continuous function is well established theoretically (\cite{Funahashi1993}). 
+% The number of units in the hidden layer $N$ is chosen to be 10, as this is a commonly used number for systems of that size (e.g. \cite{Wu2005}). 
+% More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
 
 % If $f_\sigma := sin$, then the weights $\omega^{(1)}_{j}$, $\omega^{(2)}_{j}$, and $\omega^{(3)}_{j}$ control the amplitude, shift, and frequency of the oscillations in the time series, respectively.
 % We found sinusoid activation functions to be most efficient for interpolating population dynamics compared to other functions (such as sigmoid, hyperbolic).
