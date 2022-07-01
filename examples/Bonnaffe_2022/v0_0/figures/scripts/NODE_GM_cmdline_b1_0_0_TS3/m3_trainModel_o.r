@@ -8,6 +8,7 @@
 
 ## update log:
 ## 09-06-2022 - created v0_0
+## 01-07-2022 - changed message to print
 
 ##############
 ## INITIATE ##
@@ -36,7 +37,7 @@ logPost_o  = list()
 for (i in 1:N)
 {
     ## iterator
-    message(paste("fitting: ",i,"/",ncol(Y_o),sep=""))
+    print(paste("fitting: ",i,"/",ncol(Y_o),sep=""))
 
     ## get ensemble
     Omega_o_i = NULL
@@ -53,15 +54,15 @@ for (i in 1:N)
             ## update
             logPost_0 = logMarPost(t_,Y_[,i],f_o.eval,Omega_0,1/W_o[i])
             logPost_f = logMarPost(t_,Y_[,i],f_o.eval,Omega_f,1/W_o[i])
-            message(paste(k,"/",K_o,"\t",
-                    format(round(logPost_0,2),nsmall=2),"\t","-->","\t",
+            print(paste(sprintf("%03d",k),"/",K_o,"    ",
+                    format(round(logPost_0,2),nsmall=2),"    ","-->","    ",
                     format(round(logPost_f,2),nsmall=2),sep=""))
             
             ## reject or keep sample
             check = (logPost_f >= logPost_0 + 10)
             if(check == T)
             {
-                   Omega_o_i = rbind(Omega_o_i,Omega_f)
+                Omega_o_i = rbind(Omega_o_i,Omega_f)
                 # logPost_o_i = c(logPost_o_i,logPost_f)
                 logPost_o_i = c(logPost_o_i,logMarLik(t_,Y_[,i],f_o.eval,Omega_f))
             }

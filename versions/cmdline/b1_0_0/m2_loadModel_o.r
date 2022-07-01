@@ -7,7 +7,11 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 09-06-2022 - created v0_0
+## 06-04-2022 - created v0_0
+## 15-04-2022 - created v0_1
+##            - simplified code 
+## 26-05-2022 - created v0_2
+##            - added specification of model
 
 ##############
 ## INITIATE ##
@@ -16,15 +20,11 @@
 ## goal: initiate the NODE 
 
 ## load NODE functions
-source("f_NODE_GM.r")
+source("f_NODE_GM_v0_58.r")
 
 ## parameters observation model
-K_o      = 10
-W_o      = rep(100,N)
-N_o      = W_o * 3
-sd1_o    = 0.1
-sd2_o    = rep(0.001,N) 
-rho      = 1 
+K_o      = 30
+W_o      = c(100,100,100)
 
 #
 ###

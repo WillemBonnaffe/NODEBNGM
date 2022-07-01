@@ -8,6 +8,7 @@
 
 ## update log:
 ## 09-06-2022 - created v0_0
+## 01-07-2022 - ordered data G, B, R instead of R, G, B
 
 ##############
 ## INITIATE ##
@@ -19,6 +20,8 @@
 ## load data
 TS = read.table("data/TS_1.csv",sep=";",header=T)
 for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
+TS[,-1] = TS[,c("G","B","R")]
+colnames(TS) = c("t","G","B","R")
 #
 ## make out directory
 pathToOut = "out/"

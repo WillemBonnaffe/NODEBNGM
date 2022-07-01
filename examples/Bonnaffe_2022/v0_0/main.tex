@@ -79,6 +79,10 @@ Willem Bonnaff\'e designed the method, performed the analysis, wrote the manuscr
 Ben Sheldon provided input for the manuscript, commented on the manuscript.
 Tim Coulson led investigations, provided input for the manuscript, commented on the manuscript.
 
+%% notes
+%% * remember to discuss limitation of average effect that do not capture oscillating effects
+%% * make sure non-parametric, non-linear, cross-validation are consistently spelled throughout manuscript
+
 \newpage
 \setstretch{2.0}
 
@@ -219,6 +223,12 @@ The parameter vector $\theta_i$ contains the weights $\theta^{(l)}$ of the conne
 SLPs can be viewed as weighted sums of activation functions $f_\sigma$, which are usually chosen to be \textit{sigmoid} functions $f(x) = 1/(1+\exp(-x))$.
 The link function $f_\lambda$ allows to map the output of the network to a specific domain, for instance applying \textit{tanh} will constrain the dynamics between -1 and 1, $dy_i/dt \in~]-1,1[$. 
 
+We would like to stress that this general form can be changed to represent biological constraints on the state variables.
+In particular for population dynamics, the state variables are strictly positive population densities, $y_i = N_i \in~\mathcal{R^+}$.
+We could hence re-write equation (1) as, $dN_i/dt = f_p(N,\theta_i)N_i$, where the SLPs approximate the per-capita growth rate of the populations.
+More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
+
+
 %%
 \subsection{Fitting NODEs by Bayesian neural gradient matching}
 
@@ -334,7 +344,7 @@ The great strength of this approach is that it is unlikely to get stuck in local
 %%
 \subsection{Analysing NODEs}
 
-In this study we are mainly interested in two outcome of NODEs, namely inferring the direction (or effect) and strength (or contribution) of interactions between the state variables (\cite{Bonnaffe2021a}).
+In this study we are mainly interested in two outcomes of NODEs, namely inferring the direction (or effect) and strength (or contribution) of interactions between the state variables (\cite{Bonnaffe2021a}).
 We define the direction of the interaction between variable $y_i$ and $y_j$ as the derivative of the dynamics of $y_j$ with respect to $y_i$, and vice versa, 
 
 \vspace{-0.5cm}
@@ -351,13 +361,42 @@ We hence compute the strength of the interaction by multiplying the dynamics of 
     c_{ijt} = \frac{dy_j}{dt} \frac{\partial}{\partial y_j} \frac{dy_i}{dt}.
 \end{equation}
 
-To summarise results across the entire time series we can compute the mean effects $e_{ij}$ by averaging $e_{ijt}$ across the entire time series, $e_{ij} = K^{-1} \sum_k e_{ijk}$, as well as the relative total contribution, $c_{ij}$, of a variable to the dynamics of another by computing the relative sum of square contributions, $c_{ij} = \left( \sum_{ijk} c_{ijk}^{2} \right)^{-1} \sum_t c_{ijt}^2$. By computing the direction and strength of interactions between all the variables in the system we can build dynamically informed ecological interaction networks (See case study below for examples).
+To summarise results across the entire time series we can compute the mean effects $e_{ij}$ by averaging $e_{ijt}$ across all time steps, $e_{ij} = K^{-1} \sum_k e_{ijk}$, as well as the relative total contribution, $c_{ij}$, of a variable to the dynamics of another by computing the relative sum of square contributions, $c_{ij} = \left( \sum_{ijk} c_{ijk}^{2} \right)^{-1} \sum_t c_{ijt}^2$. 
+By computing the direction and strength of interactions between all the variables in the system we can build dynamically informed ecological interaction networks (See case study below for examples).
 Other metrics can be computed by analysing the NODEs, such as equilibrium states, these are discussed in our previous work (\cite{Bonnaffe2021a}). 
 
 %%
-\section{Case study 1: artificial time series}
+\section{Case study 1: artificial tri-trophic prey-predator oscillations}
+
+In this first case study, we aim to demonstrate the accuracy of the NODE fitted by BNGM in inferring nonlinear per-capita growth rates in a system where ground truth is known.
+Hence, we simulate a set of time series from a tri-trophic ODE model with known equations and parameters, and we compare the fitted NODEs to the actual ODEs.
 
 \subsection{System}
+
+We consider a tri-trophic ODE system consisting of a prey, an intermediate predator, and a top predator.
+The system is built on the real tri-trophic system featuring algae, flagellates, and rotifers, considered in case study 3,
+
+\vspace{-0.5cm}
+\begin{equation} \begin{aligned}
+    & \frac{dG}{dt} = \left( \alpha \left(1-\frac{G}{\kappa}\right) - \frac{\beta B}{1+\delta G} - \frac{\gamma R}{1+\delta G} \right) G\\
+    & \frac{dB}{dt} = \left( \frac{\beta G}{1+\delta G} - \phi R - \mu \right) B \\
+	& \frac{dR}{dt} = \left( \frac{\gamma G}{1+\delta G} + \phi B - \nu \right) R,
+\end{aligned} \end{equation}
+
+where $G$, $B$, and $R$, correspond to the prey, intermediate and top predator population densities, respectively,
+$\alpha$ is the prey intrinsic growth rate, limited by a carrying capacity $\kappa$, 
+$\beta$ and $\gamma$ are the predation rates by the intermediate and top predator,
+$\delta$ is the saturation rate of prey predation, which emulates the capacity of the algae to display predator defense at higher algal density (\cite{Hiltunen2013}),
+$\phi$ is the predation rate of the intermediate predator by the top predator,
+$\mu$ and $\nu$ are the intrinsic mortality of the intermediate and top predator.
+
+We simulate a case of invasion, by introducing the top predator from rare, with a set of parameters that result in dampening prey-predator oscillations, namely $\alpha = 1$, $\beta = 2.5$, $\gamma = 1.5$, $\kappa = 3$, $\delta = \phi = \mu = \nu = 1$.
+We focus on the middle section of the time series, $t \in [20,50]$, as in the initial section the rotifer predator is rare, and in the later section populations have attained a fixed equilibrium point.
+The resulting time series are presented in figure 2.
+
+\subsection{NODE model}
+
+In order to learn non-parametrically the per-capita growth rate of each species, and to derive ecological interactions, we define a three-species NODE system,
 
 \vspace{-0.5cm}
 \begin{equation} \begin{aligned}
@@ -366,100 +405,91 @@ Other metrics can be computed by analysing the NODEs, such as equilibrium states
 	& \frac{dB}{dt} = r_B(R,G,B,\beta_B) B,
 \end{aligned} \end{equation}
 
-\begin{equation}
-\end{equation}
-
+where the per-capita growth rates $r_R$, $r_G$, and $r_B$ are neural network functions of the density $R$, $G$, $B$ of each species (function $f_p$, Eq. 2).
+% The parameter vectors $\beta_i$ control the shape of the growth rates.
+We choose a combination of linear and exponential activation functions $f_{\sigma, j\leq J/2}(x) = x$, and $f_{\sigma, j>J/2}(x) = \exp(x)$.
+This allows us to progressively switch from a simple linear model to a nonparametric nonlinear model by releasing the constraint on the nonlinear/exponential section of the neural network during cross-validation.
+The number of units in the hidden layer $J$ is chosen to be 10, as this is a commonly used number for systems of that size (e.g. \cite{Wu2005}). 
 
 %%
-\section{Case study 3: rotifer, algae, and flagellate}
+\subsection{Time series interpolation}
+
+We interpolate the time series using the neural network described in section 2.3 (Eq. 4).
+We set the number of neurons in the network to $J=30$.
+We use sinusoid activation functions, $f_\sigma(x) = sin(x)$, so that the weights $\omega^{(1)}_{ij}$, $\omega^{(2)}_{ij}$, and $\omega^{(3)}_{ij}$ control the amplitude, shift, and frequency of the oscillations in the time series, respectively.
+Given that the population densities are strictly positive $R,~G,~B \in \mathcal{R^{+}}$, we use an exponential link function, $f_\lambda(x) = \exp (x)$. 
+We then approximate the marginal posterior distribution of the interpolation parameters, and thereby of interpolated states and dynamics, by taking 100 samples from the log marginal posterior distribution (Eq. 7) via anchor ensembling. % $\omega^*_{i} = \underset{\omega}{argmax} ~\log P(\omega_i ~|~ Y_i)$, where $Y_i$ denotes the observed time series of either $R$, $G$, and $B$.
+In practice, the high number of parameters in the neural network equation may impede the fit of the time series, especially for small time series. 
+We found that dividing the number of parameters $K$ (Eq. 7) by the number of neurons in the network $J$ (Eq. 2) yields consistent fitting results.
+Interpolated states and dynamics are presented in figure 2.
+
+%%
+\subsection{Fitting NODEs to the interpolated time series}
+
+We fit the NODE system to the interpolated time series.
+In practice, we fit the NODE to the expectation of the interpolated state and dynamics, $\mathrm{E}(\tilde{y}_i)$ and $\mathrm{E}(d\tilde{y}_i/dt)$, by averaging over all sampled interpolation parameters.
+An alternative approach could be to consider the interpolation that maximises the log marginal posterior distribution, but this may decrease repeatability due to the difficulty of reliably identifying a global maximum.
+Averaging across multiple interpolations ensures an overall smoother and robust interpolation. 
+In addition, we standardise the response and explanatory variables with respect the their mean and standard deviation (i.e. $Z=(Y-\mu)/\sigma$).
+This is to facilitate the training of the NODE by equalizing the scale of the different parameters in the neural network.
+Then, we identify the optimal regularisation parameter $\delta$ (Eq. 8) by cross validation.
+To do that, we split the data in half and calculate the log likelihood of the test set for increasing values of $\delta$, from $0.05$ (linear) to $0.5$ (highly non-linear), by increments of $0.05$.
+This allows us to identify the maximum degree of non-linearity, $\delta$, in the per-capita growth rate that ensures generalisability throughout the time series.
+Then, we approximate the posterior distribution of the NODE parameters by taking 100 samples from the posterior distribution (Eq. 8).
+Finally, we perform model selection by removing variables that do not result in a significant decrease in the log likelihood of the model (assessed by comparing log likelihood confidence intervals).
+We ensure moderate temporal autocorrelation and normality by visualising the residuals of the models.
+We also ensure results repeatability running the entire fitting process a second time.
+
+%% model selection!
+ 
+%%
+\subsection{Computing ecological interactions}
+
+Finally, we analyse the shape of the per-capita growth rates to recover the interaction between the three species in the system.
+In particular, we look at the effect and contribution of each species to the dynamics of the others.
+The effect is computed as the sensitivity (i.e. the gradient) of the per-capita growth rate of a given species with respect to the density of the other species.
+The contribution is computed following the Geber method (\cite{Hairston2005}), which consists in multiplying the dynamics of a variable by its effects on the other variables.
+We further compute the importance of a species in driving the dynamics of another by computing its relative total contribution compared to other species.
+More details on how to compute these quantities can be found in section 2.5 and in our previous study (\cite{Bonnaffe2021a}).
+
+%%
+\section{Case study 2: real tri-trophic prey-predator oscillations}
+
+In this second case study, we want to assess the quality of the NODE analysis when performed on a real time series.
+We are further interested in comparing the direction and strength of uncovered ecological interactions across virtually identical replicated time series.
 
 %%
 \subsection{System}
 
 We consider a three-species laboratory microcosm consisting of an algal prey (\textit{Chlorella autrophica}), a flagellate intermediate predator (\textit{Oxyrrhis marina}), and a rotifer top predator (\textit{Brachionus plicatilis}).
-The algal prey is consumed by the intermediate and top predator, the top predator also consumes the intermediate predator (\cite{Arndt1993}).
-The dynamics of this system, here the daily change in the density of each species, were recorded in three replicated time series experiments performed by Hiltunen and colleagues (\cite{Hiltunen2013}, Fig. 1).
-
+The algal prey is consumed by the intermediate and top predator, which also consumes the intermediate predator (\cite{Arndt1993}).
+The dynamics of this system, here the daily change in the density of each species, were recorded in three replicated time series experiments performed by Hiltunen and colleagues (\cite{Hiltunen2013}). 
 We use their time series because they describe a simple yet biologically realistic ecosystem, and because the quality of the replication of their microcosm reduces as much as possible observational and experimental error, and rules out environmental variation (\cite{Hiltunen2013}).
 We digitised these time series by extracting by hand the coordinates of every points in the referential of the axis of the graph of the original study, and analysed them.
 
-% The aim of their experiment was to determine which type of population dynamics would arise in a system with two predators competing for the same resource (the algae), where one predator (the rotifer) would also be able to consume its competitor (the flagellate).
-% According to their expectations, they found prey-predator oscillations, where the lag between the density peaks of each species reflected their position in the food web.
-% Namely that the peak of algae preceded the flagellate peak, which itself preceded the rotifer peak.
-% 
-% Their microcosms are close to true replicates in that environmental conditions, namely temperature, salinity, and nutrient influx, where maintained constant, and initial conditions, that is the initial density of each species, were shared across all replicates. 
-% In spite of that, they still found evidence for algae evolution in some parts of the time series, which resulted in a shift of the dynamics from fast prey-predator cycles to slower oscillations, similar to those documented in previous studies on similar systems (\cite{Yoshida2003, Becks2010}), even in lineages where genetic variation in predator defense traits was eliminated at the start of the experiment. 
-% Consequently, the time series that they reported are the ones that did not present evidence of evolution, and therefore displayed purely ecological dynamics.
+%%
+\subsection{NODE analysis}
+
+We apply the same analysis as performed on the artificial tri-trophic prey-predator oscillations.
+This allows us to recover a non-parametric approximation of the growth rate of each species, and then derive the direction and strength of the ecological interactions that underpin their dynamics.
+We present detailed results of the analysis of the first time series (Fig. 4), and a summary comparison of the three time series (Fig. 5).
 
 %%
-\subsection{Model specifications}
+\section{Case study 3: real di-trophic prey-predator oscillations}
 
-The aim of the modelling approach is to infer the drivers of the dynamics of each species from the time series data. 
-More specifically, we want to quantify the effect of a change in the density of one species on the growth rate of the other species.
-We define a simple NODE system for the three-species system described previously,
+Finally, we infer ecological interactions by NODE BNGM in the hare-lynx system.
+This is to provide an example of a longer time series, and to offer a point of comparison with previous and future implementations of NODEs, which commonly use this time series (e.g. \cite{Bonnaffe2021a}).
 
-% In this way we can understand which, and to what extent, species interactions drive population dynamics.
-% To do this we use neural ordinary differential equation (NODEs), which is a novel methodology allowing us to infer dynamical processes non-parametrically from time series data (\cite{Bonnaffe2021a}).
-% We choose this methodology over traditional approaches because it offers two advantages. 
-% The first lies in the fact that NODEs approximate the dynamics of populations non-parametrically, and are therefore not subject to incorrect model specifications (\cite{Jost2000,Adamson2013}).
-% This is important as it offers an objective estimation of the inter-dependences between state variables, and hence a reliable assessment of whether a species is contributing to the dynamics of another. 
-% The second advantage is that it is a dynamical systems approach, which means that the effects are estimated in a dynamically consistent system of ODEs (\cite{Bonnaffe2021a}). 
-% This is useful because it accounts for the dynamical nature of the system, so that it includes lag effects, not just direct correlations between variables. 
+\subsection{System}
 
-\vspace{-0.5cm}
-\begin{equation} \begin{aligned}
-	& \frac{dR}{dt} = r_R(R,G,B,\beta_R) R \\
-	& \frac{dG}{dt} = r_G(R,G,B,\beta_G) G \\
-	& \frac{dB}{dt} = r_B(R,G,B,\beta_B) B,
-\end{aligned} \end{equation}
+The system is described in details in our previous work (\cite{Bonnaffe2021a}).
+The data consist in a 90-year long time series of pelt counts of hare collected by trappers in the Hudson bay area in Canada (\cite{Odum1972}).
+The time series displays characteristic 10-year long prey-predator oscillations.
 
-where $dR/dt$, $dG/dt$, and $dB/dt$ denote the change in rotifer ($R$), algae ($G$), and flagellate ($B$) density in continuous time.
-The per-capita growth rates $r_R$, $r_G$, and $r_B$ are non-parametric functions of the density $R$, $G$, $B$ of each species, 
+\subsection{NODE analysis}
 
-\vspace{-0.5cm}
-\begin{equation}
-	r_R = \sum_{i=1}^{N} \beta_{i} f_{\sigma} \left( \beta_{i0} + \beta_{i1} R + \beta_{i2} G + \beta_{i3} B \right) 
-\end{equation}
-
-where the parameter vectors $\beta_R$, $\beta_G$, and $\beta_B$, control the shape of the growth rates.
-
-% In this study we consider sigmoid basis functions, as they are commonly used and their capacity to approximate any continuous function is well established theoretically (\cite{Funahashi1993}). 
-% The number of units in the hidden layer $N$ is chosen to be 10, as this is a commonly used number for systems of that size (e.g. \cite{Wu2005}). 
-% More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
-
-% If $f_\sigma := sin$, then the weights $\omega^{(1)}_{j}$, $\omega^{(2)}_{j}$, and $\omega^{(3)}_{j}$ control the amplitude, shift, and frequency of the oscillations in the time series, respectively.
-% We found sinusoid activation functions to be most efficient for interpolating population dynamics compared to other functions (such as sigmoid, hyperbolic).
-
-% as well as an analytical expression of the interpolated per-capita growth rate of the populations, by combining equation (4) and (5)
-% 
-% \vspace{-0.5cm}
-% \begin{equation}
-%     \tilde{r}_N (t,\Omega_N) := \frac{1}{\tilde{N}} \frac{\partial \tilde{N}}{\partial t} = \sum_{i=1}^{I} \omega_{i0} \pi \omega_{i2} cos \left(\pi (\omega_{i1} + \omega_{i2} t) \right)
-% \end{equation}
-
-% In practice, we log-transform the densities, to cast the variables on the real number space. 
-% This also allows us to re-write equation (6) in a more compact form, namely $\tilde{r}_Y = \frac{\partial }{\partial t} \log \tilde{Y}$.
-% We standardise the log-densities with respect the their mean and standard deviation (i.e. $Z=(log(Y)-\mu)/\sigma$).
-% This is to facilitate the training of the NODE by bringing the parameters in the neural network on the same scale.
-
-% %% move this to application section
-% We would like to stress that this general form can be changed to represent biological constraints on the state variables.
-% In particular for population dynamics, the state variables are strictly positive population densities, $y_i = N_i \in~\mathcal{R^+}$.
-% We could hence re-write equation (1) as, $dN_i/dt = f_p(N,\theta_i)N_i$, where the SLPs approximate the per-capita growth rate of the populations.
-% More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
-
-% In this study, we took 100 posterior samples for each time series, namely a hundred samples for the interpolation, and another hundred for the fitting of the NODE.
-% The initial value of the parameters were picked from a random normal distribution with parameters $\sigma \geq 0.4$, which prevented underfitting the time series.
-% We insured that there was moderate temporal autocorrelation and normality by visualising the residuals of the models.
-% We also insured that the results were repeatable by running the entire fitting process a second time.
-% We did not perform cross validation of results as we were only interested in estimating effects within the time series considered, rather than predicting future time steps.
- 
-% We analyse the shape of the per-capita growth rates to recover the interaction between the three species in the system.
-% In particular, we look at the effect and contribution of each species to the dynamics of the other.
-% The effect is computed as the sensitivity (i.e. the gradient) of the per-capita growth rate of a given species with respect to the density of the other species.
-% The contribution is computed following the Geber method (\cite{Hairston2005}), which comes down to multiplying the dynamics of a variable by its effects on the other variables.
-% We further compute the importance of a species in driving the dynamics of another by computing its relative contribution compared to other species at each time step.
-% More details on how to recover these quantities can be found in our previous study (\cite{Bonnaffe2021a}).
+We apply the same analysis as previously described, to the exception that the NODE system only features two variables, $H$ and $L$, instead of 3.
+Results are presented in figure 6.
 
 %%
 \section{Results}
@@ -505,6 +535,15 @@ Overall, effects are consistent throughout the time series.
 
 %%
 \section{Discussion}
+
+% The aim of their experiment was to determine which type of population dynamics would arise in a system with two predators competing for the same resource (the algae), where one predator (the rotifer) would also be able to consume its competitor (the flagellate).
+% According to their expectations, they found prey-predator oscillations, where the lag between the density peaks of each species reflected their position in the food web.
+% Namely that the peak of algae preceded the flagellate peak, which itself preceded the rotifer peak.
+% 
+% Their microcosms are close to true replicates in that environmental conditions, namely temperature, salinity, and nutrient influx, where maintained constant, and initial conditions, that is the initial density of each species, were shared across all replicates. 
+% In spite of that, they still found evidence for algae evolution in some parts of the time series, which resulted in a shift of the dynamics from fast prey-predator cycles to slower oscillations, similar to those documented in previous studies on similar systems (\cite{Yoshida2003, Becks2010}), even in lineages where genetic variation in predator defense traits was eliminated at the start of the experiment. 
+% Consequently, the time series that they reported are the ones that did not present evidence of evolution, and therefore displayed purely ecological dynamics.
+
 
 %% Summary 
 Our ability to generalise dynamical processes and patterns across populations and communities is limited by the complexity of the processes, differences in environments, and incomplete and/or erroneous observations. 
@@ -621,7 +660,7 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 \newpage
 \pagenumbering{gobble}
 
-%% figure 1
+%% figure
 \newpage
 \begin{figure}[H]
 \includegraphics[width=\linewidth,page=1]{figures/main.pdf}
@@ -682,23 +721,6 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 \newpage
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=\linewidth,page=4]{figures/main.pdf}
-\caption{
-    \textbf{Drivers of dynamics of hare and lynx in the Odum and Barrett pelt count time series.}
-    This figure displays the NODE non-parametric approximations of the per-capita growth rate of hare (a., b., c.), and lynx (d., e., f.).
-    We obtain the NODE approximations (a., d., solid line) by fitting the interpolated per-capita growth rates (black dots) with ANNs that take population densities as input.
-    We then estimate the direction of ecological interactions (effects, b., e.) by computing the derivative of the NODE approximations with respect to each density.
-    Finally, we compute the strength of ecological interactions (contributions, c., f.) by multiplying the interpolated dynamics of each population with its effects.
-    The shaded area shows the 90\% confidence interval, obtained by approximately sampling the posterior distributions. 
-}
-\end{center}
-\end{figure}
-\newpage
-
-%% figure
-\newpage
-\begin{figure}[H]
-\begin{center}
 \includegraphics[width=\linewidth,page=5]{figures/main.pdf}
 \caption{
     \textbf{Drivers of dynamics of algae, flagellate, and rotifer in replicate A.}
@@ -732,6 +754,24 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 \end{figure}
 \newpage
 
+%% figure
+\newpage
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\linewidth,page=4]{figures/main.pdf}
+\caption{
+    \textbf{Drivers of dynamics of hare and lynx in the Odum and Barrett pelt count time series.}
+    This figure displays the NODE non-parametric approximations of the per-capita growth rate of hare (a., b., c.), and lynx (d., e., f.).
+    We obtain the NODE approximations (a., d., solid line) by fitting the interpolated per-capita growth rates (black dots) with ANNs that take population densities as input.
+    We then estimate the direction of ecological interactions (effects, b., e.) by computing the derivative of the NODE approximations with respect to each density.
+    Finally, we compute the strength of ecological interactions (contributions, c., f.) by multiplying the interpolated dynamics of each population with its effects.
+    The shaded area shows the 90\% confidence interval, obtained by approximately sampling the posterior distributions. 
+}
+\end{center}
+\end{figure}
+\newpage
+
+
 
 %% global table - v0.0
 \newpage
@@ -747,7 +787,7 @@ The \% of total contributions is obtained by summing the square of contributions
 \begin{tabular}{rrcccc}
 	\hline
 	\\
-	& & & R & G & B \\
+	& & & G & B & R \\
 	& \\
 	\hline
 	& \\
@@ -755,14 +795,14 @@ The \% of total contributions is obtained by summing the square of contributions
 	% \textbf{Replicate A} & $r^2$  &   &  0.968 & 0.839 & 0.831 \\
 	& \\
 	& \textbf{Mean effects} 
-	&   on R &   0.27 & 0.77  & 0.97  \\
-	& & on G &  -1.17 & -0.44 & -0.85 \\
-	& & on B &  -0.78 & 0.04  & 0.03  \\
+	&   on G &  -0.61 & -0.85 & -1.41 \\
+	& & on B &   0.00 &  0.08 & -0.90 \\
+    & & on R &   2.84 &  0.93 &  1.23 \\
 	& \\
 	& \textbf{\% of total contributions} 
-	&   to R &  0.08 & 0.48 & 0.44 \\ 
-    & & to G &  0.75 & 0.08 & 0.17 \\
-    & & to B &  1    & 0    & 0    \\
+	&   to G &   0.13 &  0.15 &  0.73 \\ 
+    & & to G &   0.00 &  0.00 &  1.00 \\
+    & & to R &   0.60 &  0.16 &  0.25 \\
 	& \\
 	\hline
 	& \\
@@ -770,14 +810,14 @@ The \% of total contributions is obtained by summing the square of contributions
 	% \textbf{Replicate B} & $r^2$  &   &  0.744 & 0.997 & 0.765 \\
 	& \\
 	& \textbf{Mean effects} 
-	& on R   &   0.08 & 0.59 & 0.22  \\
-	& & on G &  -1    & 0.05 & -0.48 \\
-	& & on B &  -0.47 & 0.14 & -0.02 \\
+    &   on G &  0.00 & -0.56 & -1.13 \\
+	& & on B &  0.34 &  0.00 & -0.58 \\
+	& & on R &  0.87 &  0.00 &  0.19 \\
 	& \\
 	& \textbf{\% of total contributions} 
-	& to R   &  0.02 & 0.93 & 0.05 \\ 
-    & & to G &  0.9  & 0    & 0.1  \\
-    & & to B &  0.9  & 0.1  & 0    \\
+    &   to G &  0.00 &  0.06 &  0.94 \\ 
+    & & to B &  0.23 &  0.00 &  0.77 \\
+    & & to R &  0.95 &  0.00 &  0.05 \\
 	& \\
 	\hline
 	& \\
@@ -785,14 +825,14 @@ The \% of total contributions is obtained by summing the square of contributions
 	% \textbf{Replicate C} & $r^2$  &   &  0.923 & 0.962 & 0.726 \\
 	& \\
 	& \textbf{Mean effects} 
-    &   on R & -0.1  &  0.45 &  0.93 \\
-    & & on G & -1.76 & -0.13 & -0.12 \\
-    & & on B & -0.76 &  0.01 &  0.08 \\
+    &   on G & -0.14 &  0.13 & -2.31 \\
+    & & on B & -0.05 & -0.09 & -0.72 \\
+    & & on R &  2.46 &  0.49 & -0.09 \\
 	& \\
 	& \textbf{\% of total contributions} 
-	& to R   & 0.01 & 0.31 & 0.67 \\
-    & & to G & 0.99 & 0.01 & 0    \\
-    & & to B & 0.99 & 0    & 0.01 \\
+    &   to G &  0.02 &  0.02 &  0.96 \\
+    & & to B &  0.00 &  0.01 &  0.99 \\
+    & & to R &  0.79 &  0.18 &  0.03 \\
 \end{tabular}
 \setstretch{2.0}
 \end{center}

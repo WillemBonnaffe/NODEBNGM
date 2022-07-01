@@ -2088,6 +2088,46 @@
     \field{year}{1999}
   \endentry
 
+  \entry{Odum1972}{article}{}
+    \name{author}{2}{}{%
+      {{hash=OEP}{%
+         family={Odum},
+         familyi={O\bibinitperiod},
+         given={Eugene\bibnamedelima P.},
+         giveni={E\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=BGW}{%
+         family={Barrett},
+         familyi={B\bibinitperiod},
+         given={Gary\bibnamedelima W.},
+         giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \keyw{lynx}
+    \strng{namehash}{OEPBGW1}
+    \strng{fullhash}{OEPBGW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1972}
+    \field{labeldatesource}{}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \verb{doi}
+    \verb 10.2307/3799291
+    \endverb
+    \field{issn}{0022541X}
+    \field{number}{4}
+    \field{pages}{1372}
+    \field{title}{{Fundamentals of Ecology}}
+    \field{volume}{36}
+    \verb{file}
+    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
+    \verb d/Odum, Barrett - 1972 - Fundamentals of Ecology.pdf:pdf
+    \endverb
+    \field{journaltitle}{The Journal of Wildlife Management}
+    \field{year}{1972}
+  \endentry
+
   \entry{Pearce2018}{article}{}
     \name{author}{5}{}{%
       {{hash=PT}{%

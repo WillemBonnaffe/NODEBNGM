@@ -7,7 +7,8 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-# 09-06-2022 - created v0_0
+## 09-06-2022 - created v0_0
+## 01-07-2022 - changed message to print
 
 ##############
 ## INITIATE ##
@@ -36,7 +37,7 @@ summaryTable    = list()
 for(i in 1:N)
 {
     ## iterator
-    message(paste("fitting: ",i,"/",N,sep=""))
+    print(paste("fitting: ",format(i,nsmall=2),"/",N,sep=""))
 
     ## fit model
     Omega_p_i      = NULL
@@ -60,8 +61,8 @@ for(i in 1:N)
         logPost_f    = logPost(X_,Y_[,i],Yhat,Omega_f,sd1_p,sd2_p[[i]])
         # logPost_0    = logMarLik(X_,Y_[,i],Yhat,Omega_0)
         # logPost_f    = logMarLik(X_,Y_[,i],Yhat,Omega_f)
-        message(paste(k,"/",K_p,"\t",
-                format(round(logPost_0,2),nsmall=2),"\t","-->","\t",
+        print(paste(sprintf("%03d",k),"/",K_p,"    ",
+                format(round(logPost_0,2),nsmall=2),"    ","-->","    ",
                 format(round(logPost_f,2),nsmall=2),sep=""))
 
         ## compute r2, likelihood, prior

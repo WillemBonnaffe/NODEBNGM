@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  23 JUN 2022 17:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  1 JUL 2022 16:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main_v0_0.tex
-(./main_v0_0.tex
+**main.tex
+(./main.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24>
 (/usr/local/texlive/2022/texmf-dist/tex/latex/standalone/standalone.cls
@@ -421,8 +421,8 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 \l__pdf_internal_box=\box62
 )
-(./main_v0_0.aux)
-\openout1 = `main_v0_0.aux'.
+(./main.aux)
+\openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
@@ -462,18 +462,19 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \big@size=\dimen193
-<supporting/fig_overview/main.pdf, id=4, page=1, 8265.47348pt x 5182.67639pt>
-File: supporting/fig_overview/main.pdf Graphic file (type pdf)
-<use supporting/fig_overview/main.pdf, page 1>
-Package pdftex.def Info: supporting/fig_overview/main.pdf , page1 used on input
- line 72.
-(pdftex.def)             Requested size: 8265.45343pt x 5182.66382pt.
+<supporting/fig_overview_v0_1/main.pdf, id=4, page=1, 7250.64154pt x 4691.8848p
+t>
+File: supporting/fig_overview_v0_1/main.pdf Graphic file (type pdf)
+<use supporting/fig_overview_v0_1/main.pdf, page 1>
+Package pdftex.def Info: supporting/fig_overview_v0_1/main.pdf , page1 used on 
+input line 72.
+(pdftex.def)             Requested size: 7250.62396pt x 4691.87341pt.
 
 [1
 
- <./supporting/fig_overview/main.pdf{/usr/local/texlive/2022/texmf-var/fonts/ma
-p/pdftex/updmap/pdftex.map}>]
-<scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf, id=55, page=1, 505.89pt x 
+ <./supporting/fig_overview_v0_1/main.pdf{/usr/local/texlive/2022/texmf-var/fon
+ts/map/pdftex/updmap/pdftex.map}>]
+<scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf, id=49, page=1, 505.89pt x 
 505.89pt>
 File: scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf Graphic file (type pdf
 )
@@ -482,7 +483,7 @@ Package pdftex.def Info: scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf , p
 age1 used on input line 77.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
  [2 <./scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf>]
-<scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf, id=69, page=1, 505.89pt x 
+<scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf, id=63, page=1, 505.89pt x 
 505.89pt>
 File: scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf Graphic file (type pdf
 )
@@ -491,52 +492,54 @@ Package pdftex.def Info: scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf , p
 age1 used on input line 82.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
  [3 <./scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1/fig_predictions_p.pdf, id=83, pa
-ge=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1/fig_predictions_p.pdf Graph
-ic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1/fig_predictions_p.pdf, page 
-1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1/fig_pred
-ictions_p.pdf , page1 used on input line 87.
+<scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf, id=77, 
+page=1, 505.89pt x 505.89pt>
+File: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf Gra
+phic file (type pdf)
+<use scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf, pag
+e 1>
+Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_pr
+edictions_p.pdf , page1 used on input line 87.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [4 <./scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1/fig_predictions_p.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_f/fig_predictions_p.pdf, id=97, p
-age=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_f/fig_predictions_p.pdf Grap
-hic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_f/fig_predictions_p.pdf, page
- 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_f/fig_pre
-dictions_p.pdf , page1 used on input line 92.
+
+[4 <./scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf>]
+<scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf, id=91,
+ page=1, 505.89pt x 505.89pt>
+File: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf Gr
+aphic file (type pdf)
+<use scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf, pa
+ge 1>
+Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_p
+redictions_p.pdf , page1 used on input line 92.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [5 <./scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_f/fig_predictions_p.pdf>]
-<supporting/fig_network/main.pdf, id=111, page=1, 5745.47823pt x 2441.9772pt>
+
+[5 <./scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf>]
+<supporting/fig_network/main.pdf, id=105, page=1, 5745.5846pt x 2442.03136pt>
 File: supporting/fig_network/main.pdf Graphic file (type pdf)
 <use supporting/fig_network/main.pdf, page 1>
 Package pdftex.def Info: supporting/fig_network/main.pdf , page1 used on input 
 line 97.
-(pdftex.def)             Requested size: 5745.4643pt x 2441.97127pt.
- [6 <./supporting/fig_network/main.pdf>] (./main_v0_0.aux) ) 
+(pdftex.def)             Requested size: 5745.57066pt x 2442.02544pt.
+
+[6 <./supporting/fig_network/main.pdf>] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 12473 strings out of 478268
- 262765 string characters out of 5846347
- 517286 words of memory out of 5000000
+ 12472 strings out of 478268
+ 262778 string characters out of 5846347
+ 517276 words of memory out of 5000000
  30473 multiletter control sequences out of 15000+600000
  469766 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,7n,104p,421b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive
-/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/
-2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/20
-22/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
-2/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2022/texmf-dis
-t/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/ty
-pe1/urw/times/utmri8a.pfb>
-Output written on main_v0_0.pdf (6 pages, 289270 bytes).
+ 100i,7n,104p,416b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2022/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/tex
+mf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2022/texmf-dist/fon
+ts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on main.pdf (6 pages, 273438 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 136 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

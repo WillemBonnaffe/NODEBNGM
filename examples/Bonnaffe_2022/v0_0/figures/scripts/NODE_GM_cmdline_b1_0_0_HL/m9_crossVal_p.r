@@ -8,6 +8,7 @@
 
 ## update log:
 ## 09-04-2022 - created v0_0
+## 01-07-2022 - changed message to print
 
 ##############
 ## INITIATE ##
@@ -38,7 +39,7 @@ crossVal_p = list()
 for(i in 1:N)
 {
     ## iterator
-    message(paste("fitting: ",i,"/",N,sep=""))
+    print(paste("fitting: ",i,"/",N,sep=""))
                  
     ## cross validation
     crossVal_i   = NULL
@@ -46,7 +47,7 @@ for(i in 1:N)
     for(k in 1:length(crossValParVect)) # for each regularisation param
     {
         ## iterator
-        message(paste("crossval: ",k,"/",length(crossValParVect),sep=""))
+        print(paste("crossval: ",k,"/",length(crossValParVect),sep=""))
         
         ## multiple folds
         crossVal_ik          = NULL
@@ -54,7 +55,7 @@ for(i in 1:N)
         for(u in 1:length(folds)) # for each fold in the data
         {
             ## iterator
-            message(paste("fold: ",u,"/",length(folds),sep=""))
+            print(paste("fold: ",u,"/",length(folds),sep=""))
             
             ## fit model
             Omega_p_iku = NULL
@@ -86,7 +87,7 @@ for(i in 1:N)
                 logPost_f = logPost(X_l,Y_l[,i],Yhat,Omega_f,sd1_p,sd2_p[[i]])
                 # logMarPost_0 = logMarPost(X_l,Y_l[,i],Yhat,Omega_0,1/W_p[i])
                 # logMarPost_f = logMarPost(X_l,Y_l[,i],Yhat,Omega_f,1/W_p[i])                
-                # message(paste(m,"/",K_p,"\t",
+                # print(paste(m,"/",K_p,"\t",
                 #         format(round(logMarPost_0,2),nsmall=2),"\t","-->","\t",
                 #         format(round(logMarPost_f,2),nsmall=2),sep=""))
                 
@@ -95,7 +96,7 @@ for(i in 1:N)
                 logLik_t = logLik(X_t,Y_t[,i],Yhat,Omega_f,sd1_p)
                 # logMarLik_l = logMarLik(X_l,Y_l[,i],Yhat,Omega_f)
                 # logMarLik_t = logMarLik(X_t,Y_t[,i],Yhat,Omega_f)
-                # message(paste(m,"/",K_p,"\t",
+                # print(paste(m,"/",K_p,"\t",
                 #         format(round(logMarLik_l,2),nsmall=2),"\t","","\t",
                 #         format(round(logMarLik_t,2),nsmall=2),sep=""))
                 
@@ -111,9 +112,9 @@ for(i in 1:N)
         E.crossVal_ik  = apply(crossVal_ik,2,mean)
         sd.crossVal_ik = apply(crossVal_ik,2,sd)
         crossVal_i     = rbind(crossVal_i,c(crossValParVect[k],E.crossVal_ik,sd.crossVal_ik))
-        message(paste("logLik l vs t: ",
-                format(round(E.crossVal_ik[1],2),nsmall=2),"\t",
-                format(round(E.crossVal_ik[2],2),nsmall=2),"\n",sep=""))
+        print(paste("logLik l vs t: ",
+                format(round(E.crossVal_ik[1],2),nsmall=2),"    ",
+                format(round(E.crossVal_ik[2],2),nsmall=2),"",sep=""))
     }
     
     ## store
