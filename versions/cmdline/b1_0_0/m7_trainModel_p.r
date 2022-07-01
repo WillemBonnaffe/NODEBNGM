@@ -44,7 +44,6 @@ for(i in 1:N)
     summaryTable_i = NULL
     for(k in 1:K_p)
     {   
-
         ## dataloader 
         source("m5_loadData_p.r") # placed in loop in case stochastic training enabled
 
@@ -85,7 +84,7 @@ for(i in 1:N)
     summaryTable[[i]] = summaryTable_i
     print(round(apply(summaryTable_i,2,mean),2))
     print(round(apply(summaryTable_i,2,sd),2))
-    message("\n")
+    print("")
 }
 
 ## store results

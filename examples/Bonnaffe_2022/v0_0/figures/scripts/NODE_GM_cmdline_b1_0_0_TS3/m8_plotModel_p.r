@@ -136,9 +136,8 @@ meanTable = unlist(lapply(summaryTable,function(x)apply(x,2,mean)))
 sdTable   = unlist(lapply(summaryTable,function(x)apply(x,2,sd)))
 
 ## format table
-finalTable = rbind(meanTable,sdTable)
-finalTable = matrix(finalTable,ncol=4)
-colnames(finalTable) = c("log.post","log.lik","log.prior","r2")
+finalTable = matrix(as.vector(rbind(meanTable,sdTable)),ncol=8,byrow=T)
+colnames(finalTable) = paste(c("log.post.mean","log.post.sd","log.lik.mean","log.lik.sd","log.prior.mean","log.prior.sd","r2.mean","r2.sd"),sep="")
 finalTable = round(finalTable,2)
 
 ## combine in table

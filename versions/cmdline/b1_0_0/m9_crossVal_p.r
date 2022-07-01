@@ -121,6 +121,7 @@ for(i in 1:N)
     crossVal_p[[i]] = crossVal_i
     colnames(crossVal_p[[i]]) = c("sd","logLik_l","logLik_t","sd.logLik_l","sd.logLik_t")
     # colnames(crossVal_p[[i]]) = c("w","logMarLik_l","logMarLik_t","sd.logMarLik_l","sd.logMarLik_t")
+    print("")
 }
 
 ## store results

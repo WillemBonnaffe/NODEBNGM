@@ -36,7 +36,8 @@
      }
 
 
-\title{Inferring ecological interactions from time series data using neural ordinary differential equations fitted by Bayesian neural gradient matching}
+\title{Fast fitting of neural differential equations by Bayesian neural gradient matching to infer ecological interactions from time series data}
+% \title{Inferring ecological interactions from time series data using neural ordinary differential equations fitted by Bayesian neural gradient matching}
 \author{Willem Bonnaff\'e$^{1,2}$, Ben Sheldon$^1$, \& Tim Coulson$^2$}
 \date{}
 
@@ -665,15 +666,13 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 \begin{figure}[H]
 \includegraphics[width=\linewidth,page=1]{figures/main.pdf}
 \caption{
-    \textbf{Overview of fitting neural ordinary differential equations by gradient matching}
-    The first step is to compute a continuous time approximation (interpolation) of each state variables (e.g. resource $R(t)$ and predator $N(t)$).
-    To do that we fit an ANN, that takes time as input, to each time series.
-    Dynamics of populations can then be computed by taking the derivative of the ANN with respect to time, $dR/dt$ and $dN/dt$.
-    This provides an interpolation of the per-capita growth rate of each population, e.g. $r_R(t) = 1/R~dR/dt$.
-    In a second step, we approximate non-parametrically the per-capita growth rates with respect to the density of each populations, $r_R = s(R,N)$.
-    To do that we fit an ANN, which takes as input the interpolated variables $R(t)$ and $N(t)$, to the interpolated per-capita growth rates $r_R(t)$ and $r_N(t)$.
-    In a final step, we approximate the ecological interactions, by computing the sensitivity of the per-capita growth rates with respect to the density of each population, e.g. $E: N \rightarrow R = \partial r_R / \partial N$.
-    We also compute the contribution of each species to the dynamics of the other by multiplying the dynamics of each variable with its effect on the growth rates (i.e. the Geber method), e.g. $C: N \rightarrow R = dN/dt \times \partial r_R / \partial N$.
+    \textbf{Overview of fitting neural ordinary differential equations (NODE) by Bayesian neural gradient matching (BNGM).}
+    In a first step we compute a continuous time approximation (interpolation) of each state variables, here the prey $\tilde{R}(t)$ and predator density $\tilde{N}(t)$.
+    To do that we fit an ANN, that takes time as input, to each time series, via Bayesian regularisation.
+    Interpolated dynamics of populations can then be computed by taking the derivative of the ANN with respect to time, $\partial\tilde{R}/\partial t$ and $\partial\tilde{N}/\partial t$.
+    In a second step, we fit each NODE, $dR/dt$ and $dN/dt$, to the interpolated dynamics.
+    To do that we fit an ANN, which takes as input the interpolated variables $\tilde{R}(t)$ and $\tilde{N}(t)$, to the interpolated dynamics $\partial\tilde{R}/\partial t$ and $\partial\tilde{N}/\partial t$, via Bayesian regularisation.
+    It takes on average 2.6 seconds to fit NODEs by BNGM, compared to 30 mins in a previous study (\cite{Bonnaffe2021a}), which corresponds to a 735 fold increase in speed.
 }
 \end{figure}
 \newpage
@@ -771,18 +770,17 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 \end{figure}
 \newpage
 
-
-
 %% global table - v0.0
 \newpage
 \begin{table}[H]
 \begin{center}
 \setstretch{1.0}
 \caption{
-\textbf{Summary analysis.}
-$r^2$ corresponds to the r squared of the NODE non-parametric approximation of the pre-capita growth rate compared to the interpolated per-capita growth rate for each of the three species.
-Mean effects are obtained by averaging the effect of one species on the growth rate of another throughout the time series.
-The \% of total contributions is obtained by summing the square of contributions of one species density to the growth of the other at each time step throughout the time series, then by computing the proportion of total change that it accounts for.
+    \textbf{Comparison of the direction and strentgh of ecological interactions estimated by BNGM across 3 replicated tri-trophic microcosms.}
+    Mean effects are obtained by averaging the effect of one species on the growth rate of another throughout the time series.
+    The \% of total contributions is obtained by summing the square of contributions of one species density to the growth of the other at each time step throughout the time series, then by computing the proportion of total change that it accounts for.
+    The variables $G$, $B$, and $R$ correspond to the population density of algae, flagellate, and rotifer respectively.
+    $r^2$ corresponds to the r squared of the NODE non-parametric approximation of the pre-capita growth rate of the three species.
 }
 \begin{tabular}{rrcccc}
 	\hline
@@ -791,8 +789,8 @@ The \% of total contributions is obtained by summing the square of contributions
 	& \\
 	\hline
 	& \\
-	& \textbf{replicate A} \\
-	% \textbf{Replicate A} & $r^2$  &   &  0.968 & 0.839 & 0.831 \\
+	% & \textbf{replicate A} \\
+	& \textbf{Replicate A} & $r^2$ & 0.3 & 0.47 & 0.94 \\
 	& \\
 	& \textbf{Mean effects} 
 	&   on G &  -0.61 & -0.85 & -1.41 \\
@@ -806,8 +804,8 @@ The \% of total contributions is obtained by summing the square of contributions
 	& \\
 	\hline
 	& \\
-	& \textbf{replicate B} \\
-	% \textbf{Replicate B} & $r^2$  &   &  0.744 & 0.997 & 0.765 \\
+	% & \textbf{replicate B} \\
+    & \textbf{Replicate B} & $r^2$  &  0.65 & 0.85 & 0.47 \\
 	& \\
 	& \textbf{Mean effects} 
     &   on G &  0.00 & -0.56 & -1.13 \\
@@ -821,8 +819,8 @@ The \% of total contributions is obtained by summing the square of contributions
 	& \\
 	\hline
 	& \\
-	& \textbf{replicate C} \\
-	% \textbf{Replicate C} & $r^2$  &   &  0.923 & 0.962 & 0.726 \\
+	% & \textbf{replicate C} \\
+    & \textbf{Replicate C} & $r^2$  &  0.93 & 0.29 & 0.87 \\
 	& \\
 	& \textbf{Mean effects} 
     &   on G & -0.14 &  0.13 & -2.31 \\
@@ -833,6 +831,40 @@ The \% of total contributions is obtained by summing the square of contributions
     &   to G &  0.02 &  0.02 &  0.96 \\
     & & to B &  0.00 &  0.01 &  0.99 \\
     & & to R &  0.79 &  0.18 &  0.03 \\
+\end{tabular}
+\setstretch{2.0}
+\end{center}
+\end{table}
+\newpage
+
+\newpage
+\begin{table}[H]
+\begin{center}
+\setstretch{1.0}
+\caption{
+\textbf{Summary of model runtimes.}
+We measured the time required to perform 100 interpolations and 30 NODE fits to each variable in the systems.
+Replicate A, B, and C correspond to each replicated time series of the aglae, flagellate, and rotifer tri-trophic system (\cite{Hiltunen2013}).
+The Hare-Lynx system correspond to the 90 years long time series of hare and lynx pelt counts (\cite{Odum1972}).
+The number of time steps (N steps) is given for each time series. 
+The total time per fit is obtain by dividing the total time in seconds by the number of fits (i.e. 130).
+It takes on average 5.35 minutes for the 130 NODE fits NODE, which amounts to 2.47 seconds per sample taken. 
+This is 735 times faster than the 30 minutes fitting times obtained in a previous study (\cite{Bonnaffe2021a}).
+}
+\begin{tabular}{rcccccccc}
+\hline
+& \\
+& & & \multicolumn{2}{c}{Interpolation} & \multicolumn{2}{c}{NODE fit} & &  \\
+& & & \multicolumn{2}{c}{-------------------------} & \multicolumn{2}{c}{-------------------------} & &  \\
+% & \\
+System & N var. & N steps & N fits & time (s) & N fits & time (s) & total & total p. fit \\
+& \\
+\hline
+& \\
+Replicate A & 3 & 66 &  100 & 239.47 & 30 & 129.41 & 368.88 & 2.84 \\
+Replicate B & 3 & 66 &  100 & 233.59 & 30 & 133.13 & 366.72 & 2.82 \\
+Replicate C & 3 & 40 &  100 & 136.51 & 30 &  74.01 & 210.52 & 1.62 \\
+Hare-lynx   & 2 & 90 &  100 & 303.64 & 30 &  33.56 & 337.20 & 2.59 \\
 \end{tabular}
 \setstretch{2.0}
 \end{center}
