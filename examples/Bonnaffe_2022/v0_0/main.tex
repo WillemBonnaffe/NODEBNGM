@@ -36,7 +36,7 @@
      }
 
 
-\title{Fast fitting of neural differential equations by Bayesian neural gradient matching to infer ecological interactions from time series data}
+\title{Fast fitting of neural ordinary differential equations by Bayesian neural gradient matching to infer ecological interactions from time series data}
 % \title{Inferring ecological interactions from time series data using neural ordinary differential equations fitted by Bayesian neural gradient matching}
 \author{Willem Bonnaff\'e$^{1,2}$, Ben Sheldon$^1$, \& Tim Coulson$^2$}
 \date{}
@@ -83,6 +83,7 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 %% notes
 %% * remember to discuss limitation of average effect that do not capture oscillating effects
 %% * make sure non-parametric, non-linear, cross-validation are consistently spelled throughout manuscript
+%% * be careful about the vocabulary regarding the results (e.g. drivers of population, growth rate, non-linear effects vs interactions etc.)
 
 \newpage
 \setstretch{2.0}
@@ -441,8 +442,6 @@ Finally, we perform model selection by removing variables that do not result in 
 We ensure moderate temporal autocorrelation and normality by visualising the residuals of the models.
 We also ensure results repeatability running the entire fitting process a second time.
 
-%% model selection!
- 
 %%
 \subsection{Computing ecological interactions}
 
@@ -495,44 +494,86 @@ Results are presented in figure 6.
 %%
 \section{Results}
 
-We analyse sequentially the dynamics of each species, focussing on the amount of variation in per-capita growth rates explained by the NODE model, the overall direction, consistency, and importance of ecological interactions, and differences across replicates.
-Results are summarised in Table 1 and described in details for each species in the following section.
+%%
+\subsection{Model runtimes}
 
+We present a breakdown of the runtime of fitting NODEs by BNGM for each system in table 1.
+We find that it takes on average 5.35 minutes to fit NODEs by BNGM.
+This includes taking 390 samples, and thereby performed 390 full optimisations, of the posterior distribution of the interpolation and NODE parameters. 
+This amounts to about 5.37 second to sample each variable of the NODE system one time.
+This is a 335 fold improvement over our previous approach, which took on average 30 minutes (\cite{Bonnaffe2021a}).
 
 %%
-\textbf{Drivers of top predator dynamics}
+\subsection{Case study 1: artifical tri-trophic system}
 
-Figure 2 presents the drivers of the dynamics of rotifer.
-The NODE approximation of the per-capita growth rate fits quite well the interpolated per-capita growth rate across all replicates (Fig. 2, A2 B2 and C2, $r^2 > 0.7$, Table 1).
-The analysis of effects reveals overall a positive effect of algae on rotifer growth in all replicates (Fig. 2, A3, B3, C3, green line). 
-The intermediate predator has a positive effect on rotifer growth in replicates A and C only (Fig. 2, A3, B3, C3, blue line).
-We find positive intra-specific density-dependence in the first replicate only (Fig. 2, A3, red line).
-Overall, all effects are consistent throughout the time series.
-The algae is the dominant driver of rotifer dynamics as it accounts for 55\%, 93\%, and 74\% of the change in per-capita growth rates across the three replicates (Table 1, Fig. 2, A5, B5, C5, green line).
-% This indicate that rotifer predominantly benefit from their interaction with the prey, and only idiosyncratically from interactions with the intermediate predator and conspecifics.
-
-%%
-\textbf{Drivers of the prey dynamics}
-
-The per-capita growth rate of the algae is well explained by the NODE approximation (Fig. 3, A2, B2, C2, $r^2 > 0.8$, Table 1).
-Overall, rotifers have a negative impact on the growth of algae in all replicates (Fig. 3, A3, B3, C3, red line).
-We find evidence for negative density-dependence in replicate A and positive density-dependence in replicate B, but not in replicate C (Fig. 3, A3, B3, C3, green line).
-The intermediate predator has an overall negative effect on Algae only in replicate B (Fig. 3, B3, blue line).
-The main driver of algae dynamics is the rotifer population, which accounts for 58\%, 44\%, and 90\% of the change in algae per-capita growth rate across the three replicates.
-Density-dependence, however, plays a role in replicate A and B, with 40\% and 24\% of total change in growth, respectively (Table 1).
-The intermediate predator contributes only to algae growth in replicate B, accounting for 32\% change in growth (Table 1).
-Overall, effects are found to be consistent throughout the time series except in replicate B (Fig. 3, B3), where effects vary in complicated ways, leading to a period in the time series where the algae is mostly driven by the intermediate predator and positive density-dependence, and less impacted by the top predator (Fig. 3, B5, from time 3 to 7.5).
-% Algae dynamics are hence mostly driven by the rotifer populations, and anecdotally by the intra-specific density dependence and intermediate predator. 
+We present the results of fitting NODEs by BNGm to the artificial tri-trophic time series in figure 2 and 3.
+We find that both the interpolation of the state variables and dynamics are highly accurate (Fig. 2), given that they closely match the ground truth, known from the equations of the ODE model that we used to generate the time series (Eq. 11).
+Similarly, we find that the NODE approximation of the per-capita growth rate of each species also closely matches the ground truth (Fig. 3, a., d., g.). 
+We find negative nonlinear effects of the two predators on the growth rate of the algae (Fig. 3, b., blue and purple lines).
+This nonlinear pattern is mirrored by the effect of the algae on the growth rate of the predators (Fig. 3, e. and h., red line).
+The linear interaction between the two predators is also well-recovered (Fig. e., blue line, and h., purple line).
+We find that removing the intra-specific dependence in the growth rate of the predators did not affect the fit of the model (Fig. e., purple line, and h., blue line).
+The BNGM approach hence recovers accurately the dynamical characteristics of the artificial system.
 
 %%
-\textbf{Drivers of the intermediate predator dynamics}
+\subsection{Case study 2: real tri-trophic system}
 
-The per-capita growth rate of the intermediate predator is quite well captured by the NODE approximation (Fig. 4, A2, B2, C2, $r^2 > 0.7$, Table 1).
-The intermediate predator is mainly negatively affected by the rotifer population (Fig. 4, A3, B3, C3, red line).
-The algae has a negative effect on flagellate growth in replicate A, and a positive one in replicate B (Fig. 4, A3, B3, green line).
-The rotifer predator dynamics accounts for 78\%, 62\%, 91\% of the change in the flagellate growth rate, and the algae 20\% and 37\% in replicate A and B, respectively (Table 1, Fig. 4, A5, B5, C5).
-Overall, effects are consistent throughout the time series.
-% The population dynamics of the flagellate is hence mostly driven by its interaction with the top-predator.
+First, we present the in-depth analysis of the drivers of the dynamics of the algae, flagellate, and rotifer population in replicate A (Fig. 4).
+Cross validation reveals that there is no support for non-linear effects in the growth rate of the algae and flagellate for replicate A (Fig. 4, a. and b., d. and e.). 
+We find negative linear intra-specific density-dependence (Fig. 4, b., red line), and negative linear inter-specific effects of the two predators (purple and blue line).
+We find that the growth rate of the flagellate is virtually solely driven by predation by the rotifer (Fig. 4, e. and f., blue line).
+The rotifer population itself is driven by a positive nonlinear effect of both preys (Fig. h., red and purple line).
+There is also evidence for positive nonlinear intra-specific density-dependence (Fig. h., red line).
+Overall, comparing results across the three replicates reveals that the effect of the rotifer population on the flagellate and algae, and the effect of the algae on the rotifer, are the strongest and most consistent interactions (Fig. 5, table 2).
+The interactions of the flagellate with the algae, and its effect on the rotifer population varies substantially (Fig. 5, table 2). 
+Interestingly, intra-specific density-dependence in rotifer and algae is also found to be inconsistent across the three replicates.
+
+%%
+\subsection{Case study 3: real di-trophic system}
+
+Finally, we present the analysis of the drivers of the hare-lynx population dynamics in figure 6.
+Cross-validation provides support for nonlinear effects in the per-capita growth rate of the hare and lynx.
+We find that the hare population growth rate is mostly determined by a nonlinear negative effect of the lynx population (Fig. 6, b. and c. blue line), and by weak nonlinear positive density-dependence (red line). 
+The lynx growth rate is determined by a positive nonlinear effect of the hare (Fig. 6, e. and f., red line), and to a lesser extent by negative nonlinear intra-specific density-dependence (blue line).
+
+% We analyse sequentially the dynamics of each species, focussing on the amount of variation in per-capita growth rates explained by the NODE model, the overall direction, consistency, and importance of ecological interactions, and differences across replicates.
+% Results are summarised in Table 1 and described in details for each species in the following section.
+% 
+% 
+% %%
+% \textbf{Drivers of top predator dynamics}
+% 
+% Figure 2 presents the drivers of the dynamics of rotifer.
+% The NODE approximation of the per-capita growth rate fits quite well the interpolated per-capita growth rate across all replicates (Fig. 2, A2 B2 and C2, $r^2 > 0.7$, Table 1).
+% The analysis of effects reveals overall a positive effect of algae on rotifer growth in all replicates (Fig. 2, A3, B3, C3, green line). 
+% The intermediate predator has a positive effect on rotifer growth in replicates A and C only (Fig. 2, A3, B3, C3, blue line).
+% We find positive intra-specific density-dependence in the first replicate only (Fig. 2, A3, red line).
+% Overall, all effects are consistent throughout the time series.
+% The algae is the dominant driver of rotifer dynamics as it accounts for 55\%, 93\%, and 74\% of the change in per-capita growth rates across the three replicates (Table 1, Fig. 2, A5, B5, C5, green line).
+% % This indicate that rotifer predominantly benefit from their interaction with the prey, and only idiosyncratically from interactions with the intermediate predator and conspecifics.
+% 
+% %%
+% \textbf{Drivers of the prey dynamics}
+% 
+% The per-capita growth rate of the algae is well explained by the NODE approximation (Fig. 3, A2, B2, C2, $r^2 > 0.8$, Table 1).
+% Overall, rotifers have a negative impact on the growth of algae in all replicates (Fig. 3, A3, B3, C3, red line).
+% We find evidence for negative density-dependence in replicate A and positive density-dependence in replicate B, but not in replicate C (Fig. 3, A3, B3, C3, green line).
+% The intermediate predator has an overall negative effect on Algae only in replicate B (Fig. 3, B3, blue line).
+% The main driver of algae dynamics is the rotifer population, which accounts for 58\%, 44\%, and 90\% of the change in algae per-capita growth rate across the three replicates.
+% Density-dependence, however, plays a role in replicate A and B, with 40\% and 24\% of total change in growth, respectively (Table 1).
+% The intermediate predator contributes only to algae growth in replicate B, accounting for 32\% change in growth (Table 1).
+% Overall, effects are found to be consistent throughout the time series except in replicate B (Fig. 3, B3), where effects vary in complicated ways, leading to a period in the time series where the algae is mostly driven by the intermediate predator and positive density-dependence, and less impacted by the top predator (Fig. 3, B5, from time 3 to 7.5).
+% % Algae dynamics are hence mostly driven by the rotifer populations, and anecdotally by the intra-specific density dependence and intermediate predator. 
+% 
+% %%
+% \textbf{Drivers of the intermediate predator dynamics}
+% 
+% The per-capita growth rate of the intermediate predator is quite well captured by the NODE approximation (Fig. 4, A2, B2, C2, $r^2 > 0.7$, Table 1).
+% The intermediate predator is mainly negatively affected by the rotifer population (Fig. 4, A3, B3, C3, red line).
+% The algae has a negative effect on flagellate growth in replicate A, and a positive one in replicate B (Fig. 4, A3, B3, green line).
+% The rotifer predator dynamics accounts for 78\%, 62\%, 91\% of the change in the flagellate growth rate, and the algae 20\% and 37\% in replicate A and B, respectively (Table 1, Fig. 4, A5, B5, C5).
+% Overall, effects are consistent throughout the time series.
+% % The population dynamics of the flagellate is hence mostly driven by its interaction with the top-predator.
 
 %%
 \section{Discussion}
@@ -672,7 +713,7 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
     Interpolated dynamics of populations can then be computed by taking the derivative of the ANN with respect to time, $\partial\tilde{R}/\partial t$ and $\partial\tilde{N}/\partial t$.
     In a second step, we fit each NODE, $dR/dt$ and $dN/dt$, to the interpolated dynamics.
     To do that we fit an ANN, which takes as input the interpolated variables $\tilde{R}(t)$ and $\tilde{N}(t)$, to the interpolated dynamics $\partial\tilde{R}/\partial t$ and $\partial\tilde{N}/\partial t$, via Bayesian regularisation.
-    It takes on average 2.6 seconds to fit NODEs by BNGM, compared to 30 mins in a previous study (\cite{Bonnaffe2021a}), which corresponds to a 735 fold increase in speed.
+    It takes on average 5.37 seconds to fit NODEs by BNGM, compared to 30 mins in a previous study (\cite{Bonnaffe2021a}), which corresponds to a 335 fold increase in speed.
 }
 \end{figure}
 \newpage
@@ -747,7 +788,7 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
     The width of the arrows is proportional to the relative strength of the ecological interaction. 
     We compute the relative strength as the \% of total contributions attributable to either algae, flagellate, or rotifer, obtained from summing the square of contributions of each species throughout the time series.
     For instance in replicate A, the relative strength of the effect of rotifer on algae is found by summing the square of the red line in fig. 5 f., and computing the \% of total contributions that it accounts for.
-    We provide the value of the mean effects and relative strengths in Table 1.
+    We provide the value of the mean effects and relative strengths in table 2.
     The replicated time series were obtained by digitising the time series in Hiltunen et al. (2013).
 }
 \end{figure}
@@ -768,6 +809,41 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 }
 \end{center}
 \end{figure}
+\newpage
+
+\newpage
+\begin{table}[H]
+\begin{center}
+\setstretch{1.0}
+\caption{
+\textbf{Summary of model runtimes.}
+We measured the time required to perform 100 interpolations and 30 NODE fits to each variable in the systems.
+Replicate A, B, and C correspond to each replicated time series of the aglae, flagellate, and rotifer tri-trophic system (\cite{Hiltunen2013}).
+The Hare-Lynx system correspond to the 90 years long time series of hare and lynx pelt counts (\cite{Odum1972}).
+The number of time steps (N steps) is given for each time series. 
+The total time per fit is obtain by dividing the total time in seconds by the number of fits (i.e. 130).
+It takes on average 5.35 minutes for the 130 NODE fits NODE, which amounts to 5.37 seconds per sample taken. 
+This is 335 times faster than the 30 minutes fitting times obtained in a previous study (\cite{Bonnaffe2021a}).
+These results were obtained on a macbook pro M1 MAX 2022, in base R, with non-optimised code.
+}
+\begin{tabular}{rcccccccc}
+\hline
+& \\
+& & & \multicolumn{2}{c}{Interpolation} & \multicolumn{2}{c}{NODE fit} & &  \\
+& & & \multicolumn{2}{c}{-------------------------} & \multicolumn{2}{c}{-------------------------} & &  \\
+% & \\
+System & N var. & N steps & N fits & time (s) & N fits & time (s) & total & total p. fit \\
+& \\
+\hline
+& \\
+Replicate A & 3 & 66 &  100 & 239.47 & 30 & 129.41 & 368.88 & 6.71 \\
+Replicate B & 3 & 66 &  100 & 233.59 & 30 & 133.13 & 366.72 & 6.77 \\
+Replicate C & 3 & 40 &  100 & 136.51 & 30 &  74.01 & 210.52 & 3.83 \\
+Hare-lynx   & 2 & 90 &  100 & 303.64 & 30 &  33.56 & 337.20 & 4.16 \\
+\end{tabular}
+\setstretch{2.0}
+\end{center}
+\end{table}
 \newpage
 
 %% global table - v0.0
@@ -836,42 +912,6 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 \end{center}
 \end{table}
 \newpage
-
-\newpage
-\begin{table}[H]
-\begin{center}
-\setstretch{1.0}
-\caption{
-\textbf{Summary of model runtimes.}
-We measured the time required to perform 100 interpolations and 30 NODE fits to each variable in the systems.
-Replicate A, B, and C correspond to each replicated time series of the aglae, flagellate, and rotifer tri-trophic system (\cite{Hiltunen2013}).
-The Hare-Lynx system correspond to the 90 years long time series of hare and lynx pelt counts (\cite{Odum1972}).
-The number of time steps (N steps) is given for each time series. 
-The total time per fit is obtain by dividing the total time in seconds by the number of fits (i.e. 130).
-It takes on average 5.35 minutes for the 130 NODE fits NODE, which amounts to 2.47 seconds per sample taken. 
-This is 735 times faster than the 30 minutes fitting times obtained in a previous study (\cite{Bonnaffe2021a}).
-}
-\begin{tabular}{rcccccccc}
-\hline
-& \\
-& & & \multicolumn{2}{c}{Interpolation} & \multicolumn{2}{c}{NODE fit} & &  \\
-& & & \multicolumn{2}{c}{-------------------------} & \multicolumn{2}{c}{-------------------------} & &  \\
-% & \\
-System & N var. & N steps & N fits & time (s) & N fits & time (s) & total & total p. fit \\
-& \\
-\hline
-& \\
-Replicate A & 3 & 66 &  100 & 239.47 & 30 & 129.41 & 368.88 & 2.84 \\
-Replicate B & 3 & 66 &  100 & 233.59 & 30 & 133.13 & 366.72 & 2.82 \\
-Replicate C & 3 & 40 &  100 & 136.51 & 30 &  74.01 & 210.52 & 1.62 \\
-Hare-lynx   & 2 & 90 &  100 & 303.64 & 30 &  33.56 & 337.20 & 2.59 \\
-\end{tabular}
-\setstretch{2.0}
-\end{center}
-\end{table}
-\newpage
-
-
 
 \newpage
 \section{Supplementary}

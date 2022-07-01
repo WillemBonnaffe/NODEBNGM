@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  1 JUL 2022 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  1 JUL 2022 21:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -654,33 +654,33 @@ e manuscript, com-mented on the manuscript.
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2]
-Overfull \hbox (1.38708pt too wide) in paragraph at lines 107--113
+Overfull \hbox (1.38708pt too wide) in paragraph at lines 108--114
 \OT1/ptm/m/n/10.95 The re-peata-bil-ity of eco-log-i-cal and evo-lu-tion-ary dy
 -nam-ics varies widely across sys-tems and species.
  []
 
 [1] [2] [3] [4] [5] [6]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 209.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 209.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 209.
  [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17]
 [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29]
-Overfull \hbox (37.03731pt too wide) in paragraph at lines 650--651
+Overfull \hbox (37.03731pt too wide) in paragraph at lines 691--692
 []\OT1/ptm/m/n/10.95 All data and code will be made fully avail-able at https:/
 /github.com/WillemBonnaffe/NODER/rotifer. 
  []
 
-
-Overfull \hbox (3.92645pt too wide) in paragraph at lines 659--659
+[30]
+Overfull \hbox (3.92645pt too wide) in paragraph at lines 700--700
 [][]\OT1/ptm/m/n/10.95 Arndt, H. (1993). ``Ro-tifers as preda-tors on com-po-ne
 nts of the mi-cro-bial web (bac-te-ria, het-erotrophic
  []
 
-[30] [31] [32]
-Overfull \hbox (1.30032pt too wide) in paragraph at lines 659--659
+[31] [32]
+Overfull \hbox (1.30032pt too wide) in paragraph at lines 700--700
 \OT1/ptm/m/n/10.95 non-parametric ap-proach''. In: \OT1/ptm/m/it/10.95 Pro-ceed
 -ings of the Royal So-ci-ety B: Bi-o-log-i-cal Sci-ences \OT1/ptm/m/n/10.95 267
 .1453,
@@ -690,13 +690,13 @@ Overfull \hbox (1.30032pt too wide) in paragraph at lines 659--659
 <figures/main.pdf, id=131, page=1, 6538.76666pt x 4228.6571pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 1>
-Package pdftex.def Info: figures/main.pdf , page1 used on input line 667.
+Package pdftex.def Info: figures/main.pdf , page1 used on input line 708.
 (pdftex.def)             Requested size: 430.00462pt x 278.03404pt.
  [1 <./figures/main.pdf>]
 <figures/main.pdf, id=182, page=2, 517.15009pt x 512.14938pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 2>
-Package pdftex.def Info: figures/main.pdf , page2 used on input line 684.
+Package pdftex.def Info: figures/main.pdf , page2 used on input line 725.
 (pdftex.def)             Requested size: 430.00462pt x 425.86536pt.
 
 Overfull \vbox (15.38884pt too high) has occurred while \output is active []
@@ -706,7 +706,7 @@ Overfull \vbox (15.38884pt too high) has occurred while \output is active []
 <figures/main.pdf, id=198, page=3, 517.15009pt x 512.14938pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 3>
-Package pdftex.def Info: figures/main.pdf , page3 used on input line 704.
+Package pdftex.def Info: figures/main.pdf , page3 used on input line 745.
 (pdftex.def)             Requested size: 430.00462pt x 425.86536pt.
 
 Overfull \vbox (28.98885pt too high) has occurred while \output is active []
@@ -716,7 +716,7 @@ Overfull \vbox (28.98885pt too high) has occurred while \output is active []
 <figures/main.pdf, id=214, page=5, 517.15009pt x 512.14938pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 5>
-Package pdftex.def Info: figures/main.pdf , page5 used on input line 723.
+Package pdftex.def Info: figures/main.pdf , page5 used on input line 764.
 (pdftex.def)             Requested size: 430.00462pt x 425.86536pt.
 
 Overfull \vbox (15.38884pt too high) has occurred while \output is active []
@@ -726,26 +726,26 @@ Overfull \vbox (15.38884pt too high) has occurred while \output is active []
 <figures/main.pdf, id=230, page=6, 5184.22809pt x 2203.80737pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 6>
-Package pdftex.def Info: figures/main.pdf , page6 used on input line 740.
+Package pdftex.def Info: figures/main.pdf , page6 used on input line 781.
 (pdftex.def)             Requested size: 430.00462pt x 182.76463pt.
  [5 <./figures/main.pdf>]
 <figures/main.pdf, id=259, page=4, 517.15009pt x 512.14938pt>
 File: figures/main.pdf Graphic file (type pdf)
 <use figures/main.pdf, page 4>
-Package pdftex.def Info: figures/main.pdf , page4 used on input line 760.
+Package pdftex.def Info: figures/main.pdf , page4 used on input line 801.
 (pdftex.def)             Requested size: 430.00462pt x 425.86536pt.
 
 Overfull \vbox (1.78883pt too high) has occurred while \output is active []
 
 
 [6 <./figures/main.pdf>]
-Overfull \vbox (39.92313pt too high) has occurred while \output is active []
-
-
-[7]
-Overfull \hbox (20.5773pt too wide) in paragraph at lines 854--870
+Overfull \hbox (20.5773pt too wide) in paragraph at lines 829--845
  [] 
  []
+
+[7]
+Overfull \vbox (39.92313pt too high) has occurred while \output is active []
+
 
 [8] [9] [10] [11] [12] (./main.aux)
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -753,10 +753,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13592 strings out of 478268
- 255929 string characters out of 5846347
- 826917 words of memory out of 5000000
- 31640 multiletter control sequences out of 15000+600000
+ 13593 strings out of 478268
+ 255941 string characters out of 5846347
+ 826931 words of memory out of 5000000
+ 31641 multiletter control sequences out of 15000+600000
  511000 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,9n,69p,1849b,1348s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -772,7 +772,7 @@ ts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
 
-Output written on main.pdf (49 pages, 488047 bytes).
+Output written on main.pdf (49 pages, 488172 bytes).
 PDF statistics:
  346 PDF objects out of 1000 (max. 8388607)
  232 compressed objects within 3 object streams
