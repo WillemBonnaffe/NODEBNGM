@@ -17,6 +17,176 @@
 \endgroup
 
 \datalist[entry]{nyt/global//global/global}
+  \entry{Aarts2001}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ALP}{%
+         family={Aarts},
+         familyi={A\bibinitperiod},
+         given={Lucie\bibnamedelima P.},
+         giveni={L\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=VPVD}{%
+         family={Veer},
+         familyi={V\bibinitperiod},
+         given={Peter Van\bibnamedelima Der},
+         giveni={P\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim
+  D\bibinitperiod},
+      }}%
+    }
+    \keyw{Derivatives approximation,Differential equations,Evolutionary
+  algorithms,Feedforward neural networks,Function approximation,Knowledge
+  incorporation,Numerical solution methods,Partial differential
+  equations,Simultaneously training}
+    \strng{namehash}{ALPVPVD1}
+    \strng{fullhash}{ALPVPVD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2001}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{abstract}{%
+    A method is presented to solve partial differential equations (pde's) and
+  its boundary and/or initial conditions by using neural networks. It uses the
+  fact that multiple input, single output, single hidden layer feedforward
+  networks with a linear output layer with no bias are capable of arbitrarily
+  well approximating arbitrary functions and its derivatives, which is proven
+  by a number of authors and well known in literature. Knowledge about the pde
+  and its boundary and/or initial conditions is incorporated into the
+  structures and the training sets of several neural networks. In this way we
+  obtain networks of which some are specifically structured. To find the
+  solution of the pde and its boundary and/or initial conditions we have to
+  train all obtained networks simultaneously. Therefore we use an evolutionary
+  algorithm to train the networks. We demonstrate the working of our method by
+  applying it to two problems.%
+    }
+    \verb{doi}
+    \verb 10.1023/A:1012784129883
+    \endverb
+    \field{issn}{13704621}
+    \field{issue}{3}
+    \field{note}{Note<br/>- The article demonstrates that a single perceptron
+  approximates well enough differential equation systems. It uses work that
+  demonstrates that single layer network can approximate well enough any
+  function. In this sense it is an application of this theory to solving
+  pdes<br/>- The difference with your work is that they approximate the
+  solution to the differential equation with a neural network, instead of the
+  differential equation itself. More specifically, they assume the equation and
+  the boundary conditions are known. They train the networks to reproduce
+  boundary conditions. This implies that the network approximates the solution
+  to the pde in the set.<br/>- Highly correlated networks output generate high
+  correlations between weights, making gradient based methods inefficient.}
+    \field{pages}{261\bibrangedash 271}
+    \field{title}{Neural network method for solving partial differential
+  equations}
+    \field{volume}{14}
+    \field{journaltitle}{Neural Processing Letters}
+    \field{year}{2001}
+  \endentry
+
+  \entry{Adams2020}{article}{}
+    \name{author}{9}{}{%
+      {{hash=AMP}{%
+         family={Adams},
+         familyi={A\bibinitperiod},
+         given={Matthew\bibnamedelima P.},
+         giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=SSA}{%
+         family={Sisson},
+         familyi={S\bibinitperiod},
+         given={Scott\bibnamedelima A.},
+         giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=HKJ}{%
+         family={Helmstedt},
+         familyi={H\bibinitperiod},
+         given={Kate\bibnamedelima J.},
+         giveni={K\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=BCM}{%
+         family={Baker},
+         familyi={B\bibinitperiod},
+         given={Christopher\bibnamedelima M.},
+         giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=HMH}{%
+         family={Holden},
+         familyi={H\bibinitperiod},
+         given={Matthew\bibnamedelima H.},
+         giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Plein},
+         familyi={P\bibinitperiod},
+         given={Michaela},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=HJ}{%
+         family={Holloway},
+         familyi={H\bibinitperiod},
+         given={Jacinta},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MKL}{%
+         family={Mengersen},
+         familyi={M\bibinitperiod},
+         given={Kerrie\bibnamedelima L.},
+         giveni={K\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=MME}{%
+         family={McDonald-Madden},
+         familyi={M\bibinithyphendelim M\bibinitperiod},
+         given={Eve},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Blackwell Publishing Ltd}%
+    }
+    \keyw{Conservation,decision science,ecological forecasting,ecological
+  modelling,food webs,interaction network,population dynamics,predator–prey
+  interactions,prediction,uncertainty propagation}
+    \strng{namehash}{AMP+1}
+    \strng{fullhash}{AMPSSAHKJBCMHMHPMHJMKLMME1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{abstract}{%
+    Well-intentioned environmental management can backfire, causing unforeseen
+  damage. To avoid this, managers and ecologists seek accurate predictions of
+  the ecosystem-wide impacts of interventions, given small and imprecise
+  datasets, which is an incredibly difficult task. We generated and analysed
+  thousands of ecosystem population time series to investigate whether fitted
+  models can aid decision-makers to select interventions. Using these
+  time-series data (sparse and noisy datasets drawn from deterministic
+  Lotka-Volterra systems with two to nine species, of known network structure),
+  dynamic model forecasts of whether a species’ future population will be
+  positively or negatively affected by rapid eradication of another species
+  were correct > 70% of the time. Although 70% correct classifications is only
+  slightly better than an uninformative prediction (50%), this classification
+  accuracy can be feasibly improved by increasing monitoring accuracy and
+  frequency. Our findings suggest that models may not need to produce
+  well-constrained predictions before they can inform decisions that improve
+  environmental outcomes.%
+    }
+    \verb{doi}
+    \verb 10.1111/ele.13465
+    \endverb
+    \field{issn}{14610248}
+    \field{issue}{4}
+    \field{pages}{607\bibrangedash 619}
+    \field{title}{Informing management decisions for ecological networks, using
+  dynamic models calibrated to noisy time-series data}
+    \field{volume}{23}
+    \field{journaltitle}{Ecology Letters}
+    \field{month}{04}
+    \field{year}{2020}
+  \endentry
+
   \entry{Adamson2013}{article}{}
     \name{author}{2}{}{%
       {{hash=AMW}{%
@@ -33,7 +203,7 @@
       }}%
     }
     \keyw{Local bifurcation,Predator-prey model,Sensitivity analysis,Structural
-  sensitivity,System stability,Uncertainty,structural sensitivity}
+  sensitivity,System stability,Uncertainty}
     \strng{namehash}{AMWMAY1}
     \strng{fullhash}{AMWMAY1}
     \field{labelnamesource}{author}
@@ -65,47 +235,41 @@
   may simply be impossible when the model exhibits structural sensitivity.
   Finally, we suggest that the phenomenon of structural sensitivity in
   biological models may help explain the irregular oscillations often observed
-  in real ecosystems. {\textcopyright} 2012 The Author(s) Published by the
-  Royal Society. All rights reserved.%
+  in real ecosystems. © 2012 The Author(s) Published by the Royal Society. All
+  rights reserved.%
     }
     \verb{doi}
     \verb 10.1098/rspa.2012.0500
     \endverb
     \field{issn}{14712946}
-    \field{number}{2149}
+    \field{issue}{2149}
+    \field{note}{* Preliminary read<br/>- The authors propose a test for
+  evaluating structural sensitivity of the model.<br/>- I see this as
+  potentially useful for discussing the mechanistic pitfall.<br/>- I think
+  other papers on the mechanistic pitfall are also good, such as Wood 2001,
+  Jost and Ellner 2000, etc.<br/><br/>* Notes<br/>- In the abstract the authors
+  say that sensitivty should not only be performed on parameters, but also on
+  model structure. And that this is often not done.<br/>- they define
+  structural sensitivity as change in model behaviour with mathematical
+  forumlation of the model.<br/>- They state that conventional model search in
+  a subset of pre-defined parameters is subjective.<br/>- They state that
+  generalising from well-observed populations (e.g. in the lab) to natural
+  populations may not work. I see that they do not even question whether across
+  the same replicates it may be possible. <br/>- They state that uncertainty
+  arises because of experimental errors but also biological variation. Results
+  can further vary because of model structural sensitivity. References 42-46
+  may be interesting for supporting that.<br/>- They state that functional
+  relations between system component are not consistent in time, due to a
+  change in unobserved variables (environment, internal state, evolution) which
+  may require a change in the model structure. That is reminding me that no
+  model should be fixed ideally, or at least complex enough to allow for
+  change.}
     \field{pages}{1\bibrangedash 19}
-    \field{title}{{When can we trust our model predictions? Unearthing
-  structural sensitivity in biological systems}}
+    \field{title}{When can we trust our model predictions? Unearthing
+  structural sensitivity in biological systems}
     \field{volume}{469}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Adamson, Morozov - 2013 - When can we trust our model predictions U
-    \verb nearthing structural sensitivity in biological systems.pdf:pdf
-    \endverb
     \field{journaltitle}{Proceedings of the Royal Society A: Mathematical,
   Physical and Engineering Sciences}
-    \field{annotation}{%
-    * Preliminary read - The authors propose a test for evaluating structural
-  sensitivity of the model. - I see this as potentially useful for discussing
-  the "mechanistic pitfall". - I think other papers on the "mechanistic
-  pitfall" are also good, such as Wood 2001, Jost and Ellner 2000, etc. * Notes
-  - In the abstract the authors say that sensitivty should not only be
-  performed on parameters, but also on model structure. And that this is often
-  not done. - they define structural sensitivity as change in model behaviour
-  with mathematical forumlation of the model. - They state that conventional
-  model search in a subset of pre-defined parameters is subjective. - They
-  state that generalising from well-observed populations (e.g. in the lab) to
-  natural populations may not work. I see that they do not even question
-  whether across the same replicates it may be possible. - They state that
-  uncertainty arises because of experimental errors but also biological
-  variation. Results can further vary because of model structural sensitivity.
-  References 42-46 may be interesting for supporting that. - They state that
-  functional relations between system component are not consistent in time, due
-  to a change in unobserved variables (environment, internal state, evolution)
-  which may require a change in the model structure. That is reminding me that
-  no model should be fixed ideally, or at least complex enough to allow for
-  change.%
-    }
     \field{year}{2013}
   \endentry
 
@@ -155,34 +319,307 @@
   Rotifers provide degraded algae, bacteria and protozoans to the microbial web
   and may promote microbial activity. Additional experimental work is necessary
   for a better understanding of the function of rotifers in aquatic ecosystems.
-  {\textcopyright} 1993 Kluwer Academic Publishers.%
+  © 1993 Kluwer Academic Publishers.%
     }
     \verb{doi}
     \verb 10.1007/BF00025844
     \endverb
     \field{issn}{15735117}
-    \field{number}{1}
+    \field{issue}{1}
+    \field{note}{* Takeaway<br/>- Rotifers do feed on cilliates}
     \field{pages}{231\bibrangedash 246}
-    \field{title}{{Rotifers as predators on components of the microbial web
-  (bacteria, heterotrophic flagellates, ciliates) - a review}}
+    \field{title}{Rotifers as predators on components of the microbial web
+  (bacteria, heterotrophic flagellates, ciliates) - a review}
     \field{volume}{255-256}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Arndt - 1993 - Rotifers as predators on components of the microbial
-    \verb  web (bacteria, heterotrophic flagellates, ciliates) - a review.pdf:p
-    \verb df
-    \endverb
     \field{journaltitle}{Hydrobiologia}
-    \field{annotation}{%
-    * Takeaway - Rotifers do feed on cilliates%
-    }
     \field{year}{1993}
+  \endentry
+
+  \entry{Berryman1997}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BA}{%
+         family={Berryman},
+         familyi={B\bibinitperiod},
+         given={Alan},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=TP}{%
+         family={Turchin},
+         familyi={T\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \keyw{Williams and}
+    \strng{namehash}{BATP1}
+    \strng{fullhash}{BATP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1997}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    can give rise to spurious diagnosis of second-order feedback effects
+  (de-layed density dependence). They go on to warn that diagnosis of the
+  underlying causes of population dynamics from time-series data is ''at best
+  tenuous and may be impossible.'' This pessimistic conclusion is based on
+  simulations with a first-order single-species population model (the Ricker
+  ''logistic'' equation) in which the exogenous driving variable is strongly
+  au-tocorrelated. Analysis of data generated by this model indicates that
+  spurious second-order effects can be detected if the autocorrelation in the
+  exogenous variable is strong while endogenous feedback is weak. The point
+  raised by Williams and Liebhold (1995) is legitimate, and has been discussed
+  previously by Royama (1981). However, we argue that Williams and Liebhold
+  overstate the importance of this potential problem. Two points need to be
+  considered in order to put Williams and Liebhold's argument in its proper
+  perspective. 1) The results presented in Table 1 of Williams and Liebhold
+  (1995: 1006) give a misleading impression that spurious second-order effects
+  occur frequently for most combinations of parameters likely to be encountered
+  in analyzing real data. This impression results from their restriction of the
+  range of the maximum per capita rate-of-change parameter, r, to values
+  between 0.1 and 0.7, where spurious effects are more likely to be observed in
+  simulated data. However, the value of r estimated from forest insect and
+  small-mammal population data (these are the taxa that most frequently show
+  second-order effects) typically exceeds unity. For Manuscript example,
+  estimates of the maximum annual per capita rates of change of 19 forest
+  insect populations ranged from 0.58 to 4.27 with 90% being 1 (Berryman 1995),
+  while the intrinsic rates of change of small-mammal populations were
+  estimated to be between 2.7 and 5.4 (Hanski and Korpimaki 1995). (Note that
+  estimates of r from multiple-regression models may not accurately reflect the
+  maximum value of r, so direct measurements from the time series, as done by
+  Berryman [1995] and Hanski and Korpimäki [1995], are preferable.) Williams
+  and Liebhold acknowledge that the number of spurious second-order cases
+  decreases as r increases. Hence, spurious second-order effects seem less
+  likely to be encountered in real data than Williams and Lieb-hold (1995)
+  imply. In addition, Williams and Liebhold used simulated time series that are
+  longer than those usually encountered in practice (50 yr vs. the 10-30 yr
+  typical of ecological data). Having longer time series gives one greater
+  power in detecting weak statistical effects. Thus, the proportion of
+  significantly spurious second-order effects in Table 1 probably overestimates
+  the probability of finding such a spurious result in real applications.
+  Finally, spurious second-order effects are primarily observed when
+  autocorrelation in the exog-enous variable is strong (i.e., 0.3), which
+  brings us to our second point. 2) Williams and Liebhold fail to demonstrate
+  why we should frequently find strongly autocorrelated ex-ogenous driving
+  variables in ecological systems. By definition, an exogenous variable is one
+  that affects the variable of interest (the population) but is unaffected by
+  that variable. Williams and Liebhold state that weather is the most likely
+  exogenous factor affecting field populations, but then concede that annual
+  weather patterns show little (if any) autocorrelation. Because annual weather
+  fluctuations are not strongly autocor-related, and as most time-series
+  analyses are performed on annual counts, weather would seem to be an unlikely
+  candidate for creating spurious second-order effects in ecological
+  time-series counts. Williams and Liebhold then suggest that generalist
+  predators could act as exogenous factors. However, generalist predators do
+  not normally fit the definition of an exogenous variable because they often
+  respond behaviorally (and sometimes numerically) to the density of their prey
+  (Holling 1965). Behavioral responses of generalist predators to the density
+  of their prey, such as increased consumption, switching, and spatial
+  ag-gregation, occur on a fast time scale, resulting in powerful first-order
+  endogenous feedback on the prey population (Berryman 1981, Berryman et al.
+  1987). It is possible, of course, for generalist predators to act
+  independently of the density of one prey species. Under%
+    }
+    \field{issue}{1}
+    \field{note}{Notes:<br/>- Can use that as a biological interpretation of
+  lag effects as trophic interactions.}
+    \field{pages}{318\bibrangedash 320}
+    \field{title}{Detection of density dependence: comment}
+    \field{volume}{78}
+    \field{journaltitle}{Ecology}
+    \field{year}{1997}
+  \endentry
+
+  \entry{Berryman2002}{article}{}
+    \name{author}{1}{}{%
+      {{hash=BAA}{%
+         family={Berryman},
+         familyi={B\bibinitperiod},
+         given={Alan\bibnamedelima A.},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BAA1}
+    \strng{fullhash}{BAA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{issue}{3}
+    \field{pages}{439\bibrangedash 442}
+    \field{title}{Population: a central concept for ecology?}
+    \field{volume}{97}
+    \field{journaltitle}{Oikos}
+    \field{year}{2002}
+  \endentry
+
+  \entry{Berryman2003}{article}{}
+    \name{author}{1}{}{%
+      {{hash=BAA}{%
+         family={Berryman},
+         familyi={B\bibinitperiod},
+         given={Alan\bibnamedelima A},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BAA2}
+    \strng{fullhash}{BAA2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2003}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{issue}{3}
+    \field{pages}{695\bibrangedash 701}
+    \field{title}{On principles, laws and theory in population ecology}
+    \field{volume}{103}
+    \field{journaltitle}{Oikos}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Bonnaffe2021b}{article}{}
+    \name{author}{4}{}{%
+      {{hash=BW}{%
+         family={Bonnaffé},
+         familyi={B\bibinitperiod},
+         given={Willem},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=LS}{%
+         family={Legendre},
+         familyi={L\bibinitperiod},
+         given={Stéphane},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Danet},
+         familyi={D\bibinitperiod},
+         given={Alain},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=EE}{%
+         family={Edeline},
+         familyi={E\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \keyw{body size,fish,ontogenetic diet shifts,temperature,trophic networks}
+    \strng{namehash}{BW+1}
+    \strng{fullhash}{BWLSDAEE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \verb{doi}
+    \verb 10.1111/oik.08173
+    \endverb
+    \field{pages}{1\bibrangedash 14}
+    \field{title}{Comparison of size-structured and species-level trophic
+  networks reveals antagonistic effects of temperature on vertical trophic
+  diversity at the population and species level}
+    \field{journaltitle}{Oikos}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Bonnaffe2018}{article}{}
+    \name{author}{5}{}{%
+      {{hash=BW}{%
+         family={Bonnaffé},
+         familyi={B\bibinitperiod},
+         given={Willem},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Martin},
+         familyi={M\bibinitperiod},
+         given={Mélissa},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Mugabo},
+         familyi={M\bibinitperiod},
+         given={Marianne},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MS}{%
+         family={Meylan},
+         familyi={M\bibinitperiod},
+         given={Sandrine},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=GJFL}{%
+         family={Galliard},
+         familyi={G\bibinitperiod},
+         given={Jean François\bibnamedelima Le},
+         giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim
+  L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {John Wiley}%
+      {Sons Ltd}%
+    }
+    \keyw{age-dependent coloration,carotenoids,senescence,structural
+  coloration}
+    \strng{namehash}{BW+1}
+    \strng{fullhash}{BWMMMMMSGJFL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    The understanding of developmental patterns of body coloration is
+  challenging because of the multicomponent nature of color signals and the
+  multiple selective pressures acting upon them, which further depend on the
+  sex of the bearer and area of display. Pigmentary colors are thought to be
+  strongly involved in sexual selection, while structural colors are thought to
+  generally associate with conspecifics interactions and improve the
+  discrimination of pigmentary colors. Yet, it remains unclear whether age
+  dependency in each color component is consistent with their potential
+  function. Here, we address lifelong ontogenetic variation in three color
+  components (i.e. UV, pigmentary, and skin background colors) in a birth
+  cohort of common lizards Zootoca vivipara across three ventral body regions
+  (i.e. throat, chest, and belly). All three color components developed sexual
+  dichromatism, with males displaying stronger pigmentary and UV colors but
+  weaker skin background coloration than females. The development of color
+  components led to a stronger sexual dichromatism on the concealed ventral
+  region than on the throat. No consistent signs of late-life decay in color
+  components were found except for a deceleration of UV reflectance increase
+  with age on the throat of males. These results suggest that body color
+  components in common lizards are primarily nonsenescent sexual signals, but
+  that the balance between natural and sexual selection may be altered by the
+  conspicuousness of the area of display. These results further support the
+  view that skin coloration is a composite trait constituted of multiple color
+  components conveying multiple signals depending on age, sex, and body
+  location.%
+    }
+    \verb{doi}
+    \verb 10.1002/ece3.4369
+    \endverb
+    \field{issn}{20457758}
+    \field{issue}{24}
+    \field{pages}{12299\bibrangedash 12307}
+    \field{title}{Ontogenetic trajectories of body coloration reveal its
+  function as a multicomponent nonsenescent signal}
+    \field{volume}{8}
+    \field{journaltitle}{Ecology and Evolution}
+    \field{month}{12}
+    \field{year}{2018}
   \endentry
 
   \entry{Bonnaffe2021a}{article}{}
     \name{author}{3}{}{%
       {{hash=BW}{%
-         family={Bonnaff{\'{e}}},
+         family={Bonnaffé},
          familyi={B\bibinitperiod},
          given={Willem},
          giveni={W\bibinitperiod},
@@ -200,12 +637,10 @@
          giveni={T\bibinitperiod},
       }}%
     }
-    \keyw{NODE,article type,artificial neural
-  networks,dynamics,eco-evolutionary dynamics,eco-evolutionary
-  feedbacks,ecological dynamics,evolutionary dynamics,geber,method,neural
-  ordinary differential equations,ordinary differential equations,prey predator
-  dynamics,prey-predator,prey-predator oscillations,research article,time
-  series,time series analysis}
+    \keyw{article type,artificial neural networks,dynamics,ecological
+  dynamics,evolutionary dynamics,geber,method,neural ordinary differential
+  equations,ordinary differential equations,prey-predator,research article,time
+  series analysis}
     \strng{namehash}{BWSBCCT1}
     \strng{fullhash}{BWSBCCT1}
     \field{labelnamesource}{author}
@@ -218,21 +653,311 @@
     \verb 10.1111/2041-210x.13606
     \endverb
     \field{issn}{2041-210X}
+    \field{note}{Note<br/>- You know what is in it because it is your paper}
     \field{pages}{1\bibrangedash 46}
-    \field{title}{{Neural ordinary differential equations for ecological and
-  evolutionary time series analysis}}
+    \field{title}{Neural ordinary differential equations for ecological and
+  evolutionary time series analysis}
     \field{volume}{2}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Bonnaff{\'{e}}, Sheldon, Coulson - 2021 - Neural ordinary different
-    \verb ial equations for ecological and evolutionary time series analysis.pd
-    \verb f:pdf
-    \endverb
     \field{journaltitle}{Methods in Ecology and Evolution}
-    \field{annotation}{%
-    Note - You know what is in it because it is your paper%
-    }
     \field{year}{2021}
+  \endentry
+
+  \entry{Bonsall2003}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BMB}{%
+         family={Bonsall},
+         familyi={B\bibinitperiod},
+         given={Michael\bibnamedelima B.},
+         giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=MEVD}{%
+         family={Meijden},
+         familyi={M\bibinitperiod},
+         given={Ed\bibnamedelima Van\bibnamedelima Der},
+         giveni={E\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim
+  D\bibinitperiod},
+      }}%
+      {{hash=CMJ}{%
+         family={Crawley},
+         familyi={C\bibinitperiod},
+         given={Michael\bibnamedelima J.},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BMBMEVDCMJ1}
+    \strng{fullhash}{BMBMEVDCMJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2003}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    Long-term studies of two-species interactions under field conditions are
+  unusual; most long-term field studies are of single species dynamics (1-6).
+  Concurrent long-term studies on the dynamics of the same two interacting
+  species in different locations are very rare. This result has led to the
+  tacit assumption that diffehjkrent cases of the same two-species interaction
+  would involve essentially quantitative differences (e.g., context-specific
+  differences in the numeric values of demographic parameters like fecundity or
+  death rates). Here, we show that for one of the best-known two-species
+  systems (ragwort and cinnabar moth), this finding does not hold. The
+  interaction between the plant and its herbivore is fundamentally different in
+  coastal dunes in The Netherlands and in grasslands in Southeast England. In
+  the first case, the dynamics are cyclic and the interaction involves both
+  direct and delayed density dependence; in the second case, the insect has
+  little impact on plant dynamics and there are no time lags in density
+  dependence. The difference is caused by differences in the importance of
+  seed-limitation in plant recruitment in the two locations.%
+    }
+    \verb{doi}
+    \verb 10.1073/pnas.2535677100
+    \endverb
+    \field{issn}{00278424}
+    \field{issue}{25}
+    \field{note}{Takeaway<br/>- They state that the same interaction can vary
+  in direction because of context dependence caused by the
+  environment.<br/><br/>Note<br/>- Good paper to demonstrate the usefulness of
+  non-parametric approaches in studying ecological dynamics from time series.}
+    \field{pages}{14932\bibrangedash 14936}
+    \field{title}{Contrasting dynamics in the same plant-herbivore interaction}
+    \field{volume}{100}
+    \field{journaltitle}{Proceedings of the National Academy of Sciences of the
+  United States of America}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Brook2006}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BBW}{%
+         family={Brook},
+         familyi={B\bibinitperiod},
+         given={Barry\bibnamedelima W},
+         giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=BCJA}{%
+         family={Bradshaw},
+         familyi={B\bibinitperiod},
+         given={Corey J\bibnamedelima A},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim
+  A\bibinitperiod},
+      }}%
+    }
+    \keyw{Akaike information criterion,density dependence,endogenous population
+  dynamics,multi-model inference,negative feedback,population
+  regulation,strength of evidence,time series}
+    \strng{namehash}{BBWBCJA1}
+    \strng{fullhash}{BBWBCJA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2006}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    Population limitation is a fundamental tenet of ecology, but the relative
+  roles of exogenous and endogenous mechanisms remain unquantified for most
+  species. Here we used multi-model inference (MMI), a form of model averaging,
+  based on information theory (Akaike's Information Criterion) to evaluate the
+  relative strength of evidence for density-dependent and density-independent
+  population dynamical models in long-term abundance time series of 1198
+  species. We also compared the MMI results to more classic methods for
+  detecting density dependence: Neyman-Pearson hypothesis-testing and
+  best-model selection using the Bayesian Information Criterion or
+  cross-validation. Using MMI on our large database, we show that density
+  dependence is a pervasive feature of population dynamics (median MMI support
+  for density dependence ¼ 74.7-92.2%), and that this holds across widely
+  different taxa. The weight of evidence for density dependence varied among
+  species but increased consistently with the number of generations monitored.
+  Best-model selection methods yielded similar results to MMI (a
+  density-dependent model was favored in 66.2-93.9% of species time series),
+  while the hypothesis-testing methods detected density dependence less
+  frequently (32.6-49.8%). There were no obvious differences in the prevalence
+  of density dependence across major taxonomic groups under any of the
+  statistical methods used. These results underscore the value of using
+  multiple modes of analysis to quantify the relative empirical support for a
+  set of working hypotheses that encompass a range of realistic population
+  dynamical behaviors.%
+    }
+    \field{issue}{6}
+    \field{pages}{1445\bibrangedash 1451}
+    \field{title}{Strength of evidence for density dependence in abundance time
+  series of 1198 species}
+    \field{volume}{87}
+    \field{journaltitle}{Ecology}
+    \field{year}{2006}
+  \endentry
+
+  \entry{Brown2004a}{article}{}
+    \name{author}{5}{}{%
+      {{hash=BJH}{%
+         family={Brown},
+         familyi={B\bibinitperiod},
+         given={J\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=GJF}{%
+         family={Gillooly},
+         familyi={G\bibinitperiod},
+         given={J\bibnamedelima F},
+         giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=AAP}{%
+         family={Allen},
+         familyi={A\bibinitperiod},
+         given={A\bibnamedelima P},
+         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=SVM}{%
+         family={Savage},
+         familyi={S\bibinitperiod},
+         given={V\bibnamedelima M},
+         giveni={V\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=WGB}{%
+         family={West},
+         familyi={W\bibinitperiod},
+         given={G\bibnamedelima B},
+         giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+    }
+    \keyw{allometry,biogeochemical cycles,body size,body-size,common
+  rule,development,ecological interactions,ecological theory,energy-use,food
+  webs,general-model,growth-rate,life-history,metabolism,population
+  growth,population-density,production,species-diversity,stoichiometry,temperature,trophic
+  dynamics}
+    \strng{namehash}{BJH+1}
+    \strng{fullhash}{BJHGJFAAPSVMWGB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2004}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    Metabolism provides a basis for using first principles of physics,
+  chemistry, and biology to link the biology of individual organisms to the
+  ecology of populations, communities, And ecosystems. Metabolic rate, the rate
+  at which organisms take up, transform, and expend energy and materials, is
+  the most fundamental biological rate. We have developed a quantitative theory
+  for how metabolic rate varies with body size and temperature. Metabolic
+  theory predicts how metabolic rate, by setting the rates of resource uptake
+  from the environment and resource allocation to survival, growth, and
+  reproduction, controls ecological processes at all levels of organization
+  from individuals to the biosphere. Examples include: (1) life history
+  attributes, including development rate, mortality rate, age at maturity, life
+  span, and population growth rate; (2) population interactions, including
+  carrying capacity, rates of competition and predation, and patterns of
+  species diversity; and (3) ecosystem processes, including rates of biomass
+  production and respiration and patterns of trophic dynamics. Data compiled
+  from the ecological literature strongly support the theoretical predictions.
+  Eventually, metabolic theory may provide a conceptual foundation for much of
+  ecology, just as genetic theory provides a foundation for much of
+  evolutionary biology.%
+    }
+    \verb{doi}
+    \verb Doi 10.1890/03-9000
+    \endverb
+    \field{isbn}{0012-9658}
+    \field{issn}{00129658}
+    \field{issue}{7}
+    \field{pages}{1771\bibrangedash 1789}
+    \field{title}{Toward a metabolic theory of ecology}
+    \verb{url}
+    \verb <Go to ISI>://WOS:000223113500001\nhttp://www.esajournals.org/doi/pdf
+    \verb /10.1890/03-9000
+    \endverb
+    \field{volume}{85}
+    \field{journaltitle}{Ecology}
+    \field{year}{2004}
+  \endentry
+
+  \entry{Bruijning2019}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BM}{%
+         family={Bruijning},
+         familyi={B\bibinitperiod},
+         given={Marjolein},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=JE}{%
+         family={Jongejans},
+         familyi={J\bibinitperiod},
+         given={Eelke},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=TMM}{%
+         family={Turcotte},
+         familyi={T\bibinitperiod},
+         given={Martin\bibnamedelima M.},
+         giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \keyw{population growth rate,population model,rapid evolution,sensitivity
+  analysis,vital rates}
+    \strng{namehash}{BMJETMM1}
+    \strng{fullhash}{BMJETMM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    1. Changes in population dynamics due to interacting evolutionary and
+  ecological processes are the direct result of responses in vital rates, that
+  is stage-specific growth, survival and fecundity. Quantifying through which
+  vital rates population fitness is affected, instead of focusing on population
+  trends only, can give a more mechanistic understanding of eco-evolutionary
+  dynamics. 2. The aim of this study was to estimate the underlying demographic
+  rates of aphid (Myzus persicae) populations. We analysed unpublished
+  stage-structure population dynamics data of a field experiment with caged and
+  uncaged populations in which rapid evolutionary dynamics were observed, as
+  well as unpublished results from an individual life table experiment
+  performed in a glasshouse. 3. Using data on changes in population abundance
+  and stage distributions over time, we estimated transition matrices with
+  inverse modelling techniques, in a Bayesian framework. The model used to fit
+  across all experimental treatments included density as well as clone-specific
+  caging effects. We additionally used individual life table data to inform the
+  model on survival, growth and reproduction. 4. Results suggest that clones
+  varied considerably in vital rates, and imply trade-offs between reproduction
+  and survival. Responses to densities also varied between clones. Negative
+  density dependence was found in growth and reproduction, and the presence of
+  predators and competitors further decreased these two vital rates, while
+  survival estimates increased. Under uncaged conditions, population growth
+  rates of the evolving populations were increased compared to the expectation
+  based on the pure clones. 5. Our inverse modelling approach revealed how much
+  vital rates contributed to the eco-evolutionary dynamics. The decomposition
+  analysis showed that variation in population growth rates in the evolving
+  populations was to a large extent shaped by plant size. Yet, it also revealed
+  an impact of evolutionary changes in clonal composition. Finally, we discuss
+  that inverse modelling is a complex problem, as multiple combinations of
+  individual rates can result in the same dynamics. We discuss assumptions and
+  limitations, as well as opportunities, of this approach. K E Y W O R D S
+  population growth rate, population model, rapid evolution, sensitivity
+  analysis, vital rates This is an open access article under the terms of the
+  Creative Commons Attribution License, which permits use, distribution and
+  reproduction in any medium, provided the original work is properly cited.%
+    }
+    \verb{doi}
+    \verb 10.1111/1365-2656.12966
+    \endverb
+    \field{issn}{13652656}
+    \field{issue}{5}
+    \field{note}{- Use Bayesian statistics to estimate eco-evo
+  parameters.<br/>- But it does not connect it to the existing/state of the art
+  theory.<br/><br/>* Note<br/>- They estimate vital rates of different aphid
+  populations in different context with parametric inverse modelling. They
+  demonstrate that vital rates, and thereby dynamics, vary across clones and
+  context (predator exclusion or not).<br/>- I see this as a useful paper to
+  demonstrate how phenotypic variation and context dependence can prevent
+  generalisation.}
+    \field{pages}{768\bibrangedash 779}
+    \field{title}{Demographic responses underlying eco-evolutionary dynamics as
+  revealed with inverse modelling}
+    \field{volume}{88}
+    \field{journaltitle}{Journal of Animal Ecology}
+    \field{year}{2019}
   \endentry
 
   \entry{Cawley2007}{article}{}
@@ -279,16 +1004,639 @@
     }
     \field{issn}{15324435}
     \field{pages}{841\bibrangedash 861}
-    \field{title}{{Preventing over-fitting during model selection via bayesian
-  regularisation of the hyper-parameters}}
+    \field{title}{Preventing over-fitting during model selection via bayesian
+  regularisation of the hyper-parameters}
     \field{volume}{8}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Cawley, Talbot - 2007 - Preventing over-fitting during model select
-    \verb ion via bayesian regularisation of the hyper-parameters.pdf:pdf
-    \endverb
     \field{journaltitle}{Journal of Machine Learning Research}
     \field{year}{2007}
+  \endentry
+
+  \entry{Cenci2018}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CS}{%
+         family={Cenci},
+         familyi={C\bibinitperiod},
+         given={Simone},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Saavedra},
+         familyi={S\bibinitperiod},
+         given={Serguei},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Royal Society Publishing}%
+    }
+    \keyw{Biotic interactions,Jacobian matrix,Model averaging,Multivariate time
+  series,Statistical inference,Uncertainty quantification}
+    \strng{namehash}{CSSS1}
+    \strng{fullhash}{CSSS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    Biotic interactions are expected to play a major role in shaping the
+  dynamics of ecological systems. Yet, quantifying the effects of biotic
+  interactions has been challenging due to a lack of appropriate methods to
+  extract accurate measurements of interaction parameters from experimental
+  data. One of the main limitations of existing methods is that the parameters
+  inferred from noisy, sparsely sampled, nonlinear data are seldom uniquely
+  identifiable. That is, many different parameters can be compatible with the
+  same dataset and can generalize to independent data equally well. Hence, it
+  is difficult to justify conclusive assertions about the effect of biotic
+  interactions without information about their associated uncertainty. Here, we
+  develop an ensemble method based on model averaging to quantify the
+  uncertainty associated with the effect of biotic interactions on community
+  dynamics from non-equilibrium ecological time-series data. Our method is able
+  to detect the most informative time intervals for each biotic interaction
+  within a multivariate time series and can be easily adapted to different
+  regression schemes. Overall, this novel approach can be used to associate a
+  time-dependent uncertainty with the effect of biotic interactions. Moreover,
+  because we quantify uncertainty with minimal assumptions about the
+  data-generating process, our approach can be applied to any data for which
+  interactions among variables strongly affect the overall dynamics of the
+  system.%
+    }
+    \verb{doi}
+    \verb 10.1098/rsif.2018.0695
+    \endverb
+    \field{issn}{17425662}
+    \field{issue}{147}
+    \field{title}{Uncertainty quantification of the effects of biotic
+  interactions on community dynamics from nonlinear time-series data}
+    \field{volume}{15}
+    \field{journaltitle}{Journal of the Royal Society Interface}
+    \field{month}{10}
+    \field{year}{2018}
+  \endentry
+
+  \entry{Chen2018}{article}{}
+    \name{author}{4}{}{%
+      {{hash=CRTQ}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Ricky T.\bibnamedelima Q.},
+         giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim
+  Q\bibinitperiod},
+      }}%
+      {{hash=RY}{%
+         family={Rubanova},
+         familyi={R\bibinitperiod},
+         given={Yulia},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Bettencourt},
+         familyi={B\bibinitperiod},
+         given={Jesse},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=DD}{%
+         family={Duvenaud},
+         familyi={D\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CRTQ+1}
+    \strng{fullhash}{CRTQRYBJDD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    We introduce a new family of deep neural network models. Instead of
+  specifying a discrete sequence of hidden layers, we parameterize the
+  derivative of the hidden state using a neural network. The output of the
+  network is computed using a black-box differential equation solver. These
+  continuous-depth models have constant memory cost, adapt their evaluation
+  strategy to each input, and can explicitly trade numerical precision for
+  speed. We demonstrate these properties in continuous-depth residual networks
+  and continuous-time latent variable models. We also construct continuous
+  normalizing flows, a generative model that can train by maximum likelihood,
+  without partitioning or ordering the data dimensions. For training, we show
+  how to scalably backpropagate through any ODE solver, without access to its
+  internal operations. This allows end-to-end training of ODEs within larger
+  models.%
+    }
+    \field{note}{Takeaway<br/>- Paper introducing NODE in the context of
+  machine learning and AI.<br/><br/>Note<br/>- Useful to introduce the
+  framework.}
+    \field{pages}{1\bibrangedash 19}
+    \field{title}{Neural Ordinary Differential Equations}
+    \verb{url}
+    \verb http://arxiv.org/abs/1806.07366
+    \endverb
+    \field{journaltitle}{arXiv}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Coulson2004}{article}{}
+    \name{author}{4}{}{%
+      {{hash=CT}{%
+         family={Coulson},
+         familyi={C\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=GF}{%
+         family={Guinness},
+         familyi={G\bibinitperiod},
+         given={Fiona},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=PJ}{%
+         family={Pemberton},
+         familyi={P\bibinitperiod},
+         given={Josephine},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CBT}{%
+         family={Clutton-Brock},
+         familyi={C\bibinithyphendelim B\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \keyw{Cervus elaphus,Isle of Rum,Scotland,age structure,cohort
+  effects,culling release,density dependence,population increase,red
+  deer,transient dynamics,vital rates}
+    \strng{namehash}{CT+1}
+    \strng{fullhash}{CTGFPJCBT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2004}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    A change in population density can generate spatial and demographic effects
+  that can have an impact on fluctuations in population size for many years.
+  Although the demographic effects of time lags have been incorporated into
+  analyses of time series data, there are few detailed descriptions of the
+  long-term demographic consequences of a change in density. We use detailed,
+  individual-based data from a population of red deer (Cervus elaphus) from the
+  North Block of the Isle of Rum, Scotland, to describe long-term demographic
+  and spatial effects of a change in density. The population was released from
+  hunting pressure in 1972. Over the following 10 years population density
+  doubled and, since the early 1980s, has fluctuated around ecological carrying
+  capacity. The cessation of culling led to long-term transient spatial and
+  demographic effects that have persisted for 30 years. Different vital rates
+  responded to the increase in density at different rates, causing long-term
+  changes to the demographic and spatial structure of the population. These
+  changes altered the impact of different age-and sex-specific vital rates on
+  annual changes in population size. These changes are still ongoing, 30 years
+  after cessation of the cull, suggesting that a change in density may generate
+  transient dynamics that persist for several generations.%
+    }
+    \field{issue}{2}
+    \field{pages}{411\bibrangedash 422}
+    \field{title}{The demographic consequences of releasing a population of red
+  deer from culling}
+    \field{volume}{85}
+    \field{journaltitle}{Ecology}
+    \field{year}{2004}
+  \endentry
+
+  \entry{Dallas2021}{article}{}
+    \name{author}{4}{}{%
+      {{hash=DT}{%
+         family={Dallas},
+         familyi={D\bibinitperiod},
+         given={Tad},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=MBA}{%
+         family={Melbourne},
+         familyi={M\bibinitperiod},
+         given={Brett\bibnamedelima A.},
+         giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=LG}{%
+         family={Legault},
+         familyi={L\bibinitperiod},
+         given={Geoffrey},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Hastings},
+         familyi={H\bibinitperiod},
+         given={Alan},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DT+1}
+    \strng{fullhash}{DTMBALGHA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{abstract}{%
+    Summary 1. Predicting competitive outcomes in communities frequently
+  involves inferences based on deterministic population models since these
+  provide clear criteria for exclusion (e.g., R* rule) or long-term coexistence
+  (e.g., mutual invasibility). 2. However, incorporating stochasticity into
+  population- or community-level processes into models is necessary if the goal
+  is to explain variation in natural systems, which are inherently stochastic.
+  3. Similarly, in systems with demographic or environmental stochasticity,
+  weaker competitors have the potential to exclude superior competitors,
+  contributing to what is known as ’competitive indeterminancy’. The
+  importance of such effects for natural communities is unknown, in part
+  because it is difficult to demonstrate that multiple forms of stochasticity
+  are present in these communities. Moreover, the effects of multiple forms of
+  stochasticity on competitive outcomes are largely untested, even in theory.
+  4. Here, we address these issues by examining the role of stochasticity in
+  replicated communities of flour beetles (Tribolium sp.). To do so, we
+  developed a set of two-species stochastic Ricker models incorporating four
+  distinct forms of stochasticity: environmental stochasticity, demographic
+  stochasticity, demographic heterogeneity, and stochastic sex determination.
+  5. By fitting models to experimental data, and simulating fit models to
+  examine long term behavior, we found that both the duration of tranisent
+  coexistence and the degree of competitive indeterminacy were sensitive to the
+  forms of stochasticity included in our models. These findings suggest current
+  estimates of extinction risk, coexistence, and time until competitive
+  exclusion in communities may not be accurate when based on models that
+  exclude relevant forms of stochasticity.%
+    }
+    \verb{doi}
+    \verb 10.1111/1365-2656.13485
+    \endverb
+    \field{issn}{0021-8790}
+    \field{pages}{1\bibrangedash 26}
+    \field{title}{Initial abundance and stochasticity influence competitive
+  outcome in communities}
+    \field{journaltitle}{Journal of Animal Ecology}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Deyle2015}{article}{}
+    \name{author}{4}{}{%
+      {{hash=DER}{%
+         family={Deyle},
+         familyi={D\bibinitperiod},
+         given={Ethan\bibnamedelima R.},
+         giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=MRM}{%
+         family={May},
+         familyi={M\bibinitperiod},
+         given={Rober\bibnamedelima M.},
+         giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=MSB}{%
+         family={Munch},
+         familyi={M\bibinitperiod},
+         given={Stephan\bibnamedelima B.},
+         giveni={S\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Sugihara},
+         familyi={S\bibinitperiod},
+         given={George},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Royal Society of London}%
+    }
+    \keyw{Cnidaria,Coral,Germline,Metazoa,Somatic mutation}
+    \strng{namehash}{DER+1}
+    \strng{fullhash}{DERMRMMSBSG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{abstract}{%
+    Evidence shows that species interactions are not constant but change as
+  theecosystem shifts to new states. Although controlled experiments and
+  modelinvestigations demonstrate how nonlinear interactions can arise in
+  principle,empirical tools to track and predict them in nature are lacking.
+  Here wepresent a practical method, using available time-series data, to
+  measure andforecast changing interactions in real systems, and identify the
+  underlyingmechanisms. The method is illustrated with model data from a marine
+  meso-cosm experiment and limnologic field data from Sparkling Lake, WI,
+  USA.From simple to complex, these examples demonstrate the feasibility of
+  quan-tifying, predicting and understanding state-dependent, nonlinear
+  interactionsas they occurin situand in real time—a requirement for managing
+  resourcesin a nonlinear, non-equilibrium world.%
+    }
+    \verb{doi}
+    \verb 10.1098/rspb.2015.2258
+    \endverb
+    \field{pages}{1\bibrangedash 9}
+    \field{title}{Tracking and forecasting ecosystem interactions in real time}
+    \field{volume}{283}
+    \field{journaltitle}{Proceedings of the Royal Society B: Biological
+  Sciences}
+    \field{month}{01}
+    \field{year}{2015}
+  \endentry
+
+  \entry{Dupont2019}{article}{}
+    \name{author}{3}{}{%
+      {{hash=DE}{%
+         family={Dupont},
+         familyi={D\bibinitperiod},
+         given={Emilien},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Doucet},
+         familyi={D\bibinitperiod},
+         given={Arnaud},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=TYW}{%
+         family={Teh},
+         familyi={T\bibinitperiod},
+         given={Yee\bibnamedelima Whye},
+         giveni={Y\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DEDATYW1}
+    \strng{fullhash}{DEDATYW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{abstract}{%
+    We show that Neural Ordinary Differential Equations (ODEs) learn
+  representations that preserve the topology of the input space and prove that
+  this implies the existence of functions Neural ODEs cannot represent. To
+  address these limitations , we introduce Augmented Neural ODEs which, in
+  addition to being more expressive models, are empirically more stable,
+  generalize better and have a lower computational cost than Neural ODEs.%
+    }
+    \field{pages}{1\bibrangedash 11}
+    \field{title}{Augmented Neural ODEs}
+    \field{journaltitle}{arXiv}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Ellner2011}{article}{}
+    \name{author}{3}{}{%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=GMA}{%
+         family={Geber},
+         familyi={G\bibinitperiod},
+         given={Monica\bibnamedelima A.},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \keyw{Contemporary evolution,Countergradient selection,Dynamic
+  heterogeneity,Evolutionary rates,Phenotypic plasticity,Price Equation,Rapid
+  evolution}
+    \strng{namehash}{ESPGMAHNGJ1}
+    \strng{fullhash}{ESPGMAHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2011}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{abstract}{%
+    P>Rapid contemporary evolution due to natural selection is common in the
+  wild, but it remains uncertain whether its effects are an essential component
+  of community and ecosystem structure and function. Previously we showed how
+  to partition change in a population, community or ecosystem property into
+  contributions from environmental and trait change, when trait change is
+  entirely caused by evolution (%
+    }
+    \verb{doi}
+    \verb 10.1111/j.1461-0248.2011.01616.x
+    \endverb
+    \field{issn}{1461023X}
+    \field{issue}{6}
+    \field{note}{- Really nice. They extend the framework of hairston by
+  substituting the dynamics of the phenotype with the continuous price
+  equation. This allows to partition<br/><br/>- An attack point you can have is
+  to say that this is not a general framework as nothing says that price
+  equation is a general asumption to describe phenotype dynamics. hairston's
+  framework is more general and thus more suitable for system specific
+  investigations. <br/><br/>- Still this is a nice framework to test different
+  genetics architectures. In particular, they use a similar kind of technique
+  (that you have used in the guppy analysis) to compute the dynamics of the
+  trait.<br/><br/>- Another attack point is that they have no underlying
+  mathematical model, they rely on data interpolation to apply their method
+  around the data points. They still fit some function via differential
+  equaitons. It is far for a comprehensible and integrated theoretical
+  framework. In this sense it is indeed just a statistical
+  framework.<br/><br/>- To be fair, I do not see why they need the price
+  equation. They assume a specific equation for the phenotype, and then they
+  simply remove the &quot;non-heritable&quot; part of the dynamics.}
+    \field{pages}{603\bibrangedash 614}
+    \field{title}{Does rapid evolution matter? Measuring the rate of
+  contemporary evolution and its impacts on ecological dynamics}
+    \field{volume}{14}
+    \field{journaltitle}{Ecology Letters}
+    \field{year}{2011}
+  \endentry
+
+  \entry{Ellner2002}{article}{}
+    \name{author}{3}{}{%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=SY}{%
+         family={Seifu},
+         familyi={S\bibinitperiod},
+         given={Yodit},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=SRH}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={Robert\bibnamedelima H.},
+         giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \keyw{blowflies,gradient matching,lucilia cuprina,lucilia sericata,model
+  fitting,partially,population dynamics,semimechanistic models,semiparametric
+  models,specified models,stage struc-}
+    \strng{namehash}{ESPSYSRH1}
+    \strng{fullhash}{ESPSYSRH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \verb{doi}
+    \verb 10.2307/3072057
+    \endverb
+    \field{issn}{00129658}
+    \field{issue}{8}
+    \field{note}{* Preliminary read<br/>- the authors seem to infer dynamical
+  gradients with nonparametric functions in dynamical models<br/>- They also
+  infer nonparametric functions for population density in growth and death
+  rates<br/>- I see this as the best possible application of the methodology to
+  single time series of population densities.<br/>- this study rejoins other
+  studies Moe et al. 2002<br/>- They discarded the chunk of the time series
+  were replicates differed. They hence did not address generalisation across
+  replicates.}
+    \field{pages}{2256}
+    \field{title}{Fitting Population Dynamic Models to Time-Series Data by
+  Gradient Matching}
+    \field{volume}{83}
+    \field{journaltitle}{Ecology}
+    \field{year}{2002}
+  \endentry
+
+  \entry{Frank2022}{article}{}
+    \name{author}{1}{}{%
+      {{hash=FSA}{%
+         family={Frank},
+         familyi={F\bibinitperiod},
+         given={Steven\bibnamedelima A},
+         giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \keyw{Automatic diierentiation,diierential equation modeling,ecological
+  dynamics,evolutionary dynamics,optimization,statistical inference,tness
+  landscape}
+    \strng{namehash}{FSA1}
+    \strng{fullhash}{FSA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2022}
+    \field{labeldatesource}{}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{abstract}{%
+    A computational revolution unleashed the power of artiicial neural
+  networks. At the heart of that revolution is automatic diierentiation, which
+  calculates the derivative of a performance measure relative to a large number
+  of parameters. Diierentiation enhances the discovery of improved performance
+  in large models, an achievement that was previously diicult or impossible.
+  Recently, a second computational advance optimizes the temporal trajectories
+  traced by diierential equations. Optimization requires diieren-tiating a
+  measure of performance over a trajectory, such as the closeness of tracking
+  the environment, with respect to the parameters of the diierential equations.
+  Because model trajectories are usually calculated numerically by multistep
+  algorithms, such as Runge-Kuua, the automatic diierentiation must be passed
+  through the numerical algorithm. .is article explains how such automatic
+  diierentiation of trajectories is achieved. It also discusses why such
+  computational breakthroughs are likely to advance theoretical and statistical
+  studies of biological problems, in which one can consider variables as
+  dynamic paths over time and space. Many common problems arise between
+  improving success in computational learning models over performance
+  landscapes, improving evolutionary ytness over adaptive landscapes, and
+  improving statistical lts to data over information landscapes.%
+    }
+    \field{pages}{1\bibrangedash 10}
+    \field{title}{Automatic diierentiation and the optimization of diierential
+  equation models in biology}
+    \field{journaltitle}{arXiv}
+    \field{year}{2022}
+  \endentry
+
+  \entry{Gross2005}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GK}{%
+         family={Gross},
+         familyi={G\bibinitperiod},
+         given={Kevin},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=IAR}{%
+         family={Ives},
+         familyi={I\bibinitperiod},
+         given={Anthony\bibnamedelima R.},
+         giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=NEV}{%
+         family={Nordheim},
+         familyi={N\bibinitperiod},
+         given={Erik\bibnamedelima V.},
+         giveni={E\bibinitperiod\bibinitdelim V\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian statistics,Biological control,Host-parasitoid
+  dynamics,Markov chain Monte Carlo,Pea aphid,State-space models,Time-series
+  data}
+    \strng{namehash}{GKIARNEV1}
+    \strng{fullhash}{GKIARNEV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{abstract}{%
+    Many ecological time series describe population dynamics. Indirectly, these
+  data also provide information about the vital rates (e.g., birth rates,
+  mortality rates) underlying these dynamics, but extracting this information
+  from the data can be difficult. Here, we present a method for estimating
+  fluctuating vital rates from ecological time series by using a model to
+  re-code information in observed dynamics into information about unobserved
+  vital rates. This model construction differs from most current models by
+  replacing strong assumptions about the functional relationships dictating
+  population dynamics with more conservative assumptions about how vital rates
+  change with time. Thus, this method is a tool for analyzing time-series data
+  that avoids strong assumptions about the mechanisms driving population
+  dynamics. Our work is motivated by studying the biological control of pea
+  aphids in alfalfa in south-central Wisconsin. Pea aphid populations are
+  consistently held below economic threshold, although the source of this
+  regulation is unclear. Here, we analyze monitoring data to understand the
+  role that a specialist parasitoid plays in aphid biocontrol. Our modeling
+  methodology allows us to estimate the vital rates that determine aphid
+  dynamics (in particular, parasitism) without making arbitrary assumptions
+  about the relationship between parasitism and aphid or parasitoid density. We
+  find that, while parasitism depresses aphid population growth rate
+  substantially, declines in aphid population growth rates do not coincide with
+  increases in parasitism. Therefore, parasitism cannot be responsible for the
+  density-dependent regulation of aphid populations observed in the field. ©
+  2005 by the Ecological Society of America.%
+    }
+    \verb{doi}
+    \verb 10.1890/03-4085
+    \endverb
+    \field{issn}{00129658}
+    \field{issue}{3}
+    \field{note}{* Preliminary read<br/>- The authors seem to estimate time
+  varying vital rates in a structured population dynamics model for
+  aphid.<br/>- I see that the construction used by the authors differs
+  radically from that originally proposed by Wood in 2001. The model seems to
+  be more hierarchical bayesian in nature than nonparametric.<br/>- The paper
+  shows that vital rates and parasitism are sensitive to density, and therefore
+  not consistent in time. This can be a source of context-dependence.<br/>- The
+  conclusion of the paper is still unclear to me and confusing.<br/>- May still
+  be useful to support the idea that vital rates are not constant in time
+  (which rejoins Adamson et al. 2013).}
+    \field{pages}{740\bibrangedash 752}
+    \field{title}{Estimating fluctuating vital rates from time-series data: A
+  case study of aphid biocontrol}
+    \field{volume}{86}
+    \field{journaltitle}{Ecology}
+    \field{year}{2005}
   \endentry
 
   \entry{Hairston2005}{article}{}
@@ -326,8 +1674,7 @@
       }}%
     }
     \keyw{Adaptation,Bill size,Darwin's finches,Diapause timing,Ecological
-  rate,Evolutionary rate,Geber,Geospiza fortis,Haldane,Onychodiaptomus
-  sanguineus}
+  rate,Evolutionary rate,Geospiza fortis,Haldane,Onychodiaptomus sanguineus}
     \strng{namehash}{HNGJ+1}
     \strng{fullhash}{HNGJESPGMAYTFJA1}
     \field{labelnamesource}{author}
@@ -379,29 +1726,22 @@
     \endverb
     \field{isbn}{1461-023X}
     \field{issn}{1461023X}
-    \field{number}{10}
+    \field{issue}{10}
+    \field{note}{- Elegant framework - quite simple - they use the chain rule
+  to compute contirbutions of times series on each other. They apply it to
+  concrete empirical evidence of feedbacks by discretizing the framework. The
+  interest of discretizing the method, is that it frees them from the need to
+  identify equations, and thus a mechanisms. They can test directly the
+  interdependences between the time series.<br/><br/>- They apply it to real
+  system in a discrete fashion, which complicates the maths and thus the
+  applicability of the framwork to real time series.<br/><br/>- It provides
+  ways to quantify contributions of direct effects. But not indirect
+  effects.<br/><br/>- This is an excellent paper from which to extract data.}
     \field{pages}{1114\bibrangedash 1127}
-    \field{title}{{Rapid evolution and the convergence of ecological and
-  evolutionary time}}
+    \field{title}{Rapid evolution and the convergence of ecological and
+  evolutionary time}
     \field{volume}{8}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Hairston et al. - 2005 - Rapid evolution and the convergence of eco
-    \verb logical and evolutionary time.pdf:pdf
-    \endverb
     \field{journaltitle}{Ecology Letters}
-    \field{annotation}{%
-    - Elegant framework - quite simple - they use the chain rule to compute
-  contirbutions of times series on each other. They apply it to concrete
-  empirical evidence of feedbacks by discretizing the framework. The interest
-  of discretizing the method, is that it frees them from the need to identify
-  equations, and thus a mechanisms. They can test directly the interdependences
-  between the time series. - They apply it to real system in a discrete
-  fashion, which complicates the maths and thus the applicability of the
-  framwork to real time series. - It provides ways to quantify contributions of
-  direct effects. But not indirect effects. - This is an excellent paper from
-  which to extract data.%
-    }
     \field{year}{2005}
   \endentry
 
@@ -434,12 +1774,8 @@
       }}%
     }
     \keyw{algae,brachionus plicatilis,chemostat,chlorella
-  autrophica,eco-evolutionary dynamics,ecological
-  dynamics,flagellates,intermediate,intraguild predation,laboratory
-  microcosm,mathematical models,microcosm,oxyrrhis marina,predator,prey
-  dynamics,prey predator dynamics,prey-predator
-  oscillations,rotifer,rotifers,time series,tri-trophic food web,tri-trophic
-  networks}
+  autrophica,flagellates,intermediate,laboratory microcosm,mathematical
+  models,oxyrrhis marina,predator,prey dynamics,rotifers,tri-trophic food web}
     \strng{namehash}{HT+1}
     \strng{fullhash}{HTJLEESPHNGJ1}
     \field{labelnamesource}{author}
@@ -448,47 +1784,221 @@
     \field{labeldatesource}{}
     \field{sortinit}{H}
     \field{sortinithash}{H}
-    \field{number}{4}
-    \field{pages}{773\bibrangedash 779}
-    \field{title}{{Temporal dynamics of a simple community with intraguild
-  predation: an experimental test}}
-    \field{volume}{94}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Hiltunen et al. - 2013 - Temporal dynamics of a simple community wi
-    \verb th intraguild predation an experimental test.pdf:pdf
-    \endverb
-    \field{journaltitle}{Ecology}
-    \field{annotation}{%
-    - Only if you need an example of dynamics from which to infer trophic
-  interactions. * Notes - The author adress how intraguild predation affects
-  prey-predator cycles. - They claim that they demonstrate dynamics that are in
-  accordance with theory algae -> flagellate -> rotifer. But they state that
-  flagellate growth rate is primarily driven by rotifers, rather than by algae.
-  - I can use this paper to justify using a three-species trophic network,
-  because it is a fundamental component of natural food webs. - The author
-  state that there are few empirical demonstrations of population dynamics for
-  three-species systems. I deduce from it that at that point, it was not even
-  possible to assess generalisation. - Flagellates did tend to go extinct, so
-  they pumped them artificially at around 4 % pday. - The authors state that
-  they reported only runs with no evidence of prey defense evolution, but that
-  evolution was common in their runs. - Looking at their equations I realised I
-  did not consider the possibility for fluctuations in resource availability.
-  This is one of the hidden variables. I will need to think about that. -
-  Overall, they state that results are "exactly" as predicted. I would argue
-  that qualitatively this is seems correct but quantitatively the story may be
-  different. - They state that the peak of flagellate being so close to the
+    \field{issue}{4}
+    \field{note}{- Only if you need an example of dynamics from which to infer
+  trophic interactions.<br/><br/>* Notes<br/>- The author adress how intraguild
+  predation affects prey-predator cycles.<br/>- They claim that they
+  demonstrate dynamics that are in accordance with theory algae -> flagellate
+  -> rotifer. But they state that flagellate growth rate is primarily driven by
+  rotifers, rather than by algae.<br/>- I can use this paper to justify using a
+  three-species trophic network, because it is a fundamental component of
+  natural food webs.<br/>- The author state that there are few empirical
+  demonstrations of population dynamics for three-species systems. I deduce
+  from it that at that point, it was not even possible to assess
+  generalisation.<br/>- Flagellates did tend to go extinct, so they pumped them
+  artificially at around 4 % pday.<br/>- The authors state that they reported
+  only runs with no evidence of prey defense evolution, but that evolution was
+  common in their runs.<br/>- Looking at their equations I realised I did not
+  consider the possibility for fluctuations in resource availability. This is
+  one of the hidden variables. I will need to think about that.<br/>- Overall,
+  they state that results are "exactly" as predicted. I would argue that
+  qualitatively this is seems correct but quantitatively the story may be
+  different.<br/>- They state that the peak of flagellate being so close to the
   algae can be due to a strong dominant drive by the rotifer population, though
   they only hypothesise that. This seems to be the case in other
   microzooplankton systems. Your results confirm this and potentially increase
-  the complexity of the interactions. - They still argue that prey evolution
-  played at best a minor role in explaining the dynamics. However, they do
-  admit that they did not have direct evidence for supporting constant
-  interaction strength. I can that being useful in your paper which seems to
-  point in fact at quite important implications for evolution in explaining
-  differences across replicates and preventing generalisation.%
-    }
+  the complexity of the interactions.<br/>- They still argue that prey
+  evolution played at best a minor role in explaining the dynamics. However,
+  they do admit that they did not have direct evidence for supporting constant
+  interaction strength. I can see that being useful in your paper which seems
+  to point in fact at quite important implications for evolution in explaining
+  differences across replicates and preventing generalisation.}
+    \field{pages}{773\bibrangedash 779}
+    \field{title}{Temporal dynamics of a simple community with intraguild
+  predation: an experimental test}
+    \field{volume}{94}
+    \field{journaltitle}{Ecology}
     \field{year}{2013}
+  \endentry
+
+  \entry{Hu2020}{article}{}
+    \name{author}{4}{}{%
+      {{hash=HP}{%
+         family={Hu},
+         familyi={H\bibinitperiod},
+         given={Pipi},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=YW}{%
+         family={Yang},
+         familyi={Y\bibinitperiod},
+         given={Wuyue},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=ZY}{%
+         family={Zhu},
+         familyi={Z\bibinitperiod},
+         given={Yi},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=HL}{%
+         family={Hong},
+         familyi={H\bibinitperiod},
+         given={Liu},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \keyw{odenet,ordinary differential equations,symbolic
+  regression,time-series data}
+    \strng{namehash}{HP+1}
+    \strng{fullhash}{HPYWZYHL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{pages}{1\bibrangedash 17}
+    \field{title}{Revealing hidden dynamics from time-series data by ODENet}
+    \field{journaltitle}{arXiv}
+    \field{year}{2020}
+  \endentry
+
+  \entry{Ives2003}{article}{}
+    \name{author}{4}{}{%
+      {{hash=IAR}{%
+         family={Ives},
+         familyi={I\bibinitperiod},
+         given={A\bibnamedelima R},
+         giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=DB}{%
+         family={Dennis},
+         familyi={D\bibinitperiod},
+         given={B},
+         giveni={B},
+      }}%
+      {{hash=CKL}{%
+         family={Cottingham},
+         familyi={C\bibinitperiod},
+         given={K\bibnamedelima L},
+         giveni={K\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=CSR}{%
+         family={Carpenter},
+         familyi={C\bibinitperiod},
+         given={S\bibnamedelima R},
+         giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \keyw{community matrix,community stability,multivariate autoregressive
+  process,reac-tivity,resilience,stationary distribution,stochastic population
+  model,time-series analysis,vector autoregressive process}
+    \strng{namehash}{IAR+1}
+    \strng{fullhash}{IARDBCKLCSR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2003}
+    \field{labeldatesource}{}
+    \field{sortinit}{I}
+    \field{sortinithash}{I}
+    \field{abstract}{%
+    Natural ecological communities are continuously buffeted by a varying
+  environment , often making it difficult to measure the stability of
+  communities using concepts requiring the existence of an equilibrium point.
+  Instead of an equilibrium point, the equi-librial state of communities
+  subject to environmental stochasticity is a stationary distribution , which
+  is characterized by means, variances, and other statistical moments. Here, we
+  derive three properties of stochastic multispecies communities that measure
+  different characteristics associated with community stability. These
+  properties can be estimated from multispecies time-series data using
+  first-order multivariate autoregressive (MAR(1)) models. We demonstrate how
+  to estimate the parameters of MAR(1) models and obtain confidence intervals
+  for both parameters and the measures of stability. We also address the
+  problem of estimation when there is observation (measurement) error. To
+  illustrate these methods, we compare the stability of the planktonic
+  communities in three lakes in which nutrient loading and planktivorous fish
+  abundance were experimentally manipulated. MAR(1) models and the statistical
+  methods we present can be used to identify dynamically important interactions
+  between species and to test hypotheses about stability and other dynamical
+  properties of naturally varying ecological communities. Thus, they can be
+  used to integrate theoretical and empirical studies of community dynamics.%
+    }
+    \field{issue}{2}
+    \field{pages}{301\bibrangedash 330}
+    \field{title}{Estimating community stability and ecological interactions
+  from time-series data}
+    \field{volume}{73}
+    \field{journaltitle}{Ecological Monographs}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Jonzen2002}{article}{}
+    \name{author}{4}{}{%
+      {{hash=JN}{%
+         family={Jonzén},
+         familyi={J\bibinitperiod},
+         given={Niclas},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=LP}{%
+         family={Lundberg},
+         familyi={L\bibinitperiod},
+         given={Per},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=RE}{%
+         family={Ranta},
+         familyi={R\bibinitperiod},
+         given={Esa},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Kaitala},
+         familyi={K\bibinitperiod},
+         given={Veijo},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \keyw{Environmental noise,Model uncertainty,Population
+  dynamics,Time-series}
+    \strng{namehash}{JN+1}
+    \strng{fullhash}{JNLPREKV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{abstract}{%
+    The interpretation of ecological data has been greatly improved by bridging
+  the gap between ecological and statistical models. The major challenge is to
+  separate competing hypotheses concerning demography, or other ecological
+  relationships, and environmental variability (noise). In this paper we
+  demonstrate that this may be an arduous, if not impossible, task. It is the
+  lack of adequate ecological theory, rather than statistical sophistication,
+  which leads to this problem. A reconstruction of underlying ecological
+  processes can only be done if we are certain of either the demographic or the
+  noise model, which is something that can only be achieved by an improved
+  theory of stochastic ecological processes. Ignoring the fact that this is a
+  real problem may mislead ecologists and result in erroneous conclusions about
+  the relative importance of endogenous and exogenous factors in natural
+  ecosystems. The lack of correct model identification may also have
+  far-reaching consequences for population management and conservation.%
+    }
+    \verb{doi}
+    \verb 10.1098/rspb.2001.1888
+    \endverb
+    \field{issn}{09628452}
+    \field{issue}{1488}
+    \field{pages}{221\bibrangedash 225}
+    \field{title}{The irreducible uncertainty of the demography - Environment
+  interaction in ecology}
+    \field{volume}{269}
+    \field{journaltitle}{Proceedings of the Royal Society B: Biological
+  Sciences}
+    \field{month}{02}
+    \field{year}{2002}
   \endentry
 
   \entry{Jost2000}{article}{}
@@ -506,9 +2016,8 @@
          giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
       }}%
     }
-    \keyw{Functional response,ML applications,Non-parametric
-  reconstruction,Predator dependence,Predator-prey,Prey dependence,Ratio
-  dependence}
+    \keyw{Functional response,Non-parametric reconstruction,Predator
+  dependence,Predator-prey,Prey dependence,Ratio dependence}
     \strng{namehash}{JCESP1}
     \strng{fullhash}{JCESP1}
     \field{labelnamesource}{author}
@@ -541,38 +2050,750 @@
     \verb 10.1098/rspb.2000.1186
     \endverb
     \field{issn}{14712970}
-    \field{number}{1453}
+    \field{issue}{1453}
+    \field{note}{* Notes<br/>- The authors talk about the risk of
+  misquantifying an interaction because of a wrong choice of parametric
+  function. This justifies using nonparametric functions.<br/>- Useful paper to
+  support the efficiency of interpolating the data first, looking at log
+  densities to get per-capita growth rates.<br/>- They smooth real data to get
+  gradients, population growth rates, and then fit parametric and non
+  parametric models to infer density dependence in growth rates.<br/>- They had
+  technical issues with the non parametric models and had to make them
+  functions of single variables, which is a bummer. Overall the method looks
+  quite complicated due to the use of splines. They also ran into problems
+  comparing non parametric model constructions.<br/>- They used cross
+  validation to choose the degree of smoothing, which is good.<br/>- They state
+  that spatial dynamics is not really a cause of variation in dynamics, because
+  in lab settings the population is well mixed and movements are random.<br/>-
+  Overall, they demonstrate the usefulness of non parametric methods for
+  studying population dynamics as they are able to conclude about their
+  hypothesis without knowing the adequate functional form.}
     \field{pages}{1611\bibrangedash 1620}
-    \field{title}{{Testing for predator dependence in predator-prey dynamics: A
-  non-parametric approach}}
+    \field{title}{Testing for predator dependence in predator-prey dynamics: A
+  non-parametric approach}
     \field{volume}{267}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Jost, Ellner - 2000 - Testing for predator dependence in predator-p
-    \verb rey dynamics A non-parametric approach.pdf:pdf
-    \endverb
     \field{journaltitle}{Proceedings of the Royal Society B: Biological
   Sciences}
-    \field{annotation}{%
-    * Notes - The authors talk about the risk of misquantifying an interaction
-  because of a wrong choice of parametric function. This justifies using
-  nonparametric functions. - Useful paper to support the efficiency of
-  interpolating the data first, looking at log densities to get per-capita
-  growth rates. - They smooth real data to get gradients, population growth
-  rates, and then fit parametric and non parametric models to infer density
-  dependence in growth rates. - They had technical issues with the non
-  parametric models and had to make them functions of single variables, which
-  is a bummer. Overall the method looks quite complicated due to the use of
-  splines. They also ran into problems comparing non parametric model
-  constructions. - They used cross validation to choose the degree of
-  smoothing, which is good. - They state that spatial dynamics is not really a
-  cause of variation in dynamics, because in lab settings the population is
-  well mixed and movements are random. - Overall, they demonstrate the
-  usefulness of non parametric methods for studying population dynamics as they
-  are able to conclude about their hypothesis without knowing the adequate
-  functional form.%
-    }
     \field{year}{2000}
+  \endentry
+
+  \entry{Kendall1999}{article}{}
+    \name{author}{8}{}{%
+      {{hash=KBE}{%
+         family={Kendall},
+         familyi={K\bibinitperiod},
+         given={Bruce\bibnamedelima E},
+         giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=BCJ}{%
+         family={Briggs},
+         familyi={B\bibinitperiod},
+         given={Cheryl\bibnamedelima J},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=MWW}{%
+         family={Murdoch},
+         familyi={M\bibinitperiod},
+         given={William\bibnamedelima W},
+         giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=TP}{%
+         family={Turchin},
+         familyi={T\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=ME}{%
+         family={Mccauley},
+         familyi={M\bibinitperiod},
+         given={Edward},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=NRM}{%
+         family={Nisbet},
+         familyi={N\bibinitperiod},
+         given={Roger\bibnamedelima M},
+         giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=WSN}{%
+         family={Wood},
+         familyi={W\bibinitperiod},
+         given={Simon\bibnamedelima N},
+         giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+    }
+    \keyw{Lucilia cuprina,blowflies,density dependence,fitting mechanistic
+  models to time-series data,inverse problem,mechanistic population
+  models,modeling population cycles,population cycles, determining the causes
+  of,statistical time-series analysis,structured population models,time-series
+  models}
+    \strng{namehash}{KBE+1}
+    \strng{fullhash}{KBEBCJMWWTPESPMENRMWSN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1999}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{abstract}{%
+    Population cycles have long fascinated ecologists. Even in the most-studied
+  populations, however, scientists continue to dispute the relative importance
+  of various potential causes of the cycles. Over the past three decades,
+  theoretical ecologists have cataloged a large number of mechanisms that are
+  capable of generating cycles in population models. At the same time,
+  statisticians have developed new techniques both for characterizing time
+  series and for fitting population models to time-series data. Both
+  disciplines are now sufficiently advanced that great gains in understanding
+  can be made by synthesizing these complementary, and heretofore mostly
+  independent, quantitative approaches. In this paper we demonstrate how to
+  apply this synthesis to the problem of population cycles, using both
+  long-term population time series and the often-rich observational and
+  experimental data on the ecology of the species in question. We quantify
+  hypotheses by writing mathematical models that embody the interactions and
+  forces that might cause cycles. Some hypotheses can be rejected out of hand,
+  as being unable to generate even qualitatively appropriate dynamics. We
+  finish quantifying the remaining hypotheses by estimating parameters , both
+  from independent experiments and from fitting the models to the time-series
+  data using modern statistical techniques. Finally, we compare simulated time
+  series generated by the models to the observed time series, using a variety
+  of statistical descriptors, which we refer to collectively as ''probes.'' The
+  model most similar to the data, as measured by these probes, is considered to
+  be the most likely candidate to represent the mechanism underlying the
+  population cycles. We illustrate this approach by analyzing one of
+  Nich-olson's blowfly populations, in which we know the ''true'' governing
+  mechanism. Our analysis, which uses only a subset of the information
+  available about the population, uncovers the correct answer, suggesting that
+  this synthetic approach might be successfully applied to field populations as
+  well.%
+    }
+    \field{issue}{6}
+    \field{pages}{1789\bibrangedash 1805}
+    \field{title}{Why do populations cycle? A synthesis of statistical and
+  mechanistic modeling approaches}
+    \field{volume}{80}
+    \field{journaltitle}{Ecology}
+    \field{year}{1999}
+  \endentry
+
+  \entry{Kendall2005}{article}{}
+    \name{author}{7}{}{%
+      {{hash=KBE}{%
+         family={Kendall},
+         familyi={K\bibinitperiod},
+         given={Bruce\bibnamedelima E.},
+         giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=ME}{%
+         family={McCauley},
+         familyi={M\bibinitperiod},
+         given={Edward},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=WSN}{%
+         family={Wood},
+         familyi={W\bibinitperiod},
+         given={Simon\bibnamedelima N.},
+         giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=BCJ}{%
+         family={Briggs},
+         familyi={B\bibinitperiod},
+         given={Cheryl\bibnamedelima J.},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=MWW}{%
+         family={Murdoch},
+         familyi={M\bibinitperiod},
+         given={William\bibnamedelima W.},
+         giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=TP}{%
+         family={Turchin},
+         familyi={T\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \keyw{Food quality,Host-parasitoid dynamics,Maternal effects,Nonlinear
+  dynamics,Population cycles}
+    \strng{namehash}{KBE+2}
+    \strng{fullhash}{KBEESPMEWSNBCJMWWTP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{abstract}{%
+    The forest insect pest Bupalus piniarius (pine looper moth) is a classic
+  example of a natural population cycle. As is typical for populations that
+  exhibit regular oscillations in density, there are several biological
+  mechanisms that are hypothesized to be responsible for the cycles; but
+  despite several decades of detailed study there has been no definite
+  conclusion as to which mechanism is most important. We evaluated three
+  hypotheses for which there was direct experimental evidence: (1) food quality
+  (nutritional value of pine needles affected by defoliation); (2) parasitoids
+  (trophic interactions with specialist parasitoids); and (3) maternal effects
+  (maternal body size affects the performance of offspring). We reviewed the
+  empirical evidence for each of these hypotheses and expressed each hypothesis
+  in the form of a mechanistic dynamic model. We used a nonlinear forecasting
+  approach to fit each model to three long-term population time series in
+  Britain that exhibit some degree of regular cycling, and we used parametric
+  bootstrap to evaluate the significance of differences between models in their
+  goodness of fit to the data. The results differed among the three forests: at
+  Culbin, the parasitoid and maternal effects models fit equally well; at
+  Roseisle, the food quality and maternal effects models fit equally well; and
+  at Tentsmuir, the parasitoid model fit best. However, the best-fit parasitism
+  models required that the parasitism rate vary between nearly 0 and nearly 1
+  during a cycle, greatly exceeding the range of parasitism rates that have
+  been observed in the field. In contrast, the required variation in the
+  observable maternal quality variable (pupal mass) was within the range of
+  empirical observations. Under mild constraints on the parasitism rate (though
+  allowing a much wider range than has been measured in B. piniarius at any
+  location), the fit of the parasitism model fell off dramatically. The
+  maternal effects model then had uniformly strong support, outperforming the
+  constrained parasitism model at all three sites and the food quality model at
+  two; it performed slightly better than the food quality model at the
+  remaining site. This represents the first system in which the maternal
+  effects hypothesis for population cycles has been supported by both strong
+  biological and dynamical evidence. © 2005 by the Ecological Society of
+  America.%
+    }
+    \verb{doi}
+    \verb 10.1890/03-4056
+    \endverb
+    \field{issn}{00129615}
+    \field{issue}{2}
+    \field{note}{* Preliminary read<br/>- The authors seem to be using a
+  nonparametric/nonlinear lag model to estimate density dependence, but it is
+  extremely unclear to me how this relates in any way to the work of wood
+  2001.<br/>- I see this as a simple example of mechanistic population
+  dynamical modelling.<br/>- This is a good example of variation in dynamical
+  process across natural populations.<br/>- They include environmental
+  stochasticity in their model}
+    \field{pages}{259\bibrangedash 276}
+    \field{title}{Population cycles in the pine looper moth: Dynamical tests of
+  mechanistic hypotheses}
+    \field{volume}{75}
+    \field{journaltitle}{Ecological Monographs}
+    \field{year}{2005}
+  \endentry
+
+  \entry{Lande2002}{article}{}
+    \name{author}{6}{}{%
+      {{hash=LR}{%
+         family={Lande},
+         familyi={L\bibinitperiod},
+         given={R},
+         giveni={R},
+      }}%
+      {{hash=ES}{%
+         family={Engen},
+         familyi={E\bibinitperiod},
+         given={S},
+         giveni={S},
+      }}%
+      {{hash=SBE}{%
+         family={Saether},
+         familyi={S\bibinitperiod},
+         given={B.-E},
+         giveni={B\bibinithyphendelim E},
+      }}%
+      {{hash=FF}{%
+         family={Filli},
+         familyi={F\bibinitperiod},
+         given={F},
+         giveni={F},
+      }}%
+      {{hash=ME}{%
+         family={Matthysen},
+         familyi={M\bibinitperiod},
+         given={E},
+         giveni={E},
+      }}%
+      {{hash=WH}{%
+         family={Weimerskirch},
+         familyi={W\bibinitperiod},
+         given={H},
+         giveni={H},
+      }}%
+    }
+    \keyw{age structure,autocorrelation,autoregression,density dependence,stage
+  structure,time series}
+    \strng{namehash}{LR+1}
+    \strng{fullhash}{LRESSBEFFMEWH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{abstract}{%
+    For populations with a density-dependent life history reproducing at
+  discrete annual intervals, we analyze small or moderate fluctuations in
+  population size around a stable equilibrium, which is applicable to many
+  vertebrate populations. Using a life history having age at maturity a, with
+  stochasticity and density dependence in adult recruitment and mortality, we
+  derive a linearized autoregressive equation with time lags from 1 to a yr.
+  Contrary to current interpretations, the coefficients corresponding to
+  different time lags in the autoregressive dynamics are not simply measures of
+  delayed density dependence but also depend on life-history parameters. The
+  theory indicates that the total density dependence in a life history, D,
+  should be defined as the negative elasticity of population growth rate per
+  generation with respect to change in population size, , where l is the
+  asymptotic multiplicative growth T D p ln l/ ln N rate per year, T is the
+  generation time, and N is adult population size. The total density dependence
+  in the life history, D, can be estimated from the sum of the autoregression
+  coefficients. We estimate D in populations of seven vertebrate species for
+  which life-history studies and unusually long time series of complete
+  population$15.00 All rights reserved. censuses are available. Estimates of D
+  were statistically significant and large, on the order of 1 or higher,
+  indicating strong density dependence in five of the seven species. We also
+  show that life history can explain the qualitative features of population
+  autocorrelation functions and power spectra and observations of increasing
+  empirical variance in population size with increasing length of time series.%
+    }
+    \field{pages}{321\bibrangedash 337}
+    \field{title}{Estimating Density Dependence from Population Time Series
+  Using Demographic Theory and Life-History Data}
+    \field{volume}{159}
+    \field{journaltitle}{American Naturalist}
+    \field{year}{2002}
+  \endentry
+
+  \entry{Lawton1999}{article}{}
+    \name{author}{1}{}{%
+      {{hash=LJH}{%
+         family={Lawton},
+         familyi={L\bibinitperiod},
+         given={John\bibnamedelima H.},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LJH1}
+    \strng{fullhash}{LJH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1999}
+    \field{labeldatesource}{}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{issue}{2}
+    \field{pages}{177\bibrangedash 192}
+    \field{title}{Are There General Laws in Ecology ?}
+    \field{volume}{84}
+    \field{journaltitle}{Oikos}
+    \field{year}{1999}
+  \endentry
+
+  \entry{Lingjaerde2001}{article}{}
+    \name{author}{8}{}{%
+      {{hash=LOC}{%
+         family={Lingjaerde},
+         familyi={L\bibinitperiod},
+         given={Ole\bibnamedelima C.},
+         giveni={O\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=SNC}{%
+         family={Stenseth},
+         familyi={S\bibinitperiod},
+         given={Nils\bibnamedelima C.},
+         giveni={N\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=KAB}{%
+         family={Kristoffersen},
+         familyi={K\bibinitperiod},
+         given={Anja\bibnamedelima B.},
+         giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=SRH}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={Robert\bibnamedelima H.},
+         giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=MSJ}{%
+         family={Moe},
+         familyi={M\bibinitperiod},
+         given={S.\bibnamedelima Jannicke},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=RJM}{%
+         family={Read},
+         familyi={R\bibinitperiod},
+         given={Jonathan\bibnamedelima M.},
+         giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=DS}{%
+         family={Daniels},
+         familyi={D\bibinitperiod},
+         given={Susan},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SK}{%
+         family={Simkiss},
+         familyi={S\bibinitperiod},
+         given={Ken},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \keyw{Lucilia sericata,additive models,cadmium,density-dependent and
+  density-in-dependent components,ecotoxicology,generalized additive model
+  (GAM),greenbottle blowfly,nonli-nearities,nonparametric regression,population
+  model,time series analysis}
+    \strng{namehash}{LOC+1}
+    \strng{fullhash}{LOCSNCKABSRHMSJRJMDSSK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2001}
+    \field{labeldatesource}{}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{abstract}{%
+    Abundances of 12 laboratory populations of the greenbottle blowfly (Lucilia
+  sericata) were recorded every two days for 776 d, with separate counts for
+  larvae, pupae, and adults. Half of the populations were exposed to sublethal
+  dosages of the toxic compound cadmium acetate; the remaining populations were
+  considered controls. Initial density was low for half of the populations in
+  each group, and high for the other half. In all populations, the adult
+  abundance underwent sustained fluctuations. However, cadmium-exposed
+  populations had smaller mean larval and adult densities, and fluctuations in
+  adult abundance were less regular than for controls. Data from the first and
+  the second half of the experimental period were analyzed separately in order
+  to assess the effects of possible long-term changes in the dynamics on the
+  estimates. Nonparametric (generalized) additive modeling (GAM) was used to
+  investigate time series dynamics and, in particular, to explore the
+  density-independent components and the structure of the density-dependent
+  components of the system. Overall, cadmium populations had larger
+  larva-to-adult survival rate and smaller adult survival rate than control
+  populations, and for the second half of the experimental period the
+  reproductive rate was smaller for cadmium populations than for control
+  populations. Estimation of the density-dependent components suggested that
+  survival from larva to adult depended nonlinearly on larval density and that
+  increased larval density had a positive effect on larval survival at low
+  densities. Furthermore, cadmium generally decreased vital rates. However, the
+  analysis suggested that most of the observed differences in dynamical
+  behavior between control and cadmium populations are related to differences
+  in the density-independent components of the demographic rates, rather than
+  differences in the density-dependent structure.%
+    }
+    \field{issue}{9}
+    \field{pages}{2645\bibrangedash 2658}
+    \field{title}{Exploring the density-dependent structure of blowfly
+  populations by nonparametric additive modeling}
+    \field{volume}{82}
+    \field{journaltitle}{Ecology}
+    \field{year}{2001}
+  \endentry
+
+  \entry{Mai2016}{article}{}
+    \name{author}{3}{}{%
+      {{hash=MM}{%
+         family={Mai},
+         familyi={M\bibinitperiod},
+         given={Manuel},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SMD}{%
+         family={Shattuck},
+         familyi={S\bibinitperiod},
+         given={Mark\bibnamedelima D.},
+         giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=OCS}{%
+         family={O'Hern},
+         familyi={O\bibinitperiod},
+         given={Corey\bibnamedelima S.},
+         giveni={C\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MMSMDOCS1}
+    \strng{fullhash}{MMSMDOCS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2016}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{abstract}{%
+    We develop a numerical method to reconstruct systems of ordinary
+  differential equations (ODEs) from time series data without \{\it a priori\}
+  knowledge of the underlying ODEs using sparse basis learning and sparse
+  function reconstruction. We show that employing sparse representations
+  provides more accurate ODE reconstruction compared to least-squares
+  reconstruction techniques for a given amount of time series data. We test and
+  validate the ODE reconstruction method on known 1D, 2D, and 3D systems of
+  ODEs. The 1D system possesses two stable fixed points; the 2D system
+  possesses an oscillatory fixed point with closed orbits; and the 3D system
+  displays chaotic dynamics on a strange attractor. We determine the amount of
+  data required to achieve an error in the reconstructed functions to less than
+  $0.1\%$. For the reconstructed 1D and 2D systems, we are able to match the
+  trajectories from the original ODEs even at long times. For the 3D system
+  with chaotic dynamics, as expected, the trajectories from the original and
+  reconstructed systems do not match at long times, but the reconstructed and
+  original models possess similar Lyapunov exponents. Now that we have
+  validated this ODE reconstruction method on known models, it can be employed
+  in future studies to identify new systems of ODEs using time series data from
+  deterministic systems for which there is no currently known ODE model.%
+    }
+    \verb{doi}
+    \verb 1605.05420v1
+    \endverb
+    \field{note}{- Possibly of limited interest as it's an Arxiv<br/>- It is
+  the demonstration of training NODEs<br/>- The main difference with the work
+  of Funahashi (etc.) is that they provide a numerical methods to train these
+  systems, while Funahashi simply laid the theoretical basis<br/>- The work
+  still does not provide real word application, nor does it connect it with a
+  theoretical framework}
+    \field{pages}{1\bibrangedash 15}
+    \field{title}{Reconstruction of Ordinary Differential Equations From Time
+  Series Data}
+    \verb{url}
+    \verb http://arxiv.org/abs/1605.05420
+    \endverb
+    \field{journaltitle}{arXiv}
+    \field{year}{2016}
+  \endentry
+
+  \entry{Moe2005}{article}{}
+    \name{author}{4}{}{%
+      {{hash=MSJ}{%
+         family={Moe},
+         familyi={M\bibinitperiod},
+         given={S.\bibnamedelima Jannicke},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=KAB}{%
+         family={Kristoffersen},
+         familyi={K\bibinitperiod},
+         given={Anja\bibnamedelima B.},
+         giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=SRH}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={Robert\bibnamedelima H.},
+         giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=SNC}{%
+         family={Stenseth},
+         familyi={S\bibinitperiod},
+         given={Nils\bibnamedelima C.},
+         giveni={N\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \keyw{Density-toxicant interaction,Generalized additive
+  modelling,Non-parametric modelling,Stage-specific density
+  dependence,Time-series analysis}
+    \strng{namehash}{MSJ+1}
+    \strng{fullhash}{MSJKABSRHSNC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{abstract}{%
+    Our knowledge about population-level effects of abiotic stressors is
+  limited, largely due to lack of appropriate time-series data. To analyse
+  interactions between an abiotic stressor and density-dependent processes, we
+  used experimental time-series data for stage-structured populations (the
+  blowfly Lucilia sericata) exposed to the toxicant cadmium through 20
+  generations. Resource limitation results in competition both in the larval
+  and the adult stages. The toxicant has only negative effects at the organism
+  level, but nevertheless, there were positive population-level effects. These
+  are necessarily indirect, and indicate overcompensatory density-dependent
+  responses. A non-parametric model (generalized additive model) was used to
+  investigate the density-dependent structures of the demographic rates,
+  without making assumptions about the functional forms. The estimated
+  structures were used to develop a parametric model, with which we analysed
+  effects of the toxicant on density-dependent and density-independent
+  components of the stage-specific demographic rates. The parameter estimates
+  identified both synergistic and antagonistic density-toxicant interactions.
+  It is noteworthy that the synergistic interaction occurred together with a
+  net positive effect of the toxicant. Hence, the effects of such interactions
+  should be considered together with the capacity for compensatory responses.
+  The combination of the two modelling approaches provided new insight into
+  mechanisms for compensatory responses to abiotic stressors. © 2005 The Royal
+  Society.%
+    }
+    \verb{doi}
+    \verb 10.1098/rspb.2005.3184
+    \endverb
+    \field{issn}{14712970}
+    \field{issue}{1577}
+    \field{note}{* Preliminary read<br/>- The author uses gams to infer
+  nonparametric density dependence in the vital rates of a blowfly structured
+  system, with different time lags.<br/>- This rejoins earlier work of the
+  author on the subject, Moe et al. 2002.<br/>- I do see the need for time lags
+  as a necessary evil given that the blowfly time series does not come with
+  time series of other important variables.<br/>- The author further test the
+  effect of external variables: toxicant on the shape of the function. I see
+  that this is not done in an integrated manner, they compare to discrete
+  cases.<br/>- Can be used as an example of successful non parametric inference
+  of vital rates from time series data.}
+    \field{pages}{2133\bibrangedash 2142}
+    \field{title}{From patterns to processes and back: Analysing
+  density-dependent responses to an abiotic stressor by statistical and
+  mechanistic modelling}
+    \field{volume}{272}
+    \field{journaltitle}{Proceedings of the Royal Society B: Biological
+  Sciences}
+    \field{year}{2005}
+  \endentry
+
+  \entry{Mysterud2002}{article}{}
+    \name{author}{3}{}{%
+      {{hash=MA}{%
+         family={Mysterud},
+         familyi={M\bibinitperiod},
+         given={Atle},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CT}{%
+         family={Coulson},
+         familyi={C\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=SNC}{%
+         family={Stenseth},
+         familyi={S\bibinitperiod},
+         given={Nils\bibnamedelima Chr},
+         giveni={N\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \keyw{Key-words : calving dates,calving synchrony,demography,log-linear
+  models,second-order processes,sexual body-size dimorphism}
+    \strng{namehash}{MACTSNC1}
+    \strng{fullhash}{MACTSNC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{abstract}{%
+    1. In this review, we focus on how males can affect the population dynamics
+  of ungu-lates (i) by being a component of population density (and thereby
+  affecting interpretation of log-linear models), and (ii) by considering the
+  mechanisms by which males can actively affect the demographic rates of
+  females. 2. We argue that the choice of measure of density is important, and
+  that the inclusion or exclusion of males into models can influence results.
+  For example, we demonstrate that if the dynamics of a population can be
+  described with a first-order auto-regressive process in a log-linear
+  framework, the asymmetry between the effects of females on the male dynamics
+  and vice versa can introduce a second order process, much in the same way
+  that the interaction between disease and host or predator and prey can. It
+  would be useful for researchers with sufficient data to explore the affects
+  of using different density measures. 3. In general, even in harvested
+  populations with highly skewed sex ratios, males are usually able to
+  fertilize all females, though detailed studies document a lower proportion of
+  younger females breeding when sex ratios are heavily female biased. It is
+  well documented that the presence of males can induce oestrus in females, and
+  that male age may also be a factor. In populations with both a skewed sex
+  ratio and a young male age structure, calving is delayed and less
+  synchronous. We identify several mechanisms that may be responsible for this.
+  4. Delayed calving may lower summer survival and autumn masses, which may
+  lead to higher winter mortality. If females are born light, they may require
+  another year of growth before they start reproducing. Delayed calving can
+  reduce future fertility of the mother. As the proportion of calves predated
+  during the first few weeks of life is often very high, calving synchrony may
+  also be an important strategy to lower predation rates. 5. We argue that the
+  effects of males on population dynamics of ungulates are likely to be
+  non-trivial, and that their potential effects should not be ignored. The
+  mechanisms we discuss may be important-though much more research is required
+  before we can demonstrate they are.%
+    }
+    \field{pages}{907\bibrangedash 915}
+    \field{title}{The role of males in the dynamics of ungulate populations}
+    \field{volume}{71}
+    \field{journaltitle}{Journal of Animal Ecology}
+    \field{year}{2002}
+  \endentry
+
+  \entry{Novak2021}{article}{}
+    \name{author}{2}{}{%
+      {{hash=NM}{%
+         family={Novak},
+         familyi={N\bibinitperiod},
+         given={Mark},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SDB}{%
+         family={Stouffer},
+         familyi={S\bibinitperiod},
+         given={Daniel\bibnamedelima B.},
+         giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Frontiers Media S.A.}%
+    }
+    \keyw{consumer-resource interactions,experimental design,fisher
+  information,model comparison,model
+  flexibility,nonlinearity,prediction,structural complexity}
+    \strng{namehash}{NMSDB1}
+    \strng{fullhash}{NMSDB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{abstract}{%
+    The assessment of relative model performance using information criteria
+  like AIC and BIC has become routine among functional-response studies,
+  reflecting trends in the broader ecological literature. Such information
+  criteria allow comparison across diverse models because they penalize each
+  model's fit by its parametric complexity—in terms of their number of free
+  parameters—which allows simpler models to outperform similarly fitting
+  models of higher parametric complexity. However, criteria like AIC and BIC do
+  not consider an additional form of model complexity, referred to as geometric
+  complexity, which relates specifically to the mathematical form of the model.
+  Models of equivalent parametric complexity can differ in their geometric
+  complexity and thereby in their ability to flexibly fit data. Here we use the
+  Fisher Information Approximation to compare, explain, and contextualize how
+  geometric complexity varies across a large compilation of single-prey
+  functional-response models—including prey-, ratio-, and predator-dependent
+  formulations—reflecting varying apparent degrees and forms of
+  non-linearity. Because a model's geometric complexity varies with the data's
+  underlying experimental design, we also sought to determine which designs are
+  best at leveling the playing field among functional-response models. Our
+  analyses illustrate (1) the large differences in geometric complexity that
+  exist among functional-response models, (2) there is no experimental design
+  that can minimize these differences across all models, and (3) even the
+  qualitative nature by which some models are more or less flexible than others
+  is reversed by changes in experimental design. Failure to appreciate model
+  flexibility in the empirical evaluation of functional-response models may
+  therefore lead to biased inferences for predator–prey ecology, particularly
+  at low experimental sample sizes where its impact is strongest. We conclude
+  by discussing the statistical and epistemological challenges that model
+  flexibility poses for the study of functional responses as it relates to the
+  attainment of biological truth and predictive ability.%
+    }
+    \verb{doi}
+    \verb 10.3389/fevo.2021.740362
+    \endverb
+    \field{issn}{2296701X}
+    \field{title}{Geometric Complexity and the Information-Theoretic Comparison
+  of Functional-Response Models}
+    \field{volume}{9}
+    \field{journaltitle}{Frontiers in Ecology and Evolution}
+    \field{month}{11}
+    \field{year}{2021}
   \endentry
 
   \entry{Odum1972}{article}{}
@@ -590,7 +2811,6 @@
          giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod},
       }}%
     }
-    \keyw{lynx}
     \strng{namehash}{OEPBGW1}
     \strng{fullhash}{OEPBGW1}
     \field{labelnamesource}{author}
@@ -603,16 +2823,65 @@
     \verb 10.2307/3799291
     \endverb
     \field{issn}{0022541X}
-    \field{number}{4}
+    \field{issue}{4}
     \field{pages}{1372}
-    \field{title}{{Fundamentals of Ecology}}
+    \field{title}{Fundamentals of Ecology}
     \field{volume}{36}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Odum, Barrett - 1972 - Fundamentals of Ecology.pdf:pdf
-    \endverb
     \field{journaltitle}{The Journal of Wildlife Management}
     \field{year}{1972}
+  \endentry
+
+  \entry{Pasquali2018}{article}{}
+    \name{author}{2}{}{%
+      {{hash=PS}{%
+         family={Pasquali},
+         familyi={P\bibinitperiod},
+         given={Sara},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Soresina},
+         familyi={S\bibinitperiod},
+         given={Cinzia},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \keyw{lobesia bo-,mortality rate function,stage-structured population}
+    \strng{namehash}{PSSC1}
+    \strng{fullhash}{PSSC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{abstract}{%
+    The estimation of the mortality rate function for a stage-structured
+  population is obtained starting from time-series field data on the abundance
+  of the species. The method is based on the formulation of the mortality as a
+  combination of cubic splines and it is applied to the case of Lobesia
+  botrana, the main pest in the European vineyards, with data collected in a
+  location in the North of Italy. Mortality estimates are based on 3 years of
+  data and are used to obtain the dynamics for two different years. These
+  dynamics give a satisfactory fit of the phenology of the pest. The method
+  presented allows to obtain more flexible shape for the mortality rate
+  functions compared with previously methods applied for the same pest.%
+    }
+    \field{note}{* Preliminary read<br/>- The authors estimate the shape of
+  mortality rates with temperature of grape berry moth in all different life
+  stages using a dynamical model fitted to time series of the life stages and
+  temperature.<br/>- I see that as interesting given that I do not know of
+  another study that applied this nonparametric framework to infering
+  dependences in rates in anything else than population density.<br/>- The work
+  seems a bit dodgy though given how small the discussion section is.}
+    \field{pages}{1\bibrangedash 15}
+    \field{title}{Estimation of the mortality rate functions from time series
+  field data in a stage-structured demographic model for Lobesia botrana}
+    \verb{url}
+    \verb http://arxiv.org/abs/1812.02105
+    \endverb
+    \field{journaltitle}{arXiv}
+    \field{year}{2018}
   \endentry
 
   \entry{Pearce2018}{article}{}
@@ -648,7 +2917,6 @@
          giveni={A\bibinitperiod},
       }}%
     }
-    \keyw{Bayesian ANNs}
     \strng{namehash}{PT+1}
     \strng{fullhash}{PTLFBAZMNA1}
     \field{labelnamesource}{author}
@@ -674,23 +2942,781 @@
   Empirical evaluations demonstrate it has an advantage over standard
   ensembling, and is competitive with variational methods.%
     }
-    \verb{eprint}
-    \verb 1810.05546
-    \endverb
     \field{pages}{1\bibrangedash 10}
-    \field{title}{{Uncertainty in Neural Networks: Approximately Bayesian
-  Ensembling}}
+    \field{title}{Uncertainty in Neural Networks: Approximately Bayesian
+  Ensembling}
     \verb{url}
     \verb http://arxiv.org/abs/1810.05546
     \endverb
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Pearce et al. - 2018 - Uncertainty in Neural Networks Approximately
-    \verb  Bayesian Ensembling.pdf:pdf
+    \field{journaltitle}{arXiv}
+    \field{year}{2018}
+  \endentry
+
+  \entry{Rackauckas2019}{article}{}
+    \name{author}{6}{}{%
+      {{hash=RC}{%
+         family={Rackauckas},
+         familyi={R\bibinitperiod},
+         given={Chris},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=IM}{%
+         family={Innes},
+         familyi={I\bibinitperiod},
+         given={Mike},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MY}{%
+         family={Ma},
+         familyi={M\bibinitperiod},
+         given={Yingbo},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Bettencourt},
+         familyi={B\bibinitperiod},
+         given={Jesse},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=WL}{%
+         family={White},
+         familyi={W\bibinitperiod},
+         given={Lyndon},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=DV}{%
+         family={Dixit},
+         familyi={D\bibinitperiod},
+         given={Vaibhav},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RC+1}
+    \strng{fullhash}{RCIMMYBJWLDV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{abstract}{%
+    DiffEqFlux.jl is a library for fusing neural networks and differential
+  equations. In this work we describe differential equations from the viewpoint
+  of data science and discuss the complementary nature between machine learning
+  models and differential equations. We demonstrate the ability to incorporate
+  DifferentialEquations.jl-defined differential equation problems into a
+  Flux-defined neural network, and vice versa. The advantages of being able to
+  use the entire DifferentialEquations.jl suite for this purpose is
+  demonstrated by counter examples where simple integration strategies fail,
+  but the sophisticated integration strategies provided by the
+  DifferentialEquations.jl library succeed. This is followed by a demonstration
+  of delay differential equations and stochastic differential equations inside
+  of neural networks. We show high-level functionality for defining neural
+  ordinary differential equations (neural networks embedded into the
+  differential equation) and describe the extra models in the Flux model zoo
+  which includes neural stochastic differential equations. We conclude by
+  discussing the various adjoint methods used for backpropogation of the
+  differential equation solvers. DiffEqFlux.jl is an important contribution to
+  the area, as it allows the full weight of the differential equation solvers
+  developed from decades of research in the scientific computing field to be
+  readily applied to the challenges posed by machine learning and data
+  science.%
+    }
+    \field{pages}{1\bibrangedash 17}
+    \field{title}{DiffEqFlux.jl - A Julia Library for Neural Differential
+  Equations}
+    \verb{url}
+    \verb http://arxiv.org/abs/1902.02376
     \endverb
     \field{journaltitle}{arXiv}
-    \field{eprinttype}{arXiv}
+    \field{month}{02}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Rosenbaum2019}{article}{}
+    \name{author}{5}{}{%
+      {{hash=RB}{%
+         family={Rosenbaum},
+         familyi={R\bibinitperiod},
+         given={Benjamin},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=RM}{%
+         family={Raatz},
+         familyi={R\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=WG}{%
+         family={Weithoff},
+         familyi={W\bibinitperiod},
+         given={Guntram},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=FGF}{%
+         family={Fussmann},
+         familyi={F\bibinitperiod},
+         given={Gregor\bibnamedelima F.},
+         giveni={G\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=GU}{%
+         family={Gaedke},
+         familyi={G\bibinitperiod},
+         given={Ursula},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian inference,Chemostat experiments,Ordinary differential
+  equation,Parameter estimation,Population dynamics,Predator prey,Time series
+  analysis,Trait variability}
+    \strng{namehash}{RB+1}
+    \strng{fullhash}{RBRMWGFGFGU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{abstract}{%
+    Empirical time series of interacting entities, e.g. species abundances, are
+  highly useful to study ecological mechanisms. Mathematical models are
+  valuable tools to further elucidate those mechanisms and underlying
+  processes. However, obtaining an agreement between model predictions and
+  experimental observations remains a demanding task. As models always abstract
+  from reality one parameter often summarizes several properties. Parameter
+  measurements are performed in additional experiments independent of the ones
+  delivering the time series. Transferring these parameter values to different
+  settings may result in incorrect parametrizations. On top of that, the
+  properties of organisms and thus the respective parameter values may vary
+  considerably. These issues limit the use of a priori model parametrizations.
+  In this study, we present a method suited for a direct estimation of model
+  parameters and their variability from experimental time series data. We
+  combine numerical simulations of a continuous-time dynamical population model
+  with Bayesian inference, using a hierarchical framework that allows for
+  variability of individual parameters. The method is applied to a
+  comprehensive set of time series from a laboratory predator-prey system that
+  features both steady states and cyclic population dynamics. Our model
+  predictions are able to reproduce both steady states and cyclic dynamics of
+  the data. Additionally to the direct estimates of the parameter values, the
+  Bayesian approach also provides their uncertainties. We found that fitting
+  cyclic population dynamics, which contain more information on the process
+  rates than steady states, yields more precise parameter estimates. We
+  detected significant variability among parameters of different time series
+  and identified the variation in the maximum growth rate of the prey as a
+  source for the transition from steady states to cyclic dynamics. By lending
+  more flexibility to the model, our approach facilitates parametrizations and
+  shows more easily which patterns in time series can be explained also by
+  simple models. Applying Bayesian inference and dynamical population models in
+  conjunction may help to quantify the profound variability in organismal
+  properties in nature.%
+    }
+    \verb{doi}
+    \verb 10.3389/fevo.2018.00234
+    \endverb
+    \field{issn}{2296701X}
+    \field{issue}{234}
+    \field{note}{<b>From Duplicate 2 (<i>Estimating parameters from multiple
+  time series of population dynamics using bayesian inference</i> - Rosenbaum,
+  Benjamin; Raatz, Michael; Weithoff, Guntram; Fussmann, Gregor F.; Gaedke,
+  Ursula)<br/></b><br/>Takeaway:<br/>- the authors examplify the use of
+  Bayesian ODE fitting to time series to recover ecological parameters of
+  interest in a prey-predator chemostat system. <br/><br/>Notes:<br/>- The
+  author state that they rely on HMC to fit their models while mentionning that
+  the likelihood is evaluated numerically. I see that as a big problem and one
+  that is not reasurring when it comes to the reliability of the work.<br/>-
+  The author use a hierarchical model to fit the model to different time
+  series. I find this quite elegant.<br/>- I find that the model fit are
+  rubbish, which is a second point that advise caution.<br/>- I realise that
+  this is not completely novel, there have been applications of the method
+  recently, it exists in other fields, the authors barely acknowledge
+  this.<br/>- The author fitted a deterministic ODE model to 18 different time
+  series of the same system. They found variation in the vital rates across
+  time series. They however only briefly conclude that it may be due to
+  differences in phenotpyic structure of populations. Not more. <br/>- There
+  are several key differences with your work on rotifer (1) the time series
+  display more variations in dynamics, potentially in line with the fact that
+  they did not use very similar populations (experiment performed over 7
+  years!), so not really true replicates in this sense, rather different
+  populations; (2) they use only 2 species ; (3) they use a single parametric
+  model, the fit of which is not even that good, which may be biasing a lot the
+  results (dixit structural sensitivity), your approaches is non parametric and
+  therefore better in this case ; (4) they do not really discuss that<br/>- You
+  can potentially position yourself by stating that this is close to a
+  replicated system but not completely, what about populations that are
+  actually almost identical?<br/>- It seems that the time series come from
+  different experiments, so technically not really replicates and differences
+  in dynamics and dynamical processes are expected. The origin and differences
+  among these time series is unclear and we cannot draw conclusions regarding
+  the source of variability in dynamical processes. This is however a very
+  interesting stepping stone to jump from.}
+    \field{pages}{1\bibrangedash 14}
+    \field{title}{Estimating parameters from multiple time series of population
+  dynamics using bayesian inference}
+    \field{volume}{6}
+    \field{journaltitle}{Frontiers in Ecology and Evolution}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Royama1984}{article}{}
+    \name{author}{1}{}{%
+      {{hash=RT}{%
+         family={Royama},
+         familyi={R\bibinitperiod},
+         given={T},
+         giveni={T},
+      }}%
+    }
+    \strng{namehash}{RT1}
+    \strng{fullhash}{RT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1984}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{issue}{4}
+    \field{pages}{429\bibrangedash 462}
+    \field{title}{Population Dynamics of the Spruce Budworm Choristoneura
+  Fumiferana}
+    \field{volume}{54}
+    \field{journaltitle}{Ecological Monographs}
+    \field{year}{1984}
+  \endentry
+
+  \entry{Song2020}{article}{}
+    \name{author}{4}{}{%
+      {{hash=SC}{%
+         family={Song},
+         familyi={S\bibinitperiod},
+         given={Chuliang},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=ASV}{%
+         family={Ahn},
+         familyi={A\bibinitperiod},
+         given={Sarah\bibnamedelima Von},
+         giveni={S\bibinitperiod\bibinitdelim V\bibinitperiod},
+      }}%
+      {{hash=RRP}{%
+         family={Rohr},
+         familyi={R\bibinitperiod},
+         given={Rudolf\bibnamedelima P.},
+         giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Saavedra},
+         familyi={S\bibinitperiod},
+         given={Serguei},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier Ltd}%
+    }
+    \keyw{antagonism,competition,context-dependency,environmental
+  variability,interaction switches,mutualism,probability diagrams,structural
+  stability}
+    \strng{namehash}{SC+1}
+    \strng{fullhash}{SCASVRRPSS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    Observational and experimental studies have shown that an interaction class
+  between two species (be it mutualistic, competitive, antagonistic, or
+  neutral) may switch to a different class, depending on the biotic and abiotic
+  factors within which species are observed. This complexity arising from the
+  evidence of context-dependencies has underscored a difficulty in establishing
+  a systematic analysis about the extent to which species interactions are
+  expected to switch in nature and experiments. Here, we propose an overarching
+  theoretical framework, by integrating probabilistic and structural
+  approaches, to establish null expectations about switches of interaction
+  classes across environmental contexts. This integration provides a systematic
+  platform upon which it is possible to establish new hypotheses, clear
+  predictions, and quantifiable expectations about the context-dependency of
+  species interactions.%
+    }
+    \verb{doi}
+    \verb 10.1016/j.tree.2019.12.011
+    \endverb
+    \field{issn}{01695347}
+    \field{issue}{5}
+    \field{pages}{384\bibrangedash 396}
+    \field{title}{Towards a Probabilistic Understanding About the
+  Context-Dependency of Species Interactions}
+    \field{volume}{35}
+    \field{journaltitle}{Trends in Ecology and Evolution}
+    \field{month}{05}
+    \field{year}{2020}
+  \endentry
+
+  \entry{Song2021}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SC}{%
+         family={Song},
+         familyi={S\bibinitperiod},
+         given={Chuliang},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Saavedra},
+         familyi={S\bibinitperiod},
+         given={Serguei},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Blackwell Publishing Ltd}%
+    }
+    \keyw{Jacobian matrix,higher-order interactions,interaction
+  matrix,model-driven,model-free,non-equilibrium dynamics}
+    \strng{namehash}{SCSS1}
+    \strng{fullhash}{SCSS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    A central theme in ecological research is to understand how species
+  interactions contribute to community dynamics. Species interactions are the
+  basis of parametric (model-driven) and nonparametric (model-free) approaches
+  in theoretical and empirical work. However, despite their different
+  interpretations across these approaches, these measures have occasionally
+  been used interchangeably, limiting our opportunity to use their differences
+  to gain new insights about ecological systems. Here, we revisit two of the
+  most used measures across these approaches: species interactions measured as
+  constant direct effects (typically used in parametric approaches) and local
+  aggregated effects (typically used in nonparametric approaches). We show two
+  fundamental properties of species interactions that cannot be revealed
+  without bridging these definitions. First, we show that the local aggregated
+  intraspecific effect summarizes all potential pathways through which one
+  species impacts itself, which are likely to be negative even without any
+  constant direct self-regulation mechanism. This property has implications for
+  the long-held debate on how communities can be stabilized when little
+  evidence of self-regulation has been found among higher-trophic species.
+  Second, we show that a local aggregated interspecific effect between two
+  species is correlated with the constant direct interspecific effect if and
+  only if the population dynamics do not have any higher-order direct effects.
+  This other property provides a rigorous methodology to detect direct
+  higher-order effects in the field and experimental data. Overall, our
+  findings illustrate a practical route to gain further insights about
+  non-equilibrium ecological dynamics and species interactions.%
+    }
+    \verb{doi}
+    \verb 10.1111/oik.08060
+    \endverb
+    \field{issn}{16000706}
+    \field{issue}{7}
+    \field{pages}{1027\bibrangedash 1034}
+    \field{title}{Bridging parametric and nonparametric measures of species
+  interactions unveils new insights of non-equilibrium dynamics}
+    \field{volume}{130}
+    \field{journaltitle}{Oikos}
+    \field{month}{07}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Sugihara2012}{article}{}
+    \name{author}{7}{}{%
+      {{hash=SG}{%
+         family={Sugihara},
+         familyi={S\bibinitperiod},
+         given={George},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={May},
+         familyi={M\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=YH}{%
+         family={Ye},
+         familyi={Y\bibinitperiod},
+         given={Hao},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=HCH}{%
+         family={Hsieh},
+         familyi={H\bibinitperiod},
+         given={Chih\bibnamedelima Hao},
+         giveni={C\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=DE}{%
+         family={Deyle},
+         familyi={D\bibinitperiod},
+         given={Ethan},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=FM}{%
+         family={Fogarty},
+         familyi={F\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MS}{%
+         family={Munch},
+         familyi={M\bibinitperiod},
+         given={Stephan},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SG+1}
+    \strng{fullhash}{SGMRYHHCHDEFMMS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    Identifying causal networks is important for effective policy and
+  management recommendations on climate, epidemiology, financial regulation,
+  and much else. We introduce a method, based on nonlinear state space
+  reconstruction, that can distinguish causality from correlation. It extends
+  to nonseparable weakly connected dynamic systems (cases not covered by the
+  current Granger causality paradigm). The approach is illustrated both by
+  simple models (where, in contrast to the real world, we know the underlying
+  equations/relations and so can check the validity of our method) and by
+  application to real ecological systems, including the controversial
+  sardine-anchovy-temperature problem.%
+    }
+    \verb{doi}
+    \verb 10.1126/science.1227079
+    \endverb
+    \field{issn}{10959203}
+    \field{issue}{6106}
+    \field{note}{* Preliminary read<br/>- The authors seem to stress that
+  observation of the dynamics of systems can be used to separate correlation
+  from causation.<br/>- They also state that apparent synchrony can be mistaken
+  for causation. I see this as a possible explanation for the finch time
+  series, when population and phenotypic change are coupled, possibly because
+  of external forcing by weather.<br/>- Does not seem to allow for rebuilding a
+  causative map throughout the time series.<br/>- I do not like the fact that
+  it discusses causation disconnectedly from the biology of the systems, namely
+  without demonstrating what this causality represents. It does not also seem
+  to account for self dependence in dynamics. Also in the prey predator system
+  it does not give the direction nor the shape of the interaction.<br/>-
+  Overall the algorithm is quite opaque but seems to build local temporal
+  extrapolation of the two time series and look for predicting the effected
+  states based on local changes in the potential effector state.<br/>- I do not
+  find this to be an intuitive way of thinking about causality.}
+    \field{pages}{496\bibrangedash 500}
+    \field{title}{Detecting causality in complex ecosystems}
+    \field{volume}{338}
+    \field{journaltitle}{Science}
+    \field{year}{2012}
+  \endentry
+
+  \entry{Treven2021}{article}{}
+    \name{author}{4}{}{%
+      {{hash=TL}{%
+         family={Treven},
+         familyi={T\bibinitperiod},
+         given={Lenart},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=WP}{%
+         family={Wenk},
+         familyi={W\bibinitperiod},
+         given={Philippe},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=DF}{%
+         family={Dörfler},
+         familyi={D\bibinitperiod},
+         given={Florian},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Krause},
+         familyi={K\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TL+1}
+    \strng{fullhash}{TLWPDFKA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{abstract}{%
+    Differential equations in general and neural ODEs in particular are an
+  essential technique in continuous-time system identification. While many
+  deterministic learning algorithms have been designed based on numerical
+  integration via the adjoint method, many downstream tasks such as active
+  learning, exploration in reinforcement learning, robust control, or filtering
+  require accurate estimates of predictive uncertainties. In this work, we
+  propose a novel approach towards estimating epistemically uncertain neural
+  ODEs, avoiding the numerical integration bottleneck. Instead of modeling
+  uncertainty in the ODE parameters, we directly model uncertainties in the
+  state space. Our algorithm-distributional gradient matching (DGM)-jointly
+  trains a smoother and a dynamics model and matches their gradients via
+  minimizing a Wasserstein loss. Our experiments show that, compared to
+  traditional approximate inference methods based on numerical integration, our
+  approach is faster to train, faster at predicting previously unseen
+  trajectories, and in the context of neural ODEs, significantly more
+  accurate.%
+    }
+    \field{pages}{1\bibrangedash 14}
+    \field{title}{Distributional Gradient Matching for Learning Uncertain
+  Neural Dynamics Models}
+    \verb{url}
+    \verb https://github.com/lenarttreven/dgm
+    \endverb
+    \field{journaltitle}{arXiv}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Turchin1999a}{article}{}
+    \name{author}{1}{}{%
+      {{hash=TP}{%
+         family={Turchin},
+         familyi={T\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TP1}
+    \strng{fullhash}{TP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1999}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{issue}{1}
+    \field{pages}{153\bibrangedash 159}
+    \field{title}{Population Regulation: A Synthetic View}
+    \field{volume}{84}
+    \field{journaltitle}{Oikos}
+    \field{year}{1999}
+  \endentry
+
+  \entry{Turchin2001c}{article}{}
+    \name{author}{1}{}{%
+      {{hash=TP}{%
+         family={Turchin},
+         familyi={T\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TP1}
+    \strng{fullhash}{TP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2001}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{note}{Notes<br/>- Turchin reviews the general principles of
+  population dynamics.}
+    \field{pages}{17\bibrangedash 26}
+    \field{title}{Does population ecology have general laws?}
+    \field{volume}{94}
+    \field{journaltitle}{Oikos}
+    \field{year}{2001}
+  \endentry
+
+  \entry{Turchin2003}{article}{}
+    \name{author}{1}{}{%
+      {{hash=TP}{%
+         family={Turchin},
+         familyi={T\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TP1}
+    \strng{fullhash}{TP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2003}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{note}{Takeaway<br/>- authors states that of rapid evolution can
+  explain lags in population dynamics.<br/>- authors states that rapid
+  evolution should go away from chaos, but we have no proof of that yet.}
+    \field{pages}{257\bibrangedash 258}
+    \field{title}{Evolution in population dynamics}
+    \field{volume}{424}
+    \field{journaltitle}{Nature}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Ushio2018}{article}{}
+    \name{author}{8}{}{%
+      {{hash=UM}{%
+         family={Ushio},
+         familyi={U\bibinitperiod},
+         given={Masayuki},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=HCH}{%
+         family={Hsieh},
+         familyi={H\bibinitperiod},
+         given={Chih\bibnamedelima Hao},
+         giveni={C\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={Masuda},
+         familyi={M\bibinitperiod},
+         given={Reiji},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=DER}{%
+         family={Deyle},
+         familyi={D\bibinitperiod},
+         given={Ethan\bibnamedelima R.},
+         giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=YH}{%
+         family={Ye},
+         familyi={Y\bibinitperiod},
+         given={Hao},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=CCW}{%
+         family={Chang},
+         familyi={C\bibinitperiod},
+         given={Chun\bibnamedelima Wei},
+         giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Sugihara},
+         familyi={S\bibinitperiod},
+         given={George},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=KM}{%
+         family={Kondoh},
+         familyi={K\bibinitperiod},
+         given={Michio},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Nature Publishing Group}%
+    }
+    \strng{namehash}{UM+1}
+    \strng{fullhash}{UMHCHMRDERYHCCWSGKM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{U}
+    \field{sortinithash}{U}
+    \field{abstract}{%
+    Ecological theory suggests that large-scale patterns such as community
+  stability can be influenced by changes in interspecific interactions that
+  arise from the behavioural and/or physiological responses of individual
+  species varying over time. Although this theory has experimental support,
+  evidence from natural ecosystems is lacking owing to the challenges of
+  tracking rapid changes in interspecific interactions (known to occur on
+  timescales much shorter than a generation time) and then identifying the
+  effect of such changes on large-scale community dynamics. Here, using tools
+  for analysing nonlinear time series and a 12-year-long dataset of fortnightly
+  collected observations on a natural marine fish community in Maizuru Bay,
+  Japan, we show that short-term changes in interaction networks influence
+  overall community dynamics. Among the 15 dominant species, we identify 14
+  interspecific interactions to construct a dynamic interaction network. We
+  show that the strengths, and even types, of interactions change with time; we
+  also develop a time-varying stability measure based on local Lyapunov
+  stability for attractor dynamics in non-equilibrium nonlinear systems. We use
+  this dynamic stability measure to examine the link between the time-varying
+  interaction network and community stability. We find seasonal patterns in
+  dynamic stability for this fish community that broadly support expectations
+  of current ecological theory. Specifically, the dominance of weak
+  interactions and higher species diversity during summer months are associated
+  with higher dynamic stability and smaller population fluctuations. We suggest
+  that interspecific interactions, community network structure and community
+  stability are dynamic properties, and that linking fluctuating interaction
+  networks to community-level dynamic properties is key to understanding the
+  maintenance of ecological communities in nature.%
+    }
+    \verb{doi}
+    \verb 10.1038/nature25504
+    \endverb
+    \field{issn}{14764687}
+    \field{issue}{7692}
+    \field{pages}{360\bibrangedash 363}
+    \field{title}{Fluctuating interaction network and time-varying stability of
+  a natural fish community}
+    \field{volume}{554}
+    \field{journaltitle}{Nature}
+    \field{month}{02}
     \field{year}{2018}
+  \endentry
+
+  \entry{Wood2001}{article}{}
+    \name{author}{1}{}{%
+      {{hash=WSN}{%
+         family={Wood},
+         familyi={W\bibinitperiod},
+         given={Simon\bibnamedelima N.},
+         giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+    }
+    \keyw{Delay differential equation,Ecological dynamic model fitting,Multiple
+  smoothing parameter,Nonlinear spline model,Partially specified
+  model,Population dynamic model fitting,Semimechanistic model,Semiparametric
+  model}
+    \strng{namehash}{WSN1}
+    \strng{fullhash}{WSN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2001}
+    \field{labeldatesource}{}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{abstract}{%
+    Models are useful when they are compared with data. Whether this comparison
+  should be qualitative or quantitative depends on circumstances, but in many
+  cases some statistical comparison of model and data is useful and enhances
+  objectivity. Unfortunately, ecological dynamic models tend to contain
+  assumptions and simplifications that enhance tractability, promote insight,
+  but spoil model fit, and this can cause difficulties when adopting a
+  statistical approach. Furthermore, the arcane numerical analysis required to
+  fit dynamic models reliably presents an impediment to objective model testing
+  by fitting. This paper presents methods for formulating and fitting partially
+  specified models, which aim to achieve a measure of generality by avoiding
+  some of the irrelevant incidental assumptions that are inevitable in more
+  traditional approaches. This is done by allowing delay differential equation
+  models, difference equation models, and differential equation models to be
+  constructed with part of their structure represented by unknown functions,
+  while part of the structure may contain conventional model elements that
+  contain only unknown parameters. An integrated practical methodology for
+  using such models is presented along with several examples, which include use
+  of models formulated using delay differential equations, discrete difference
+  equations/matrix models, ordinary differential equations, and partial
+  differential equations. The methods also allow better estimation from
+  ecological data by model fitting, since models can be formulated to include
+  fewer unjustified assumptions than would usually be the case if more
+  traditional models were used, while still including as much structure as the
+  modeler believes can be justified by biological knowledge: model structure
+  improves precision, while fewer extraneous assumptions reduce unquantifiable
+  bias.%
+    }
+    \verb{doi}
+    \verb 10.1890/0012-9615(2001)071[0001:PSEM]2.0.CO;2
+    \endverb
+    \field{issn}{00129615}
+    \field{issue}{1}
+    \field{pages}{1\bibrangedash 25}
+    \field{title}{Partially specified ecological models}
+    \field{volume}{71}
+    \field{journaltitle}{Ecological Monographs}
+    \field{year}{2001}
   \endentry
 
   \entry{Wu2005}{article}{}
@@ -714,7 +3740,7 @@
          giveni={T\bibinitperiod},
       }}%
     }
-    \keyw{Data assimilation,Delay differential equation,NODE application,Neural
+    \keyw{Data assimilation,Delay differential equation,Neural
   network,Parameter estimation,Predator-prey dynamics,Residual minimization
   training}
     \strng{namehash}{WJFMTT1}
@@ -740,38 +3766,285 @@
   solutions. Then, we applied it successfully to real time-series data of
   protozoan populations. It is concluded that the new method can be effectively
   applied to analyses of time-series data in the field of the ecological
-  science. {\textcopyright} 2005 Elsevier B.V. All rights reserved.%
+  science. © 2005 Elsevier B.V. All rights reserved.%
     }
     \verb{doi}
     \verb 10.1016/j.ecolmodel.2005.04.013
     \endverb
     \field{issn}{03043800}
-    \field{number}{3-4}
+    \field{issue}{3-4}
+    \field{note}{--<br/><br/>- Quite interesting, they apply the method of
+  approximating the solution of the ODE with an ANN, then inferring the
+  parameter values of a known equation given the approximated solution... or
+  something like that... You should read it more carefully.<br/>- It
+  constitutes a nice example of application of ANN to solving an ODE system
+  modelling ecological dynamics.<br/>- The difference to your work is that they
+  assume a priori knowledge about the ecology of the system. They do not use
+  the neural network to find it... Quite different.<br/>- The networks are not
+  embedded within the mathematical framework, it's a bit like an approach in
+  steps.<br/>- It's quite unclear still, but it seems that it is exactly what
+  you do, what you need to do is present it as a first attempt, and find
+  reasons why it's not good enough.<br/><br/>--}
     \field{pages}{289\bibrangedash 304}
-    \field{title}{{Parameter estimation of an ecological system by a neural
-  network with residual minimization training}}
+    \field{title}{Parameter estimation of an ecological system by a neural
+  network with residual minimization training}
     \field{volume}{189}
-    \verb{file}
-    \verb :Users/willhem/Library/Application Support/Mendeley Desktop/Downloade
-    \verb d/Wu, Fukuhara, Takeda - 2005 - Parameter estimation of an ecological
-    \verb  system by a neural network with residual minimization training.pdf:p
-    \verb df
-    \endverb
     \field{journaltitle}{Ecological Modelling}
-    \field{annotation}{%
-    -- - Quite interesting, they apply the method of approximating the solution
-  of the ODE with an ANN, then inferring the parameter values of a known
-  equation given the approximated solution... or something like that... You
-  should read it more carefully. - It constitutes a nice example of application
-  of ANN to solving an ODE system modelling ecological dynamics. - The
-  difference to your work is that they assume a priori knowledge about the
-  ecology of the system. They do not use the neural network to find it... Quite
-  different. - The networks are not embedded within the mathematical framework,
-  it's a bit like an approach in steps. - It's quite unclear still, but it
-  seems that it is exactly what you do => what you need to do is present it as
-  a first attempt, and find reasons why it's not good enough. --%
-    }
     \field{year}{2005}
+  \endentry
+
+  \entry{Yoshida2007}{article}{}
+    \name{author}{6}{}{%
+      {{hash=YT}{%
+         family={Yoshida},
+         familyi={Y\bibinitperiod},
+         given={Takehito},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=JLE}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Laura\bibnamedelima E.},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=BBJM}{%
+         family={Bohannan},
+         familyi={B\bibinitperiod},
+         given={Brendan J.\bibnamedelima M.},
+         giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim
+  M\bibinitperiod},
+      }}%
+      {{hash=LRE}{%
+         family={Lenski},
+         familyi={L\bibinitperiod},
+         given={Richard\bibnamedelima E.},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{YT+1}
+    \strng{fullhash}{YTESPJLEBBJMLREHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2007}
+    \field{labeldatesource}{}
+    \field{sortinit}{Y}
+    \field{sortinithash}{Y}
+    \field{abstract}{%
+    Trophic relationships, such as those between predator and prey or between
+  pathogen and host, are key interactions linking species in ecological food
+  webs. The structure of these links and their strengths have major
+  consequences for the dynamics and stability of food webs. The existence and
+  strength of particular trophic links has often been assessed using
+  observational data on changes in species abundance through time. Here we show
+  that very strong links can be completely missed by these kinds of analyses
+  when changes in population abundance are accompanied by contemporaneous rapid
+  evolution in the prey or host species. Experimental observations, in
+  rotifer-alga and phage-bacteria chemostats, show that the predator or
+  pathogen can exhibit large-amplitude cycles while the abundance of the prey
+  or host remains essentially constant. We know that the species are tightly
+  linked in these experimental microcosms, but without this knowledge, we would
+  infer from observed patterns in abundance that the species are weakly or not
+  at all linked. Mathematical modeling shows that this kind of cryptic dynamics
+  occurs when there is rapid prey or host evolution for traits conferring
+  defense against attack, and the cost of defense (in terms of tradeoffs with
+  other fitness components) is low. Several predictions of the theory that we
+  developed to explain the rotifer-alga experiments are confirmed in the
+  phage-bacteria experiments, where bacterial evolution could be tracked.
+  Modeling suggests that rapid evolution may also confound experimental
+  approaches to measuring interaction strength, but it identifies certain
+  experimental designs as being more robust against potential confounding by
+  rapid evolution. © 2007 Yoshida et al.%
+    }
+    \verb{doi}
+    \verb 10.1371/journal.pbio.0050235
+    \endverb
+    \field{issn}{15449173}
+    \field{issue}{9}
+    \field{note}{Takeaways:<br/>- evolution of anti-predation defense can lead
+  to a shift from prey-predator cycles to stationary densities<br/>- rapid
+  evolution can lead to dynamics that are in appearence inconsistent with an
+  ecological interaction between the two species.<br/>- They show that the prey
+  density remains identical but there is shuffling in the structure of the
+  population (variation in the abundance of the genotypes) so that the apparent
+  link between the two population is not detectable.}
+    \field{pages}{1868\bibrangedash 1879}
+    \field{title}{Cryptic population dynamics: Rapid evolution masks trophic
+  interactions}
+    \field{volume}{5}
+    \field{journaltitle}{PLoS Biology}
+    \field{year}{2007}
+  \endentry
+
+  \entry{Yoshida2003}{article}{}
+    \name{author}{5}{}{%
+      {{hash=YT}{%
+         family={Yoshida},
+         familyi={Y\bibinitperiod},
+         given={Takehito},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=JLE}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Laura\bibnamedelima E.},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=FGF}{%
+         family={Fussmann},
+         familyi={F\bibinitperiod},
+         given={Gregor\bibnamedelima F.},
+         giveni={G\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{YT+1}
+    \strng{fullhash}{YTJLEESPFGFHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2003}
+    \field{labeldatesource}{}
+    \field{sortinit}{Y}
+    \field{sortinithash}{Y}
+    \field{abstract}{%
+    Ecological and evolutionary dynamics can occur on similar timescales1–7 .
+  However, theoretical predictions of how rapid evolution can affect ecological
+  dynamics8 are inconclusive and often depend on untested model assumptions8 .
+  Here we report that rapid prey evolution in response to oscillating predator
+  density affects predator–prey (rotifer–algal) cycles in laboratory
+  microcosms. Our experiments tested explicit predictions from a model for our
+  system that allows prey evolution9 .We verified the predicted existence of an
+  evolutionary tradeoff between algal competitive ability and defence against
+  consumption, and exam- ined its effects on cycle dynamics by manipulating the
+  evolution- ary potential of the prey population. Single-clone algal cultures
+  (lacking genetic variability) produced short cycle periods and typical
+  quarter-period phase lags between prey and predator densities, whereas
+  multi-clonal (genetically variable) algal cul- tures produced long cycles
+  with prey and predator densities nearly out of phase, exactly as predicted.
+  These results confirm that prey evolution can substantially alter
+  predator–prey dynamics, and therefore that attempts to understand
+  population oscillations in nature10,11 cannot neglect potential effects from
+  ongoing rapid evolution.%
+    }
+    \verb{doi}
+    \verb 10.1038/nature01767
+    \endverb
+    \field{isbn}{0028-0836}
+    \field{issn}{00280836}
+    \field{issue}{July}
+    \field{note}{- Evolutionary response of the prey (i.e. tendency to clump
+  up) slows down predation cycles. This is an experimental evidence of a simple
+  eco-evo feedback.<br/><br/>- Also points at the fact that eco-evo feedbacks
+  might be common and that we cannot neglect rapid evolution in natural
+  systems.<br/><br/>1. Introduction<br/>- Test effect of genetic variation on
+  population dynamics in prey predator system<br/><br/>2. Methods<br/>-
+  Mathematical model (ODE) predicting shifts in population dynamics with
+  genetic diversity in prey. (long cycles for diverse preys, short
+  lotka-voltera cycles for clonal populations). Phenotype: trade off between
+  competitivity and resistance to predation.<br/>- Experimentally tested model
+  prediction in microcosm. Manipulated prey genetic variation: population of a
+  miture of small predator resistant preys (less competitive) and bigger less
+  resistant preys, or clonal of either phenotype. And monitor population
+  dynamics. Small phenotype is an evolutionary of the prey to exposure to the
+  predator.<br/><br/>3. Results<br/>- Find long cycles in polymorphic
+  populations.<br/>- Short cycles in oligomorphic populations.<br/><br/>4.
+  Discussion<br/>- Shows importance of phenotypic variation for population
+  dynamics.<br/>- Moreover as phenotype is obtained by an evolutionary
+  response, and it implies shifts in genetic structure, results implies that
+  fast evolutionary response can be a mechanism underlying observed population
+  dynamics.<br/>- YET, this is caused by changes in standing genetic variation,
+  namely displacement of biomass on phenotypic axis, this is simply selection,
+  a very restraint form of evolutionary response.}
+    \field{pages}{303\bibrangedash 306}
+    \field{title}{Rapid evolution drives ecological dynamics in a predator –
+  prey system}
+    \field{volume}{424}
+    \field{journaltitle}{Nature}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Zhang2019}{article}{}
+    \name{author}{4}{}{%
+      {{hash=ZH}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Han},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=GX}{%
+         family={Gao},
+         familyi={G\bibinitperiod},
+         given={Xi},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=UJ}{%
+         family={Unterman},
+         familyi={U\bibinitperiod},
+         given={Jacob},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=AT}{%
+         family={Arodz},
+         familyi={A\bibinitperiod},
+         given={Tom},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZH+1}
+    \strng{fullhash}{ZHGXUJAT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{Z}
+    \field{sortinithash}{Z}
+    \field{abstract}{%
+    Neural ODEs and i-ResNet are recently proposed methods for enforcing
+  invertibility of residual neural models. Having a generic technique for
+  constructing invertible models can open new avenues for advances in learning
+  systems, but so far the question of whether Neural ODEs and i-ResNets can
+  model any continuous invertible function remained unresolved. Here, we show
+  that both of these models are limited in their approximation capabilities. We
+  then prove that any homeomorphism on a $p$-dimensional Euclidean space can be
+  approximated by a Neural ODE operating on a $2p$-dimensional Euclidean space,
+  and a similar result for i-ResNets. We conclude by showing that capping a
+  Neural ODE or an i-ResNet with a single linear layer is sufficient to turn
+  the model into a universal approximator for non-invertible continuous
+  functions.%
+    }
+    \field{pages}{1\bibrangedash 11}
+    \field{title}{Approximation Capabilities of Neural ODEs and Invertible
+  Residual Networks}
+    \verb{url}
+    \verb http://arxiv.org/abs/1907.12998
+    \endverb
+    \field{journaltitle}{arXiv}
+    \field{month}{07}
+    \field{year}{2019}
   \endentry
 \enddatalist
 \endinput

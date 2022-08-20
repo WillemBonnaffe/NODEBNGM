@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  1 JUL 2022 12:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  5 AUG 2022 14:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,7 +509,7 @@ pdf> <./lynx.pdf>] (./main.aux) )
 Here is how much of TeX's memory you used:
  13032 strings out of 478268
  270889 string characters out of 5846347
- 670941 words of memory out of 5000000
+ 670938 words of memory out of 5000000
  31016 multiletter control sequences out of 15000+600000
  480809 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -520,7 +520,7 @@ ts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/symbol/usyr.
 pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/
 local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (1 page, 70058 bytes).
+Output written on main.pdf (1 page, 70015 bytes).
 PDF statistics:
  45 PDF objects out of 1000 (max. 8388607)
  27 compressed objects within 1 object stream
