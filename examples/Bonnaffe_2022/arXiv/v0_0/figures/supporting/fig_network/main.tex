@@ -1,0 +1,169 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{decorations.pathmorphing,shapes}
+\usepackage{mathptmx}
+
+\begin{document}
+
+%%%%%%%%%%%%%
+%% MODULES %%
+%%%%%%%%%%%%%
+
+%
+%%%
+
+%% parameters
+\def\lwd{0.75mm}
+\def\col{black!75}
+\def\dx{6}
+\def\colNeg{red}
+\def\colPos{violet}
+\def\colNul{white}
+
+%% effects
+%% C, A, B -> rotifer, algae, flagellate
+%% TS1
+%  A     B     C    
+% -0.64 -0.85 -1.44 
+% -0.04  0.03 -0.92 
+%  3.19  0.96  1.22 
+%                   
+%  A     B     C    
+%  0.08 -0.66 -1.11 
+%  0.34  0    -0.56 
+%  0.84  0.03  0.17 
+%                   
+%  A     B     C    
+% -0.07  0.1  -2.24 
+%  0.08 -0.05 -1.25 
+%  2.89  0.41 -0.05 
+
+%% contributions
+%
+%  A     B     C     
+%  0.12  0.14  0.74  
+%  0     0     1     
+%  0.57  0.17  0.25  
+%                    
+%  A     B     C     
+%  0     0.08  0.92  
+%  0.24  0     0.76  
+%  0.95  0     0.05  
+%                    
+%  A     B     C     
+%  0.02  0.01  0.96  
+%  0.03  0.11  0.86  
+%  0.9   0.08  0.02  
+
+%
+%%%
+
+%%%%%%%%%%
+%% MAIN %%
+%%%%%%%%%%
+
+\begin{tikzpicture}
+%
+    \node [scale=0.9] at (0,0) {
+        \begin{tikzpicture}
+            \node [scale=1] at (-\dx,0) {
+                \begin{tikzpicture}[decoration=snake]
+                    \node [] () at (-2,-2) {\includegraphics[width=2cm]{algae.pdf}};
+                    \node [] () at ( 0, 0) {\includegraphics[width=2cm]{flagellate.pdf}};
+                    \node [] () at ( 2, 2) {\includegraphics[width=2cm]{rotifer.pdf}};
+                    \node [circle,minimum size = 1cm] (A) at (-2,-2)  {};
+                    \node [circle,minimum size = 1cm] (B) at ( 0, 0)  {};
+                    \node [circle,minimum size = 1cm] (C) at ( 2, 2)  {};
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.13,\colNeg] (A) to [out=-135-30,in=-135+30,looseness=7] (A);
+                    \draw [->,>=stealth,line width=\lwd*0.00,\colNul] (A) to [out=      0,in=    -90,looseness=1] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.60,\colPos] (A) to [out=      0,in=    -90,looseness=1] (C);
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.15,\colNeg] (B) to [out=    180,in=     90,looseness=1] (A);
+                    \draw [->,>=stealth,line width=\lwd*0.00,\colNul] (B) to [out= 135-30,in= 135+30,looseness=7] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.16,\colPos] (B) to [out=      0,in=    -90,looseness=1] (C);
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.73,\colNeg] (C) to [out=    180,in=     90,looseness=1] (A);
+                    \draw [->,>=stealth,line width=\lwd*1.00,\colNeg] (C) to [out=    180,in=     90,looseness=1] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.25,\colPos] (C) to [out=  45-30,in=  45+30,looseness=7] (C);
+                \end{tikzpicture}
+            };
+            \node [scale=1] at (0,0) {
+                \begin{tikzpicture}[decoration=snake]
+                    \node [] () at (-2,-2) {\includegraphics[width=2cm]{algae.pdf}};
+                    \node [] () at ( 0, 0) {\includegraphics[width=2cm]{flagellate.pdf}};
+                    \node [] () at ( 2, 2) {\includegraphics[width=2cm]{rotifer.pdf}};
+                    \node [circle,minimum size = 1cm] (A) at (-2,-2)  {};
+                    \node [circle,minimum size = 1cm] (B) at ( 0, 0)  {};
+                    \node [circle,minimum size = 1cm] (C) at ( 2, 2)  {};
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.00,\colNul] (A) to [out=-135-30,in=-135+30,looseness=7] (A);
+                    \draw [->,>=stealth,line width=\lwd*0.23,\colPos] (A) to [out=      0,in=    -90,looseness=1] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.95,\colPos] (A) to [out=      0,in=    -90,looseness=1] (C);
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.06,\colNeg] (B) to [out=    180,in=     90,looseness=1] (A);
+                    \draw [->,>=stealth,line width=\lwd*0.00,\colNul] (B) to [out= 135-30,in= 135+30,looseness=7] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.00,\colNul,opacity=0] (B) to [out=      0,in=    -90,looseness=1] (C);
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.94,\colNeg] (C) to [out=    180,in=     90,looseness=1] (A);
+                    \draw [->,>=stealth,line width=\lwd*0.77,\colNeg] (C) to [out=    180,in=     90,looseness=1] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.05,\colPos] (C) to [out=  45-30,in=  45+30,looseness=7] (C);
+                \end{tikzpicture}
+            };
+            \node [scale=1] at (\dx,0) {
+                \begin{tikzpicture}[decoration=snake]
+                    \node [] () at (-2,-2) {\includegraphics[width=2cm]{algae.pdf}};
+                    \node [] () at ( 0, 0) {\includegraphics[width=2cm]{flagellate.pdf}};
+                    \node [] () at ( 2, 2) {\includegraphics[width=2cm]{rotifer.pdf}};
+                    \node [circle,minimum size = 1cm] (A) at (-2,-2)  {};
+                    \node [circle,minimum size = 1cm] (B) at ( 0, 0)  {};
+                    \node [circle,minimum size = 1cm] (C) at ( 2, 2)  {};
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.02,\colNul] (A) to [out=-135-30,in=-135+30,looseness=7] (A);
+                    \draw [->,>=stealth,line width=\lwd*0.00,\colNul] (A) to [out=      0,in=    -90,looseness=1] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.79,\colPos] (A) to [out=      0,in=    -90,looseness=1] (C);
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.02,\colNul] (B) to [out=    180,in=     90,looseness=1] (A);
+                    \draw [->,>=stealth,line width=\lwd*0.01,\colNul] (B) to [out= 135-30,in= 135+30,looseness=7] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.18,\colPos] (B) to [out=      0,in=    -90,looseness=1] (C);
+                    %
+                    \draw [->,>=stealth,line width=\lwd*0.96,\colNeg] (C) to [out=    180,in=     90,looseness=1] (A);
+                    \draw [->,>=stealth,line width=\lwd*0.99,\colNeg] (C) to [out=    180,in=     90,looseness=1] (B);
+                    \draw [->,>=stealth,line width=\lwd*0.03,\colNul] (C) to [out=  45-30,in=  45+30,looseness=7] (C);
+                \end{tikzpicture}
+            };
+            \node [scale=1] at (0,0){
+                \begin{tikzpicture}
+                    \node [] at (-2-1,-2) {Algae};
+                    \node [] at ( 0+1, 0) {Flagel.};
+                    \node [] at ( 2+1, 2) {Rotifer};
+                \end{tikzpicture}
+            };
+            \node [scale=1] at (0,3){
+                \begin{tikzpicture}
+                    \node [] at (-\dx,0) {Replicate A};
+                    \node [] at (   0,0) {Replicate B};
+                    \node [] at ( \dx,0) {Replicate C};
+                \end{tikzpicture}
+            };
+            %
+            %% legend
+            \node [scale=1] at (0,-4){
+                \begin{tikzpicture} 
+                    \node [] at ( 1,0) {Negative interaction};
+                    \node [] at ( 6,0) {Positive interaction};
+                    \draw [->,>=stealth,line width=0.1cm,red]       (-2,0) to (-1,0);
+                    \draw [->,>=stealth,line width=0.1cm,violet]    ( 3,0) to ( 4,0);
+                \end{tikzpicture}
+            };
+            %
+        \end{tikzpicture}
+    };
+%
+\end{tikzpicture}
+
+%
+%%%
+
+\end{document}
