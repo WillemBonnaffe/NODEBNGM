@@ -1,23 +1,27 @@
-############
-## README ##
-############
+# RStudio version of NODE BNGM 
 
 ## update log:
-## 28-03-2022 - create b0_6
+* 28-03-2022 - create b1_0_0
 
-#######################
-## FIT PROCESS MODEL ##
-#######################
+## FIT OBSERVATION MODEL 
 
-## goal: fit process model (i.e. explain the per-capita growth rate of the populations calculated as 1/Y*dY/dt as a function of the states Y(t))
+To come.
 
-## notes: 
-## - the user could use state interpolations and interpolated dynamics obtained via other methods (e.g. Fourier series, cubic splines)
-## - the user could even use raw difference in the data as an estimate of the dynamics
+## FIT PROCESS MODEL 
+
+### Goal 
+
+Fit process model (i.e. explain the per-capita growth rate of the populations calculated as $1/Y*dY/dt$ as a function of the states Y(t))
+
+### Notes 
+
+* the user could use state interpolations and interpolated dynamics obtained via other methods (e.g. Fourier series, cubic splines)
+* the user could even use raw difference in the data as an estimate of the dynamics
 
 $$ \dot{Y} = f(Y,\Omega) $$
 
-## parameters of process model
+### Parameters of process model
+
 ```R
 K_p   = 10                                            # number of models to fit
 W_p   = rep(10,N)                                     # number of neurons in single layer perceptron (SLP)
@@ -28,7 +32,7 @@ sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.15,N_p[1]/2)),  # standard deviation of pr
              c(rep(1.0,N_p[3]/2),rep(.075,N_p[3]/2)))
 ```
 
-## train process model
+### Train process model
 
 ```R
 model_p    = trainModel_p(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p)
@@ -38,14 +42,16 @@ Geber_p    = model_p$Geber_p
 Omega_p    = model_p$Omega_p   
 ```
 
-## visualise process model
+### Visualise process model
+
 ```R
 pdf(paste(pathToOut,"/fig_predictions_p.pdf",sep=""))
 plotModel_p(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
 dev.off()
 ```
 
-## store results 
+### Store results 
+
 ```R
 save(Yhat_p       ,file=paste(pathToOut,"/","Yhat_p.RData"    ,sep=""))
 save(ddx.Yhat_p   ,file=paste(pathToOut,"/","ddx.Yhat_p.RData",sep=""))
@@ -53,5 +59,3 @@ save(Geber_p      ,file=paste(pathToOut,"/","Geber_p.RData"   ,sep=""))
 save(Omega_p      ,file=paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
 ```
 
-#
-###
