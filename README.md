@@ -10,3 +10,6 @@ The folder examples contains the case studies used for the arXiv and MEE manuscr
 The folder versions contains the template repository for fitting NODE by BNGM to new time series datasets.
 
 Further instructions on how to run NODEs can be found in these directories.
+
+## To do next
+* Correct index and colourscheme in RStudio b_0_0

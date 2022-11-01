@@ -857,3 +857,50 @@ plotCrossVal_p = function(resultsCrossVal)
 
 #
 ###
+
+####################
+## VISUALISATIONS ##
+####################
+
+## .plot.DIN
+## goal: plot the dynamical interaction network of the system
+# effectsMat - matrix - matrix of pairwise effects between system variables (e.g. row 1 col 2 is the effect of variable 2 on variable 1)
+# weightsMat - matrix - matrix of pairwise weights of the effects between system variables (e.g. row 1 col 2 corresponds to the contribution of variable 2 on variable 1)
+# labels     - vector - vector of the names of the variables in the matrix
+.plot.DIN = function(effectsMat,weightsMat,labels)
+{
+  ## dimensions
+  N = dim(effectsMat)[1]
+  
+  ## scale effects and contributions
+  effectsMat = (effectsMat>0)*1
+  # weightsMat = weightsMat/sum(weightsMat) # proportion of total change
+  
+  ## angles
+  theta = seq(0,2*pi,(2*pi)/N)
+  x = cos(theta)
+  y = sin(theta)
+  x_ = cos(theta+(2*pi*0.05))
+  y_ = sin(theta+(2*pi*0.05))
+  x__ = 1.25*cos(theta+(2*pi*0.025))
+  y__ = 1.25*sin(theta+(2*pi*0.025))
+  
+  ## plot interactions
+  plot(x=c(-1:1)*2,y=c(-1:1)*2,cex=0,bty="n",xaxt="n",yaxt="n",xlab="",ylab="")
+  for(i in 1:N)
+  {
+    for(j in 1:N)
+    {
+      color_ = if(effectsMat[i,j]>0){"green"}else{"red"}
+      # points(x__[i],y__[i],cex=30/N)
+      text(x__[i],y__[i],labels=labels[i])
+      if(weightsMat[i,j]*10>0)
+      {
+        arrows(x0=x[j],x1=x_[i],y0=y[j],y1=y_[i],lwd=weightsMat[i,j]*10,col=color_,length=0.1)
+      }
+    }
+  }
+}
+
+#
+###

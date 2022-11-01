@@ -161,6 +161,26 @@ save(ddx.Yhat_p   ,file=paste(pathToOut,"/","ddx.Yhat_p.RData",sep=""))
 save(Geber_p      ,file=paste(pathToOut,"/","Geber_p.RData"   ,sep=""))
 save(Omega_p      ,file=paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
 
+## compute Jacobian and contribution matrix
+MSq = function(x) mean(x^2)
+prop = function(x) x/sum(x)
+J = t(matrix(unlist(lapply(ddx.Yhat_p,function(x)apply(matrix(apply(x,2,mean),nrow=nrow(TS)),2,mean))),ncol=ncol(TS)-1)) ## average across samples then average across time steps
+C = t(matrix(unlist(lapply(Geber_p,function(x)apply(matrix(apply(x,2,mean),nrow=nrow(TS)),2,MSq))),ncol=ncol(TS)-1)) ## average across samples then take mean square across time steps
+C = t(apply(C,1,prop))
+
+## remove effects on surf and bot
+J[1:2,] = 0
+C[1:2,] = 0
+
+## thresholding
+hist(J)
+hist(C)
+J = J*(C>0.05)
+C = C*(C>0.05)
+
+## visualise 
+.plot.DIN(J,C,colnames(TS)[-1])
+
 #
 ###
 
@@ -173,9 +193,9 @@ save(Omega_p      ,file=paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
 
 ## parameters for cross-validation
 K_p             = 3                                      # number of models to fit per folds and regularisation parameter
-folds           = list(c(1/2,1))                         # proportion of the data that should be considered for training (e.g. c(1/2,1) means that the second half is for testing) 
+folds           = list(c(1/2,1))                         # proportion of the data that should be considered for testing
 # folds           = list(c(0,1/3),c(1/3,2/3),c(2/3,3/3)) # alternative folds
-crossValParVect = seq(0.01,0.5,0.01)
+crossValParVect = seq(0.005,0.05,0.005)
 
 ## run cross-validation
 resultsCrossVal_p = crossVal_p(TS,alpha_i,Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,folds,crossValParVect)
