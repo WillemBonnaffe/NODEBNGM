@@ -195,7 +195,7 @@ C = C*(C>0.05)
 K_p             = 3                                      # number of models to fit per folds and regularisation parameter
 folds           = list(c(1/2,1))                         # proportion of the data that should be considered for testing
 # folds           = list(c(0,1/3),c(1/3,2/3),c(2/3,3/3)) # alternative folds
-crossValParVect = seq(0.005,0.05,0.005)
+crossValParVect = seq(0.005,0.1,0.005)
 
 ## run cross-validation
 resultsCrossVal_p = crossVal_p(TS,alpha_i,Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,folds,crossValParVect)

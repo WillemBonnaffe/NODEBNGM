@@ -728,6 +728,11 @@ plotModel_p = function(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
 # crossValParVect - vector - vector of values for the regularisation 
 crossVal_p = function(TS,alpha_i,Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,folds,crossValParVect)
 {
+  
+    ## load data
+    attach(loadData_o(TS,alpha_i),warn.conflicts=F)
+    attach(loadData_p(Yhat_o,ddt.Yhat_o),warn.conflicts=F)
+  
     ## data specs
     N   = length(Yhat_o)
     n   = ncol(Yhat_o[[1]])
