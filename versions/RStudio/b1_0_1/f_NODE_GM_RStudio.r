@@ -668,9 +668,9 @@ plotModel_p = function(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
     attach(loadData_o(TS,alpha_i),warn.conflicts=F)
     attach(loadData_p(Yhat_o,ddt.Yhat_o),warn.conflicts=F)
     
-    col    = (rainbow(N,start=0.1,end=0.9))
-    xlab   = c("","","Time")
-    ylab   = c("P.c. growth rate","Effects","Contributions")
+    col   = (rainbow(N,start=0.1,end=0.9))
+    xlab  = c("","","Time")
+    ylab  = c("P.c. growth rate","Effects","Contributions")
     index = c("a.","b.","c.","d.","e.","f.","g.","h.","i.","j.","k.","l.","m.","n.","o.","p.","q.","r.","s.","t.","u.","v.","w.","x.","y.","z.")
     legend = paste(colnames(TS)[-1])
     par(mar=c(4,4.5,0,0),oma=c(1,1,1,1),cex.lab=1.5)
@@ -702,14 +702,15 @@ plotModel_p = function(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
         for(j in 1:N) lines(nt,E.ddx.Yhat_p[,j],col=adjustcolor(col[j],alpha=0.75),lwd=2)
         for(j in 1:N) polygon(c(nt,rev(nt)),c(q05.ddx.Yhat_p[,j],rev(q95.ddx.Yhat_p[,j])),col=adjustcolor(col[j],alpha=0.2),border=NA)
         if(!is.null(index))  legend("topright",legend=index[2+(i-1)*(3)],bty="n",cex=1.5)
-        if(!is.null(legend)) legend("bottom" ,legend=legend,lty=1,col=adjustcolor(col,alpha=0.75),bty="n",horiz=T,lwd=2)
+        # if(!is.null(legend)) legend("bottom" ,legend=legend,lty=1,col=adjustcolor(col,alpha=0.75),bty="n",horiz=T,lwd=2)
         #
         ## Geber
         plot(nt,rep(0,length(nt)),ylim=c(-1,1)*max(abs(E.Geber_p))*1.5,type="l",lty=3,xlab=xlab[3],ylab=if(i==1)ylab[3]else"")
         for(j in 1:N) lines(nt, E.Geber_p[,j],col=adjustcolor(col[j],alpha=0.75),lwd=2)
         for(j in 1:N) polygon(c(nt,rev(nt)),c(q05.Geber_p[,j],rev(q95.Geber_p[,j])),col=adjustcolor(col[j],alpha=0.2),border=NA)
         if(!is.null(index))  legend("topright",legend=index[3+(i-1)*(3)],bty="n",cex=1.5)
-        if(!is.null(legend)) legend("bottom" ,legend=legend,lty=1,col=adjustcolor(col,alpha=0.75),bty="n",horiz=T,lwd=2)
+        if(!is.null(legend)) legend("bottomleft" ,legend=legend[1:(N/2)],lty=1,col=adjustcolor(col,alpha=0.75)[1:(N/2)],bty="n",horiz=F,lwd=2)
+        if(!is.null(legend)) legend("bottomright"  ,legend=legend[((N/2)+1):N],lty=1,col=adjustcolor(col,alpha=0.75)[((N/2)+1):N],bty="n",horiz=F,lwd=2)
     }
 }
 
@@ -770,13 +771,14 @@ crossVal_p = function(TS,alpha_i,Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,folds,cro
     
                     ## split training/test
                     s   = round(folds[[u]][1]*n+1):round(folds[[u]][2]*n)
-                    X_l = X_[-s,]
-                    Y_l = Y_[-s,]
-                    X_t = X_[s,]
-                    Y_t = Y_[s,]
+                    X_l = X_[s,]
+                    Y_l = Y_[s,]
+                    X_t = X_[-s,]
+                    Y_t = Y_[-s,]
     
                     ## TO MODULARISE ##
-                    sd2_p[[i]][(N_p[i]/2):N_p[i]] = crossValParVect[k] 
+                    sd2_p[[i]] = crossValParVect[k] # for linear and nonlinear part of network
+                    # sd2_p[[i]][(N_p[i]/2):N_p[i]] = crossValParVect[k] # for nonlinear part of network only
     
                     ## fit
                     Omega_0      = rnorm(N_p[i],0,0.001)
@@ -894,6 +896,7 @@ plotCrossVal_p = function(resultsCrossVal)
   plot(x=c(-1:1)*2,y=c(-1:1)*2,cex=0,bty="n",xaxt="n",yaxt="n",xlab="",ylab="")
   for(i in 1:N)
   {
+    points(x[i],y[i],pch=16)
     for(j in 1:N)
     {
       color_ = if(effectsMat[i,j]>0){"green"}else{"red"}
