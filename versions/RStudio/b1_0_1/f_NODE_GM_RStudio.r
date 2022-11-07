@@ -478,6 +478,7 @@ plotModel_o = function(TS,alpha_i,Yhat_o,ddt.Yhat_o)
         if(!is.null(index)) legend("topright",legend=index[2+(i-1)*2],bty="n",cex=1.5)
         legend("bottom",legend=colnames(TS)[-1][i],lty=1,col=col[i],lwd=2,bty="n",horiz=T)
     }
+    par(mfrow=c(1,1))
 }
 
 #
@@ -550,6 +551,8 @@ loadData_p = function(Yhat_o,ddt.Yhat_o)
 }
 
 ## activation function of process model ## 
+# f_sigma_p     = lin
+# ddx.f_sigma_p = ddx.lin
 # f_sigma_p     = pol2   
 # ddx.f_sigma_p = ddx.pol2
 f_sigma_p     = expo
@@ -712,6 +715,7 @@ plotModel_p = function(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
         if(!is.null(legend)) legend("bottomleft" ,legend=legend[1:(N/2)],lty=1,col=adjustcolor(col,alpha=0.75)[1:(N/2)],bty="n",horiz=F,lwd=2)
         if(!is.null(legend)) legend("bottomright"  ,legend=legend[((N/2)+1):N],lty=1,col=adjustcolor(col,alpha=0.75)[((N/2)+1):N],bty="n",horiz=F,lwd=2)
     }
+    par(mfrow=c(1,1))
 }
 
 ## crossVal_p ##
@@ -860,6 +864,7 @@ plotCrossVal_p = function(resultsCrossVal)
         legend("bottom",legend=c("Training","Testing"),col=colVect,lty=1,bty="n",cex=1.5,horiz=T)
         legend("topright",legend=index[i],bty="n",cex=1.5)
     }
+    par(mfrow=c(1,1))
 }
 
 #

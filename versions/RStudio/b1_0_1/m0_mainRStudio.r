@@ -24,6 +24,9 @@
 
 ## goal: load data, functions
 
+## load NODE functions
+source("f_NODE_GM_Rstudio.r")
+
 ## load data
 TS = read.table("data/TS.csv",sep=",",header=T)
 
@@ -39,19 +42,19 @@ s  = c(
   "surf.t",
   "bot.t",
   "Aurelia.sp",
-  # "Engraulis.japonicus",
-  # "Plotosus.lineatus",
+  "Engraulis.japonicus", #
+  "Plotosus.lineatus", #
   "Sebastes.inermis",
   "Trachurus.japonicus",
   "Girella.punctata",
   "Pseudolabrus.sieboldi",
   "Halichoeres.poecilopterus",
   "Halichoeres.tenuispinnis",
-  # "Chaenogobius.gulosus",
+  "Chaenogobius.gulosus", #
   "Pterogobius.zonoleucus",
   "Tridentiger.trigonocephalus",
-  # "Siganus.fuscescens",
-  # "Sphyraena.pinguis",
+  "Siganus.fuscescens", #
+  "Sphyraena.pinguis", #
   "Rudarius.ercodes"           
 )
 TS = TS[,s]
@@ -71,12 +74,28 @@ TS[,-1] = apply(TS[,-1],2,function(x)(x-min(x))/(max(x)-min(x))*10)
 ## set 0s to small value
 for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
 
-## load NODE functions
-source("f_NODE_GM_Rstudio.r")
-
 ## make output directory
 pathToOut = "out"
 system(paste("mkdir",pathToOut))
+
+#
+###
+
+#########################
+## STANDARD DIFFERENCE ##
+#########################
+
+##
+Yhat_o_     = TS[,-1]
+ddt.Yhat_o_ = apply(TS[,-1],2,diff)
+ddt.Yhat_o_ = rbind(ddt.Yhat_o_,ddt.Yhat_o_[nrow(ddt.Yhat_o_),])
+Yhat_o = list()
+ddt.Yhat_o = list()
+for(i in 1:N)
+{
+  Yhat_o[[i]] = t(Yhat_o_[,i])
+  ddt.Yhat_o[[i]] = t(ddt.Yhat_o_[,i])
+}
 
 #
 ###
@@ -126,7 +145,7 @@ save(Omega_o,   file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 ## - the user could even use raw difference in the data as an estimate of the dynamics
 
 ## parameters of process model
-K_p   = 30                                                       # number of models to fit
+K_p   = 3                                                       # number of models to fit
 W_p   = rep(10,N)                                               # number of neurons in single layer perceptron (SLP)
 N_p   = 2 * W_p * (2+N)                                         # number of parameters in process model
 sd1_p = 0.1                                                     # standard deviation of model likelihood
@@ -142,7 +161,7 @@ sd2_p = list(c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
              c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
              c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
              c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2))) # standard deviation of prior distributions (second half concerns nonlinear functions)
-            
+          
 ## train process model
 model_p    = trainModel_p(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p)
 Yhat_p     = model_p$Yhat_p     
