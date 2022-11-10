@@ -41,17 +41,14 @@ Y  = as.matrix(TS)
 dY = function(t, stateVect, paramVect)
 {
   return(list(c(
-    ## dXdt 
     stateVect[1]*(paramVect[1] + paramVect[2]*stateVect[2] + paramVect[3]*stateVect[3]),
-    ## dYdt 
     stateVect[2]*(paramVect[4] + paramVect[5]*stateVect[1] + paramVect[6]*stateVect[3]),
-    ## dZdt 
     stateVect[3]*(paramVect[7] + paramVect[8]*stateVect[1] + paramVect[9]*stateVect[2])
   )))
 }
 
 ## posterior
-dLogPost = function(Y=Y, Theta)
+dLogPost = function(Y, Theta)
 {
   ## predictive function
   Ybar = ode(y = exp(Theta[1:3]), times = Y[,1], func=dY, parms=Theta[-c(1:3)], method="ode23")
@@ -120,12 +117,14 @@ timeVect = c(0)
 timeVect[1] = system.time(
     for(i in 1:1)
     {
-        Theta_0 = initiate()
+        # Theta_0 = initiate()
+        Theta_0 = MaP
         chainList[[i]] = DEMCpp(list(dTarget = dTarget,
                                      Theta_0 = Theta_0, # initiate from the priors
                                      gamma   = 2.38/sqrt(2*12),
                                      epsilon = 0.001,
                                      nIt     = 1000))[["chainList"]]
+        MaP = chainList.summaryTab(chainList.thin(chainList.burn(chainList,1:500)))$estimates[-1,"MaP"]
     })[3]
 
 ## store chains
@@ -144,8 +143,6 @@ chainList = chainList.read("out_ODE")
 
 ## untransform
 # for(l in 1:length(chainList)){chainList[[l]][,-1] = exp(chainList[[l]][,-1])}
-
-pdf("out_ODE/ODE.pdf")
 
 ## traces MC
 chainList.tracePlot(chainList)
@@ -169,15 +166,15 @@ ESSVect = round(c(apply(ESSTab,2,mean)),2)
 # write.table(comparisonTab,"out_ODE/comparisonTab.txt",sep=" & ",quote=F, row.names=F)
 
 ## model fit
+#
+## predictions
+MaP = chainList.summaryTab(chainList.thin(chainList.burn(chainList,1:500)))$estimates[-1,"MaP"]
+Ybar = ode(y = exp(MaP[1:3]), times = seq(0,max(Y[,1]),0.01), func=dY, parms=MaP[-c(1:3)], method="ode45")
+#
+## plot
 par(mfrow=c(1,1),mar=c(5,5,0,0),oma=c(0,0,1,1))
 k = 1
 mainVect =c("a.","b.")
-##
-MaP = chainList.summaryTab(chainList.thin(chainList.burn(chainList,1:500)))$estimates[-1,"MaP"]
-# 
-Ybar = ode(y = exp(MaP[1:3]), times = seq(0,max(Y[,1]),0.01), func=dY, parms=MaP[-c(1:3)], method="ode45")
-#
-##
 plot(Y[,1],Y[,2], pch=16, ylim=c(0,max(Y[,-1])), cex=0,xlab="",ylab="Density")
 for(i in 2:4)
 {
@@ -190,8 +187,6 @@ legend("topright",legend=mainVect[k],bty="n",cex=1.5)
 k = k + 1
 #
 par(mfrow=c(1,1))
-
-dev.off()
 
 #
 ###
