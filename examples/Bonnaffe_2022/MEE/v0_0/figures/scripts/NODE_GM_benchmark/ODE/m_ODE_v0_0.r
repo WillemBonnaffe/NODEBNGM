@@ -10,6 +10,7 @@ library(Rcpp)
 source("R/f_HBM_v1_0.r")
 source("R/f_DEMC_v1_0.R")
 sourceCpp("Rcpp/f_DEMCpp_v1_0.cpp")
+sourceCpp("Rcpp/f_DEMCO_v1_0.cpp")
 
 ## make out directory
 pathToOut = "out/"
@@ -26,7 +27,7 @@ system(paste("mkdir",pathToOut))
 
 ## load data
 TS = read.table("data/TS_3DLV.csv",sep=";",header=T)
-TS = TS[20:30,]
+TS = TS[20:50,]
 TS[,1] = TS[,1]-min(TS[,1])
 Y  = as.matrix(TS)
 
@@ -112,6 +113,22 @@ timeVect = c(0)
 #                               nIt     = 1000,
 #                               msg     = T)[-1,]
 #     })[3]
+
+## RCpp implementation of EDEMC
+timeVect[1] = system.time(
+  for(i in 1:1)
+  {
+    Theta_0 = initiate()
+    # Theta_0 = MaP
+    chainList[[i]] = DEMCOpp(list(dTarget = dTarget,
+                                 Theta_0 = Theta_0, # initiate from the priors
+                                 gamma   = 2.38/sqrt(2*12),
+                                 epsilon = 0.001,
+                                 lambda = 100,
+                                 nIt     = 2000))[["chainList"]]
+    MaP = chainList.summaryTab(chainList.thin(chainList.burn(chainList,1:500)))$estimates[-1,"MaP"]
+  })[3]
+
 
 ## RCpp implementation of EDEMC
 timeVect[1] = system.time(
