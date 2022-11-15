@@ -25,17 +25,17 @@ system(paste("mkdir",pathToOut))
 
 ## goal: load time series
 
-# ## load data
-# TS = as.matrix(read.table("data/TS_3DLV.csv",sep=";",header=T))
-# TS = TS[20:50,]
-# TS[,1] = TS[,1]-min(TS[,1])
-# N = ncol(TS) - 1
-
 ## load data
-TS = as.matrix(read.table("data/TS_3.csv",sep=";",header=T))
+TS = as.matrix(read.table("data/TS_3DLV.csv",sep=";",header=T))
+TS = TS[20:50,]
 TS[,1] = TS[,1]-min(TS[,1])
 N = ncol(TS) - 1
-TS[,-1][TS[,-1]<0.005] = 0.005
+
+# ## load data
+# TS = as.matrix(read.table("data/TS_1.csv",sep=";",header=T))
+# TS[,1] = TS[,1]-min(TS[,1])
+# N = ncol(TS) - 1
+# TS[,-1][TS[,-1]<0.005] = 0.005
 
 #
 ###
@@ -170,8 +170,8 @@ timeVect = c(0,0)
 ## RCpp implementation of DEMCO
 chainList = list()
 Theta_0 = initiate()
-tmax    = seq(20,40,2)
-# tmax = c(20,30,40,50,60)
+tmax    = seq(10,30,2)
+# tmax = c(10,20,30,40,50,60)
 timeVect[1] = system.time(
   for(i in 1:length(tmax))
   {
@@ -192,7 +192,7 @@ chainList = list()
 timeVect = c(0)
 Theta_0 = MaP
 timeVect[2] = system.time(
-    for(i in 1:3)
+    for(i in 1:1)
     {
         # Theta_0 = initiate()
         # Theta_0 = Theta_0
@@ -290,6 +290,7 @@ k = k + 1
 par(mfrow=c(1,1))
 #
 dev.out()
+
 
 ##
 J = matrix(Beta,ncol=N)
