@@ -25,17 +25,17 @@ system(paste("mkdir",pathToOut))
 
 ## goal: load time series
 
-# ## load data
-# TS = as.matrix(read.table("data/TS_3DLV.csv",sep=";",header=T))
-# TS = TS[20:50,]
-# TS[,1] = TS[,1]-min(TS[,1])
-# N = ncol(TS) - 1
-
 ## load data
-TS = as.matrix(read.table("data/TS_3.csv",sep=";",header=T))
+TS = as.matrix(read.table("data/TS_3DLV.csv",sep=";",header=T))
+TS = TS[20:50,]
 TS[,1] = TS[,1]-min(TS[,1])
 N = ncol(TS) - 1
-TS[,-1][TS[,-1]<0.005] = 0.005
+
+# ## load data
+# TS = as.matrix(read.table("data/TS_3.csv",sep=";",header=T))
+# TS[,1] = TS[,1]-min(TS[,1])
+# N = ncol(TS) - 1
+# TS[,-1][TS[,-1]<0.005] = 0.005
 
 #
 ###
@@ -49,18 +49,50 @@ idx_Y_0   = 1:N
 idx_Sigma =   N + 1:N
 idx_Beta  =   N +   N + 1:(N^2)
 
-## dynamics
+# ## dynamics
+# dYdt = function(t, Y, Beta)
+# {
+#   J = matrix(Beta,ncol=length(Y)) 
+#   dYdt = (J%*%Y)*Y
+#   return(list(dYdt))
+# }
+
+# ## predictive function
+# Ybar = function(times, Y_0, dYdt, Beta)
+# {
+#   return(ode(y=Y_0, times=times, func=dYdt, parms=Beta, method="ode23"))
+# }
+
+## 
 dYdt = function(t, Y, Beta)
 {
-  J = matrix(Beta,ncol=length(Y)) 
-  dYdt = (J%*%Y)*Y
-  return(list(dYdt))
+  J = matrix(Beta,ncol=N)
+  dY = (J%*%Y)
+  return(as.vector(dY))
 }
+
+# ## 
+# dYdt = function(t, Y, Beta)
+# {
+#   J = matrix(Beta,ncol=N)
+#   Y2 = t(matrix(rep(Y%*%t(Y),N),N^2))
+#   dY = (J%*%Y) + %*%t(Beta)
+#   return(as.vector(dY))
+# }
+
 
 ## predictive function
 Ybar = function(times, Y_0, dYdt, Beta)
 {
-  return(ode(y=Y_0, times=times, func=dYdt, parms=Beta, method="ode23"))
+  Ybar = NULL
+  Y = Y_0
+  for(t in times)
+  {
+    Y = Y + dYdt(t,Y,Beta)
+    Ybar = rbind(Ybar,Y)
+  }
+  Ybar = cbind(times,Ybar)
+  return(Ybar)
 }
 
 ## posterior
@@ -149,7 +181,7 @@ model.predict = function(MaP)
 }
 
 ## debug
-Y_0   = TS[1,-1]
+Y_0   = as.numeric(TS[1,-1])
 Beta  = runif(N^2,-.001,.001)
 Sigma = rep(1,N)
 TS_pred = Ybar(times = TS[,1], Y_0 = Y_0, dYdt = dYdt, Beta = Beta)
@@ -170,7 +202,7 @@ timeVect = c(0,0)
 ## RCpp implementation of DEMCO
 chainList = list()
 Theta_0 = initiate()
-tmax    = seq(20,40,2)
+tmax    = seq(10,30,1)
 # tmax = c(20,30,40,50,60)
 timeVect[1] = system.time(
   for(i in 1:length(tmax))
@@ -181,7 +213,7 @@ timeVect[1] = system.time(
                                  gamma   = 2.38/sqrt(2*N),
                                  epsilon = 0.001,
                                  lambda  = 100,
-                                 nIt     = 1000))[["chainList"]]
+                                 nIt     = 2000))[["chainList"]]
     Theta_0 = chainList.argmaxPost(chainList)
     model.plot(TS[1:tmax[i],],model.predict(Theta_0))
   })[3]
