@@ -607,7 +607,8 @@ ddOmega.f_p.eval   = function(X,Omega) apply(t(X),2,function(x) ddOmega.f_p(x,Om
 # sd1_p       - float  - standard deviation of the likelihood
 # sd2_p       - vector - standard deviation of the prior distributions
 # K_p         - int    - number of elements to sample
-trainModel_p = function(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p)
+# trainSplit  - float  - [0,1] proportion of the data to use for training vs testing
+trainModel_p = function(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,trainSplit=0.75)
 {
     ## for each variable
     Omega_p    = list()
@@ -626,20 +627,28 @@ trainModel_p = function(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p)
     
             ## dataloader
             attach(loadData_p(Yhat_o,ddt.Yhat_o),warn.conflicts=F)
-    
+ 
+            ## split train and test
+            s_l = 1:round(length(t_)*trainSplit)
+            s_t = -s_l
+            
             ## fit
             Omega_0      = rnorm(N_p[i],0,0.001)
             Yhat         = function(X,Omega) f_p.eval(X,Omega)
             ddOmega.Yhat = function(X,Omega) ddOmega.f_p.eval(X,Omega)
-            Omega_f      = argmax.logPost(X_,Y_[,i],Yhat,ddOmega.Yhat,Omega_0,sd1_p,sd2_p[[i]])
+            Omega_f      = argmax.logPost(X_[s_l,],Y_[s_l,i],Yhat,ddOmega.Yhat,Omega_0,sd1_p,sd2_p[[i]])
             Omega_p_i    = rbind(Omega_p_i,Omega_f)
     
             ## update
-            logPost_0    = logLik(X_,Y_[,i],Yhat,Omega_0,sd1_p)
-            logPost_f    = logLik(X_,Y_[,i],Yhat,Omega_f,sd1_p)
+            logPost_0_l    = logLik(X_[s_l,],Y_[s_l,i],Yhat,Omega_0,sd1_p)
+            logPost_f_l    = logLik(X_[s_l,],Y_[s_l,i],Yhat,Omega_f,sd1_p)
+            logPost_0_t    = logLik(X_[s_t,],Y_[s_t,i],Yhat,Omega_0,sd1_p)
+            logPost_f_t    = logLik(X_[s_t,],Y_[s_t,i],Yhat,Omega_f,sd1_p)
             message(paste(k,"/",K_p,"\t",
-                    format(round(logPost_0,2),nsmall=2),"\t","-->","\t",
-                    format(round(logPost_f,2),nsmall=2),sep=""))
+                    "initial_train: ",format(round(logPost_0_l,2),nsmall=2),"\t",
+                    "final_train: ",format(round(logPost_f_l,2),nsmall=2),"\n",
+                    "initial_test: ",format(round(logPost_0_t,2),nsmall=2),"\t",
+                    "final_test: ",format(round(logPost_f_t,2),nsmall=2),sep=""))
         }
     
         ## store
