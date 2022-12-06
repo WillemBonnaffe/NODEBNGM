@@ -1,0 +1,267 @@
+#####
+## ## 
+#####
+
+###############
+## FUNCTIONS ##
+###############
+
+## .plot.DIN
+## goal: plot the dynamical interaction network of the system
+# effectsMat - matrix - matrix of pairwise effects between system variables (e.g. row 1 col 2 is the effect of variable 2 on variable 1)
+# weightsMat - matrix - matrix of pairwise weights of the effects between system variables (e.g. row 1 col 2 corresponds to the contribution of variable 2 on variable 1)
+# labels     - vector - vector of the names of the variables in the matrix
+.plot.DIN = function(effectsMat,weightsMat,labels)
+{
+  ## dimensions
+  N = dim(effectsMat)[1]
+  
+  ## scale effects and contributions
+  effectsMat = (effectsMat>0)*1
+  # weightsMat = weightsMat/sum(weightsMat) # proportion of total change
+  
+  ## angles
+  theta = seq(0,2*pi,(2*pi)/N)
+  x = cos(theta)
+  y = sin(theta)
+  x_ = cos(theta+(2*pi*0.05))
+  y_ = sin(theta+(2*pi*0.05))
+  x__ = 1.25*cos(theta+(2*pi*0.025))
+  y__ = 1.25*sin(theta+(2*pi*0.025))
+  
+  ## plot interactions
+  plot(x=c(-1:1)*2,y=c(-1:1)*2,cex=0,bty="n",xaxt="n",yaxt="n",xlab="",ylab="")
+  for(i in 1:N)
+  {
+    points(x[i],y[i],pch=16)
+    for(j in 1:N)
+    {
+      color_ = if(effectsMat[i,j]>0){"green"}else{"red"}
+      # points(x__[i],y__[i],cex=30/N)
+      text(x__[i],y__[i],labels=labels[i])
+      if(weightsMat[i,j]*10>0)
+      {
+        arrows(x0=x[j],x1=x_[i],y0=y[j],y1=y_[i],lwd=weightsMat[i,j]*10,col=color_,length=0.1)
+      }
+    }
+  }
+}
+
+#
+###
+
+######################
+## LOAD TIME SERIES ##
+######################
+
+## goal: load and format time series from Ushio et al. 2018
+
+## load time series
+TS = read.table("data/TS.csv",sep=",",header=T)
+
+## extract column of interest
+selected_time_steps = 50:150
+selected_columns  = c(
+  "time_step",
+  # "surf.t",
+  "bot.t",
+  "Aurelia.sp",
+  # "Engraulis.japonicus", #
+  # "Plotosus.lineatus", #
+  "Sebastes.inermis",
+  "Trachurus.japonicus",
+  "Girella.punctata",
+  "Pseudolabrus.sieboldi",
+  "Halichoeres.poecilopterus",
+  "Halichoeres.tenuispinnis",
+  # "Chaenogobius.gulosus", #
+  "Pterogobius.zonoleucus",
+  "Tridentiger.trigonocephalus",
+  # "Siganus.fuscescens", #
+  "Sphyraena.pinguis", #
+  "Rudarius.ercodes"           
+)
+TS = TS[,selected_columns]
+TS = TS[selected_time_steps,]
+
+## normalise time steps
+TS[,1] = TS[,1]-min(TS[,1])
+
+## set 0s to small value
+for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
+
+## log-transform
+# TS[,-1] = log(TS[,-1])
+
+## normalise variables
+# TS[,-1] = apply(TS[,-1],2,function(x)(x-min(x))/(max(x)-min(x))*10)
+TS[,-1] = apply(TS[,-1],2,function(x)(x-mean(x))/sd(x))
+
+## visualise time series
+par(mfrow=c(3,4))
+for(i in 2:ncol(TS))
+{
+  plot(TS[,1],TS[,i],type="l",xlab="Time step",ylab="Count",bty="n",main=colnames(TS)[i])
+}
+par(mfrow=c(1,1))
+
+#
+###
+
+##############
+## INITIATE ##
+##############
+
+## 
+library(rEDM)
+
+## format for smaps
+TS = data.frame(TS)
+lib <- c(1,max(TS[,1]))
+pred <- c(1,max(TS[,1]))
+cols <- selected_columns[-1]
+targets <- selected_columns[-1]
+
+#
+###
+
+##########
+## MAIN ##
+##########
+
+## goal: explain the dyanmics of each variables as a function of other variables
+
+predictions_list = list()
+effects_list = list()
+contributions_list = list()
+for(i in 1:length(targets))
+{
+  
+  ## update 
+  print(paste(i,"/",length(targets),sep=""))
+  
+  ## select target
+  target = targets[i]
+  
+  ## S-map
+  block_smap_output <- block_lnlp(TS, 
+                                  lib = lib, 
+                                  pred = pred, 
+                                  columns = cols, 
+                                  target_column = target, 
+                                  method = "s-map", 
+                                  theta = 2, 
+                                  stats_only = FALSE, 
+                                  first_column_time = TRUE, 
+                                  save_smap_coefficients = TRUE, 
+                                  silent = TRUE)
+  
+  ## extract S-map coefs
+  smap_coeffs <- block_smap_output$smap_coefficients[[1]]
+  
+  ## make prediction
+  predictions <- block_smap_output$model_output[[1]]
+  
+  ## approximate dynamics
+  dxdt = apply(rbind(predictions,predictions[nrow(predictions),]),2,diff)
+  
+  ## compute effects
+  effects = smap_coeffs[-c(1:2)]
+   
+  ## compute contributions
+  contributions = effects * dxdt
+  
+  ## store
+  predictions_list[[i]] = predictions
+  effects_list[[i]] = effects
+  contributions_list[[i]] = contributions
+  
+}
+
+
+#
+###
+
+##############
+## ANALYSIS ##
+##############
+
+## compute mean Jacobian matrix
+J = NULL
+C = NULL
+MSq = function(x) mean(x^2,na.rm=T)
+prop = function(x) x/sum(x)
+for(i in 1:length(targets))
+{
+  
+  ## extract effects and contributions
+  effects = effects_list[[i]]
+  contributions = contributions_list[[i]]
+  
+  ## compute mean effects and contributions
+  J_ = apply(effects,2,mean,na.rm=T)
+  C_ = prop(apply(contributions,2,MSq))
+  
+  ## build Jacobian and contributions
+  J = rbind(J,J_)
+  C = rbind(C,C_) 
+}
+
+#
+###
+
+#############
+## FIGURES ##
+#############
+
+## goal: visualise predictions and effects obtained from S-maps
+
+##
+## PREDICTIONS AND EFFECTS
+
+pdf("out/fig_predictions.pdf")
+#
+## graphical parameters
+layout(mat=matrix(1:9,ncol=3))
+color_vector = rainbow(length(cols))
+#
+for (i in 1:length(targets))
+{
+  
+  ## extract predictions and smap_coeffs
+  predictions = predictions_list[[i]]
+  effects = effects_list[[i]]
+  contributions = contributions_list[[i]]
+  
+  ## predictions
+  plot(predictions$t, predictions$Observations, type="l", col=color_vector[i], ylab="x", xlab="", main=targets[i])
+  lines(predictions$t, predictions$Predictions, lty=2, col=color_vector[i])
+  legend("topright", legend=c("observed","predicted"), lty=c(1,2), bty="n")
+  
+  ## effects
+  plot(c(-1000,1000), c(0,0), xlim=c(0,max(predictions$t)), ylim=c(-1,1)*3, type="l", lty=2)
+  for(j in 1:length(cols))
+  {
+    lines(predictions$t, effects[, j],   col = color_vector[j])
+  }
+  
+  ## contributions
+  plot(c(-1000,1000), c(0,0), xlim=c(0,max(predictions$t)), ylim=c(-1,1)*3, type="l", lty=2)
+  for(j in 1:length(cols))
+  {
+    lines(predictions$t, contributions[, j],   col = color_vector[j])
+  }
+}
+#
+par(mfrow=c(1,1))
+#
+dev.off()
+
+##
+## DYNAMICAL INTERACTION NETWORK
+pdf("out/fig_DIN.pdf")
+.plot.DIN(J,C,colnames(TS)[-1])
+dev.off()
+
+#
+###

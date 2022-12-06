@@ -41,13 +41,8 @@ N = ncol(TS) - 1
 ###
 
 ##################
-## INITIATE ODE ##
+## FUNCTIONS AR ##
 ##################
-
-## model properties
-idx_Y_0   = 1:N
-idx_Sigma =   N + 1:N
-idx_Beta  =   N +   N + 1:(N^2)
 
 # ## dynamics
 # dYdt = function(t, Y, Beta)
@@ -63,8 +58,9 @@ idx_Beta  =   N +   N + 1:(N^2)
 #   return(ode(y=Y_0, times=times, func=dYdt, parms=Beta, method="ode23"))
 # }
 
-## 
-dYdt = function(t, Y, Beta)
+## AR.dYdt
+## goal:
+AR.dYdt = function(t, Y, Beta)
 {
   J = matrix(Beta,ncol=N)
   dY = (J%*%Y)
@@ -81,8 +77,9 @@ dYdt = function(t, Y, Beta)
 # }
 
 
-## predictive function
-Ybar = function(times, Y_0, dYdt, Beta)
+## AR.Ybar
+## goal:
+AR.Ybar = function(times, Y_0, dYdt, Beta)
 {
   Ybar = NULL
   Y = Y_0
@@ -95,8 +92,30 @@ Ybar = function(times, Y_0, dYdt, Beta)
   return(Ybar)
 }
 
-## posterior
-dLogPost = function(TS, Ybar, Y_0, Beta, Sigma)
+
+#
+###
+
+#####################
+## FUNCTIONS MODEL ##
+#####################
+
+## model properties
+idx_Y_0   = 1:N
+idx_Sigma =   N + 1:N
+idx_Beta  =   N +   N + 1:n_Beta
+
+## model.dYdt
+## goal:
+model.dYdt = AR.dYdt
+
+## model.Ybar
+## goal:
+model.Ybar = AR.Ybar
+
+## model.dLogPost
+## goal:
+model.dLogPost = function(TS, Ybar, dYdt, Y_0, Beta, Sigma)
 {
   ## global parameters
   N = ncol(TS) - 1
@@ -109,33 +128,31 @@ dLogPost = function(TS, Ybar, Y_0, Beta, Sigma)
   log_pri = sum(log(dunif(Beta,-10,10))) + sum(log(dnorm(log(Sigma),.5,.5)))
   log_pos = log_lik + log_pri
   
-  # ## debug
-  # print(log_pos)
-  # print(log_lik)
-  # print(log_pri)
-  
   ## terminate
   return(log_pos)
 }
 
-## wrapper
-dLogPost_wrapper = function(TS,paramVect)
+## model.dLogPost_wrapper
+## goal:
+model.dLogPost_wrapper = function(TS,paramVect)
 {
   Y_0   = exp(paramVect[idx_Y_0])
   Sigma = exp(paramVect[idx_Sigma])
   Beta  = paramVect[idx_Beta]
-  res   = dLogPost(TS, Ybar, Y_0, Beta, Sigma)
+  res   = model.dLogPost(TS, model.Ybar, model.dYdt, Y_0, Beta, Sigma)
   if(!is.nan(res) & !is.na(res)){return(res)}else{return(-Inf)}
 }
 
-## DEMC wrapper
-dTarget = function(x)
+## model.dTarget
+## goal:
+model.dTarget = function(x)
 {
-  return(dLogPost_wrapper(TS=TS,x))
+  return(model.dLogPost_wrapper(TS=TS,x))
 }
 
-## initiate function
-initiate = function()
+## model.initiate
+## goal:
+model.initiate = function()
 {
   check = F
   while(check == F)
@@ -145,12 +162,13 @@ initiate = function()
     Sigma = runif(N,0,3)
     Theta_0 = c(log(Y_0),log(Sigma),Beta)
     # names(Beta_0) = c("V1","V2","V3","V4")
-    if(dTarget(Theta_0) > -Inf){check = T}
+    if(model.dTarget(Theta_0) > -Inf){check = T}
   }
   return(Theta_0)
 }
 
-## plot function
+## model.plot
+## goal:
 model.plot = function(TS,Ybar_MaP)
 {
   par(mfrow=c(1,1),mar=c(5,5,0,0),oma=c(0,0,1,1))
@@ -162,7 +180,6 @@ model.plot = function(TS,Ybar_MaP)
   for(i in 2:(N+1))
   {
     points(TS[,1],TS[,i], pch=16, col=colVect[i-1])
-    # polygon(x=c(Ybar_q05[,1],rev(Ybar_q05[,1])), y=c(Ybar_q05[,i],rev(Ybar_q95[,i])), border=NA, col=grey(0.75,alpha=0.5))
     lines(Ybar_MaP[,1],Ybar_MaP[,i], col=colVect[i-1])
   }
   legend("top",legend=c("X","Y","Z"),col=colVect,lty=1,horiz=T,bty="n")
@@ -172,11 +189,13 @@ model.plot = function(TS,Ybar_MaP)
   par(mfrow=c(1,1))
 }
 
+## model.predict
+## goal:
 model.predict = function(MaP)
 {
   Y_0  = exp(MaP[idx_Y_0])
   Beta = MaP[idx_Beta]
-  Ybar_MaP = Ybar(times = TS[,1], Y_0 = Y_0, dYdt = dYdt, Beta = Beta)
+  Ybar_MaP = model.Ybar(times = TS[,1], Y_0 = Y_0, dYdt = model.dYdt, Beta = Beta)
   return(Ybar_MaP)
 }
 
@@ -184,10 +203,10 @@ model.predict = function(MaP)
 Y_0   = as.numeric(TS[1,-1])
 Beta  = runif(N^2,-.001,.001)
 Sigma = rep(1,N)
-TS_pred = Ybar(times = TS[,1], Y_0 = Y_0, dYdt = dYdt, Beta = Beta)
-dLogPost(TS,Ybar,Y_0,Beta,Sigma)
-dTarget(c(log(Y_0),log(Sigma),Beta)) # checks out
-dTarget(initiate())
+TS_pred = model.Ybar(times = TS[,1], Y_0 = Y_0, dYdt = model.dYdt, Beta = Beta)
+model.dLogPost(TS,model.Ybar,model.dYdt,Y_0,Beta,Sigma)
+model.dTarget(c(log(Y_0),log(Sigma),Beta)) # checks out
+model.dTarget(model.initiate())
 
 #
 ###
@@ -201,13 +220,13 @@ timeVect = c(0,0)
 
 ## RCpp implementation of DEMCO
 chainList = list()
-Theta_0 = initiate()
-tmax    = seq(10,30,1)
+Theta_0   = model.initiate()
+tmax      = seq(10,30,1)
 # tmax = c(20,30,40,50,60)
 timeVect[1] = system.time(
   for(i in 1:length(tmax))
   {
-    dTarget = function(x) dLogPost_wrapper(TS=TS[1:tmax[i],],x)
+    dTarget = function(x) model.dLogPost_wrapper(TS=TS[1:tmax[i],],x)
     chainList[[1]] = DEMCOpp(list(dTarget = dTarget,
                                  Theta_0 = Theta_0,
                                  gamma   = 2.38/sqrt(2*N),
@@ -228,7 +247,7 @@ timeVect[2] = system.time(
     {
         # Theta_0 = initiate()
         # Theta_0 = Theta_0
-        dTarget = function(x) dLogPost_wrapper(TS=TS,x)
+        dTarget = function(x) model.dLogPost_wrapper(TS=TS,x)
         chainList[[i]] = DEMCpp(list(dTarget = dTarget,
                                      Theta_0 = Theta_0,
                                      gamma   = 2.38/sqrt(2*N),
@@ -295,10 +314,10 @@ png("out/fit.png")
 MaP  = as.numeric(chainList.argmaxPost(chainList_thinned))
 Y_0  = MaP[idx_Y_0]
 Beta = MaP[idx_Beta]
-Ybar_MaP = Ybar(times = TS[,1], Y_0 = Y_0, dYdt = dYdt, Beta = Beta)
+Ybar_MaP = model.Ybar(times = TS[,1], Y_0 = Y_0, dYdt = model.dYdt, Beta = Beta)
 #
 ## ensemble predictions
-Ybar_ensemble = chainList.apply(chainList_thinned,f = function(x) Ybar(times = TS[,1], Y_0 = x[-1][idx_Y_0], dYdt = dYdt, Beta = x[-1][idx_Beta]))
+Ybar_ensemble = chainList.apply(chainList_thinned,f = function(x) model.Ybar(times = TS[,1], Y_0 = x[-1][idx_Y_0], dYdt = model.dYdt, Beta = x[-1][idx_Beta]))
 Ybar_q05 = matrix(Ybar_ensemble[[2]],ncol=N+1)
 Ybar_q95 = matrix(Ybar_ensemble[[3]],ncol=N+1)
 #
