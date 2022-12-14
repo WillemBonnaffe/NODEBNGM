@@ -32,7 +32,7 @@
     
     ## scale effects and contributions
     effectsMat = (effectsMat>0)*1
-    # weightsMat = weightsMat/sum(weightsMat) # proportion of total change
+    alpha = 30
     
     ## angles
     theta = seq(0,2*pi,(2*pi)/N)
@@ -40,25 +40,28 @@
     y = sin(theta)
     x_ = cos(theta+(2*pi*0.05))
     y_ = sin(theta+(2*pi*0.05))
-    x__ = 1.25*cos(theta+(2*pi*0.025))
-    y__ = 1.25*sin(theta+(2*pi*0.025))
+    x__ = 1.5*cos(theta+(2*pi*0.025))
+    y__ = 1.5*sin(theta+(2*pi*0.025))
     
     ## plot interactions
+    colVect = adjustcolor(c("green","red"),alpha=0.5)
     plot(x=c(-1:1)*2,y=c(-1:1)*2,cex=0,bty="n",xaxt="n",yaxt="n",xlab="",ylab="",main=main)
     for(i in 1:N)
     {
-        points(x[i],y[i],pch=16)
         for(j in 1:N)
         {
-            color_ = if(effectsMat[i,j]>0){"green"}else{"red"}
+            color_ = if(effectsMat[i,j]>0){colVect[1]}else{colVect[2]}
             # points(x__[i],y__[i],cex=30/N)
-            text(x__[i],y__[i],labels=labels[i])
-            if(weightsMat[i,j]*10>0)
+            text(x__[i],y__[i],labels=labels[i],cex=2)
+            if(weightsMat[i,j]>0)
             {
-                arrows(x0=x[j],x1=x_[i],y0=y[j],y1=y_[i],lwd=weightsMat[i,j]*10,col=color_,length=0.1)
+                arrows(x0=x[j],x1=x_[i],y0=y[j],y1=y_[i],lwd=weightsMat[i,j]*alpha,col=color_,length=0.1)
             }
         }
     }
+    points(x,y,pch=16,cex=2)
+    points(x_,y_,pch=4,cex=2)
+
 }
 
 #
@@ -163,8 +166,9 @@ for(k in 1:5)
 pdf("out/benchmark_train.pdf",width=12,height=12)
 #
 ## graphical parameters
+par(oma=c(1,1,1,1))
 layout(mat=matrix(1:(4*3),ncol=3))
-color_vector = adjustcolor(c(adjustcolor("black",alpha=0),rainbow(4)),alpha=0.75)
+color_vector = adjustcolor(c(adjustcolor("black",alpha=0),rainbow(4)),alpha=0.5)
 #
 for(i in 1:N)
 {
@@ -177,11 +181,11 @@ for(i in 1:N)
     ## methods
     for(k in rev(1:5))
     {
-        points(results[[1]]$Yhat_p[,i],results[[k]]$Yhat_p[,i],col=color_vector[k],pch=16)
+        points(results[[1]]$Yhat_p[,i],results[[k]]$Yhat_p[,i],col=color_vector[k],pch=16,cex=2)
     }
     #
     ## legend
-    if (i==1) legend("topleft", legend=names(results), col=color_vector, pch=16, bty="n")
+    legend("topleft", legend=names(results), col=color_vector, pch=16, bty="n")
     
     ## effects
     for(j in 1:N)
@@ -197,11 +201,11 @@ for(i in 1:N)
         for(k in rev(1:5))
         {
         
-            points(results[[1]]$ddx.Yhat_p[,j+(i-1)*N],results[[k]]$ddx.Yhat_p[,j+(i-1)*N],col=color_vector[k],pch=16)
+            points(results[[1]]$ddx.Yhat_p[,j+(i-1)*N],results[[k]]$ddx.Yhat_p[,j+(i-1)*N],col=color_vector[k],pch=16,cex=2)
         }
         #
         ## legend
-        # legend("topleft", legend=names(results), col=color_vector, pch=16, bty="n")
+        legend("topleft", legend=names(results), col=color_vector, pch=16, bty="n")
     }
 }
 #
@@ -235,8 +239,9 @@ for(k in 1:5)
 pdf("out/benchmark_test.pdf",width=12,height=12)
 #
 ## graphical parameters
+par(oma=c(1,1,1,1))
 layout(mat=matrix(1:(4*3),ncol=3))
-color_vector = adjustcolor(c(adjustcolor("black",alpha=0),rainbow(4)),alpha=0.75)
+color_vector = adjustcolor(c(adjustcolor("black",alpha=0),rainbow(4)),alpha=0.5)
 #
 for(i in 1:N)
 {
@@ -249,11 +254,11 @@ for(i in 1:N)
     ## methods
     for(k in rev(1:5))
     {
-        points(results[[1]]$Yhat_p[,i],results[[k]]$Yhat_p[,i],col=color_vector[k],pch=16)
+        points(results[[1]]$Yhat_p[,i],results[[k]]$Yhat_p[,i],col=color_vector[k],pch=16,cex=2)
     }
     #
     ## legend
-    if (i==1) legend("topleft", legend=names(results), col=color_vector, pch=16, bty="n")
+    legend("topleft", legend=names(results), col=color_vector, pch=16, bty="n")
     
     ## effects
     for(j in 1:N)
@@ -269,24 +274,20 @@ for(i in 1:N)
         for(k in rev(1:5))
         {
             
-            points(results[[1]]$ddx.Yhat_p[,j+(i-1)*N],results[[k]]$ddx.Yhat_p[,j+(i-1)*N],col=color_vector[k],pch=16)
+            points(results[[1]]$ddx.Yhat_p[,j+(i-1)*N],results[[k]]$ddx.Yhat_p[,j+(i-1)*N],col=color_vector[k],pch=16,cex=2)
         }
         #
         ## legend
-        # legend("topleft", legend=names(results), col=color_vector, pch=16, bty="n")
+        legend("topleft", legend=names(results), col=color_vector, pch=16, bty="n")
     }
 }
-#
-## dynamical interaction plot
-# for(k in 2:5) .plot.DIN(J[[k]],C[[k]],labels=colnames(TS)[-1],main=names(results)[k])
-# for(k in 2:5) .plot.DIN(J[[1]],C[[1]],labels=colnames(TS)[-1],main="Ground truth")
 #
 par(mfrow=c(1,1))
 #
 dev.off()
 
 ##
-## SUMMARY TABLE
+## OVERVIEW FIGURE
 
 ## compute sum of squares
 MSq = function(x) mean(x^2,na.rm=T)
@@ -313,9 +314,11 @@ for(k in 1:5)
 ## barplot
 pdf("out/benchmark_overview.pdf",width=12,height=12)
 #
+par(oma=c(1,1,1,1))
 layout(mat=rbind(1:5,rep(6,5),rep(7,5),rep(8,5)))
 color_vector = adjustcolor(c("blue","red"),alpha=0.5)
 #
+par(mar=c(0,0,1,0))
 for(k in 1:5) .plot.DIN(J[[k]],C[[k]],labels=colnames(TS)[-1],main=names(results)[k])
 #
 par(mar=rep(5,4))

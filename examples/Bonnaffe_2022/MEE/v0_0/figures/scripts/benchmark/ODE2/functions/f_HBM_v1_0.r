@@ -18,6 +18,7 @@
 ##            - introduced significance in summary tab
 ## 22-08-2022 - created v0_7
 ##            - cleaned code
+## 11-12-2022 - added na removal in quantiles function
 
 #####################
 ## chainList.apply ##
@@ -32,9 +33,9 @@ chainList.apply = function(chainList,f)
 {
     chain = chainList.unlist(chainList)
     f_ensemble  = t(apply(chain,1,f))
-    f_q0.05 = apply(f_ensemble,2,quantile,p=c(0.05))
-    f_q0.95 = apply(f_ensemble,2,quantile,p=c(0.95))
-    f_mean  = apply(f_ensemble,2,mean)
+    f_q0.05 = apply(f_ensemble,2,quantile,p=c(0.05),na.rm=T)
+    f_q0.95 = apply(f_ensemble,2,quantile,p=c(0.95),na.rm=T)
+    f_mean  = apply(f_ensemble,2,mean,na.rm=T)
     return(list("f_mean"     = f_mean,
     			"f_q0.05"    = f_q0.05,
     			"f_q0.95"    = f_q0.95,

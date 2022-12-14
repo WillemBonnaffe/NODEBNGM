@@ -9,11 +9,6 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
-## 09-06-2022 - created v0_0
-
-## notes:
-## - any functions in the supporting function repository "f_NODE_GM_RStudio.r" can be customise in this script
-## - for instance the user could specify a custom process model (instead of the single layer perceptron that we use as default)
 
 #
 ###
@@ -30,7 +25,7 @@ source("f_NODE_GM_Rstudio.r")
 ## load data
 TS = read.table("data/TS.csv",sep=",",header=T)
 
-## extract column of interest
+## extract time steps and columns of interest
 selected_time_steps = 50:150
 selected_columns  = c(
   "time_step",
@@ -75,7 +70,7 @@ colnames(TS) = column_names
 ## normalise time series
 TS[,-1] = apply(TS[,-1],2,function(x)(x-min(x))/(max(x)-min(x))*10)
 
-## set 0s to small value
+## set 0s to small value to avoid NAs
 for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
 
 ## make output directory
@@ -122,14 +117,16 @@ dev.off()
 
 ## parameters of observation model
 N       = ncol(TS) - 1
-K_o     = 30                  # number of ensemble elements 
+K_o     = 100                # number of ensemble elements
 W_o     = rep(30,N)          # number of neurons in observation model, by default a single layer perceptron (equivalent to number of elements in Fourier series)
 N_o     = W_o*3              # total number of parameters in observation model
 rho     = 1                  # proportion of best samples to reject (to refine quality of fit if necessary)
 alpha_i = 1                  # upsampling interpolation factor (2 double the number of points in interpolated time series)
 
 ## train observation model
-model_o     = trainModel_o(TS,alpha_i,N_o,K_o,rho)
+runtime_o = system.time({
+    model_o     = trainModel_o(TS,alpha_i,N_o,K_o,rho)
+})[3]
 Yhat_o      = model_o$Yhat_o
 ddt.Yhat_o  = model_o$ddt.Yhat_o
 Omega_o     = model_o$Omega_o
@@ -143,6 +140,7 @@ dev.off()
 save(Yhat_o,    file=paste(pathToOut,"/","Yhat_o.RData"    ,sep=""))
 save(ddt.Yhat_o,file=paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
 save(Omega_o,   file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
+write(runtime_o,   file=paste(pathToOut,"/","runtime_o.txt",sep=""))
 
 #
 ###
@@ -153,39 +151,32 @@ save(Omega_o,   file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 
 ## goal: fit process model (i.e. explain the per-capita growth rate of the populations calculated as 1/Y*dY/dt as a function of the states Y(t))
 
-## notes: 
-## - the user could use state interpolations and interpolated dynamics obtained via other methods (e.g. Fourier series, cubic splines)
-## - the user could even use raw difference in the data as an estimate of the dynamics
-
 ## load model_o
 load(file=paste(pathToOut,"/","Yhat_o.RData"    ,sep=""))
 load(file=paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
 load(file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 
 ## parameters of process model
-K_p   = 3                                                       # number of models to fit
+K_p   = 30                                                      # number of models to fit
 W_p   = rep(10,N)                                               # number of neurons in single layer perceptron (SLP)
 N_p   = 2 * W_p * (2+N)                                         # number of parameters in process model
 sd1_p = 0.1                                                     # standard deviation of model likelihood
-sd2_p = list(c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2)),
-             c(rep(0.03,N_p[1]/2),rep(.03,N_p[1]/2))) # standard deviation of prior distributions (second half concerns nonlinear functions)
+sd2_p = as.list(rep(0.03,N))                                    # standard deviation of prior distributions (second half concerns nonlinear functions)
           
 ## train process model
-model_p    = trainModel_p(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p)
+runtime_p = system.time({
+    model_p    = trainModel_p(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,trainSplit=2/3)
+})
 Yhat_p     = model_p$Yhat_p     
 ddx.Yhat_p = model_p$ddx.Yhat_p 
 Geber_p    = model_p$Geber_p   
 Omega_p    = model_p$Omega_p   
+
+## remove drivers of temperature as not driven by variables
+Yhat_p[[1]]     = Yhat_p[[1]]*0
+ddx.Yhat_p[[1]] = ddx.Yhat_p[[1]]*0
+Geber_p[[1]]    = Geber_p[[1]]*0
+Omega_p[[1]]    = Omega_p[[1]]*0
 
 ## visualise process model
 pdf(paste(pathToOut,"/fig_predictions_p.pdf",sep=""))
@@ -197,6 +188,7 @@ save(Yhat_p       ,file=paste(pathToOut,"/","Yhat_p.RData"    ,sep=""))
 save(ddx.Yhat_p   ,file=paste(pathToOut,"/","ddx.Yhat_p.RData",sep=""))
 save(Geber_p      ,file=paste(pathToOut,"/","Geber_p.RData"   ,sep=""))
 save(Omega_p      ,file=paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
+write(runtime_p,   file=paste(pathToOut,"/","runtime_p.txt",   sep=""))
 
 #
 ###
@@ -211,20 +203,32 @@ load(paste(pathToOut,"/","ddx.Yhat_p.RData",sep=""))
 load(paste(pathToOut,"/","Geber_p.RData"   ,sep=""))
 load(paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
 
+# ## visualise interpolation
+# par(mfrow=c(N,N),mar=c(1,1,1,1)*0.5,oma=c(1,1,1,1))
+# color_vector = rainbow(N,alpha=0.75)
+# for(i in 1:N)
+# {
+#     for(j in 1:N)
+#     {
+#         x = apply(Yhat_o[[i]],2,mean)
+#         y = apply(Yhat_o[[j]],2,mean)
+#         plot(x,y,col=color_vector[i],type="l")
+#         points(TS[,i+1],TS[,j+1],pch=16)
+#         lines(x,y,col=color_vector[i],type="l")
+#     }
+# }
+# par(mfrow=c(1,1))
+
 ## compute Jacobian and contribution matrix
 MSq = function(x) mean(x^2)
 prop = function(x) x/sum(x)
 J = t(matrix(unlist(lapply(ddx.Yhat_p,function(x)apply(matrix(apply(x,2,mean),nrow=nrow(TS),byrow=T),2,mean))),ncol=ncol(TS)-1)) ## average across samples then average across time steps
-# C = t(matrix(unlist(lapply(ddx.Yhat_p,function(x)apply(matrix(apply(x,2,mean),nrow=nrow(TS),byrow=T),2,MSq))),ncol=ncol(TS)-1)) ## average across samples then take mean square across time steps
 C = t(matrix(unlist(lapply(Geber_p,   function(x)apply(matrix(apply(x,2,mean),nrow=nrow(TS),byrow=T),2,MSq))),ncol=ncol(TS)-1)) ## average across samples then take mean square across time steps
 C = t(apply(C,1,prop))
-# C = prop(C)
 
 ## remove effects on bot
 J[1,] = 0
 C[1,] = 0
-# J[,1] = 0
-# C[,1] = 0
 
 ## thresholding
 J = J*(C>0.1)
@@ -232,16 +236,12 @@ C = C*(C>0.1)
 
 ##
 ## DYNAMICAL INTERACTION PLOT (v1)
-
-## visualise 
 pdf(paste(pathToOut,"/fig_DIN_v1.pdf",sep=""),width=10,height=10)
 .plot.DIN(J,C,colnames(TS)[-1])
 dev.off()
 
 ##
 ## DYNAMICAL INTERACTION PLOT (v2)
-
-## plot
 pdf(paste(pathToOut,"/fig_DIN_v2.pdf",sep=""),width=12,height=12)
 .plot.DIN2(J,C,colnames(TS)[-1])
 dev.off()
@@ -263,7 +263,7 @@ load(file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 
 ## parameters for cross-validation
 K_p             = 3                                      # number of models to fit per folds and regularisation parameter
-folds           = list(c(1/4,2/4,2/4,3/4))               # proportion of the data that should be considered for training and validation
+folds           = list(c(0,1/3,1/3,2/3),c(1/3,2/3,0,1/3))              # proportion of the data that should be considered for training and validation
 crossValParVect = seq(0.005,0.05,0.005)
 
 ## run cross-validation

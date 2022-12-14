@@ -397,62 +397,62 @@ print(time)
 #
 ###
 
-#################
-## DEMC CHAINS ##
-#################
-
-## RCpp implementation of DEMCO
-t_train      = 1:20
-t_val        = 21:30
-n_iterations = 60
-n_chains     = 30
-chainList    = list()
-timeVect     = rep(0,n_chains)
-for(l in 1:n_chains)
-{
-  timeVect[l] = system.time({
-
-      ## initiate
-      dTarget = function(x) - model.dLogPost_wrapper(TS=TS[c(t_train),],x)
-      Theta_0 = Theta  = model.initiate()
-      dTarget_0 = - dTarget(Theta_0)
-
-      ## training
-      try(expr = {
-        res     = optim(Theta,dTarget,method="BFGS",control = list("trace"=1,"REPORT"=1,"maxit"=n_iterations))
-        Theta = res$par
-      })
-      
-      ## initiate
-      # dTarget = function(x) - model.dLogPost_wrapper(TS=TS[c(t_train,t_val),],x)
-      
-      # ## training
-      # try(expr = {
-      #   res     = optim(Theta,dTarget,method="BFGS",control = list("trace"=1,"REPORT"=1,"maxit"=n_iterations))
-      #   Theta = res$par
-      # })
-
-      ## store in change
-      Theta_f = Theta
-      dTarget_f = - dTarget(Theta_f)
-      chainList[[l]] = rbind(c(dTarget_0,Theta_0),c(dTarget_f,Theta_f))
-
-      # ## visualise
-      # model.plot(TS,model.predict_wrapper(Theta))
-      # print(model.dLogPost_wrapper(TS=TS[t_train,], Theta=Theta))
-      # print(model.dLogPost_wrapper(TS=TS[t_val,], Theta=Theta))
-
-    })[3]
-}
-
-## store chains
-system(paste("rm -r ",output,sep=""))
-system(paste("mkdir ",output,sep=""))
-chainList.write(chainList,output)
-write(x = timeVect, file = paste(output,"/runtimes.txt",sep=""))
-
-#
-###
+# #################
+# ## DEMC CHAINS ##
+# #################
+# 
+# ## RCpp implementation of DEMCO
+# t_train      = 1:20
+# t_val        = 21:30
+# n_iterations = 60
+# n_chains     = 30
+# chainList    = list()
+# timeVect     = rep(0,n_chains)
+# for(l in 1:n_chains)
+# {
+#   timeVect[l] = system.time({
+# 
+#       ## initiate
+#       dTarget = function(x) - model.dLogPost_wrapper(TS=TS[c(t_train),],x)
+#       Theta_0 = Theta  = model.initiate()
+#       dTarget_0 = - dTarget(Theta_0)
+# 
+#       ## training
+#       try(expr = {
+#         res     = optim(Theta,dTarget,method="BFGS",control = list("trace"=1,"REPORT"=1,"maxit"=n_iterations))
+#         Theta = res$par
+#       })
+#       
+#       ## initiate
+#       # dTarget = function(x) - model.dLogPost_wrapper(TS=TS[c(t_train,t_val),],x)
+#       
+#       # ## training
+#       # try(expr = {
+#       #   res     = optim(Theta,dTarget,method="BFGS",control = list("trace"=1,"REPORT"=1,"maxit"=n_iterations))
+#       #   Theta = res$par
+#       # })
+# 
+#       ## store in change
+#       Theta_f = Theta
+#       dTarget_f = - dTarget(Theta_f)
+#       chainList[[l]] = rbind(c(dTarget_0,Theta_0),c(dTarget_f,Theta_f))
+# 
+#       # ## visualise
+#       # model.plot(TS,model.predict_wrapper(Theta))
+#       # print(model.dLogPost_wrapper(TS=TS[t_train,], Theta=Theta))
+#       # print(model.dLogPost_wrapper(TS=TS[t_val,], Theta=Theta))
+# 
+#     })[3]
+# }
+# 
+# ## store chains
+# system(paste("rm -r ",output,sep=""))
+# system(paste("mkdir ",output,sep=""))
+# chainList.write(chainList,output)
+# write(x = timeVect, file = paste(output,"/runtimes.txt",sep=""))
+# 
+# #
+# ###
 
 ######################
 ## CHAIN PROCESSING ##
@@ -500,7 +500,7 @@ Ybar_q95  = matrix(Ybar_ensemble[[3]],ncol=N+1)
 ## figure
 pdf(paste(output,"/fit.pdf",sep=""))
 #
-par(mfrow=c(1,1),mar=c(5,5,0,0),oma=c(0,0,1,1))
+par(mfrow=c(1,1),mar=c(4,4.5,0,0),oma=c(1,1,1,1),cex.lab=1.5)
 #
 colVect = c("green","blue","red")
 plot(TS[,1],TS[,2], pch=16, ylim=c(0,3), cex=0,xlab="Time",ylab="Density")
@@ -528,22 +528,26 @@ geber_pred    = t(apply(Ybar_MaP, 1, function(x) model.ddx.dYdt(t = x[1], Y = x[
 ## figure
 pdf(paste(output,"/effects.pdf",sep=""))
 #
+## graphical parameters
+par(mar=c(4,4.5,0,0),oma=c(1,1,1,1),cex.lab=1.5)
+index  = c("a.","b.","c.","d.","e.","f.","g.","h.","i.")
 layout(mat = matrix(1:(N*3),nrow=3))
 colVect = c("green","blue","red")
 #
 for(i in 1:N)
 {
     ## per-capita growth rate
-    plot(1:10,xlim=c(20,50)-1,ylim=c(-1,1),cex=0,xlab="Time",ylab="Growth rate",cex.lab=1.5)
+    plot(1:10,xlim=c(20,50)-1,ylim=c(-1,1),cex=0,xlab="",ylab=if(i==1)"Growth rate"else"",cex.lab=1.5)
     #
     t = TS[,1] + 19
     lines(t,rhat_pred[,i],col=colVect[i])
     #
     t = t_true
     lines(t,rhat_true[,i],col=colVect[i],lty=2)
+    if(!is.null(index)) legend("topright",legend=index[1+(i-1)*(3)],bty="n",cex=1.5)
     #
     ## effects
-    plot(1:10,xlim=c(20,50)-1,ylim=c(-1,1)*3,cex=0,xlab="Time",ylab="Effects",cex.lab=1.5)
+    plot(1:10,xlim=c(20,50)-1,ylim=c(-1,1)*3,cex=0,xlab="",ylab=if(i==1)"Effects"else"",cex.lab=1.5)
     #
     t = TS[,1] + 19
     lines(t,ddx.rhat_pred[,1]*0,lty=2)
@@ -557,9 +561,10 @@ for(i in 1:N)
     lines(t,ddx.rhat_true[,3+(i-1)*N],col="red",lty=2)
     #
     legend("bottom",legend=colnames(TS)[-1],col=colVect,lty=1,horiz=T,bty="n")
+    if(!is.null(index)) legend("topright",legend=index[2+(i-1)*(3)],bty="n",cex=1.5)
     #
     ## geber
-    plot(1:10,xlim=c(20,50)-1,ylim=c(-1,1),cex=0,xlab="Time",ylab="Contributions",cex.lab=1.5)
+    plot(1:10,xlim=c(20,50)-1,ylim=c(-1,1),cex=0,xlab="Time",ylab=if(i==1)"Contributions"else"",cex.lab=1.5)
     #
     t = TS[,1] + 19
     lines(t,geber_pred[,1]*0,lty=2)
@@ -568,6 +573,7 @@ for(i in 1:N)
     lines(t,geber_pred[,3+(i-1)*N],col="red")
     #
     legend("bottom",legend=colnames(TS)[-1],col=colVect,lty=1,horiz=T,bty="n")
+    if(!is.null(index)) legend("topright",legend=index[3+(i-1)*(3)],bty="n",cex=1.5)
 }
 par(mfrow=c(1,1))
 #

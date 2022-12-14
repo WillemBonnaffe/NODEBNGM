@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  5 AUG 2022 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  13 DEC 2022 12:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -552,41 +552,41 @@ e
 <algae.pdf, id=4, 722.7pt x 406.51875pt>
 File: algae.pdf Graphic file (type pdf)
 <use algae.pdf>
-Package pdftex.def Info: algae.pdf  used on input line 72.
+Package pdftex.def Info: algae.pdf  used on input line 37.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 <flagellate.pdf, id=5, 722.7pt x 406.51875pt>
 File: flagellate.pdf Graphic file (type pdf)
 <use flagellate.pdf>
-Package pdftex.def Info: flagellate.pdf  used on input line 73.
+Package pdftex.def Info: flagellate.pdf  used on input line 38.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 <rotifer.pdf, id=6, 722.7pt x 406.51875pt>
 File: rotifer.pdf Graphic file (type pdf)
 <use rotifer.pdf>
-Package pdftex.def Info: rotifer.pdf  used on input line 74.
+Package pdftex.def Info: rotifer.pdf  used on input line 39.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 File: algae.pdf Graphic file (type pdf)
 <use algae.pdf>
-Package pdftex.def Info: algae.pdf  used on input line 94.
+Package pdftex.def Info: algae.pdf  used on input line 59.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 File: flagellate.pdf Graphic file (type pdf)
 <use flagellate.pdf>
-Package pdftex.def Info: flagellate.pdf  used on input line 95.
+Package pdftex.def Info: flagellate.pdf  used on input line 60.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 File: rotifer.pdf Graphic file (type pdf)
 <use rotifer.pdf>
-Package pdftex.def Info: rotifer.pdf  used on input line 96.
+Package pdftex.def Info: rotifer.pdf  used on input line 61.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 File: algae.pdf Graphic file (type pdf)
 <use algae.pdf>
-Package pdftex.def Info: algae.pdf  used on input line 116.
+Package pdftex.def Info: algae.pdf  used on input line 81.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 File: flagellate.pdf Graphic file (type pdf)
 <use flagellate.pdf>
-Package pdftex.def Info: flagellate.pdf  used on input line 117.
+Package pdftex.def Info: flagellate.pdf  used on input line 82.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 File: rotifer.pdf Graphic file (type pdf)
 <use rotifer.pdf>
-Package pdftex.def Info: rotifer.pdf  used on input line 118.
+Package pdftex.def Info: rotifer.pdf  used on input line 83.
 (pdftex.def)             Requested size: 56.9055pt x 32.00731pt.
 
 [1
@@ -594,17 +594,17 @@ Package pdftex.def Info: rotifer.pdf  used on input line 118.
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./algae
 .pdf> <./flagellate.pdf> <./rotifer.pdf>] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 15063 strings out of 478268
- 336415 string characters out of 5846347
- 632785 words of memory out of 5000000
- 33014 multiletter control sequences out of 15000+600000
+ 15054 strings out of 478268
+ 336248 string characters out of 5846347
+ 632633 words of memory out of 5000000
+ 33005 multiletter control sequences out of 15000+600000
  470844 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,13n,104p,406b,1511s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 100i,13n,104p,406b,1510s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/202
 2/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (1 page, 28777 bytes).
+Output written on main.pdf (1 page, 28774 bytes).
 PDF statistics:
  32 PDF objects out of 1000 (max. 8388607)
  20 compressed objects within 1 object stream

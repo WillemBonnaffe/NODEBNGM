@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  5 AUG 2022 15:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  13 DEC 2022 13:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -467,197 +467,289 @@ File: supporting/fig_overview_v0_1/main.pdf Graphic file (type pdf)
 <use supporting/fig_overview_v0_1/main.pdf, page 1>
 Package pdftex.def Info: supporting/fig_overview_v0_1/main.pdf , page1 used on 
 input line 72.
-(pdftex.def)             Requested size: 504.70935pt x 306.12593pt.
+(pdftex.def)             Requested size: 512.1496pt x 310.64755pt.
 
 [1
 
  <./supporting/fig_overview_v0_1/main.pdf{/usr/local/texlive/2022/texmf-var/fon
 ts/map/pdftex/updmap/pdftex.map}>]
-<scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf, id=49, page=1, 505.89pt x 
-505.89pt>
-File: scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf Graphic file (type pdf
-)
-<use scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf, page 1>
-Package pdftex.def Info: scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf , p
-age1 used on input line 77.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [2 <./scripts/NODE_GM_b0_6_LV2/out/fig_predictions_o.pdf>]
-<scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf, id=63, page=1, 505.89pt x 
-505.89pt>
-File: scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf Graphic file (type pdf
-)
-<use scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf, page 1>
-Package pdftex.def Info: scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf , p
-age1 used on input line 82.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [3 <./scripts/NODE_GM_b0_6_LV2/out/fig_predictions_p.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf, id=77, 
-page=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf Gra
-phic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf, pag
-e 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_pr
-edictions_p.pdf , page1 used on input line 87.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
-
-[4 <./scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf, id=91,
- page=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf Gr
-aphic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf, pa
-ge 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_p
-redictions_p.pdf , page1 used on input line 92.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
-
-[5 <./scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf>]
-<supporting/fig_network/main.pdf, id=105, page=1, 530.74887pt x 219.78111pt>
+<scripts/benchmark/NODEBNGM/out/fig_predictions_o.pdf, id=49, page=1, 505.89pt 
+x 505.89pt>
+File: scripts/benchmark/NODEBNGM/out/fig_predictions_o.pdf Graphic file (type p
+df)
+<use scripts/benchmark/NODEBNGM/out/fig_predictions_o.pdf, page 1>
+Package pdftex.def Info: scripts/benchmark/NODEBNGM/out/fig_predictions_o.pdf ,
+ page1 used on input line 77.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [2 <./scripts/benchmark/NODEBNGM/out/fig_predictions_o.pdf>]
+<scripts/benchmark/NODEBNGM/out/fig_predictions_p.pdf, id=63, page=1, 505.89pt 
+x 505.89pt>
+File: scripts/benchmark/NODEBNGM/out/fig_predictions_p.pdf Graphic file (type p
+df)
+<use scripts/benchmark/NODEBNGM/out/fig_predictions_p.pdf, page 1>
+Package pdftex.def Info: scripts/benchmark/NODEBNGM/out/fig_predictions_p.pdf ,
+ page1 used on input line 82.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [3 <./scripts/benchmark/NODEBNGM/out/fig_predictions_p.pdf>]
+<scripts/benchmark/out/benchmark_overview.pdf, id=77, page=1, 867.24pt x 867.24
+pt>
+File: scripts/benchmark/out/benchmark_overview.pdf Graphic file (type pdf)
+<use scripts/benchmark/out/benchmark_overview.pdf, page 1>
+Package pdftex.def Info: scripts/benchmark/out/benchmark_overview.pdf , page1 u
+sed on input line 87.
+(pdftex.def)             Requested size: 512.1496pt x 512.17003pt.
+[4 <./scripts/benchmark/out/benchmark_overview.pdf>]
+<scripts/cmdline_HL/out/fig_predictions_p.pdf, id=91, page=1, 505.89pt x 505.89
+pt>
+File: scripts/cmdline_HL/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_HL/out/fig_predictions_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_HL/out/fig_predictions_p.pdf , page1 u
+sed on input line 92.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [5 <./scripts/cmdline_HL/out/fig_predictions_p.pdf>]
+<scripts/cmdline_TS2/out/fig_predictions_p.pdf, id=105, page=1, 505.89pt x 505.
+89pt>
+File: scripts/cmdline_TS2/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS2/out/fig_predictions_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS2/out/fig_predictions_p.pdf , page1 
+used on input line 97.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [6 <./scripts/cmdline_TS2/out/fig_predictions_p.pdf>]
+<supporting/fig_network/main.pdf, id=119, page=1, 530.58627pt x 219.64157pt>
 File: supporting/fig_network/main.pdf Graphic file (type pdf)
 <use supporting/fig_network/main.pdf, page 1>
 Package pdftex.def Info: supporting/fig_network/main.pdf , page1 used on input 
-line 97.
-(pdftex.def)             Requested size: 530.74757pt x 219.78056pt.
-
-[6 <./supporting/fig_network/main.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_o.pdf, id=129
-, page=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_o.pdf Gr
-aphic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_o.pdf, pa
-ge 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_p
-redictions_o.pdf , page1 used on input line 109.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [7 <./scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_o.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_crossVal_p.pdf, id=144, p
-age=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_crossVal_p.pdf Graph
-ic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_crossVal_p.pdf, page 
-1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_c
-rossVal_p.pdf , page1 used on input line 114.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [8 <./scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_crossVal_p.pdf>]
-File: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf Gr
-aphic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_predictions_p.pdf, pa
-ge 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS1/out_model_1_f/fig_p
-redictions_p.pdf , page1 used on input line 119.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [9]
-<scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_predictions_o.pdf, id=160
-, page=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_predictions_o.pdf Gr
-aphic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_predictions_o.pdf, pa
-ge 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_p
-redictions_o.pdf , page1 used on input line 124.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [10 <./scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_predictions_o.pdf>
-]
-<scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_crossVal_p.pdf, id=174, p
-age=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_crossVal_p.pdf Graph
-ic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_crossVal_p.pdf, page 
-1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_c
-rossVal_p.pdf , page1 used on input line 129.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [11 <./scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_crossVal_p.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_predictions_p.pdf, id=186
-, page=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_predictions_p.pdf Gr
-aphic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_predictions_p.pdf, pa
-ge 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_p
-redictions_p.pdf , page1 used on input line 134.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [12 <./scripts/NODE_GM_cmdline_b1_0_0_TS2/out_model_1_f/fig_predictions_p.pdf>
-]
-<scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_predictions_o.pdf, id=200
-, page=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_predictions_o.pdf Gr
-aphic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_predictions_o.pdf, pa
-ge 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_p
-redictions_o.pdf , page1 used on input line 139.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [13 <./scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_predictions_o.pdf>
-]
-<scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_crossVal_p.pdf, id=215, p
-age=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_crossVal_p.pdf Graph
-ic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_crossVal_p.pdf, page 
-1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_c
-rossVal_p.pdf , page1 used on input line 144.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [14 <./scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_crossVal_p.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_predictions_p.pdf, id=227
-, page=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_predictions_p.pdf Gr
-aphic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_predictions_p.pdf, pa
-ge 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_p
-redictions_p.pdf , page1 used on input line 149.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [15 <./scripts/NODE_GM_cmdline_b1_0_0_TS3/out_model_0_f/fig_predictions_p.pdf>
-]
-<scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_o.pdf, id=241,
- page=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_o.pdf Gra
-phic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_o.pdf, pag
-e 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_pr
-edictions_o.pdf , page1 used on input line 154.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [16 <./scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_o.pdf>]
-<scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_crossVal_p.pdf, id=255, pa
-ge=1, 505.89pt x 505.89pt>
-File: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_crossVal_p.pdf Graphi
-c file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_crossVal_p.pdf, page 1
+line 102.
+(pdftex.def)             Requested size: 512.1496pt x 212.01645pt.
+ [7 <./supporting/fig_network/main.pdf>]
+<scripts/RStudio_Ushio/out/fig_DIN_v1.pdf, id=144, page=1, 722.7pt x 722.7pt>
+File: scripts/RStudio_Ushio/out/fig_DIN_v1.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_DIN_v1.pdf, page 1>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_DIN_v1.pdf , page1 used 
+on input line 107.
+(pdftex.def)             Requested size: 512.1496pt x 512.15016pt.
+ [8 <./scripts/RStudio_Ushio/out/fig_DIN_v1.pdf>]
+<scripts/benchmark/out/benchmark_train.pdf, id=158, page=1, 867.24pt x 867.24pt
 >
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_cr
-ossVal_p.pdf , page1 used on input line 159.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [17 <./scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_crossVal_p.pdf>]
-File: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf Gra
-phic file (type pdf)
-<use scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_predictions_p.pdf, pag
-e 1>
-Package pdftex.def Info: scripts/NODE_GM_cmdline_b1_0_0_HL/out_model_1_f/fig_pr
-edictions_p.pdf , page1 used on input line 164.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
- [18] (./main.aux) ) 
+File: scripts/benchmark/out/benchmark_train.pdf Graphic file (type pdf)
+<use scripts/benchmark/out/benchmark_train.pdf, page 1>
+Package pdftex.def Info: scripts/benchmark/out/benchmark_train.pdf , page1 used
+ on input line 119.
+(pdftex.def)             Requested size: 512.1496pt x 512.17003pt.
+ [9 <./scripts/benchmark/out/benchmark_train.pdf>]
+<scripts/benchmark/out/benchmark_test.pdf, id=171, page=1, 867.24pt x 867.24pt>
+
+File: scripts/benchmark/out/benchmark_test.pdf Graphic file (type pdf)
+<use scripts/benchmark/out/benchmark_test.pdf, page 1>
+Package pdftex.def Info: scripts/benchmark/out/benchmark_test.pdf , page1 used 
+on input line 124.
+(pdftex.def)             Requested size: 512.1496pt x 512.17003pt.
+ [10 <./scripts/benchmark/out/benchmark_test.pdf>]
+<scripts/benchmark/NODE/out/effects.pdf, id=184, page=1, 505.89pt x 505.89pt>
+File: scripts/benchmark/NODE/out/effects.pdf Graphic file (type pdf)
+<use scripts/benchmark/NODE/out/effects.pdf, page 1>
+Package pdftex.def Info: scripts/benchmark/NODE/out/effects.pdf , page1 used on
+ input line 129.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [11 <./scripts/benchmark/NODE/out/effects.pdf>]
+<scripts/benchmark/ODE2/out/effects.pdf, id=193, page=1, 505.89pt x 505.89pt>
+File: scripts/benchmark/ODE2/out/effects.pdf Graphic file (type pdf)
+<use scripts/benchmark/ODE2/out/effects.pdf, page 1>
+Package pdftex.def Info: scripts/benchmark/ODE2/out/effects.pdf , page1 used on
+ input line 134.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [12 <./scripts/benchmark/ODE2/out/effects.pdf>]
+<scripts/benchmark/CCM/out/effects.pdf, id=202, page=1, 505.89pt x 505.89pt>
+File: scripts/benchmark/CCM/out/effects.pdf Graphic file (type pdf)
+<use scripts/benchmark/CCM/out/effects.pdf, page 1>
+Package pdftex.def Info: scripts/benchmark/CCM/out/effects.pdf , page1 used on 
+input line 138.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [13 <./scripts/benchmark/CCM/out/effects.pdf>]
+<scripts/cmdline_TS1/out/fig_predictions_o.pdf, id=212, page=1, 505.89pt x 505.
+89pt>
+File: scripts/cmdline_TS1/out/fig_predictions_o.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS1/out/fig_predictions_o.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS1/out/fig_predictions_o.pdf , page1 
+used on input line 143.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [14 <./scripts/cmdline_TS1/out/fig_predictions_o.pdf>]
+<scripts/cmdline_TS1/out/fig_crossVal_p.pdf, id=226, page=1, 505.89pt x 505.89p
+t>
+File: scripts/cmdline_TS1/out/fig_crossVal_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS1/out/fig_crossVal_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS1/out/fig_crossVal_p.pdf , page1 use
+d on input line 148.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+
+[15 <./scripts/cmdline_TS1/out/fig_crossVal_p.pdf>]
+<scripts/cmdline_TS1/out/fig_predictions_p.pdf, id=238, page=1, 505.89pt x 505.
+89pt>
+File: scripts/cmdline_TS1/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS1/out/fig_predictions_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS1/out/fig_predictions_p.pdf , page1 
+used on input line 153.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [16 <./scripts/cmdline_TS1/out/fig_predictions_p.pdf>]
+<scripts/cmdline_TS2/out/fig_predictions_o.pdf, id=252, page=1, 505.89pt x 505.
+89pt>
+File: scripts/cmdline_TS2/out/fig_predictions_o.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS2/out/fig_predictions_o.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS2/out/fig_predictions_o.pdf , page1 
+used on input line 158.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [17 <./scripts/cmdline_TS2/out/fig_predictions_o.pdf>]
+<scripts/cmdline_TS2/out/fig_crossVal_p.pdf, id=266, page=1, 505.89pt x 505.89p
+t>
+File: scripts/cmdline_TS2/out/fig_crossVal_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS2/out/fig_crossVal_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS2/out/fig_crossVal_p.pdf , page1 use
+d on input line 163.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [18 <./scripts/cmdline_TS2/out/fig_crossVal_p.pdf>]
+File: scripts/cmdline_TS2/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS2/out/fig_predictions_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS2/out/fig_predictions_p.pdf , page1 
+used on input line 168.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [19]
+<scripts/cmdline_TS3/out/fig_predictions_o.pdf, id=282, page=1, 505.89pt x 505.
+89pt>
+File: scripts/cmdline_TS3/out/fig_predictions_o.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS3/out/fig_predictions_o.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS3/out/fig_predictions_o.pdf , page1 
+used on input line 173.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [20 <./scripts/cmdline_TS3/out/fig_predictions_o.pdf>]
+<scripts/cmdline_TS3/out/fig_crossVal_p.pdf, id=297, page=1, 505.89pt x 505.89p
+t>
+File: scripts/cmdline_TS3/out/fig_crossVal_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS3/out/fig_crossVal_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS3/out/fig_crossVal_p.pdf , page1 use
+d on input line 178.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [21 <./scripts/cmdline_TS3/out/fig_crossVal_p.pdf>]
+<scripts/cmdline_TS3/out/fig_predictions_p.pdf, id=309, page=1, 505.89pt x 505.
+89pt>
+File: scripts/cmdline_TS3/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_TS3/out/fig_predictions_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_TS3/out/fig_predictions_p.pdf , page1 
+used on input line 183.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [22 <./scripts/cmdline_TS3/out/fig_predictions_p.pdf>]
+<scripts/cmdline_HL/out/fig_predictions_o.pdf, id=323, page=1, 505.89pt x 505.8
+9pt>
+File: scripts/cmdline_HL/out/fig_predictions_o.pdf Graphic file (type pdf)
+<use scripts/cmdline_HL/out/fig_predictions_o.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_HL/out/fig_predictions_o.pdf , page1 u
+sed on input line 188.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [23 <./scripts/cmdline_HL/out/fig_predictions_o.pdf>]
+<scripts/cmdline_HL/out/fig_crossVal_p.pdf, id=337, page=1, 505.89pt x 505.89pt
+>
+File: scripts/cmdline_HL/out/fig_crossVal_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_HL/out/fig_crossVal_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_HL/out/fig_crossVal_p.pdf , page1 used
+ on input line 193.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [24 <./scripts/cmdline_HL/out/fig_crossVal_p.pdf>]
+File: scripts/cmdline_HL/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/cmdline_HL/out/fig_predictions_p.pdf, page 1>
+Package pdftex.def Info: scripts/cmdline_HL/out/fig_predictions_p.pdf , page1 u
+sed on input line 198.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [25]
+<scripts/RStudio_Ushio/out/fig_time_series.pdf, id=353, page=1, 505.89pt x 505.
+89pt>
+File: scripts/RStudio_Ushio/out/fig_time_series.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_time_series.pdf, page 1>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_time_series.pdf , page1 
+used on input line 203.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [26 <./scripts/RStudio_Ushio/out/fig_time_series.pdf>]
+<scripts/RStudio_Ushio/out/fig_predictions_o.pdf, id=363, page=1, 505.89pt x 50
+5.89pt>
+File: scripts/RStudio_Ushio/out/fig_predictions_o.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_predictions_o.pdf, page 1>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_o.pdf , page
+1 used on input line 208.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+
+[27 <./scripts/RStudio_Ushio/out/fig_predictions_o.pdf>]
+<scripts/RStudio_Ushio/out/fig_predictions_o.pdf, id=377, page=2, 505.89pt x 50
+5.89pt>
+File: scripts/RStudio_Ushio/out/fig_predictions_o.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_predictions_o.pdf, page 2>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_o.pdf , page
+2 used on input line 213.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [28 <./scripts/RStudio_Ushio/out/fig_predictions_o.pdf>]
+<scripts/RStudio_Ushio/out/fig_predictions_o.pdf, id=391, page=3, 505.89pt x 50
+5.89pt>
+File: scripts/RStudio_Ushio/out/fig_predictions_o.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_predictions_o.pdf, page 3>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_o.pdf , page
+3 used on input line 218.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [29 <./scripts/RStudio_Ushio/out/fig_predictions_o.pdf>]
+<scripts/RStudio_Ushio/out/fig_predictions_o.pdf, id=405, page=4, 505.89pt x 50
+5.89pt>
+File: scripts/RStudio_Ushio/out/fig_predictions_o.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_predictions_o.pdf, page 4>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_o.pdf , page
+4 used on input line 223.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [30 <./scripts/RStudio_Ushio/out/fig_predictions_o.pdf>]
+<scripts/RStudio_Ushio/out/fig_predictions_p.pdf, id=419, page=1, 505.89pt x 50
+5.89pt>
+File: scripts/RStudio_Ushio/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_predictions_p.pdf, page 1>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_p.pdf , page
+1 used on input line 228.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [31 <./scripts/RStudio_Ushio/out/fig_predictions_p.pdf>]
+<scripts/RStudio_Ushio/out/fig_predictions_p.pdf, id=435, page=2, 505.89pt x 50
+5.89pt>
+File: scripts/RStudio_Ushio/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_predictions_p.pdf, page 2>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_p.pdf , page
+2 used on input line 233.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [32 <./scripts/RStudio_Ushio/out/fig_predictions_p.pdf>]
+<scripts/RStudio_Ushio/out/fig_predictions_p.pdf, id=449, page=3, 505.89pt x 50
+5.89pt>
+File: scripts/RStudio_Ushio/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_predictions_p.pdf, page 3>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_p.pdf , page
+3 used on input line 238.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [33 <./scripts/RStudio_Ushio/out/fig_predictions_p.pdf>]
+<scripts/RStudio_Ushio/out/fig_predictions_p.pdf, id=463, page=4, 505.89pt x 50
+5.89pt>
+File: scripts/RStudio_Ushio/out/fig_predictions_p.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_predictions_p.pdf, page 4>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_p.pdf , page
+4 used on input line 243.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [34 <./scripts/RStudio_Ushio/out/fig_predictions_p.pdf>] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 12545 strings out of 478268
- 268512 string characters out of 5846347
- 517276 words of memory out of 5000000
- 30543 multiletter control sequences out of 15000+600000
+ 12644 strings out of 478268
+ 271446 string characters out of 5846347
+ 517278 words of memory out of 5000000
+ 30631 multiletter control sequences out of 15000+600000
  469766 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,7n,104p,416b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/symbol/usy
-r.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
-r/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (18 pages, 457425 bytes).
+ 100i,7n,104p,416b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/l
+ocal/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/lo
+cal/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2022/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2
+022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-
+dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (34 pages, 1358014 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 205 compressed objects within 3 object streams
+ 485 PDF objects out of 1000 (max. 8388607)
+ 362 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 173 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -232,8 +232,10 @@ dev.off()
 pdf(paste(output,"/effects.pdf",sep=""))
 #
 ## graphical parameters
+par(mar=c(4,4.5,0,0),oma=c(1,1,1,1),cex.lab=1.5)
 layout(mat=matrix(1:9,ncol=3))
 color_vector = c("green","blue","red")
+index  = c("a.","b.","c.","d.","e.","f.","g.","h.","i.")
 #
 for (i in 1:length(targets))
 {
@@ -245,26 +247,29 @@ for (i in 1:length(targets))
     contributions = contributions_list[[i]]
     
     ## growth rate
-    plot(growth_rate$t, growth_rate$growth_rate, type="l", col=color_vector[i], xlab="Time",ylab="Growth rate",cex.lab=1.5)
+    plot(growth_rate$t, growth_rate$growth_rate, type="l", ylim=c(-1,1), col=color_vector[i], xlab="",ylab=if(i==1)"Growth rate"else"",cex.lab=1.5)
     lines(t_true-19, rhat_true[,i], lty=2, col=color_vector[i])
+    if(!is.null(index)) legend("topright",legend=index[1+(i-1)*(3)],bty="n",cex=1.5)
     
     ## effects
-    plot(c(-1000,1000), c(0,0), xlim=c(0,max(predictions$t)), ylim=c(-1,1)*3, type="l", lty=2, xlab="Time", ylab="Effects",cex.lab=1.5)
+    plot(c(-1000,1000), c(0,0), xlim=c(0,max(predictions$t)), ylim=c(-1,1)*3, type="l", lty=2, xlab="", ylab=if(i==1)"Effects"else"",cex.lab=1.5)
     for(j in 1:length(cols))
     {
         lines(predictions$t, effects[, j],   col = color_vector[j])
         lines(t_true-19, ddx.rhat_true[,j+(i-1)*N],   col = color_vector[j], lty=2)
     }
     legend("bottom",legend=colnames(TS)[-1],col=color_vector,lty=1,horiz=T,bty="n")
+    if(!is.null(index)) legend("topright",legend=index[2+(i-1)*(3)],bty="n",cex=1.5)
     
     ## contributions
-    plot(c(-1000,1000), c(0,0), xlim=c(0,max(predictions$t)), ylim=c(-1,1)*2, type="l", lty=2, xlab="Time", ylab="Contributions",cex.lab=1.5)
+    plot(c(-1000,1000), c(0,0), xlim=c(0,max(predictions$t)), ylim=c(-1,1)*1, type="l", lty=2, xlab="Time", ylab=if(i==1)"Contributions"else"",cex.lab=1.5)
     for(j in 1:length(cols))
     {
         lines(predictions$t, contributions[, j],   col = color_vector[j])
     }
     #
     legend("bottom",legend=colnames(TS)[-1],col=color_vector,lty=1,horiz=T,bty="n")
+    if(!is.null(index)) legend("topright",legend=index[3+(i-1)*(3)],bty="n",cex=1.5)
 }
 #
 par(mfrow=c(1,1))

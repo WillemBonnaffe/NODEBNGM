@@ -629,7 +629,7 @@ trainModel_p = function(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,trainSplit=0.75)
             attach(loadData_p(Yhat_o,ddt.Yhat_o),warn.conflicts=F)
  
             ## split train and test
-            s_l = 1:round(length(t_)*trainSplit)
+            s_l = 1:round(nrow(X_)*trainSplit)
             s_t = -s_l
             
             ## fit
