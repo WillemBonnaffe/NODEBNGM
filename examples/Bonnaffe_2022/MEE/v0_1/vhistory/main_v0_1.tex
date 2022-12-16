@@ -1,0 +1,969 @@
+\documentclass[11pt, oneside]{article}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage{setspace} 
+\usepackage{lineno} 
+%
+\usepackage[parfill]{parskip}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{mathptmx} 
+%
+\usepackage{graphicx}
+\usepackage[labelfont=bf]{caption} 
+\usepackage{float} 
+%
+\usepackage[
+	style=authoryear,
+	citestyle=authoryear,
+	maxbibnames=6,
+	giveninits=true,
+	backend=bibtex,
+	url=false,
+	doi=false,
+	isbn=false,
+	eprint=false
+	]{biblatex}
+\addbibresource{references.bib}
+%
+%% add S in front of figure and table names
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+
+
+\title{Inferring ecological interactions from time series data using neural ordinary differential equations fitted by gradient matching}
+\author{Willem Bonnaff\'e$^{1,2}$, Ben Sheldon$^1$, \& Tim Coulson$^2$}
+\date{}
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+
+1. Edward Grey Institute of Field Ornithology, Department of Zoology, Oxford University, Zoology Research and Administration Building, 11a Mansfield Road, Oxford OX1 3SZ 
+
+2. Ecological and Evolutionary Dynamics Lab, Department of Zoology, Oxford University, Zoology Research and Administration Building, 11a Mansfield Road, Oxford OX1 3SZ 
+
+\textbf{Emails:}
+willem.bonnaffe@stx.ox.ac.uk;
+tim.coulson@zoo.ox.ac.uk
+
+\textbf{Running title:}
+Repeatable interactions and dynamics
+
+\textbf{Keywords:}
+Artificial Neural Networks;
+Ecological Dynamics;  
+Ecological interactions;
+Geber Method; 
+Neural Ordinary Differential Equations; 
+Ordinary Differential Equations; 
+Prey-predator dynamics; 
+Time series analysis;
+Rotifers;
+Microcosm;
+
+% \textbf{Article type:} \textit{Letters} 
+
+\textbf{Specifications:}  140 words in abstract; 7071 words in text; 40 references; 5 figures; 1 table
+
+\textbf{Contact:}
+Willem Bonnaff\'e, 61 St Giles, Pusey House, St Cross College, Oxford, OX1 3LZ, UK (w.bonnaffe@gmail.com)
+
+\textbf{Statement of authorship:}
+Willem Bonnaff\'e designed the method, performed the analysis, wrote the manuscript; 
+Ben Sheldon provided input for the manuscript, commented on the manuscript.
+Tim Coulson led investigations, provided input for the manuscript, commented on the manuscript.
+
+\newpage
+\setstretch{2.0}
+
+\textbf{Abstract} 
+
+Generalisation of dynamical processes across natural systems is difficult because they are complex and hard to observe.
+The hope is that generalisation may be achieved by adequately modelling the complexity of systems, and observe them in sufficient detail.
+We investigate this by looking at the consistency of ecological interactions across three replicates of a three-species prey-predator system, well-observed in an artificial environment, using neural ordinary differential equations.
+We find that dominant interactions are consistent across the replicates, while weaker interactions are not, leading to different dynamical patterns across replicated systems.
+Our study hence suggests that generalisation of dynamical processes across systems may not be possible, even in simpler systems in ideal monitoring conditions.
+This is a problem because if we are not able to make generalisations in a simple artificial system, how can we make generalisation in the real world?
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\linenumbers
+
+\section{Introduction}
+
+%% repeatability of ecological and evolutionary dynamics 
+The repeatability of ecological and evolutionary dynamics varies widely across systems and species.
+Sticklebacks from different lakes in Canada have independently evolved to a similar river morph phenotype (\cite{Thompson1997}).
+In guppies, four replicated populations located in different streams in Trinidad evolved the same low-predation phenotype (\cite{Reznick1990a}). 
+Multiple studies in experimental microcosms, particularly in rotifer populations, have shown that population dynamics were broadly repeatable (\cite{Yoshida2003, Yoshida2007, Becks2010, Becks2012, Hiltunen2013}).
+Overall, this demonstrated that ecological and evolutionary dynamics may be repeatable across different instances of the same system, at least qualitatively.
+This was a fascinating finding given the complexity of the mechanisms involved and the subtle variations in environmental conditions across the different populations.
+
+%% why we may not generalise in natural systems
+These systems hinted at the possibility for identifying global, generalisable, dynamical models. 
+In practice, however, generalising dynamics and dynamical processes (i.e. functional representations describing which and how state variables affect each other and determine system dynamics) across natural systems has proven difficult (\cite{Lawton1999}).
+%
+First, even if the dynamical patterns, and their outcomes, may appear to be conserved across similar systems, they may be underpinned by different processes. 
+For instance, the evolution of the sticklebacks to highly similar river-adapted phenotypes has been shown to be underpinned by radically different genetic alterations (\cite{Raeymaekers2017}).
+%
+Second, it is often unclear whether quantitative differences across replicated systems arise from pure stochasticity (\cite{Dallas2021}), observation error (\cite{DeMeester2019}), or deterministic changes in the dynamical processes. 
+%
+Finally, the complexity of biological processes themselves (\cite{Adamson2013}), differences in genetic and environmental contexts, may prevent the identification of a suitable dynamical model.
+For example, Becks and colleagues found that differences in the initial amount of genetic variation in otherwise identical rotifer populations led to subtle changes to the dynamics (\cite{Becks2010}).
+Different access to seed supplies can modify the strength of the interaction between a plant and its herbivore, leading to either stable or oscillatory dynamics (\cite{Bonsall2003}).
+Differences in temperature can alter the ecological interaction structure of entire ecosystems (\cite{Shurin2012,Bonnaffe2021b}).
+Because of this, vital rates are often found to be inconsistent in time (\cite{Gross2005,Adamson2013}), and space (e.g. \cite{Gamelon2019}).
+% Attempts at identifying a single population dynamics model in two mesocosms have led to partial misfits, as the model could not accommodate the dynamics of the two different systems ().
+% it is hard to separate the relative contribution of stochasticity and local ecological factors in driving differences across the four guppy population dynamics studied by Reznick and colleagues (\cite{Reznick2019}). 
+% The key to assessing the repeatability of dynamics is hence to identify the processes that drive population dynamics and compare them across replicated systems.
+Overall, a growing body of evidence shows that generalisation of dynamical processes across similar natural systems often fails (\cite{Lawton1999}, e.g. \cite{Kendall2005, Demyanov2006, Ezard2009}).
+
+%% why we may generalise in artificial systems
+So how could repeatable dynamics arise across multiple instances of the same system?
+We would expect dynamics to be repeatable if the components of the system (e.g. species), as well as interactions between components, are conserved.
+For this, populations should have similar distributions for the traits that underpin these interactions, and should further share the same environmental conditions, across instances.
+While this is unreasonable to expect from a natural system, it may be achievable in an artificial setting.
+In such a setting, it is possible to understand the structure of the system, to control the environment, and to reduce observation error.
+So if we fail to identify and generalise dynamical models in natural systems, perhaps we may be able to do so in artificial systems. 
+
+%% Evidence in artificial systems
+In spite of this there are few studies that have attempted to characterise the generalisability of dynamics across replicated systems in a laboratory setting.
+In such a setting, idiosyncrasies in population dynamics can arise from (1) variations in ecological interactions and individual processes, as a result of evolution (e.g. \cite{Yoshida2003}), or stochasticity (\cite{Dallas2021}), (2) variations in initial conditions due to the experimental setting (\cite{Yoshida2003, Becks2010, DeMeester2019}), and (3) the complexity of the system which can lead to large changes in system dynamics with small changes in the system state and structure (\cite{Adamson2013}).
+Two studies, one in aphids and the other in rotifers, found substantial variation in vital rates across replicated populations, by fitting a stage-structured population ODE model to population dynamics time series data (\cite{Bruijning2019,Rosenbaum2019}). 
+These studies hint that generalisability of population dynamical processes may not be possible because of intrinsic population structure and evolution, even in virtually identical populations hosted in artifical environments.
+
+%% what needs doing
+We identified three gaps in the literature.
+First, this kind of evidence remains scarce, due in part to the fact that dynamical modelling approaches guided by empirical data are still not widespread (\cite{Pontarp2019}).
+Second, most of these studies relied on parametric frameworks, which impose arbitrary pre-determined forms for the dynamical processes at play, so that their model may not capture properly the complexity of the dynamics of these populations (\cite{Jost2000,Adamson2013,Bonnaffe2021a}). 
+Finally, most studies usually analyse dynamics in single-species systems, but not multi-species systems, such as those with intraguild predation, which are more biologically realistic scenarios (\cite{Hiltunen2013}).
+Further studies are consequently required to investigate the consistency of dynamical processes in simple multi-species and well-observed systems, to conclude about the generalisability of population dynamics across systems.
+
+%% aim
+Our aim in this study is to provide an assessment of the repeatability of dynamical processes across different instances of a realistic multi-species system hosted in a well-observed environment.
+We do this by quantifying the direction, strength, and consistency of interactions in time and across replicates of a three-species microcosm in an experimental setting.
+We hypothesise that if the system is (1) simple enough, (2) well-observed, (3) in a controlled environment, then dynamical effects/interactions should be broadly consistent in time and across replicates, hence allowing for generalisation of dynamics across systems. 
+We consider three replicates of a three-species system, consisting in a prey (algae), intermediate-predator (flagellate), and top-predator (rotifer).
+The algae is consumed by the flagellate and rotifer, and the flagellate is consumed by the rotifer.
+We use three replicated system runs from a study by Hiltunen and colleagues which feature sequential oscillations of the density of the three species (\cite{Hiltunen2013}).
+We analyse the time series with neural ordinary differential equations (\cite{Bonnaffe2021a}), which allows us to approximate non-parametrically population growth rates, and quantify the direction, strength, and consistency of inter- and intra-specific effects on the growth of each population.
+We find that the interaction between the rotifer and algae is consistent throughout time and across replicates, while the interaction between the flagellate and the two other species is not.
+Our study suggests that dynamical processes may sometimes not be consistent and generalisable across systems, even when they are as close to identical as experimentation permits. % that's not new
+We discuss these results and hint at the underlying impact of evolution driving differences in these systems.
+
+%% 
+\section{Material and Methods}
+
+%%
+\subsection{Method overview}
+
+We aim to provide a nonparametric method for estimating ecological interactions from time series data of species density. 
+We do this by approximating the dynamics of each species with neural ordinary differential equations (NODEs, \cite{Bonnaffe2021a}). 
+We then compute ecological interactions as the sensitivity of these dynamics to a change in the respective species densities.
+
+% The aim of the modelling approach is to infer the drivers of the dynamics of each species from the time series data. 
+% More specifically, we want to quantify the effect of a change in the density of one species on the dynamics of the other species.
+% In this way we can understand which, and to what extent, species interactions drive population dynamics.
+
+%%
+\subsection{Neural ordinary differential equation}
+
+A NODE is a class of ordinary differential equation (ODE) that is partly or entirely defined as an artificial neural network (ANN).
+They are useful to infer dynamical processes non-parametrically from time series data (\cite{Bonnaffe2021a}).
+We choose NODEs over standard statistical approaches because they offer two advantages. 
+The first is that NODEs approximate the dynamics of populations non-parametrically.
+NODEs are therefore not subjected to incorrect model specifications (\cite{Jost2000,Adamson2013}).
+This provides a more objective estimation of the inter-dependences between state variables. 
+The second advantage is that it is a dynamical systems approach. 
+So that the approach includes lag effects through interacting state variables, not only direct effects between them. 
+
+For the sake of simplicity, we first consider a two-species NODE system: 
+
+\vspace{-0.5cm}
+\begin{equation} \left \{ \begin{aligned}
+	& \frac{dR}{dt} := r_R(R,N,\beta_R) R \\
+	& \frac{dN}{dt} := r_N(R,N,\beta_N) N \\
+\end{aligned} \right . \end{equation}
+
+where $dR/dt$ and $dN/dt$ denote the change in the density of prey ($R \in \mathcal{R}^+$), and predator ($N \in \mathcal{R}^+$), in continuous time.
+The per-capita growth rates $r_R$ and $r_N$ are non-parametric functions of the density of each species.
+The shape of the non-parametric functions is controlled by the parameter vectors $\beta_R$ and $\beta_N$.
+Traditionally, each non-parametric function is defined as an ANN function of the state variables.
+The most common class of ANN used for NODEs are single layer perceptrons (SLPs): 
+
+\vspace{-0.5cm}
+\begin{equation}
+    r_N(R, N, \beta_N) := \beta_0 + \sum_{i=1}^{I} \beta_{i} f_{\sigma} \left( \beta_{i0} + \beta_{i1} R + \beta_{i2} N \right) 
+\end{equation}
+
+which feature a single layer that  maps the inputs, here the species densities $R$ and $N$, to a single output, the per-capita growth rate.
+The parameter vector $\beta_R$ and $\beta_N$ are the weights of the connections in the SLPs.
+SLPs can be viewed as weighted sums of basis functions $f_\sigma$.
+% We consider sigmoid basis functions, as they are commonly used and their capacity to approximate any continuous function is well established theoretically (\cite{Funahashi1993}). 
+% The number of units in the hidden layer $I$ is typically 10 (e.g. \cite{Wu2005}). 
+More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
+
+%%
+\subsection{Fitting NODEs by gradient matching}
+
+This section describes how to estimate the parameters $\beta$ of the NODE system given a set of time series.
+In previous work, we developed a simulation-based approach to fit NODE systems to time series data (\cite{Bonnaffe2021a}).
+We would first simulate the NODE system over the entire time series.
+Then we would compute the error between the predictions of the NODE model and the observations. 
+Finally, we would change the weights of the NODEs to minimise this error. 
+There are two caveats with this approach.
+The first caveat is that the NODE system has to be simulated over the entire range of the data at every step of the optimisation.
+This step is computationally expensive to perform.
+Second, the numerical integration prevents the computation of gradients of the posterior distribution of the model.
+This prevents the use of efficient gradient descent approaches.
+
+Instead, we propose to use a \textit{gradient matching} approach to fit NODEs, which relies on data interpolation to approximate states and dynamics.
+The method we propose here is derived from the \textit{gradient matching} approach that Ellner and colleagues developed to fit ODEs (\cite{Ellner2002, Wu2005}).
+We proceed in three steps, presented graphically in Fig. 1 and detailed in the following sections. 
+First, we interpolate the time series data and dynamics of each species in the system. 
+Second, we train each NODE to satisfy the interpolated dynamics, thereby avoiding the simulation step of the previous method. 
+This amounts to fitting ANNs that take the density of each population as input to the interpolated per-capita growth rates.
+
+%%
+\textbf{Data interpolation}
+
+We interpolate the time series and differentiate it with respect to time in order to approximate the dynamics of the system.
+We perform the interpolation via non-parametric regression of the interpolating function on the time series data
+
+\vspace{-0.5cm}
+\begin{equation}
+    \epsilon^{(o)}_{N,~t}(\Omega_N | N_t) := N_t - \tilde{N}(t,\Omega_N)
+\end{equation}
+
+where $\epsilon^{(o)}_{N,~t}$, the observation error, is defined as the difference between $N_t$, the observed value of the variable at time $t$, and $\tilde{N}(t,\Omega_N)$, the value predicted by the interpolating function. 
+The interpolating function is chosen to be a SLP with sinusoid activation functions
+
+\vspace{-0.5cm}
+\begin{equation}
+    \tilde{N}(t,\Omega_N) := \exp \left \{ \sum_{i=1}^{I} \omega_{i0} sin \left(\pi (\omega_{i1} + \omega_{i2} t) \right) \right \}
+\end{equation}
+
+where $\tilde{N}(t,\Omega_N)$ is the interpolated state variable, defined as a weighted sum of sinusoid functions of time.
+The interpolation parameter vector $\Omega_N$ contains the weights $\omega_{i0}$, $\omega_{i1}$, and $\omega_{i2}$ which control the amplitude, shift, and frequency of the oscillations in the time series, respectively.
+We found sinusoid activation functions to be most efficient for interpolating population dynamics compared to other functions (such as sigmoid, hyperbolic).
+Following this approach we obtain directly an approximation of the dynamics of the state variable by differentiating the SLP with respect to time
+
+\vspace{-0.5cm}
+\begin{equation}
+	\frac{\partial}{\partial t} \tilde{N}(t, \Omega_N) = \sum_{i=1}^{I} \omega_{i0} \pi \omega_{i2} cos \left(\pi (\omega_{i1} + \omega_{i2} t) \right) \exp \left \{ \sum_{i=1}^{I} \omega_{i0} sin \left(\pi (\omega_{i1} + \omega_{i2} t) \right) \right \}
+\end{equation}
+
+as well as an analytical expression of the interpolated per-capita growth rate of the populations, by combining equation (4) and (5)
+
+\vspace{-0.5cm}
+\begin{equation}
+    \tilde{r}_N (t,\Omega_N) := \frac{1}{\tilde{N}} \frac{\partial \tilde{N}}{\partial t} = \sum_{i=1}^{I} \omega_{i0} \pi \omega_{i2} cos \left(\pi (\omega_{i1} + \omega_{i2} t) \right)
+\end{equation}
+
+% In practice, we log-transform the densities, to cast the variables on the real number space. 
+% This also allows us to re-write equation (6) in a more compact form, namely $\tilde{r}_Y = \frac{\partial }{\partial t} \log \tilde{Y}$.
+% We standardise the log-densities with respect the their mean and standard deviation (i.e. $Z=(log(Y)-\mu)/\sigma$).
+% This is to facilitate the training of the NODE by bringing the parameters in the neural network on the same scale.
+
+%%
+\textbf{Fitting NODEs to interpolated data}
+
+In a second step, we train the NODE system (1) to satisfy the interpolated dynamics, given the interpolated state variables.
+Thanks to the interpolation step, this simply amounts to performing a non-parametric regression of the NODE-approximated per-capita growth rate (equation 2) on the interpolated per-capita growth rate (equation 6)
+
+\vspace{-0.5cm}
+\begin{equation}
+    \epsilon^{(p)}_{N,~t}(\beta_N | \Omega) := \tilde{r}_N (t,\Omega_N) - r_N \left( \tilde{R},\tilde{N},\beta_N \right)
+\end{equation}
+
+where the process error, $\epsilon^{(p)}_{N,~t}$, is defined as the difference between the interpolated growth rate $\tilde{r}_N$ and the NODE approximation $r_N$. 
+
+%%
+\textbf{Statistical modelling}
+
+Overall, fitting the NODE system (1) comes down to two steps. 
+First, we interpolate the data by finding the parameter vector $\Omega$ that minimises the observation error $\epsilon^{(o)}$ in equation (3).
+Second, we fit the approximated per-capita growth rate by finding the parameter vector $\beta$ that minimises the process error $\epsilon^{(p)}$ in equation (7).
+
+We use a Bayesian framework to perform Bayesian regularisation and control for over-fitting (\cite{Cawley2007}).
+First, we fit the interpolating functions to the time series data.
+We assume normal distributions for the observation error, $\epsilon^{(o)}_i \sim \mathcal{N}(0,\sigma^{(o)})$, and for the prior density of the parameters, $\Omega_j \sim \mathcal{N}(0,\gamma_j)$.
+For the interpolation, we are only interested in fitting the time series accurately, irrespective of the value of $\sigma^{(o)}$ and $\gamma_j$.
+So we perform inference on the second level, by optimising the marginal posterior distribution.
+To do this, we use the approach developed by Cawley and Talbot to average out the value of the parameters $\sigma^{(o)}$ and $\gamma_j$ in the full posterior distribution (\cite{Cawley2007}), assuming gamma hyperpriors $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi \right\}$.
+This yields the following expression for the log marginal posterior density of the parameters 
+
+% \vspace{-0.5cm}
+% \begin{equation}
+%     \log p(\Omega_N | N_0, N_1, ..., N_I) \propto - \frac{1}{2} \sum_{i=1}^{I} \left( \frac{\epsilon^{(o)}_{N,i}}{\sigma^{(o)}} \right)^2 - \frac{1}{2} \sum_{j=1}^{J} \left( \frac{\Omega_j}{\gamma_j} \right)^2
+% \end{equation}
+
+\vspace{-0.5cm}
+\begin{equation}
+    \log P(\Omega_N | N_0, N_1, ..., N_I) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_{N,i} \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
+\end{equation}
+
+where $P$ denotes the marginal posterior distribution,
+$N_i$ corresponds to the observed density at time $i$, 
+$I$ is the total number of time steps in the time series, 
+$\epsilon^{(o)}_{N,i}$ is the observation error at time step $i$, 
+% $\sigma^{(o)}$ is the standard deviation of the likelihood, 
+$J$ is the total number of parameters. 
+%$\gamma_j$ is the standard deviation of the prior distribution of parameter $\Omega_j$.
+More details on how to derive this expression can be found in a supplementary file (Supplementary A).
+
+% \vspace{-0.5cm}
+% \begin{equation}
+%     \log P(\Omega | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_i \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
+% \end{equation}
+
+Then, we fit the non-parametric approximation of the growth rates to the interpolated growth rate.
+We assume normal distributions for the observation error, $\epsilon^{(p)}_i \sim \mathcal{N}(0,\sigma^{(p)})$, and for the prior density of the parameters, $\beta_j \sim \mathcal{N}(0,\delta_j)$.
+This gives the following expression for the log posterior distribution of the parameters given the interpolations
+
+\vspace{-0.5cm}
+\begin{equation}
+    \log p(\beta_N | \Omega) \propto - \frac{1}{2} \sum_{i=1}^{I} \left( \frac{\epsilon^{(p)}_{N,i}}{\sigma^{(p)}} \right)^2 - \frac{1}{2} \sum_{j=1}^{J} \left( \frac{\beta_j}{\delta_j} \right)^2
+\end{equation}
+
+where $\Omega$ corresponds to the interpolation parameters of all the variables in the system (here $\Omega_R$ and $\Omega_N$), 
+$\epsilon^{(p)}_{N,i}$ is the process error at time step $i$, 
+$\sigma^{(p)}$ is the standard deviation of the likelihood, 
+$J$ is the total number of parameters, 
+$\delta_j$ is the standard deviation of the prior distribution of parameter $\beta_j$.
+
+%%
+\subsection{Inference and uncertainty quantification}
+
+This allows us to calculate the gradient of the posterior distributions with respect to each parameter.
+We can hence use efficient optimisation algorithms, such as BFGS, to optimise the posterior distributions.
+
+This approach also allows us to control for over-fitting by adjusting the constraint on the parameters, which is controlled by the standard deviation of the parameter prior distributions, $\delta_j$.
+This can be used to control the degree of non-linearity in the response, but also to eliminate specific variables from the model by constraining their parameters to be close to zero.
+We identify the appropriate degree of constraint $\delta_j$ on NODE parameters via cross-validation. 
+We train the NODE model on the first half of the interpolated data and we predict the remaining half.
+We repeat this process for various values of $\delta_j$.
+
+Finally, we estimate uncertainty in parameter values through anchor sampling, which produces approximate Bayesian estimates of the posterior distribution of the parameters (\cite{Pearce2018}).
+The technique is simple in that it requires sampling a parameter vector from the prior distributions, and then optimising the posterior distribution from this starting point.
+By repeatedly taking samples, the sampled distribution approaches the posterior distribution and provides estimates and error around the quantities that can be derived from the models.
+The expectation of the quantities can then be approached by computing the mean of the approximated posterior distributions.
+The great strength of this approach is that it is unlikely to get stuck in local maxima and provides a more robust optimisation of the posterior.
+In this study, we took 100 posterior samples for each time series, namely a hundred samples for the interpolation, and another hundred for the fitting of the NODE.
+The initial value of the parameters were picked from a random normal distribution with parameters $\sigma \geq 0.4$, which prevented underfitting the time series.
+We insured that there was moderate temporal autocorrelation and normality by visualising the residuals of the models.
+We also insured that the results were repeatable by running the entire fitting process a second time.
+We did not perform cross validation of results as we were only interested in estimating effects within the time series considered, rather than predicting future time steps.
+
+
+%%
+\subsection{Model analysis}
+
+We analyse the shape of the per-capita growth rates to recover the interaction between the three species in the system.
+In particular, we look at the effect and contribution of each species to the dynamics of the other.
+The effect is computed as the sensitivity (i.e. the gradient) of the per-capita growth rate of a given species with respect to the density of the other species.
+The contribution is computed following the Geber method (\cite{Hairston2005}), which comes down to multiplying the dynamics of a variable by its effects on the other variables.
+We further compute the importance of a species in driving the dynamics of another by computing its relative contribution compared to other species at each time step.
+More details on how to recover these quantities can be found in our previous study (\cite{Bonnaffe2021a}).
+
+%%
+\section{Case study}
+
+%%
+\subsection{System}
+
+We consider a three-species laboratory microcosm consisting of an algal prey (\textit{Chlorella autrophica}), a flagellate intermediate predator (\textit{Oxyrrhis marina}), and a rotifer top predator (\textit{Brachionus plicatilis}).
+The algal prey is consumed by the intermediate and top predator, the top predator also consumes the intermediate predator (\cite{Arndt1993}).
+The dynamics of this system, here the daily change in the density of each species, were recorded in three replicated time series experiments performed by Hiltunen and colleagues (\cite{Hiltunen2013}, Fig. 1).
+The aim of their experiment was to determine which type of population dynamics would arise in a system with two predators competing for the same resource (the algae), where one predator (the rotifer) would also be able to consume its competitor (the flagellate).
+According to their expectations, they found prey-predator oscillations, where the lag between the density peaks of each species reflected their position in the food web.
+Namely that the peak of algae preceded the flagellate peak, which itself preceded the rotifer peak.
+
+Their microcosms are close to true replicates in that environmental conditions, namely temperature, salinity, and nutrient influx, where maintained constant, and initial conditions, that is the initial density of each species, were shared across all replicates. 
+In spite of that, they still found evidence for algae evolution in some parts of the time series, which resulted in a shift of the dynamics from fast prey-predator cycles to slower oscillations, similar to those documented in previous studies on similar systems (\cite{Yoshida2003, Becks2010}), even in lineages where genetic variation in predator defense traits was eliminated at the start of the experiment. 
+Consequently, the time series that they reported are the ones that did not present evidence of evolution, and therefore displayed purely ecological dynamics.
+
+We use their time series because they describe a simple yet biologically realistic ecosystem, and because the quality of the replication of their microcosm reduces as much as possible observational and experimental error, and rules out environmental variation (\cite{Hiltunen2013}).
+We digitised these time series by extracting by hand the coordinates of every points in the referential of the axis of the graph of the original study, and analysed them.
+
+%%
+\subsection{Model specifications}
+
+The aim of the modelling approach is to infer the drivers of the dynamics of each species from the time series data. 
+More specifically, we want to quantify the effect of a change in the density of one species on the dynamics of the other species.
+In this way we can understand which, and to what extent, species interactions drive population dynamics.
+To do this we use neural ordinary differential equation (NODEs), which is a novel methodology allowing us to infer dynamical processes non-parametrically from time series data (\cite{Bonnaffe2021a}).
+We choose this methodology over traditional approaches because it offers two advantages. 
+The first lies in the fact that NODEs approximate the dynamics of populations non-parametrically, and are therefore not subject to incorrect model specifications (\cite{Jost2000,Adamson2013}).
+This is important as it offers an objective estimation of the inter-dependences between state variables, and hence a reliable assessment of whether a species is contributing to the dynamics of another. 
+The second advantage is that it is a dynamical systems approach, which means that the effects are estimated in a dynamically consistent system of ODEs (\cite{Bonnaffe2021a}). 
+This is useful because it accounts for the dynamical nature of the system, so that it includes lag effects, not just direct correlations between variables. 
+
+We define a simple NODE system for the three-species system described previously
+
+\begin{equation} \begin{aligned}
+	& \frac{dR}{dt} = r_R(R,G,B,\beta_R) R \\
+	& \frac{dG}{dt} = r_G(R,G,B,\beta_G) G \\
+	& \frac{dB}{dt} = r_B(R,G,B,\beta_B) B
+\end{aligned} \end{equation}
+
+where $dR/dt$, $dG/dt$, and $dB/dt$ denote the change in rotifer ($R$), algae ($G$), and flagellate ($B$) density in continuous time.
+The per-capita growth rates $r_R$, $r_G$, and $r_B$ are non-parametric functions of the density $R$, $G$, $B$ of each species.
+The shapes of the non-parametric functions are controlled by the parameter vectors $\beta_R$, $\beta_G$, and $\beta_B$.
+Fitting the NODE system (1) amounts to finding the parameter vectors, and thereby the per-capita growth rates, that best describe the changes in density observed in the time series data. 
+
+Each non-parametric functions is an artificial neural network (ANN).
+ANNs are powerful mathematical objects that can be trained to approximate the shape of dynamical processes (\cite{Funahashi1993, Chen1993}).
+For the sake of simplicity, we consider the simplest form of an ANN which contains a single hidden layer, namely a single layer peceptron (SLP)
+
+\begin{equation}
+	r_R = \sum_{i=1}^{N} \beta_{i} f_{\sigma} \left( \beta_{i0} + \beta_{i1} R + \beta_{i2} G + \beta_{i3} B \right) 
+\end{equation}
+
+which takes as input the density of each species $R$, $G$, and $B$, and output the corresponding per-capita growth rate.
+The parameter vector $\beta_R$, $\beta_G$, $\beta_B$, contain the weight of the connections in the ANNs.
+The SLP can be viewed as a weighted sum of basis functions $f_\sigma$ of the state variables of the system.
+In this study we consider sigmoid basis functions, as they are commonly used and their capacity to approximate any continuous function is well established theoretically (\cite{Funahashi1993}). 
+The number of units in the hidden layer $N$ is chosen to be 10, as this is a commonly used number for systems of that size (e.g. \cite{Wu2005}). 
+More details regarding these models can be found in our previous work (\cite{Bonnaffe2021a}).
+
+%%
+\section{Results}
+
+We analyse sequentially the dynamics of each species, focussing on the amount of variation in per-capita growth rates explained by the NODE model, the overall direction, consistency, and importance of ecological interactions, and differences across replicates.
+Results are summarised in Table 1 and described in details for each species in the following section.
+
+
+%%
+\textbf{Drivers of top predator dynamics}
+
+Figure 2 presents the drivers of the dynamics of rotifer.
+The NODE approximation of the per-capita growth rate fits quite well the interpolated per-capita growth rate across all replicates (Fig. 2, A2 B2 and C2, $r^2 > 0.7$, Table 1).
+The analysis of effects reveals overall a positive effect of algae on rotifer growth in all replicates (Fig. 2, A3, B3, C3, green line). 
+The intermediate predator has a positive effect on rotifer growth in replicates A and C only (Fig. 2, A3, B3, C3, blue line).
+We find positive intra-specific density-dependence in the first replicate only (Fig. 2, A3, red line).
+Overall, all effects are consistent throughout the time series.
+The algae is the dominant driver of rotifer dynamics as it accounts for 55\%, 93\%, and 74\% of the change in per-capita growth rates across the three replicates (Table 1, Fig. 2, A5, B5, C5, green line).
+% This indicate that rotifer predominantly benefit from their interaction with the prey, and only idiosyncratically from interactions with the intermediate predator and conspecifics.
+
+%%
+\textbf{Drivers of the prey dynamics}
+
+The per-capita growth rate of the algae is well explained by the NODE approximation (Fig. 3, A2, B2, C2, $r^2 > 0.8$, Table 1).
+Overall, rotifers have a negative impact on the growth of algae in all replicates (Fig. 3, A3, B3, C3, red line).
+We find evidence for negative density-dependence in replicate A and positive density-dependence in replicate B, but not in replicate C (Fig. 3, A3, B3, C3, green line).
+The intermediate predator has an overall negative effect on Algae only in replicate B (Fig. 3, B3, blue line).
+The main driver of algae dynamics is the rotifer population, which accounts for 58\%, 44\%, and 90\% of the change in algae per-capita growth rate across the three replicates.
+Density-dependence, however, plays a role in replicate A and B, with 40\% and 24\% of total change in growth, respectively (Table 1).
+The intermediate predator contributes only to algae growth in replicate B, accounting for 32\% change in growth (Table 1).
+Overall, effects are found to be consistent throughout the time series except in replicate B (Fig. 3, B3), where effects vary in complicated ways, leading to a period in the time series where the algae is mostly driven by the intermediate predator and positive density-dependence, and less impacted by the top predator (Fig. 3, B5, from time 3 to 7.5).
+% Algae dynamics are hence mostly driven by the rotifer populations, and anecdotally by the intra-specific density dependence and intermediate predator. 
+
+%%
+\textbf{Drivers of the intermediate predator dynamics}
+
+The per-capita growth rate of the intermediate predator is quite well captured by the NODE approximation (Fig. 4, A2, B2, C2, $r^2 > 0.7$, Table 1).
+The intermediate predator is mainly negatively affected by the rotifer population (Fig. 4, A3, B3, C3, red line).
+The algae has a negative effect on flagellate growth in replicate A, and a positive one in replicate B (Fig. 4, A3, B3, green line).
+The rotifer predator dynamics accounts for 78\%, 62\%, 91\% of the change in the flagellate growth rate, and the algae 20\% and 37\% in replicate A and B, respectively (Table 1, Fig. 4, A5, B5, C5).
+Overall, effects are consistent throughout the time series.
+% The population dynamics of the flagellate is hence mostly driven by its interaction with the top-predator.
+
+%%
+\section{Discussion}
+
+%% Summary 
+Our ability to generalise dynamical processes and patterns across populations and communities is limited by the complexity of the processes, differences in environments, and incomplete and/or erroneous observations. 
+It remains unclear to what extent generalisation would be possible if we overcame these limitations.
+We tackle this question by looking at the consistency of dynamical patterns across three replicated runs of a simple three-species community, hosted in identical environmental conditions in the lab. 
+We expected to find consistency in the drivers of population dynamics, both in time and across replicates, and thereby demonstrate that generalisation of dynamical processes may be possible if the system states were well-observed and environmental conditions were known.
+To verify this expectation we (1) characterised the amount of variation in per-capita growth rates that is explainable deterministically, (2) quantified the direction, strength, and importance of ecological interactions for the growth of each population, and (3) described how these varied in time and across replicates.
+Our results are summarised in Figure 5.
+We find that only the effect of algae on rotifer ($G \rightarrow R$), and that of rotifer on algae ($R \rightarrow G$) and flagellate ($R \rightarrow B$) are conserved across the replicates.
+We find strong variation in the direction and importance of intra-specific density-dependence in rotifer ($R \rightarrow R$) and algae ($G \rightarrow G$) growth across the three replicates.
+The role played by the intermediate predator in the system was also different in all replicates, in that it only contributed substantially to the dynamics of the algae in replicate B ($B \rightarrow G$), and was either negatively, positively, or not affected by the algae ($G \rightarrow B$).
+Overall, this shows that the dominant interactions are conserved across replicates, but that minor interactions vary substantially in importance and effect.
+Furthermore, we find that these dynamical processes are more consistent in time within a system, than across replicates.
+Our results demonstrate that because of partially generalisable dynamical processes, dynamical patterns may not be generalisable across systems, even with limited observation error and when environmental conditions and community structure are conserved. 
+
+%% consistency with the biology of the system
+Overall, our results are consistent with the biology of the system.
+The rotifer top-predator is found to have a strong negative impact on the two other species, in spite of variation in prey preference across replicates.
+This is consistent with previous study which have established the importance of rotifers for top-down control of flagellate and algal populations (\cite{Arndt1993, Hiltunen2013}).
+What is more suprising is the positive intra-specific density-dependence in the growth rate of the rotifer population in replicate A. 
+This implies that the population of rotifer grows more at high density.
+This might be explained by various biological mechanisms, such as cannibalism (\cite{Gilbert1976}), though evidence remains limited in the \textit{Brachionus} genus, or higher mating success at high density (\cite{Snell1986}). 
+Similarly, the algae shows signs of positive intra-specific density-dependence in replicate B, though this effect remains confined to a brief period in the time series.
+This may be due to a higher chance of evading predators at high-density. 
+This shows that the NODEs approach used here recovers results consistent with existing knowledge, but also identify subtle, more intriguing dynamical processes.
+
+%% Why do dynamical processes differ?
+What might be the drivers of differences in the dynamical processes across these three replicates?
+One of the main source of variation in dynamics may be differences in the intrinsic structure of populations, such as variation in traits influencing intra- and inter-specific interactions which may lead to different dynamics (\cite{Yoshida2003,Yoshida2007,DeMeester2019,Bruijning2019}).
+Differences in the phenotypic structure may be due to unaccounted variation in initial conditions (\cite{Becks2010}), or variation that developed throughout time as a result of evolution (e.g. \cite{Yoshida2003, Yoshida2007}).
+In particular, the algae in this system is prone to evolve a predator defence behaviour, by forming clumps, which reduce predation risk (\cite{Yoshida2003, Hiltunen2013}).
+In their original paper, the authors limited the initial genetic diversity in the algae and focussed on replicates which did not display evidence of evolution, in an attempt to limit the impact of initial variation in phenotypic structure, and of evolution, on the dynamics (\cite{Hiltunen2013}). 
+In spite of that, evolution may not be eliminated completely, thus variation in traits governing the interactions between the species in the system may still have developed during the experiment, and led to changes in the dynamical processes across replicates.
+This would further be consistent with results from Yoshida and colleagues, who showed that evolution of prey defense could lead to ecological dynamics inconsistent with the known trophic interactions (\cite{Yoshida2007}).
+Becks and colleagues also showed that small changes in the initial genotypic diversity could lead to drastically different eco-evolutionary dynamics (\cite{Becks2010}).
+Our study hence reinforces the idea that rapid evolution may prevent generalisation of dynamical processes (\cite{Ezard2009,DeMeester2019}), and further suggests that this may also be the case in simple systems with limited environmental variation and opportunity for evolution.
+
+%% What is the role played by Stochasticity versus deterministic? and unobserved variables?
+Alternatively, stochasticity may be a major driver of differences across systems (\cite{Dallas2021}). 
+% Stochasticity could produce differences in the dynamics of the three replicated systems in two ways.
+First, stochasticity in initial conditions, arising from the sampling of the communities of each replicate, could introduce differences in the interactions between the three populations.
+Second, stochasticity in the population dynamics themselves may result in different changes in densitiy levels in communities that are otherwise identical.
+Because our modelling approach is deterministic, it does not directly provide an estimate of the total variation explained by stochasticity.
+Our modelling approach decomposes the variation in the data into observation and process error (\cite{Calder2003}). 
+First, the interpolation step introduces residual observation error, namely variation that is not captured by the interpolation.
+Second, the fitting of the NODE to the interpolation introduces residual process error, which is variation in the observation model that is not explained by the process modelled by the NODE.
+Stochasticity in the dynamics could explain the observation and process residual error (\cite{Calder2003}), while stochasticity in initial conditions can only influence differences across replicates.
+Yet, we find relatively small process and observation error ($>70\%$ of variance explained).
+So that, the dynamics of the three species are well explained by relatively simple linear deterministic effects between the state variables, which means that though dynamical processes differ across replicates they are reasonably consistent in time within each system. 
+This suggests that stochasticity in dynamics plays a minor role in driving differences in dynamics across replicates, compared to stochasticity in initial conditions. 
+In order to quantify this, we would need to estimate the influence of stochasticity directly. 
+This can be done by modelling explicitly the random distribution of model parameters that underpin the dynamics of populations, which would then inform us about the importance of stochasticity driven by variation at the individual-level (\cite{Fox2002}).
+Additionally, we could model stochasticity explicitly in the model with neural stochastic differential equations, which would allow us to separate the amount of change explainable by the deterministic part of the model, from demographic stochasticity, at each time step (\cite{Jia2019}).
+
+Finally, we cannot exclude the potential contribution of unobserved variables that were not monitored during the experiment, such as variation in nutrient levels in the chemostat, and which may also lead to differences in the predation and intra-specific interactions across systems (e.g. \cite{Bonsall2003,Fussmann2005,Posey2006}).
+
+%% can we do replicates then?
+Should we expect limited generalisability of dynamics across systems, even if the complexity of the process is properly captured, environmental conditions known, and the system well-observed?
+A similar study, that inferred dynamical processes consistency from replicated time series of a simple rotifer system, found substantial variation in vital rates across replicates (\cite{Rosenbaum2019}), also pointing at a low generalisability of dynamical processes.
+Yet, the level of replication of the time series of their studies was not as stringent as that of the time series we considered, which leaves room for variability in dynamics to be caused by differences in experimental setup, population history, initial densities. 
+Bruijning and colleagues also found substantial variation in vital rates across clones in a replicated system of aphids, showing that slight phenotypic variations can change the population dynamics, all else being equal (\cite{Bruijning2019}).
+This phenomenon is likely to be even more important in more complicated systems and in a natural setting where most variables are unobserved, which poses a problem for the generalisation of results across studies and systems (\cite{DeMeester2019}). 
+How can we expect to generalise dynamics across real systems if we are not able to do so in artificial systems?
+Overall, our study reinforces the view that general inferences should not be drawn from a single system, and that more efforts are required to distinguish dynamical patterns that are conserved across systems from idiosyncratic ones.
+
+%% What are the implications for mathematical modelling of dynamical systems? 
+Can we trust our models then if they are doomed to provide partly idiosyncratic answers?
+Our study demonstrates that processes can vary substantially across replicates, so that there may hence not be a single suitable functional form and parametrisation to model them (\cite{Lawton1999}).
+Yet, most of the work to date has involved fitting parametric models to time series data (e.g. \cite{Bruijning2019,Pontarp2019,Rosenbaum2019}), which provide a very narrow view of the range of possible functions to describe the biological processes at play (\cite{Jost2000,Adamson2013}). 
+These models are subjective by nature (\cite{Jost2000,Adamson2013}), and hence not generalisable, so that they greatly reduce our chance at identifying dynamical processes that are idiosyncratic, and those that are transferable.
+
+%% Potential of NODEs for further investigations
+What alternatives do we have then?
+We propose that NODEs are a suitable framework to study dynamical processes, as they produce inferences that are free of model assumption and facilitate comparison across studies and systems (\cite{Bonnaffe2021a}).
+In this sense, our study already provides a potentially more objective depiction of dynamical processes than previous work with parametric models. 
+Furthermore, in this paper we overcame the practical challenges of implementing NODEs by providing a computationally efficient fitting procedure, relying on time series interpolation, and developed a model selection criterion robust to overfitting.
+Similar approaches have been proposed in the past, for instance Ellner and colleagues developed a method called gradient matching where they interpolated the data with cubic splines to which they fitted the differential equations (\cite{Jost2000,Ellner2002}).
+Wu and colleagues also relied on data interpolation of the data with ANNs to fit non-parametric approximations of population vital rates (\cite{Wu2005}).
+But the approaches were too challenging and cumbersome to be implemented routinely, and were not used to tackle ecological interactions. %% NOTE - add more on why your approach is better
+Overall, our work demonstrates the usefulness of NODEs for inferring ecological interactions from count time series, which could readily be applied to a substantial pool of time series data.
+
+%%
+\textbf{Conclusion}
+
+Generalising dynamics across biological systems is hard because of the complexity of the dynamical processes (e.g. ecological interactions), differences in environmental context, and monitoring limitations. 
+It remains unclear whether we could generalise dynamics if we properly modelled complexity, controlled for environmental effects, and observed systems precisely.
+We addressed this question by looking at the generalisability of dynamical processes across three replicated time series of a three-species system, using the novel framework of NODEs.
+We found that only the dominant interactions were conserved across the three time series, namely that between the algae and the rotifer, while the role of the intermediate predator varied substantially.
+Our results hence suggest that generalisation may not seem possible, even in simple system with no environmental variation. 
+Given previous work in this system, the main cause of differences across replicates may be evolution in prey defence traits.
+We conclude that more work is required, using NODEs, to identify dynamical patterns that are conserved and those that are idiosyncratic across a wider range of systems.
+
+%%
+\textbf{Acknowledgments}
+
+We thank warmly the Ecological and Evolutionary Dynamics Lab and Sheldon Lab Group at the department of Zoology for their feedback and support.
+We thank Ben Sheldon for insightful suggestions on early versions of the work.
+The work was supported by the Oxford-Oxitec scholarship and the NERC DTP.
+
+%%
+\textbf{Data accessibility}
+
+All data and code will be made fully available at https://github.com/WillemBonnaffe/NODER/rotifer.
+
+%%
+\textbf{Statement of authorship}
+
+Willem Bonnaff\'e designed the method, performed the analysis, wrote the manuscript; 
+Tim Coulson led investigations, provided input for the manuscript, commented on the manuscript.
+
+\printbibliography 
+
+%% figures
+\newpage
+\pagenumbering{gobble}
+
+%% figure 1
+\newpage
+\begin{figure}[H]
+\includegraphics[width=\linewidth,page=1]{figures/main.pdf}
+\caption{
+    \textbf{Overview of fitting neural ordinary differential equations by gradient matching}
+    The first step is to compute a continuous time approximation (interpolation) of each state variables (e.g. resource $R(t)$ and predator $N(t)$).
+    To do that we fit an ANN, that takes time as input, to each time series.
+    Dynamics of populations can then be computed by taking the derivative of the ANN with respect to time, $dR/dt$ and $dN/dt$.
+    This provides an interpolation of the per-capita growth rate of each population, e.g. $r_R(t) = 1/R~dR/dt$.
+    In a second step, we approximate non-parametrically the per-capita growth rates with respect to the density of each populations, $r_R = s(R,N)$.
+    To do that we fit an ANN, which takes as input the interpolated variables $R(t)$ and $N(t)$, to the interpolated per-capita growth rates $r_R(t)$ and $r_N(t)$.
+    In a final step, we approximate the ecological interactions, by computing the sensitivity of the per-capita growth rates with respect to the density of each population, e.g. $E: N \rightarrow R = \partial r_R / \partial N$.
+    We also compute the contribution of each species to the dynamics of the other by multiplying the dynamics of each variable with its effect on the growth rates (i.e. the Geber method), e.g. $C: N \rightarrow R = dN/dt \times \partial r_R / \partial N$.
+}
+\end{figure}
+\newpage
+
+%% figure
+\newpage
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\linewidth,page=2]{figures/main.pdf}
+\caption{
+    \textbf{Interpolated density and dynamics of algae, flagellate, and rotifer in the artificial system.}
+    This figure corresponds to the first step in the overview figure.
+    It shows the accuracy of the interpolated densities of algae (a.), flagellate (c.), and rotifer (e.).
+    We obtain interpolated densities by fitting observed densities (black dots) with ANNs that take time as input.
+    The observed densities were obtained by sampling a tri-trophic prey-predator ODE model at regular time steps.
+    We then derive interpolated dynamics (b., d., f.) by computing the temporal derivative of the interpolated densities with respect to time.
+    In all graphs, the dashed line represents the ground truth, namely trajectories generated by the ODE model.
+    The solid lines correspond to the interpolations. 
+    The shaded area shows the 90\% confidence interval, obtained by approximately sampling the marginal posterior distributions. 
+}
+\end{center}
+\end{figure}
+\newpage
+
+%% figure
+\newpage
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\linewidth,page=3]{figures/main.pdf}
+\caption{
+    \textbf{Drivers of dynamics of algae, flagellate, and rotifer in the artificial system.}
+    This figure corresponds to the second step in the overview figure.
+    It displays the NODE non-parametric approximations of the per-capita growth rate of algae (a., b., c.), flagellate (d., e., f.), and rotifer (g., h., i.).
+    We obtain the NODE approximations (a., d., g., solid line) by fitting the interpolated per-capita growth rates (black dots) with ANNs that take population densities as input.
+    We then estimate the direction of ecological interactions (effects, b., e., h.) by computing the derivative of the NODE approximations with respect to each density.
+    Finally, we compute the strength of ecological interactions (contributions, c., f., i.) by multiplying the interpolated dynamics of each population (fig. 1, b., d., f.) with its effects.
+    Dashed lines correspond to ground truth, obtained from the original trajectories of the tri-trophic ODE model. 
+    The shaded area shows the 90\% confidence interval, obtained by approximately sampling the posterior distributions. 
+}
+\end{center}
+\end{figure}
+\newpage
+
+%% figure
+\newpage
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\linewidth,page=4]{figures/main.pdf}
+\caption{
+    \textbf{Drivers of dynamics of hare and lynx in the Odum and Barrett pelt count time series.}
+    This figure displays the NODE non-parametric approximations of the per-capita growth rate of hare (a., b., c.), and lynx (d., e., f.).
+    We obtain the NODE approximations (a., d., solid line) by fitting the interpolated per-capita growth rates (black dots) with ANNs that take population densities as input.
+    We then estimate the direction of ecological interactions (effects, b., e.) by computing the derivative of the NODE approximations with respect to each density.
+    Finally, we compute the strength of ecological interactions (contributions, c., f.) by multiplying the interpolated dynamics of each population with its effects.
+    The shaded area shows the 90\% confidence interval, obtained by approximately sampling the posterior distributions. 
+}
+\end{center}
+\end{figure}
+\newpage
+
+%% figure
+\newpage
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\linewidth,page=5]{figures/main.pdf}
+\caption{
+    \textbf{Drivers of dynamics of algae, flagellate, and rotifer in replicate A.}
+    This figure displays the NODE non-parametric approximations of the per-capita growth rate of algae (a., b., c.), flagellate (d., e., f.), and rotifer (g., h., i.).
+    We obtain the NODE approximations (a., d., g., solid line) by fitting the interpolated per-capita growth rates (black dots) with ANNs that take population densities as input.
+    We then estimate the direction of ecological interactions (effects, b., e., h.) by computing the derivative of the NODE approximations with respect to each density.
+    Finally, we compute the strength of ecological interactions (contributions, c., f., i.) by multiplying the interpolated dynamics of each population with its effects.
+    The shaded area shows the 90\% confidence interval, obtained by approximately sampling the posterior distributions. 
+    The replicated time series were obtained by digitising the time series in Hiltunen et al. (2013).
+}
+\end{center}
+\end{figure}
+\newpage
+
+%% figure
+\newpage
+\begin{figure}[H]
+\includegraphics[width=1\linewidth,page=6]{figures/main.pdf}
+\caption{
+    \textbf{Interaction networks inferred from 3 replicated time series of algae, flagellate, and rotifers.}
+    This figure shows the direction and strength of ecological interactions inferred from 3 replicated sets of time series of algae, flagellate, and rotifer, using NODEs fitted by gradient matching.
+    The replicates B and C were analysed in the same way as replicate A (see fig. 5 for details).
+    Red and purple arrows correspond to negative or positive mean effects. 
+    We estimated mean effects by averaging effects (i.e. derivative of NODE approximated per-capita growth rates with respect to each population density) across the time series.
+    The width of the arrows is proportional to the relative strength of the ecological interaction. 
+    We compute the relative strength as the \% of total contributions attributable to either algae, flagellate, or rotifer, obtained from summing the square of contributions of each species throughout the time series.
+    For instance in replicate A, the relative strength of the effect of rotifer on algae is found by summing the square of the red line in fig. 5 f., and computing the \% of total contributions that it accounts for.
+    We provide the value of the mean effects and relative strengths in Table 1.
+    The replicated time series were obtained by digitising the time series in Hiltunen et al. (2013).
+}
+\end{figure}
+\newpage
+
+
+%% global table - v0.0
+\newpage
+\begin{table}[H]
+\begin{center}
+\setstretch{1.0}
+\caption{
+\textbf{Summary analysis.}
+$r^2$ corresponds to the r squared of the NODE non-parametric approximation of the pre-capita growth rate compared to the interpolated per-capita growth rate for each of the three species.
+Mean effects are obtained by averaging the effect of one species on the growth rate of another throughout the time series.
+The \% of total contributions is obtained by summing the square of contributions of one species density to the growth of the other at each time step throughout the time series, then by computing the proportion of total change that it accounts for.
+}
+\begin{tabular}{rrcccc}
+	\hline
+	\\
+	& & & R & G & B \\
+	& \\
+	\hline
+	& \\
+	& \textbf{replicate A} \\
+	% \textbf{Replicate A} & $r^2$  &   &  0.968 & 0.839 & 0.831 \\
+	& \\
+	& \textbf{Mean effects} 
+	&   on R &   0.27 & 0.77  & 0.97  \\
+	& & on G &  -1.17 & -0.44 & -0.85 \\
+	& & on B &  -0.78 & 0.04  & 0.03  \\
+	& \\
+	& \textbf{\% of total contributions} 
+	&   to R &  0.08 & 0.48 & 0.44 \\ 
+    & & to G &  0.75 & 0.08 & 0.17 \\
+    & & to B &  1    & 0    & 0    \\
+	& \\
+	\hline
+	& \\
+	& \textbf{replicate B} \\
+	% \textbf{Replicate B} & $r^2$  &   &  0.744 & 0.997 & 0.765 \\
+	& \\
+	& \textbf{Mean effects} 
+	& on R   &   0.08 & 0.59 & 0.22  \\
+	& & on G &  -1    & 0.05 & -0.48 \\
+	& & on B &  -0.47 & 0.14 & -0.02 \\
+	& \\
+	& \textbf{\% of total contributions} 
+	& to R   &  0.02 & 0.93 & 0.05 \\ 
+    & & to G &  0.9  & 0    & 0.1  \\
+    & & to B &  0.9  & 0.1  & 0    \\
+	& \\
+	\hline
+	& \\
+	& \textbf{replicate C} \\
+	% \textbf{Replicate C} & $r^2$  &   &  0.923 & 0.962 & 0.726 \\
+	& \\
+	& \textbf{Mean effects} 
+    &   on R & -0.1  &  0.45 &  0.93 \\
+    & & on G & -1.76 & -0.13 & -0.12 \\
+    & & on B & -0.76 &  0.01 &  0.08 \\
+	& \\
+	& \textbf{\% of total contributions} 
+	& to R   & 0.01 & 0.31 & 0.67 \\
+    & & to G & 0.99 & 0.01 & 0    \\
+    & & to B & 0.99 & 0    & 0.01 \\
+\end{tabular}
+\setstretch{2.0}
+\end{center}
+\end{table}
+\newpage
+
+
+
+\newpage
+\section{Supplementary}
+\appendix
+\beginsupplement
+
+\section{Bayesian regularisation}
+
+The fitting of the models is performed in a Bayesian framework, considering normal error structure for the residuals, and normal prior density distributions on the parameters
+
+\vspace{-0.5cm}
+\begin{equation}
+	p(\theta | \mathcal{D}) \propto  p(\mathcal{D} | \theta) p(\theta)
+\end{equation}
+
+where $\theta$ is the parameter vector of the model, and $\mathcal{D}$ the evidence, namely the data that the model is fitted to.
+% In the case of the interpolation, the evidence is the population densities, either $R(t)$, $G(t)$, or $B(t)$, and the parameters are the weights $\Omega$ in the sinusoid SLPs.
+% In the case of fitting the NODE model to the interpolated data, the evidence is the interpolated per-capita growth rate of each population, either $\tilde{r}_R$, $\tilde{r}_G$, or $\tilde{r}_B$, and the parameters are the weights $\beta_R$, $\beta_G$, and $\beta_B$ in the non-parametric per-capita growth rates $r_R$, $r_G$, and $r_B$.
+Assuming a normal likelihood for the residuals given the evidence we get
+
+\vspace{-0.5cm}
+\begin{equation}
+	p( \mathcal{D} | \theta) = \prod_{i=1}^{I} \frac{1}{\sqrt{2\pi\sigma^2}}  \exp \left\{ -\frac{e_i(\mathcal{D},\theta)^2}{2\sigma^2}  \right\}
+\end{equation}
+
+where $e_i(\mathcal{D},\theta)$ are the residuals of the model given the parameters, and the evidence. 
+In the case of the interpolation, the residuals correspond to the observation error $\epsilon^{(o)}$ (equation 3).
+In the case of the NODE approximation, they correspond to the process error $\epsilon^{(p)}$ (equation 7).
+% The dispersion term $\sigma$ in the likelihood is measured by the parameters $\sigma_1$ in the case of the interpolation, and $\sigma_2$ in the case of the NODE fitting.
+$I$ is the number of data points, either observations in the case of the interpolation, or interpolated points in the case of the NODE fitting.
+
+The prior probability density functions for the parameters are given by
+
+\vspace{-0.5cm}
+\begin{equation}
+	p(\theta) = \prod_{j=1}^{J} \frac{1}{\sqrt{2\pi\delta^2}}  \exp \left\{ -\frac{\theta_j^2}{2\delta_j^2}  \right\}
+\end{equation}
+
+where $J$ is the number of parameters in the models.
+The parameter $\delta_j$ controls the dispersion of the priors, and thereby the complexity/level of constraint of the model.
+
+There is no standard approach for choosing $\delta$.
+Low values of dispersion may increase constraint on parameters too drastically, which would lead to underfitting, and result in a reduction of the variance of parameter estimates and bias mean estimates towards 0.
+In contrast, too high values of dispersion may lead to overfitting, by allowing for more complex shapes.
+To account for this, we optimise the models on the second-level of inference.
+This means that we are finding the optimal value of $\delta$, in addition to optimising the model parameters. 
+We do this by optimising the marginal posterior density of the parameters, obtained by averaging out $\delta$ following a modification of the approach developped by Cawley and Talbot (\cite{Cawley2007}). 
+This yields the following expression for the marginal log posterior density of the parameters 
+
+\vspace{-0.5cm}
+\begin{equation}
+    \log P(\Omega | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} \left( \epsilon^{(o)}_i \right)^2 \right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \Omega_{j}^2 \right)
+\end{equation}
+
+\vspace{-0.5cm}
+\begin{equation}
+    \log p(\beta | \Omega) \propto - \frac{1}{2} \sum_{i=1}^{I} \left( \frac{\epsilon^{(p)}_i}{\sigma} \right)^2 - \frac{1}{2} \sum_{j=1}^{J} \left( \frac{\beta_j}{\delta_j} \right)^2
+\end{equation}
+
+
+which amounts to optimising the log of the sum of squared residuals rather than the sum of squared residuals. $P(\theta | \mathcal{D})$ designates the marginal posterior distribution. 
+More details on how to derive this expression from equation (8) can be found in a supplementary file (See supplementary A).
+
+In this section we describe how to derive the modified model selection critieria developed by Cawley and Talbot (\cite{Cawley2007}).
+Bayesian regularisation simply amounts to constraining the values of the parameters in the model to be close to a desired value. 
+Usually, parameters are constrained by choosing normal priors centered about 0.
+In this case, the standard deviation of the normal priors governs the range of values that the parameters can take, and hence constrains more or less strongly the behaviour of the model (\cite{Cawley2007}).
+Performing inference on the second level means that we are trying to find the appropriate value of the dispersion of the priors, in other words, the appropriate level of constraint on the model. 
+In practice, choosing the level of constraint is difficult, Cawley and Talbot hence developed a criterion to perform model selection on the second level of inference.
+They proposed to optimise the marginal posterior distribution by averaging out the dispersion of the priors.
+With an appropriate choice of prior, the dispersion can be integrated out, leaving us with a formula for the posterior that only depends on the parameters of the model,
+
+\begin{equation}
+	\log P(\theta | \mathcal{D}) \propto - \frac{I}{2} \log \left(\sum_{i=1}^{I} e_i(\mathcal{D},\theta)^2\right) - \frac{J}{2} \log \left(\sum_{j=1}^{J} \theta_{j}^2 \right)
+\end{equation}
+
+where $P(\theta|\mathcal{D})$ denotes the marginal posterior density, $\mathcal{D}$ denotes the evidence, $I$ and $J$ denote the number of data points and parameters, respectively, $e_i$ denote the residuals of the model, and $\theta$ denote the parameters of the model.
+The construction is elegant because it is not sensitive to the choice of prior hyperparameters, and simple as it amounts to optimising the log of the sum of squares, rather than the sum of squares (in the case of normal ordinary least square).
+
+The issue with this formula is that the marginal posterior density is infinity when the parameters are 0, which leads to underfitting.
+In this paper we use a modified criterion, which corrects for that problem 
+
+\begin{equation}
+	\log P(\theta | \mathcal{D}) \propto - \frac{I}{2} \log \left(1 + \sum_{i=1}^{I} e_i(\mathcal{D},\theta)^2\right) - \frac{J}{2} \log \left(1 + \sum_{j=1}^{J} \theta_{j}^2 \right)
+\end{equation}
+
+where the marginal posterior density depends only on the residuals of the model when the parameters are equal to 0, and otherwise depends on both the parameters and the residudals. 
+This construction can be obtained simply by assuming a gamma prior for the parameters $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi \right\}$, where $\xi$ is the regularisation parameter, instead of the improper Jeffreys' prior that Cawley and Talbot used in their original study, namely $p(\xi) \propto \frac{1}{\xi}$. 
+The details of the integration of the posterior distribution over $\xi$ can be found in Cawley and Talbot's orginal paper.
+
+% %%
+% \section{Cross validation}
+% 
+% %% figure
+% \newpage
+% \begin{figure}[H]
+% \includegraphics[width=1\linewidth,page=3]{figures.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS2.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS3.pdf}
+% \caption{
+% \textbf{Cross validation plot}
+% }
+% \end{figure}
+% \newpage
+% 
+% %% figure
+% \newpage
+% \begin{figure}[H]
+% \includegraphics[width=1\linewidth,page=6]{figures.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS2.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS3.pdf}
+% \caption{
+% \textbf{Cross validation plot}
+% }
+% \end{figure}
+% \newpage
+% 
+% %% figure
+% \newpage
+% \begin{figure}[H]
+% \includegraphics[width=1\linewidth,page=9]{figures.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS2.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS3.pdf}
+% \caption{
+% \textbf{Cross validation plot}
+% }
+% \end{figure}
+% \newpage
+% 
+% %% figure
+% \newpage
+% \begin{figure}[H]
+% \includegraphics[width=1\linewidth,page=12]{figures.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS2.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS3.pdf}
+% \caption{
+% \textbf{Cross validation plot}
+% }
+% \end{figure}
+% \newpage
+% 
+% %% figure
+% \newpage
+% \begin{figure}[H]
+% \includegraphics[width=1\linewidth,page=2]{figures.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS2.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS3.pdf}
+% \caption{
+% \textbf{Cross validation plot}
+% }
+% \end{figure}
+% \newpage
+% 
+% %% figure
+% \newpage
+% \begin{figure}[H]
+% \includegraphics[width=1\linewidth,page=5]{figures.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS2.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS3.pdf}
+% \caption{
+% \textbf{Cross validation plot}
+% }
+% \end{figure}
+% \newpage
+% 
+% %% figure
+% \newpage
+% \begin{figure}[H]
+% \includegraphics[width=1\linewidth,page=8]{figures.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS2.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS3.pdf}
+% \caption{
+% \textbf{Cross validation plot}
+% }
+% \end{figure}
+% \newpage
+% 
+% %% figure
+% \newpage
+% \begin{figure}[H]
+% \includegraphics[width=1\linewidth,page=11]{figures.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS2.pdf}
+% % \includegraphics[width=0.5\linewidth,page=6]{figures/TS3.pdf}
+% \caption{
+% \textbf{Cross validation plot}
+% }
+% \end{figure}
+% \newpage
+
+
+
+
+
+\end{document} 

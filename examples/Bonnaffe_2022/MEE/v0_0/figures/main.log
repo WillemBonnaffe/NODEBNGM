@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  13 DEC 2022 13:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.13)  15 DEC 2022 15:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -731,25 +731,57 @@ File: scripts/RStudio_Ushio/out/fig_predictions_p.pdf Graphic file (type pdf)
 Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_predictions_p.pdf , page
 4 used on input line 243.
 (pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
- [34 <./scripts/RStudio_Ushio/out/fig_predictions_p.pdf>] (./main.aux) ) 
+ [34 <./scripts/RStudio_Ushio/out/fig_predictions_p.pdf>]
+<scripts/RStudio_Ushio/out/fig_crossVal_p.pdf, id=477, page=1, 505.89pt x 505.8
+9pt>
+File: scripts/RStudio_Ushio/out/fig_crossVal_p.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_crossVal_p.pdf, page 1>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_crossVal_p.pdf , page1 u
+sed on input line 248.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [35 <./scripts/RStudio_Ushio/out/fig_crossVal_p.pdf>]
+<scripts/RStudio_Ushio/out/fig_crossVal_p.pdf, id=489, page=2, 505.89pt x 505.8
+9pt>
+File: scripts/RStudio_Ushio/out/fig_crossVal_p.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_crossVal_p.pdf, page 2>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_crossVal_p.pdf , page2 u
+sed on input line 253.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [36 <./scripts/RStudio_Ushio/out/fig_crossVal_p.pdf>]
+<scripts/RStudio_Ushio/out/fig_crossVal_p.pdf, id=501, page=3, 505.89pt x 505.8
+9pt>
+File: scripts/RStudio_Ushio/out/fig_crossVal_p.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_crossVal_p.pdf, page 3>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_crossVal_p.pdf , page3 u
+sed on input line 258.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [37 <./scripts/RStudio_Ushio/out/fig_crossVal_p.pdf>]
+<scripts/RStudio_Ushio/out/fig_crossVal_p.pdf, id=514, page=4, 505.89pt x 505.8
+9pt>
+File: scripts/RStudio_Ushio/out/fig_crossVal_p.pdf Graphic file (type pdf)
+<use scripts/RStudio_Ushio/out/fig_crossVal_p.pdf, page 4>
+Package pdftex.def Info: scripts/RStudio_Ushio/out/fig_crossVal_p.pdf , page4 u
+sed on input line 263.
+(pdftex.def)             Requested size: 512.1496pt x 512.15677pt.
+ [38 <./scripts/RStudio_Ushio/out/fig_crossVal_p.pdf>] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 12644 strings out of 478268
- 271446 string characters out of 5846347
+ 12660 strings out of 478268
+ 272388 string characters out of 5846347
  517278 words of memory out of 5000000
- 30631 multiletter control sequences out of 15000+600000
+ 30647 multiletter control sequences out of 15000+600000
  469766 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,7n,104p,416b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/l
-ocal/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/lo
-cal/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2022/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2
-022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-
-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (34 pages, 1358014 bytes).
+</usr/loca
+l/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
+/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
+exlive/2022/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2022
+/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-dis
+t/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (38 pages, 1380349 bytes).
 PDF statistics:
- 485 PDF objects out of 1000 (max. 8388607)
- 362 compressed objects within 4 object streams
+ 537 PDF objects out of 1000 (max. 8388607)
+ 401 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

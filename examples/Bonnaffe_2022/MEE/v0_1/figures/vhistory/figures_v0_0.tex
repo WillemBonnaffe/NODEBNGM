@@ -1,0 +1,208 @@
+%% setup
+\documentclass[multi=page]{standalone}
+%
+%% tikzipicture
+\usepackage{tikz}
+%
+%% to use sans serif font
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{helvet}
+% \usepackage{mathptmx} (times)
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%
+%% COMMANDS %%
+%%%%%%%%%%%%%%
+
+%% figurePage
+%% goal: create a new figure page
+% @arg1 - scaling of content of figure page
+% @arg2 - content of figure page
+\newcommand{\figurePage}[2]{
+	\begin{page}
+		\begin{tikzpicture}
+			\node [minimum size = 18cm,rectangle,fill=white] at (0,0) {}; %% frame
+			\node [scale=#1] at (0,0) {
+				#2
+			};
+		\end{tikzpicture}
+	\end{page}
+}
+
+%% cropMask
+%% goal: create a crop mask function
+% @arg1 - width of mask
+% @arg2 - height of mask
+% @arg3 - x center of mask content
+% @arg4 - y center of mask content
+% @arg5 - x position of mask 
+% @arg6 - y position of mask
+% @arg7 - content of mask
+\newcommand{\cropMask}[7]{
+	\node [minimum width=#1,minimum height=#2,path picture={
+			\node at (#3,#4) {
+				#7
+			};
+		}] at (#5,#6) {};
+}
+
+%
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%
+%% FIGURES METHODS %%
+%%%%%%%%%%%%%%%%%%%%%
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"supporting/overview.jpeg"}
+}
+
+%
+%%%
+
+%%%%%%%%%%%%%%%%%
+%% FIGURES POC %%
+%%%%%%%%%%%%%%%%%
+
+
+%% TS LV 1 %%
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_POC_v0_0/out/GT_LV/TS_LV_1.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_1/figures.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=2]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_1/figures.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=3]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_1/figures.pdf"}
+}
+
+
+%% TS LV 2 %%
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_POC_v0_0/out/GT_LV/TS_LV_2.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_2/figures.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=2]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_2/figures.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=3]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_2/figures.pdf"}
+}
+
+
+%% TS LV 3 %%
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_POC_v0_0/out/GT_LV/TS_LV_3.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_3/figures.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=2]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_3/figures.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=3]{"scripts/NODE_GM_POC_v0_0/out/TS_LV_3/figures.pdf"}
+}
+
+
+%
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FIGURES CASE STUDIES %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% TS RPS %%
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"supporting/RPS.jpeg"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_v0_9/out/RPS/figures_o.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_v0_9/out/RPS/figures_p.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=2]{"scripts/NODE_GM_v0_9/out/RPS/figures_p.pdf"}
+}
+
+%% TS HL %%
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_v0_9/out/HL_long/figures_o.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_v0_9/out/HL_long/figures_p.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=2]{"scripts/NODE_GM_v0_9/out/HL_long/figures_p.pdf"}
+}
+
+%% TS AFR %%
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_v0_9/out/TS_1/figures_o.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=1]{"scripts/NODE_GM_v0_9/out/TS_1/figures_p.pdf"}
+}
+
+%% new figure
+\figurePage{.9}{
+	\includegraphics[page=2]{"scripts/NODE_GM_v0_9/out/TS_1/figures_p.pdf"}
+}
+
+%
+%%%
+
+
+\end{document}
