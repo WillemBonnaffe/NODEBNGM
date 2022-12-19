@@ -1011,13 +1011,19 @@
     \field{year}{2007}
   \endentry
 
-  \entry{Cenci2018}{article}{}
-    \name{author}{2}{}{%
+  \entry{Cenci2019a}{article}{}
+    \name{author}{3}{}{%
       {{hash=CS}{%
          family={Cenci},
          familyi={C\bibinitperiod},
          given={Simone},
          giveni={S\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Sugihara},
+         familyi={S\bibinitperiod},
+         given={George},
+         giveni={G\bibinitperiod},
       }}%
       {{hash=SS}{%
          family={Saavedra},
@@ -1027,52 +1033,56 @@
       }}%
     }
     \list{publisher}{1}{%
-      {Royal Society Publishing}%
+      {British Ecological Society}%
     }
-    \keyw{Biotic interactions,Jacobian matrix,Model averaging,Multivariate time
-  series,Statistical inference,Uncertainty quantification}
-    \strng{namehash}{CSSS1}
-    \strng{fullhash}{CSSS1}
+    \keyw{S-map,nonlinear time series,out-of-sample forecast,parameter
+  inference,process noise,regularization}
+    \strng{namehash}{CSSGSS1}
+    \strng{fullhash}{CSSGSS1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{labelyear}{2018}
+    \field{labelyear}{2019}
     \field{labeldatesource}{}
     \field{sortinit}{C}
     \field{sortinithash}{C}
     \field{abstract}{%
-    Biotic interactions are expected to play a major role in shaping the
-  dynamics of ecological systems. Yet, quantifying the effects of biotic
-  interactions has been challenging due to a lack of appropriate methods to
-  extract accurate measurements of interaction parameters from experimental
-  data. One of the main limitations of existing methods is that the parameters
-  inferred from noisy, sparsely sampled, nonlinear data are seldom uniquely
-  identifiable. That is, many different parameters can be compatible with the
-  same dataset and can generalize to independent data equally well. Hence, it
-  is difficult to justify conclusive assertions about the effect of biotic
-  interactions without information about their associated uncertainty. Here, we
-  develop an ensemble method based on model averaging to quantify the
-  uncertainty associated with the effect of biotic interactions on community
-  dynamics from non-equilibrium ecological time-series data. Our method is able
-  to detect the most informative time intervals for each biotic interaction
-  within a multivariate time series and can be easily adapted to different
-  regression schemes. Overall, this novel approach can be used to associate a
-  time-dependent uncertainty with the effect of biotic interactions. Moreover,
-  because we quantify uncertainty with minimal assumptions about the
-  data-generating process, our approach can be applied to any data for which
-  interactions among variables strongly affect the overall dynamics of the
-  system.%
+    It is well known that fluctuations of species abundances observed in
+  ecological time series emerge from an interplay between deterministic
+  nonlinear dynamics and stochastic forces. Importantly, nonlinearity and
+  stochasticity introduce significant challenges to the analysis of ecological
+  time series, such as the inference of the effect of species interactions on
+  community dynamics and forecasting of species abundances. Local linear fits
+  with state-space-dependent kernel functions, known as S-maps, provide an
+  efficient method to infer Jacobian coefficients (a proxy for the local effect
+  of species interactions) and to make reliable forecasts from nonlinear time
+  series. Yet, while it has been shown that the S-map outperforms existing
+  methods for nonparametric inference and forecasting, the methodology is
+  sensitive to process noise. To overcome this limitation, we integrate the
+  S-map with different regularization schemes. To validate our approach, we
+  test our methodology against different levels of noise and nonlinearity using
+  three standard population dynamics models. We show that an appropriate choice
+  of the regularization scheme, alongside an accurate choice of the kernel
+  functions, can significantly improve the in-sample inference of Jacobian
+  coefficients and the out-of-sample forecast of species abundances in the
+  presence of process noise. We further validate our methodology using two
+  empirical time series of marine microbial communities. Our results illustrate
+  that the regularized S-map is an efficient method for nonparametric inference
+  and forecasting from noisy, nonlinear, ecological time series. Yet, attention
+  must be paid on the regularization scheme and the structure of the kernel for
+  whether inference or forecasting is the ultimate goal of a research study.%
     }
     \verb{doi}
-    \verb 10.1098/rsif.2018.0695
+    \verb 10.1111/2041-210X.13150
     \endverb
-    \field{issn}{17425662}
-    \field{issue}{147}
-    \field{title}{Uncertainty quantification of the effects of biotic
-  interactions on community dynamics from nonlinear time-series data}
-    \field{volume}{15}
-    \field{journaltitle}{Journal of the Royal Society Interface}
-    \field{month}{10}
-    \field{year}{2018}
+    \field{issn}{2041210X}
+    \field{issue}{5}
+    \field{pages}{650\bibrangedash 660}
+    \field{title}{Regularized S-map for inference and forecasting with noisy
+  ecological time series}
+    \field{volume}{10}
+    \field{journaltitle}{Methods in Ecology and Evolution}
+    \field{month}{05}
+    \field{year}{2019}
   \endentry
 
   \entry{Chen2018}{article}{}
@@ -1136,6 +1146,83 @@
     \endverb
     \field{journaltitle}{arXiv}
     \field{year}{2019}
+  \endentry
+
+  \entry{Coenen2020}{article}{}
+    \name{author}{5}{}{%
+      {{hash=CAR}{%
+         family={Coenen},
+         familyi={C\bibinitperiod},
+         given={Ashley\bibnamedelima R.},
+         giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=HSK}{%
+         family={Hu},
+         familyi={H\bibinitperiod},
+         given={Sarah\bibnamedelima K.},
+         giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=LE}{%
+         family={Luo},
+         familyi={L\bibinitperiod},
+         given={Elaine},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=MD}{%
+         family={Muratore},
+         familyi={M\bibinitperiod},
+         given={Daniel},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=WJS}{%
+         family={Weitz},
+         familyi={W\bibinitperiod},
+         given={Joshua\bibnamedelima S.},
+         giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Frontiers Media S.A.}%
+    }
+    \keyw{clustering,code:R,code:matlab,inference,marine microbiology,microbial
+  ecology,periodicity,time-series analysis}
+    \strng{namehash}{CAR+1}
+    \strng{fullhash}{CARHSKLEMDWJS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    Time-series can provide critical insights into the structure and function
+  of microbial communities. The analysis of temporal data warrants statistical
+  considerations, distinct from comparative microbiome studies, to address
+  ecological questions. This primer identifies unique challenges and approaches
+  for analyzing microbiome time-series. In doing so, we focus on (1)
+  identifying compositionally similar samples, (2) inferring putative
+  interactions among populations, and (3) detecting periodic signals. We
+  connect theory, code and data via a series of hands-on modules with a
+  motivating biological question centered on marine microbial ecology. The
+  topics of the modules include characterizing shifts in community structure
+  and activity, identifying expression levels with a diel periodic signal, and
+  identifying putative interactions within a complex community. Modules are
+  presented as self-contained, open-access, interactive tutorials in R and
+  Matlab. Throughout, we highlight statistical considerations for dealing with
+  autocorrelated and compositional data, with an eye to improving the
+  robustness of inferences from microbiome time-series. In doing so, we hope
+  that this primer helps to broaden the use of time-series analytic methods
+  within the microbial ecology research community.%
+    }
+    \verb{doi}
+    \verb 10.3389/fgene.2020.00310
+    \endverb
+    \field{issn}{16648021}
+    \field{title}{A Primer for Microbiome Time-Series Analysis}
+    \field{volume}{11}
+    \field{journaltitle}{Frontiers in Genetics}
+    \field{month}{04}
+    \field{year}{2020}
   \endentry
 
   \entry{Coulson2004}{article}{}
@@ -1556,6 +1643,114 @@
   equation models in biology}
     \field{journaltitle}{arXiv}
     \field{year}{2022}
+  \endentry
+
+  \entry{Funahashi1993}{article}{}
+    \name{author}{2}{}{%
+      {{hash=iFK}{%
+         prefix={ichi},
+         prefixi={i\bibinitperiod},
+         family={Funahashi},
+         familyi={F\bibinitperiod},
+         given={Ken},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=NY}{%
+         family={Nakamura},
+         familyi={N\bibinitperiod},
+         given={Yuichi},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \keyw{Approximation,Autonomous system,Continuous curve,Continuous time
+  recurrent neural network,Dynamical system,Hidden unit,Internal
+  state,Trajectory}
+    \strng{namehash}{FKiNY1}
+    \strng{fullhash}{FKiNY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1993}
+    \field{labeldatesource}{}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{abstract}{%
+    In this paper, we prove that any finite time trajectory of a given
+  n-dimensional dynamical system can be approximately realized by the internal
+  state of the output units of a continuous time recurrent neural network with
+  n output units, some hidden units, and an appropriate initial condition. The
+  essential idea of the proof is to embed the n-dimensional dynamical system
+  into a higher dimensional one which defines a recurrent neural network. As a
+  corollary, we also show that any continuous curve can be approximated by the
+  output of a recurrent neural network. © 1993 Pergamon Press Ltd.%
+    }
+    \verb{doi}
+    \verb 10.1016/S0893-6080(05)80125-X
+    \endverb
+    \field{issn}{08936080}
+    \field{issue}{6}
+    \field{note}{- Proves that continuous time recurrent ANN can be used to
+  model dynamical systems.}
+    \field{pages}{801\bibrangedash 806}
+    \field{title}{Approximation of dynamical systems by continuous time
+  recurrent neural networks}
+    \field{volume}{6}
+    \field{journaltitle}{Neural Networks}
+    \field{year}{1993}
+  \endentry
+
+  \entry{Goren2009}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GM}{%
+         family={Goren},
+         familyi={G\bibinitperiod},
+         given={Menachem},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GK}{%
+         family={Gayer},
+         familyi={G\bibinitperiod},
+         given={Kfir},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=LN}{%
+         family={Lazarus},
+         familyi={L\bibinitperiod},
+         given={Nimrod},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Regional Euro-Asian Biological Invasions Centre}%
+    }
+    \keyw{Alien species,Ballast water,Mediterranean sea,Tridentiger
+  trigonocephalus}
+    \strng{namehash}{GMGKLN1}
+    \strng{fullhash}{GMGKLN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2009}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{abstract}{%
+    The chameleon goby Tridentiger trigonocephalus (Gill, 1859) was found in
+  Ashdod Harbor (Israel). This is the first record of this species in the
+  Mediterranean. T. trigonocephalus is the third fish species directly
+  human-mediated introduction (via ballast water in vessels) of a fish species
+  into the Eastern Mediterranean and the sixth alien goby in this region. ©
+  2009 The Author(s).%
+    }
+    \verb{doi}
+    \verb 10.3391/ai.2009.4.2.22
+    \endverb
+    \field{issn}{18185487}
+    \field{issue}{2}
+    \field{pages}{413\bibrangedash 415}
+    \field{title}{First record of the far East Chameleon goby tridentiger
+  trigonocephalus (Gill, 1859) in the Mediterranean Sea}
+    \field{volume}{4}
+    \field{journaltitle}{Aquatic Invasions}
+    \field{year}{2009}
   \endentry
 
   \entry{Gross2005}{article}{}
@@ -3033,6 +3228,96 @@
     \field{year}{2019}
   \endentry
 
+  \entry{Ridenhour2017}{article}{}
+    \name{author}{7}{}{%
+      {{hash=RBJ}{%
+         family={Ridenhour},
+         familyi={R\bibinitperiod},
+         given={Benjamin\bibnamedelima J.},
+         giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=BSL}{%
+         family={Brooker},
+         familyi={B\bibinitperiod},
+         given={Sarah\bibnamedelima L.},
+         giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=WJE}{%
+         family={Williams},
+         familyi={W\bibinitperiod},
+         given={Janet\bibnamedelima E.},
+         giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=LJTV}{%
+         family={Leuven},
+         familyi={L\bibinitperiod},
+         given={James T.\bibnamedelima Van},
+         giveni={J\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim
+  V\bibinitperiod},
+      }}%
+      {{hash=MAW}{%
+         family={Miller},
+         familyi={M\bibinitperiod},
+         given={Aaron\bibnamedelima W.},
+         giveni={A\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=DMD}{%
+         family={Dearing},
+         familyi={D\bibinitperiod},
+         given={M.\bibnamedelima Denise},
+         giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=RCH}{%
+         family={Remien},
+         familyi={R\bibinitperiod},
+         given={Christopher\bibnamedelima H.},
+         giveni={C\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Nature Publishing Group}%
+    }
+    \strng{namehash}{RBJ+1}
+    \strng{fullhash}{RBJBSLWJELJTVMAWDMDRCH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{abstract}{%
+    As sequencing technologies have advanced, the amount of information
+  regarding the composition of bacterial communities from various environments
+  (for example, skin or soil) has grown exponentially. To date, most work has
+  focused on cataloging taxa present in samples and determining whether the
+  distribution of taxa shifts with exogenous covariates. However, important
+  questions regarding how taxa interact with each other and their environment
+  remain open thus preventing in-depth ecological understanding of microbiomes.
+  Time-series data from 16S rDNA amplicon sequencing are becoming more common
+  within microbial ecology, but methods to infer ecological interactions from
+  these longitudinal data are limited. We address this gap by presenting a
+  method of analysis using Poisson regression fit with an elastic-net penalty
+  that (1) takes advantage of the fact that the data are time series; (2)
+  constrains estimates to allow for the possibility of many more interactions
+  than data; and (3) is scalable enough to handle data consisting of thousands
+  of taxa. We test the method on gut microbiome data from white-throated
+  woodrats (Neotoma albigula) that were fed varying amounts of the plant
+  secondary compound oxalate over a period of 22 days to estimate interactions
+  between OTUs and their environment.%
+    }
+    \verb{doi}
+    \verb 10.1038/ismej.2017.107
+    \endverb
+    \field{issn}{17517370}
+    \field{issue}{11}
+    \field{pages}{2526\bibrangedash 2537}
+    \field{title}{Modeling time-series data from microbial communities}
+    \field{volume}{11}
+    \field{journaltitle}{ISME Journal}
+    \field{month}{11}
+    \field{year}{2017}
+  \endentry
+
   \entry{Rosenbaum2019}{article}{}
     \name{author}{5}{}{%
       {{hash=RB}{%
@@ -3115,40 +3400,36 @@
     \endverb
     \field{issn}{2296701X}
     \field{issue}{234}
-    \field{note}{<b>From Duplicate 2 (<i>Estimating parameters from multiple
-  time series of population dynamics using bayesian inference</i> - Rosenbaum,
-  Benjamin; Raatz, Michael; Weithoff, Guntram; Fussmann, Gregor F.; Gaedke,
-  Ursula)<br/></b><br/>Takeaway:<br/>- the authors examplify the use of
-  Bayesian ODE fitting to time series to recover ecological parameters of
-  interest in a prey-predator chemostat system. <br/><br/>Notes:<br/>- The
-  author state that they rely on HMC to fit their models while mentionning that
-  the likelihood is evaluated numerically. I see that as a big problem and one
-  that is not reasurring when it comes to the reliability of the work.<br/>-
-  The author use a hierarchical model to fit the model to different time
-  series. I find this quite elegant.<br/>- I find that the model fit are
-  rubbish, which is a second point that advise caution.<br/>- I realise that
-  this is not completely novel, there have been applications of the method
-  recently, it exists in other fields, the authors barely acknowledge
-  this.<br/>- The author fitted a deterministic ODE model to 18 different time
-  series of the same system. They found variation in the vital rates across
-  time series. They however only briefly conclude that it may be due to
-  differences in phenotpyic structure of populations. Not more. <br/>- There
-  are several key differences with your work on rotifer (1) the time series
-  display more variations in dynamics, potentially in line with the fact that
-  they did not use very similar populations (experiment performed over 7
-  years!), so not really true replicates in this sense, rather different
-  populations; (2) they use only 2 species ; (3) they use a single parametric
-  model, the fit of which is not even that good, which may be biasing a lot the
-  results (dixit structural sensitivity), your approaches is non parametric and
-  therefore better in this case ; (4) they do not really discuss that<br/>- You
-  can potentially position yourself by stating that this is close to a
-  replicated system but not completely, what about populations that are
-  actually almost identical?<br/>- It seems that the time series come from
-  different experiments, so technically not really replicates and differences
-  in dynamics and dynamical processes are expected. The origin and differences
-  among these time series is unclear and we cannot draw conclusions regarding
-  the source of variability in dynamical processes. This is however a very
-  interesting stepping stone to jump from.}
+    \field{note}{Takeaway:<br/>- the authors examplify the use of Bayesian ODE
+  fitting to time series to recover ecological parameters of interest in a
+  prey-predator chemostat system. <br/><br/>Notes:<br/>- The author state that
+  they rely on HMC to fit their models while mentionning that the likelihood is
+  evaluated numerically. I see that as a big problem and one that is not
+  reasurring when it comes to the reliability of the work.<br/>- The author use
+  a hierarchical model to fit the model to different time series. I find this
+  quite elegant.<br/>- I find that the model fit are rubbish, which is a second
+  point that advise caution.<br/>- I realise that this is not completely novel,
+  there have been applications of the method recently, it exists in other
+  fields, the authors barely acknowledge this.<br/>- The author fitted a
+  deterministic ODE model to 18 different time series of the same system. They
+  found variation in the vital rates across time series. They however only
+  briefly conclude that it may be due to differences in phenotpyic structure of
+  populations. Not more. <br/>- There are several key differences with your
+  work on rotifer (1) the time series display more variations in dynamics,
+  potentially in line with the fact that they did not use very similar
+  populations (experiment performed over 7 years!), so not really true
+  replicates in this sense, rather different populations; (2) they use only 2
+  species ; (3) they use a single parametric model, the fit of which is not
+  even that good, which may be biasing a lot the results (dixit structural
+  sensitivity), your approaches is non parametric and therefore better in this
+  case ; (4) they do not really discuss that<br/>- You can potentially position
+  yourself by stating that this is close to a replicated system but not
+  completely, what about populations that are actually almost identical?<br/>-
+  It seems that the time series come from different experiments, so technically
+  not really replicates and differences in dynamics and dynamical processes are
+  expected. The origin and differences among these time series is unclear and
+  we cannot draw conclusions regarding the source of variability in dynamical
+  processes. This is however a very interesting stepping stone to jump from.}
     \field{pages}{1\bibrangedash 14}
     \field{title}{Estimating parameters from multiple time series of population
   dynamics using bayesian inference}
@@ -3528,29 +3809,99 @@
   \endentry
 
   \entry{Turchin2003}{article}{}
-    \name{author}{1}{}{%
+    \name{author}{10}{}{%
       {{hash=TP}{%
          family={Turchin},
          familyi={T\bibinitperiod},
          given={Peter},
          giveni={P\bibinitperiod},
       }}%
+      {{hash=WSN}{%
+         family={Wood},
+         familyi={W\bibinitperiod},
+         given={Simon\bibnamedelima N},
+         giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=KBE}{%
+         family={Kendall},
+         familyi={K\bibinitperiod},
+         given={Bruce\bibnamedelima E},
+         giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=MWW}{%
+         family={Murdoch},
+         familyi={M\bibinitperiod},
+         given={William\bibnamedelima W},
+         giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Fischlin},
+         familyi={F\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=JJ}{%
+         family={Jeˆ},
+         familyi={J\bibinitperiod},
+         given={Jeˆrome},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CJ}{%
+         family={Casas},
+         familyi={C\bibinitperiod},
+         given={Jeˆrome},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=ME}{%
+         family={Mccauley},
+         familyi={M\bibinitperiod},
+         given={Edward},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=BCJ}{%
+         family={Briggs},
+         familyi={B\bibinitperiod},
+         given={Cheryl\bibnamedelima J},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
     }
-    \strng{namehash}{TP1}
-    \strng{fullhash}{TP1}
+    \keyw{Switzerland,Zeiraphera diniana,forest insects,larch budmoth,nonlinear
+  time-series analysis,parasitism,plant qual-ity,population cycles,trajectory
+  matching}
+    \strng{namehash}{TP+1}
+    \strng{fullhash}{TPWSNESPKBEMWWFAJJCJMEBCJ1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{labelyear}{2003}
     \field{labeldatesource}{}
     \field{sortinit}{T}
     \field{sortinithash}{T}
-    \field{note}{Takeaway<br/>- authors states that of rapid evolution can
-  explain lags in population dynamics.<br/>- authors states that rapid
-  evolution should go away from chaos, but we have no proof of that yet.}
-    \field{pages}{257\bibrangedash 258}
-    \field{title}{Evolution in population dynamics}
-    \field{volume}{424}
-    \field{journaltitle}{Nature}
+    \field{abstract}{%
+    Population cycles have been remarkably resistant to explanation, in part
+  because crucial experiments are rarely possible on appropriate spatial and
+  temporal scales. Here we show how new approaches to nonlinear time-series
+  analysis can distinguish between competing hypotheses for population cycles
+  of larch budmoth in the Swiss Alps: delayed effects of budmoth density on
+  food quality, and budmoth-parasitoid interactions. We reexamined data on
+  budmoth density, plant quality, and parasitism rates. Our results suggest
+  that the effect of plant quality on budmoth density is weak. By contrast, a
+  simple model of budmoth-parasitoid interaction accounts for 90% of the
+  variance in budmoth population growth rates. Thus, contrary to previous
+  studies, we find that parasitoid-budmoth interaction appears to be the
+  dominant factor driving the budmoth cycle.%
+    }
+    \field{issue}{5}
+    \field{pages}{1207\bibrangedash 1214}
+    \field{title}{Dynamical effects of plant quality and parasitism on
+  population cycles of larch budmoth}
+    \field{volume}{84}
+    \field{journaltitle}{Ecology}
     \field{year}{2003}
   \endentry
 
