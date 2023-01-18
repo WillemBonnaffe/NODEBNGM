@@ -53,9 +53,9 @@ utils.ddx.pairwise = function(x) apply(diag(length(x)),2,function(y) as.vector(y
 
 ## .plot.DIN
 ## goal: plot the dynamical interaction network of the system
-# effectsMat - matrix - matrix of pairwise effects between system variables (e.g. row 1 col 2 is the effect of variable 2 on variable 1)
-# weightsMat - matrix - matrix of pairwise weights of the effects between system variables (e.g. row 1 col 2 corresponds to the contribution of variable 2 on variable 1)
-# labels     - vector - vector of the names of the variables in the matrix
+## effectsMat - matrix - matrix of pairwise effects between system variables (e.g. row 1 col 2 is the effect of variable 2 on variable 1)
+## weightsMat - matrix - matrix of pairwise weights of the effects between system variables (e.g. row 1 col 2 corresponds to the contribution of variable 2 on variable 1)
+## labels     - vector - vector of the names of the variables in the matrix
 .plot.DIN = function(effectsMat,weightsMat,labels)
 {
     ## dimensions
@@ -110,7 +110,11 @@ nn.exp = function(x) exp(x)
 nn.ddx.exp = function(x) exp(x)
 
 ## nn.linear
-## goal:
+## goal: linear layer
+## x       - vector - vector of inputs
+## weights - vector - vector of weights
+## I       - int    - number of input elements
+## O       - int    - number of output elements
 nn.linear = function(x,weights,I,O)
 {
   weights = matrix(weights,nrow=I,ncol=O)
@@ -118,7 +122,11 @@ nn.linear = function(x,weights,I,O)
 }
 
 ## nn.ddx.linear
-## goal:
+## goal: return the derivative of the linear layer wtr to inputs
+## x       - vector - vector of inputs
+## weights - vector - vector of weights
+## I       - int    - number of input elements
+## O       - int    - number of output elements
 nn.ddx.linear = function(x,weights,I,O)
 {
   weights = matrix(weights,nrow=I,ncol=O)
@@ -133,12 +141,26 @@ nn.ddx.linear = function(x,weights,I,O)
 ################################
 
 ## model.dYdt_ODE
+## goal: compute dynamics of state variables assuming a linear ODE
+## t    - float  - current time step
+## Y    - vector - input vector with state variables 
+## Beta - vector - parameters of the model
+## I    - int    - number of input elements
+## O    - int    - number of output elements
 n_Beta_ODE = function(I,O) I*O
 model.dYdt_ODE = function(t, Y, Beta, I, O)
 {
   dYdt = nn.linear(Y,Beta,I,O)*Y
   return(list(dYdt))
 }
+
+## model.ddx.dYdt_ODE
+## goal: compute derivative of dynamics of state variables wtr to state variables
+## t    - float  - current time step
+## Y    - vector - input vector with state variables 
+## Beta - vector - parameters of the model
+## I    - int    - number of input elements
+## O    - int    - number of output elements
 model.ddx.dYdt_ODE = function(t, Y, Beta, I, O)
 {
   ddx.dYdt = nn.ddx.linear(Y,Beta,I,O)
@@ -146,6 +168,12 @@ model.ddx.dYdt_ODE = function(t, Y, Beta, I, O)
 }
 
 ## model.dYdt_ODE2
+## goal: compute dynamics of state variables assuming a quadratic ODE model
+## t    - float  - current time step
+## Y    - vector - input vector with state variables 
+## Beta - vector - parameters of the model
+## I    - int    - number of input elements
+## O    - int    - number of output elements
 n_Beta_ODE2 = function(I,O) I*I + I*I*O
 model.dYdt_ODE2 = function(t, Y, Beta, I, O)
 {
@@ -161,6 +189,14 @@ model.dYdt_ODE2 = function(t, Y, Beta, I, O)
   #
   return(list(x5))
 }
+
+## model.ddx.dYdt_ODE2
+## goal: compute dynamics of state variables assuming a quadratic ODE model
+## t    - float  - current time step
+## Y    - vector - input vector with state variables 
+## Beta - vector - parameters of the model
+## I    - int    - number of input elements
+## O    - int    - number of output elements
 model.ddx.dYdt_ODE2 = function(t, Y, Beta, I, O)
 {
   weights_1 = Beta[ c(1:(I*O))]
@@ -182,7 +218,12 @@ model.ddx.dYdt_ODE2 = function(t, Y, Beta, I, O)
 }
 
 ## model.dYdt_NODE
-## goal:
+## goal: compute dynamics of state variables assuming a NODE model
+## t    - float  - current time step
+## Y    - vector - input vector with state variables 
+## W    - vector - weights of the model
+## I    - int    - number of input elements
+## O    - int    - number of output elements
 n_Beta_NODE = function(I,W,O) I*W + W*O + I*O
 model.dYdt_NODE = function(t, Y, Beta, I, W=10, O)
 {
@@ -200,6 +241,14 @@ model.dYdt_NODE = function(t, Y, Beta, I, W=10, O)
   #
   return(list(x6))
 }
+
+## model.ddx.dYdt_NODE
+## goal: compute derivative of dynamics of state variables assuming a NODE model wtr to inputs
+## t    - float  - current time step
+## Y    - vector - input vector with state variables 
+## W    - vector - weights of the model
+## I    - int    - number of input elements
+## O    - int    - number of output elements
 model.ddx.dYdt_NODE = function(t, Y, Beta, I, W=10, O)
 {
   ## debug >>
@@ -238,7 +287,10 @@ model.ddx.dYdt_NODE = function(t, Y, Beta, I, W=10, O)
 #############################
 
 ## model.predict_DE
-## goal:
+## goal: predict state trajectories assuming finite difference
+## times - vector - vector of time steps to get predictions for
+## Y_0   - vector - vector of values of initial state variables
+## Beta  - vector - parameters of the model
 model.predict_DE = function(times, Y_0, Beta)
 {
   Ybar = NULL
@@ -253,15 +305,18 @@ model.predict_DE = function(times, Y_0, Beta)
 }
 
 ## model.predict_ODE
-## goal:
+## goal: predict state trajectories with a numerical ODE solver 
+## times - vector - vector of time steps to get predictions for
+## Y_0   - vector - vector of values of initial state variables
+## Beta  - vector - parameters of the model
 model.predict_ODE = function(times, Y_0, Beta)
 {
   return(ode(y=Y_0, times=times, func=model.dYdt, parms=Beta, method="ode45"))
 }
 
 ## model.predict
-## goal:
-## WIP - think about Ybar as predict function and model.predict as model.predict_wrapper
+## goal: wrapper for predict function to vary only the parameters vector
+## Theta - vector - vector of parameters of the model
 model.predict_wrapper = function(Theta)
 {
   Y_0  = exp(Theta[idx_Y_0()])
@@ -271,7 +326,11 @@ model.predict_wrapper = function(Theta)
 }
 
 ## model.dLogLik
-## goal:
+## goal: compute the log likelihood of the model predictions assuming log normal distributions for state variables
+## TS    - data.frame - time series where the values of variables are listed by columns
+## Y_0   - vector     - initial state of the system
+## Beta  - vector     - parameters of the model
+## Sigma - float      - value of the variance of the log normal likelihood distribution
 model.dLogLik = function(TS, Y_0, Beta, Sigma)
 {
   TS_pred = model.predict(times=TS[,1], Y_0=Y_0, Beta=Beta)
@@ -280,7 +339,10 @@ model.dLogLik = function(TS, Y_0, Beta, Sigma)
 }
 
 ## model.dLogPrior
-## goal:
+## goal: compute the log prior of the model parameters assuming uniform and log normal prior distributions
+## Y_0   - vector     - initial state of the system
+## Beta  - vector     - parameters of the model
+## Sigma - float      - value of the variance of the log normal likelihood distribution
 model.dLogPrior = function(Y_0,Beta,Sigma)
 {
   log_pri = sum(log(dunif(Y_0,0,10))) + 
@@ -290,7 +352,11 @@ model.dLogPrior = function(Y_0,Beta,Sigma)
 }
 
 ## model.dLogPost
-## goal:
+## goal: compute the log posterior distribution of model parameters 
+## TS    - data.frame - time series where the values of variables are listed by columns
+## Y_0   - vector     - initial state of the system
+## Beta  - vector     - parameters of the model
+## Sigma - float      - value of the variance of the log normal likelihood distribution
 model.dLogPost = function(TS, Y_0, Beta, Sigma)
 {
   log_lik = model.dLogLik(TS, Y_0, Beta, Sigma)
@@ -300,7 +366,9 @@ model.dLogPost = function(TS, Y_0, Beta, Sigma)
 }
 
 ## model.dLogPost_wrapper
-## goal:
+## goal: wrapper for the log posterior distribution function to manipulate time series and parameters
+## TS    - data.frame - time series where the values of variables are listed by columns
+## Theta - vector     - parameters of the model and initial value of the state variables
 model.dLogPost_wrapper = function(TS,Theta)
 {
   Y_0   = exp(Theta[idx_Y_0()])
@@ -317,7 +385,7 @@ model.dLogPost_wrapper = function(TS,Theta)
 }
 
 ## model.initiate
-## goal:
+## goal: initiate the parameters of the model and state variables
 model.initiate = function()
 {
   check = F
@@ -336,7 +404,9 @@ model.initiate = function()
 }
 
 ## model.plot
-## goal:
+## goal: visualise the predictions of the model
+## TS      - data.frame - time series where the values of variables are listed by columns
+## TS_pred - data.frame - data frame of the same size which contains the predictions for the state variables
 model.plot = function(TS,TS_pred)
 {
   par(mfrow=c(1,1),mar=c(5,5,0,0),oma=c(0,0,1,1))
