@@ -21,8 +21,6 @@ Requirements:
 
 ## Initialising BNGM
 
-The BNGM analysis should be initialised by specifying the inputs to the model.
-
 In the script `m1_loadData_o.r`, specify the path to the time series: 
 
 ``` R
