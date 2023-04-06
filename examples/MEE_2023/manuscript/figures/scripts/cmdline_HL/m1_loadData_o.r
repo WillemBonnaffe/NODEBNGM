@@ -15,7 +15,6 @@
 
 ## goal: initiate the NODE 
 
-## TS 3DLV ##
 ## load data
 TS = read.table("data/TS_HL.csv",sep=";",header=T)
 for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
