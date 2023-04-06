@@ -67,3 +67,28 @@ This can be done simply by running the command:
 ``` bash
 Rscript m0_main.r
 ```
+
+
+## Description of the scripts
+
+Files: 
+* `data` contains the time series data as csv files
+* `out` contains the output of the scripts 
+* `out_repeat` contains repeat results of the analysis to assess repeatability of the results 
+* `f_NODE_GM.r` contains all the functions necessary to running the scripts
+* `m0_main` contains the commands to run the scripts in the right order to fit NODEs by BNGM 
+
+Observation model:
+* `m1_loadData_o.r` loads and formats the time series data
+* `m2_loadModel_o.r` loads the observation model (i.e. neural networks that interpolate the time series) 
+* `m3_trainModel_o.r` trains the observation model 
+* `m4_plotModel_o.r` visualises outputs of the observation model (i.e. interpolations of states and dynamics) 
+
+Process model
+* `m5_loadData_p.r` loads and formats the interpolated time series and dynamics 
+* `m6_loadModel_p.r` loads the process model (i.e. neural networks that approximates dynamics as function of interpolated states) 
+* `m7_trainModel_p.r` trains the process model 
+* `m8_plotModel_p.r` visualises outputs of the process model (i.e. model fit, effects, and contributions)
+* `m9_crossVal_p.r` performs k-fold cross validation of the process model 
+* `m10_plotCrossVal_p.r` visualises outputs of k-fold cross validation of the process model
+
