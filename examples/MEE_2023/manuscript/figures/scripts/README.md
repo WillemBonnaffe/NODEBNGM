@@ -1,16 +1,15 @@
 # Scripts 
 
 
-## Aim
+## Overview 
 
-This document provides an overview of the script folder and the directories that it contains.
 This folder contains all the scripts and data necessary to replicate the results presented in the manuscript.
 
 
 ## Repository structure
 
 Each folder contains the scripts of a specific analysis of the manuscript:
-* `benchmark` contains the scripts to compare the runtime and accuracy of fitting NODEs by BNGM compared to standard NODEs, parametric polynomical ODEs, and convergent cross mapping (CCM).
+* `benchmark` contains the scripts to compare the runtime and accuracy of fitting NODEs by BNGM compared to standard NODEs, parametric polynomial ODEs, and convergent cross mapping (CCM).
 * `cmdline_HL` contains the scripts to analyse of the hare-lynx time series dataset.
 * `cmdline_TS1-3` contain the scripts to analyse the three replicated time series of the algae, flagellate, rotifer tri-trophic system.
 * `RStudio_Ushio` contains the script to analyse the time series dataset of the Ushio system.
@@ -28,7 +27,7 @@ Each script folder contains the data necessary to perform the analysis, generall
 ## Installation
 
 Requirements:
-* R v4.2.0
+* R v4.2.0 or later
 
 
 ## Running the scripts
