@@ -14,4 +14,3 @@ The repository is structured as follows:
 
 where the manuscript latex files are found in the manuscript/ folder, the figure latex files are found in the manuscript/figures/ folder, and all scripts are found in the manuscript/figures/script/ folder.
 
-
