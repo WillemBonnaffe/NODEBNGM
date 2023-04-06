@@ -4,4 +4,4 @@
 
 This document provides an overview of the scripts folder and the directories that it contains.
 
-![alt text]
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/repo_overview.png)
