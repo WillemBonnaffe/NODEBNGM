@@ -79,6 +79,7 @@ Rscript m0_main.r
 
 ### Data:
 * `data` contains the time series data as csv files
+* `data/TS_LV.csv` contains the time series of the hare and lynx
 
 ### Observation model:
 * `m1_loadData_o.r` loads and formats the time series data
