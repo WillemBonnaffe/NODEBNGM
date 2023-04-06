@@ -1,4 +1,0 @@
-## to do next
-* write the methods section in a more general way (may simplify the explanations)
-* be more straight to the point in the writing
-* think about writing a "tricks" section to explain how in practice things can change
