@@ -25,3 +25,12 @@ The label `RStudio` and `cmdline` in the name denote two different script struct
 Each script folder contains the data necessary to perform the analysis, generally located in the folder `data`, as well as an `out` folder to save the output of the scripts.
 
 
+## Installation
+
+Requirements:
+* R v4.2.0
+
+
+## Running the scripts
+
+Specific instructions on how to run the scripts can be found in each folder.
