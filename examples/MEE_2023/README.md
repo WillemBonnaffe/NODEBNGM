@@ -1,9 +1,10 @@
-# Fast fitting of neural ordinary differential equations by Bayesian neural gradient matching to infer ecological interactions from time series data
+# Bayesian neural gradient matching
 
 
 ## Overview
 
 This repository contains a manuscript that introduces a novel method, Bayesian neural gradient matching (BNGM), to improve the speed and accuracy of neural ordinary differential equations (NODEs) fitting.
+
 NODEs can be used to non-parametrically learn dynamical coupling between variables from time series data.
 NODEs are slow to train, because we need to numerically solve the ODE system at every step of the optimisation.
 BNGM, by interpolating the time series with neural networks, bypasses the numerical integration step.
