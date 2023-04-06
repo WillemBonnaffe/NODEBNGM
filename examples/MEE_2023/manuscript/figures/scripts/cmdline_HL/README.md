@@ -5,11 +5,11 @@
 
 Fit neural ordinary differential equations (NODE) by Bayesian neural gradient matching (BNGM) to nonparametrically infer ecological interactions between the variables in the time series.
 
-The inputs to the framework are:
+### The inputs to the framework are:
 * time series of population densities (strictly positive) from our previous analysis (Bonnaffe et al. 2021).
 * parameters of the observation (interpolation) and process model (NODE)
 
-The outputs of the models are:
+### The outputs of the models are:
 * interpolated states and dynamics (temporal change in population densities)
 * effects and contributions of variable dynamics on each other
 
