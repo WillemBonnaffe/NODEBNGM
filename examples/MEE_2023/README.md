@@ -3,10 +3,20 @@
 
 ## Overview
 
-The 
+This repository contains a manuscript that introduces a novel method, Bayesian gradient matching (BNGM), to improve the speed and accuracy of neural ordinary differential equations (NODEs) fitting.
+
+The method works in two steps (see figure below): 
+* interpolating the time series data with neural networks (observation models), which provides an approximation of the dynamics and state of the variables 
+* approximating the interpolated dynamics of the variables with neural networks (process model) which take as input the interpolated states
 
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/fig_graphical_abstract_1.png)
+
+The output of the approach are:
+* interpolations of the state and dynamics of the variables
+* effects and contributions of each variables to the dynamics of the other variables
+
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/fig_graphical_abstract_2.png)
+
 
 ## Repository structure
 
@@ -16,6 +26,7 @@ The repository contains all the files for the manuscript, which consist of:
 * the R scripts used to generate the results
 
 The repository is structured as follows:
+
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/fig_repo_overview.png)
 
 where the manuscript latex files are found in the `manuscript/` folder, the figure latex files are found in the `manuscript/figures/` folder, and all scripts are found in the `manuscript/figures/scripts/` folder.
