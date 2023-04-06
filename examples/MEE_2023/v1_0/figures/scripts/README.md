@@ -3,3 +3,5 @@
 ## Aim
 
 This document provides an overview of the scripts folder and the directories that it contains.
+
+![alt text]
