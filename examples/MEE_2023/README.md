@@ -32,7 +32,7 @@ The outputs of the approach are:
 The repository contains all the files for the manuscript: 
 * `manuscript/` folder with the latex files to compile the manuscript, figures, and references
 * `manuscript/figures/` folder with the latex files to compile the figures
-* `manuscript/figures/scripts` with the R scripts used to generate the results of the manuscript
+* `manuscript/figures/scripts` with the R scripts that generate the results used for the figures of the manuscript
 
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/fig_repo_overview.png)
 
@@ -40,3 +40,8 @@ The repository contains all the files for the manuscript:
 ## Installation
 
 `Latex` is required to compile the latex files of the manuscript and figures and `R` is required to run the scripts.
+
+
+## Running the scripts
+
+Instructions on how to run the scripts that generate the results used for the figures of the manuscript can be found in the `README.md` file of the `manuscript/figures/scripts` folder.
