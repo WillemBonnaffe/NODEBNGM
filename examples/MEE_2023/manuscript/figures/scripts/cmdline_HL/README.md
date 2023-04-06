@@ -3,10 +3,16 @@
 
 ## Aim
 
-Fit neural ordinary differential equations (NODE) by Bayesian neural gradient matching (BNGM) to nonparametrically infer ecological interactions in the hare-lynx time series.
+Fit neural ordinary differential equations (NODE) by Bayesian neural gradient matching (BNGM) to nonparametrically infer ecological interactions between the variables in the time series.
 
 
 ## Method
+
+
+## Installation
+
+Requirements:
+* R v4.2.0 or later
 
 
 ## Initialising BNGM
@@ -45,14 +51,19 @@ When the initialisation is complete, all modules necessary to perform the analys
 
 ``` R
 ## goal: train observation model
-source("m3_trainModel_o.r");
-source("m4_plotModel_o.r");
+source("m3_trainModel_o.r")
+source("m4_plotModel_o.r")
 
 ## goal: cross validation on process model
-source("m9_crossVal_p.r");
-source("m10_plotCrossVal_p.r");
+source("m9_crossVal_p.r")
+source("m10_plotCrossVal_p.r")
 
 ## goal: train process model 
-source("m7_trainModel_p.r");
-source("m8_plotModel_p.r");
+source("m7_trainModel_p.r")
+source("m8_plotModel_p.r")
+```
+
+This can be done simply by running the command:
+``` bash
+Rscript m0_main.r
 ```
