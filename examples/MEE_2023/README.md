@@ -3,7 +3,10 @@
 
 ## Overview
 
-This repository contains a manuscript that introduces a novel method, Bayesian gradient matching (BNGM), to improve the speed and accuracy of neural ordinary differential equations (NODEs) fitting.
+This repository contains a manuscript that introduces a novel method, Bayesian neural gradient matching (BNGM), to improve the speed and accuracy of neural ordinary differential equations (NODEs) fitting.
+
+
+## Method 
 
 The method works in two steps (see figure below): 
 * interpolating the time series data with neural networks (observation models), which provides an approximation of the dynamics and state of the variables 
@@ -11,7 +14,10 @@ The method works in two steps (see figure below):
 
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/fig_graphical_abstract_1.png)
 
-The output of the approach are:
+
+## Outcome
+
+The outputs of the approach are:
 * interpolations of the state and dynamics of the variables
 * effects and contributions of each variables to the dynamics of the other variables
 
