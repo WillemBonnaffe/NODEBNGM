@@ -5,8 +5,8 @@
 
 The 
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/graphical_abstract_1.png)
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/graphical_abstract_2.png)
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/fig_graphical_abstract_1.png)
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/fig_graphical_abstract_2.png)
 
 ## Repository structure
 
@@ -16,7 +16,7 @@ The repository contains all the files for the manuscript, which consist of:
 * the R scripts used to generate the results
 
 The repository is structured as follows:
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/repo_overview.png)
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/fig_repo_overview.png)
 
 where the manuscript latex files are found in the `manuscript/` folder, the figure latex files are found in the `manuscript/figures/` folder, and all scripts are found in the `manuscript/figures/scripts/` folder.
 
