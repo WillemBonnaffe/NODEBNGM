@@ -269,3 +269,5 @@ C = C*(C>0.1)
 ## Notes 
 * the user could use state interpolations and interpolated dynamics obtained via other methods (e.g. Fourier series, cubic splines)
 * the user could even use raw difference in the data as an estimate of the dynamics
+
+## File description 
