@@ -150,9 +150,7 @@ Omega_o     = model_o$Omega_o
 
 ``` R
 ## visualise observation model fit
-pdf(paste(pathToOut,"/fig_predictions_o.pdf",sep=""))
 plotModel_o(TS,alpha_i,Yhat_o,ddt.Yhat_o)
-dev.off()
 ```
 
 ### Storing the results
@@ -194,9 +192,7 @@ Omega_p    = model_p$Omega_p
 ### Visualise process model
 
 ```R
-pdf(paste(pathToOut,"/fig_predictions_p.pdf",sep=""))
 plotModel_p(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
-dev.off()
 ```
 
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_p.png)
@@ -244,9 +240,7 @@ C = C*(C>0.1)
 ``` R
 ##
 ## DYNAMICAL INTERACTION PLOT (v1)
-pdf(paste(pathToOut,"/fig_DIN_v1.pdf",sep=""),width=10,height=10)
 .plot.DIN(J,C,colnames(TS)[-1])
-dev.off()
 ```
 
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_DIN_v1.png)
