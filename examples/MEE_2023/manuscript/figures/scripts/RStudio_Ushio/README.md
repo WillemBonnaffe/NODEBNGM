@@ -34,6 +34,16 @@ See below for instructions on how to specify the parameters and run the code.
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.png)
 
 
+### Effects and contributions of variables to the dynamics of other variables
+
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_p.png)
+
+
+### Dynamical interaction netwrosk
+
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_DIN_v1.png)
+
+
 ## Installation
 
 The approach can be used simply by installing R (v4.0.2 or later).
