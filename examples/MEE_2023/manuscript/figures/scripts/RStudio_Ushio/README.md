@@ -35,7 +35,12 @@ See below for instructions on how to specify the parameters and run the code.
 
 ## Installation
 
-The approach can be used simply by installing R (v4.0.2 or later).
+The approach can be used simply by installing R (v4.0.2 or later) and loading the NODEBNGM function library
+
+``` R
+## load NODEBNGM functions
+source("f_NODE_GM_Rstudio.r")
+```
 
 
 ## Preparing the data
