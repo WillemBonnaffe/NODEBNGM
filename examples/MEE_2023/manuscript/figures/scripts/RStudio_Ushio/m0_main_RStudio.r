@@ -1,14 +1,12 @@
-######################
-## m0_mainRStudio.r ##
-######################
+#######################
+## m0_main_RStudio.r ##
+#######################
 
 ## goal: 
-## - analyse NODE to derive interactions and contributions between variables (sensitivities, Geber method)
 ## - use gradient matching (GM) to fit neural ordinary differential equation model (NODE) to time series 
+## - analyse NODE to derive interactions and contributions between variables (sensitivities, Geber method)
 
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
-
-## update log:
 
 #
 ###
