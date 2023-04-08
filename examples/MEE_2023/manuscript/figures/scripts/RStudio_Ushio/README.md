@@ -1,13 +1,48 @@
-# RStudio version of NODE BNGM 
+# NODEBNGM analysis of Ushio system
 
-## update log:
-* 28-03-2022 - create b1_0_0
 
-## FIT OBSERVATION MODEL 
+## Aim
 
-To come.
+The aim of this analysis is to estimate the effects and contributions of each species to the dynamics of the populations in the Maizuru bay community (Ushio et al. 2018).
+The system consists in 12 years long time series of fortnight abundance estimates of 15 of dominant species of the aquatic community of the Maizuru bay in Japan.
+The time series are analysed by fitting neural ordinary differential equations (NODE) via Bayesian neural gradient matching (BNGM), which provide interpolations of the state and dynamics of the species, as well as nonparametric estimates of the per-capita growth rates of the species as a function of species density. 
+By computing the sensitivity of the per-capita growth rates with respect to each species density, we were able to derive effects and contributions to the dynamics of the species on each other.
 
-## FIT PROCESS MODEL 
+Ushio, M., Hsieh, C.H., Masuda, R., Deyle, E.R., Ye, H., Chang, C.W., Sugihara, G. and Kondoh, M., 2018. Fluctuating interaction network and time-varying stability of a natural fish community. Nature, 554(7692), pp.360-363.
+
+
+## Inputs
+
+### Data
+
+The first input is the time series data, formatted as a csv file, which contains abundance estimates of the species (counts) and environmental variables (sea-bottom temperature in degrees celsius here).
+All variables need to be strictly positive.
+
+### Parameters of the observation process model
+
+The second input is the parameters of the observation model (i.e. the neural networks that interpolates the time series) and process model (the NODEs that approximate the per-capita growth rate based on the interpolated variables).
+See below for instructions on how to specify the parameters and run the code.
+
+
+## Outputs
+
+### Interpolated time series and dynamics
+
+![alt text] (https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.pdf)
+
+
+## Installation
+
+The approach can be used simply by installing R (v4.0.2 or later).
+
+
+## Running the script
+
+## Preparing the data
+
+The first
+
+## Fitting process model
 
 ### Goal 
 
