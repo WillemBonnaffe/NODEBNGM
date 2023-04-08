@@ -53,7 +53,6 @@ TS = read.table("data/TS.csv",sep=",",header=T)
 ### Select variables of interest
 
 ``` R
-## extract time steps and columns of interest
 selected_time_steps = 50:150
 selected_columns  = c(
   "time_step",
