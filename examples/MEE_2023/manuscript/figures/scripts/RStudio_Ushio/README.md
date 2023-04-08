@@ -38,19 +38,21 @@ See below for instructions on how to specify the parameters and run the code.
 The approach can be used simply by installing R (v4.0.2 or later) and loading the NODEBNGM function library
 
 ``` R
-## load NODEBNGM functions
 source("f_NODE_GM_Rstudio.r")
 ```
 
 
 ## Preparing the data
 
-### Loading and selecting variables of interest
+### Loading data
 
 ``` R
-## load data
 TS = read.table("data/TS.csv",sep=",",header=T)
+```
 
+### Select variables of interest
+
+``` R
 ## extract time steps and columns of interest
 selected_time_steps = 50:150
 selected_columns  = c(
@@ -75,8 +77,11 @@ selected_columns  = c(
 )
 TS = TS[selected_time_steps,]
 TS = TS[,selected_columns]
+```
 
-## shorten column names
+### Format column names
+
+```R
 column_names =  c("time_step",
                     "bot.t",
                     "Aurel.sp",
@@ -97,11 +102,8 @@ colnames(TS) = column_names
 ### Normalising time series
 
 ``` R
-## normalise time series
-TS[,-1] = apply(TS[,-1],2,function(x)(x-min(x))/(max(x)-min(x))*10)
-
-## set 0s to small value to avoid NAs
-for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
+TS[,-1] = apply(TS[,-1],2,function(x)(x-min(x))/(max(x)-min(x))*10) # normalise time series
+for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005} # set 0s to small value to avoid NAs
 ```
 
 ### Visualise the formatted time series
@@ -125,7 +127,6 @@ Fitting the observation model corresponds in interpolating the variables in the 
 ### Parameters of the observation model
 
 ``` R
-## parameters of observation model
 N       = ncol(TS) - 1
 K_o     = 100                # number of ensemble elements
 W_o     = rep(30,N)          # number of neurons in observation model, by default a single layer perceptron (equivalent to number of elements in Fourier series)
@@ -137,7 +138,6 @@ alpha_i = 1                  # upsampling interpolation factor (2 double the num
 ### Training of the observation model
 
 ``` R
-## train observation model
 model_o     = trainModel_o(TS,alpha_i,N_o,K_o,rho)
 Yhat_o      = model_o$Yhat_o
 ddt.Yhat_o  = model_o$ddt.Yhat_o
@@ -149,14 +149,12 @@ Omega_o     = model_o$Omega_o
 ### Visualising the fit
 
 ``` R
-## visualise observation model fit
 plotModel_o(TS,alpha_i,Yhat_o,ddt.Yhat_o)
 ```
 
 ### Storing the results
 
 ``` R
-## save results
 save(Yhat_o,    file=paste(pathToOut,"/","Yhat_o.RData"    ,sep=""))
 save(ddt.Yhat_o,file=paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
 save(Omega_o,   file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
@@ -166,6 +164,14 @@ save(Omega_o,   file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 ## Fitting process model
 
 Fit process model (i.e. explain the per-capita growth rate of the populations calculated as $1/Y*dY/dt$ as a function of the states Y(t))
+
+### Load observation model results (optional)
+
+``` R
+load(file=paste(pathToOut,"/","Yhat_o.RData"    ,sep=""))
+load(file=paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
+load(file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
+```
 
 ### Parameters of process model
 
@@ -211,6 +217,15 @@ save(Omega_p      ,file=paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
 ## Analysing results
 
 This section describes how to run the code to obtain effects and contributions from the results obtained from the observation and process model.
+
+### Load process model results
+
+``` R
+load(paste(pathToOut,"/","Yhat_p.RData"    ,sep=""))
+load(paste(pathToOut,"/","ddx.Yhat_p.RData",sep=""))
+load(paste(pathToOut,"/","Geber_p.RData"   ,sep=""))
+load(paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
+```
 
 ### Compute Jacobian matrix
 
