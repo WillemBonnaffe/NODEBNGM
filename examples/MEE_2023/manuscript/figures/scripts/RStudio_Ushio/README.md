@@ -28,10 +28,20 @@ See below for instructions on how to specify the parameters and run the code.
 
 ### Interpolated time series and dynamics
 
+The observation model provides interpolations of the state variables and their dynamics. 
+The interpolations are obtained by fitting a single layer neural network with sinusoidal activation functions to the time series.
+The interpolated dynamics are obtained by deriving the interpolation of the state variables with respect to time.
+
 ### Effects and contributions of variables to the dynamics of other variables
+
+The process model provides nonparametric approximations of the per-capita growth rate of the variables with respect to all variables in the system.
+The effects of a variable on another can be computed by calculating the sensitivity of the per-capita growth rate with respect to a change in the variables.
+Contributions are then obtained by multiplying the dynamics of the effector variable with its effect on the affected variable.
 
 ### Dynamical interaction networks
 
+Relative total contributions are obtained by summing the square of contributions of variables across the entire time series and normalising them by the total contributions (of all variables together).
+These, together with the mean effect of a variable can be used to build dynamical interaction networks, which show the effect and contributions of variables to the dynamics of other variables.
 
 ## Installation
 
@@ -236,7 +246,6 @@ load(paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
 ### Compute Jacobian matrix
 
 ```R
-## compute Jacobian and contribution matrix
 MSq = function(x) mean(x^2)
 prop = function(x) x/sum(x)
 J = t(matrix(unlist(lapply(ddx.Yhat_p,function(x)apply(matrix(apply(x,2,mean),nrow=nrow(TS),byrow=T),2,mean))),ncol=ncol(TS)-1)) ## average across samples then average across time steps
@@ -247,20 +256,16 @@ C = t(apply(C,1,prop))
 ### Formatting the Jacobian matrix
 
 ``` R
-## remove effects on bot
-J[1,] = 0
+J[1,] = 0 # remove effects on bot
 C[1,] = 0
 
-## thresholding
-J = J*(C>0.1)
+J = J*(C>0.1) # set contributions that are <10% to 0 for visualisation
 C = C*(C>0.1)
 ```
 
 ### Visualise the dynamical interaction plot
 
 ``` R
-##
-## DYNAMICAL INTERACTION PLOT (v1)
 .plot.DIN(J,C,colnames(TS)[-1])
 ```
 
