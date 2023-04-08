@@ -28,7 +28,7 @@ See below for instructions on how to specify the parameters and run the code.
 
 ### Interpolated time series and dynamics
 
-![alt text] (https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.pdf)
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.pdf)
 
 
 ## Installation
