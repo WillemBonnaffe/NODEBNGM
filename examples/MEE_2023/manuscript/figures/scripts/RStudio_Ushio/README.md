@@ -143,13 +143,13 @@ ddt.Yhat_o  = model_o$ddt.Yhat_o
 Omega_o     = model_o$Omega_o
 ```
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.png)
-
 ### Visualising the fit
 
 ``` R
 plotModel_o(TS,alpha_i,Yhat_o,ddt.Yhat_o)
 ```
+
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.png)
 
 ### Storing the results
 
