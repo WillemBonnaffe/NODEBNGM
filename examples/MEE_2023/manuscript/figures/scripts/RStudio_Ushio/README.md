@@ -18,9 +18,6 @@ Ushio, M., Hsieh, C.H., Masuda, R., Deyle, E.R., Ye, H., Chang, C.W., Sugihara, 
 The first input is the time series data, formatted as a csv file, which contains abundance estimates of the species (counts) and environmental variables (sea-bottom temperature in degrees celsius here).
 All variables need to be strictly positive.
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_time_series.png)
-
-
 ### Parameters of the observation process model
 
 The second input is the parameters of the observation model (i.e. the neural networks that interpolates the time series) and process model (the NODEs that approximate the per-capita growth rate based on the interpolated variables).
@@ -31,17 +28,9 @@ See below for instructions on how to specify the parameters and run the code.
 
 ### Interpolated time series and dynamics
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.png)
-
-
 ### Effects and contributions of variables to the dynamics of other variables
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_p.png)
-
-
 ### Dynamical interaction networks
-
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_DIN_v1.png)
 
 
 ## Installation
@@ -50,7 +39,6 @@ The approach can be used simply by installing R (v4.0.2 or later).
 
 
 ## Preparing the data
-
 
 ### Loading and selecting variables of interest
 
@@ -111,6 +99,20 @@ TS[,-1] = apply(TS[,-1],2,function(x)(x-min(x))/(max(x)-min(x))*10)
 for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
 ```
 
+### Visualise the formatted time series
+
+``` R
+par(mfrow=c(3,4))
+for(i in 2:ncol(TS))
+{
+  plot(TS[,1],TS[,i],type="l",xlab="Time step",ylab="Relative density",bty="n",main=colnames(TS)[i])
+}
+par(mfrow=c(1,1))
+```
+
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_time_series.png)
+
+
 ## Fitting observation model
 
 Fitting the observation model corresponds in interpolating the variables in the time series to get an approximation of the states and dynamics of each variable.
@@ -157,11 +159,12 @@ save(ddt.Yhat_o,file=paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
 save(Omega_o,   file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 ```
 
+
 ## Fitting process model
 
 Fit process model (i.e. explain the per-capita growth rate of the populations calculated as $1/Y*dY/dt$ as a function of the states Y(t))
 
-#### Parameters of process model
+### Parameters of process model
 
 ```R
 K_p   = 10                                            # number of models to fit
@@ -173,7 +176,7 @@ sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.15,N_p[1]/2)),  # standard deviation of pr
              c(rep(1.0,N_p[3]/2),rep(.075,N_p[3]/2)))
 ```
 
-#### Train process model
+### Train process model
 
 ```R
 model_p    = trainModel_p(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p)
@@ -183,7 +186,7 @@ Geber_p    = model_p$Geber_p
 Omega_p    = model_p$Omega_p   
 ```
 
-#### Visualise process model
+### Visualise process model
 
 ```R
 pdf(paste(pathToOut,"/fig_predictions_p.pdf",sep=""))
@@ -191,12 +194,10 @@ plotModel_p(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
 dev.off()
 ```
 
-
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_p.png)
 
 
-
-#### Store results 
+### Store results 
 
 ```R
 save(Yhat_p       ,file=paste(pathToOut,"/","Yhat_p.RData"    ,sep=""))
@@ -243,7 +244,8 @@ pdf(paste(pathToOut,"/fig_DIN_v1.pdf",sep=""),width=10,height=10)
 dev.off()
 ```
 
-### Notes 
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_DIN_v1.png)
 
+## Notes 
 * the user could use state interpolations and interpolated dynamics obtained via other methods (e.g. Fourier series, cubic splines)
 * the user could even use raw difference in the data as an estimate of the dynamics
