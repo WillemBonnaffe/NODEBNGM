@@ -49,13 +49,115 @@ See below for instructions on how to specify the parameters and run the code.
 The approach can be used simply by installing R (v4.0.2 or later).
 
 
-## Running the script
+## Preparing the data
 
-### Preparing the data
 
-The first
+### Loading and selecting variables of interest
 
-### Fitting process model
+``` R
+## load data
+TS = read.table("data/TS.csv",sep=",",header=T)
+
+## extract time steps and columns of interest
+selected_time_steps = 50:150
+selected_columns  = c(
+  "time_step",
+  # "surf.t",
+  "bot.t",
+  "Aurelia.sp",
+  # "Engraulis.japonicus", #
+  # "Plotosus.lineatus", #
+  "Sebastes.inermis",
+  "Trachurus.japonicus",
+  "Girella.punctata",
+  "Pseudolabrus.sieboldi",
+  "Halichoeres.poecilopterus",
+  "Halichoeres.tenuispinnis",
+  # "Chaenogobius.gulosus", #
+  "Pterogobius.zonoleucus",
+  "Tridentiger.trigonocephalus",
+  # "Siganus.fuscescens", #
+  "Sphyraena.pinguis", #
+  "Rudarius.ercodes"           
+)
+TS = TS[selected_time_steps,]
+TS = TS[,selected_columns]
+
+## shorten column names
+column_names =  c("time_step",
+                    "bot.t",
+                    "Aurel.sp",
+                    "S.inerm.",
+                    "T.japon.",
+                    "G.punct.",
+                    "P.siebo.",
+                    "H.poeci.",
+                    "H.tenui.",
+                    "P.zonol.",
+                    "T.trigo.",
+                    "S.pingu.",
+                    "R.ercod."
+                  )
+colnames(TS) = column_names
+```
+
+### Normalising time series
+
+``` R
+## normalise time series
+TS[,-1] = apply(TS[,-1],2,function(x)(x-min(x))/(max(x)-min(x))*10)
+
+## set 0s to small value to avoid NAs
+for(i in 2:ncol(TS)){TS[,i][which(TS[,i]<0.005)] = 0.005}
+```
+
+## Fitting observation model
+
+Fitting the observation model corresponds in interpolating the variables in the time series to get an approximation of the states and dynamics of each variable.
+
+### Parameters of the observation model
+
+``` R
+## parameters of observation model
+N       = ncol(TS) - 1
+K_o     = 100                # number of ensemble elements
+W_o     = rep(30,N)          # number of neurons in observation model, by default a single layer perceptron (equivalent to number of elements in Fourier series)
+N_o     = W_o*3              # total number of parameters in observation model
+rho     = 1                  # proportion of best samples to reject (to refine quality of fit if necessary)
+alpha_i = 1                  # upsampling interpolation factor (2 double the number of points in interpolated time series)
+```
+
+### Training of the observation model
+
+``` R
+## train observation model
+model_o     = trainModel_o(TS,alpha_i,N_o,K_o,rho)
+Yhat_o      = model_o$Yhat_o
+ddt.Yhat_o  = model_o$ddt.Yhat_o
+Omega_o     = model_o$Omega_o
+```
+
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.png)
+
+### Visualising the fit
+
+``` R
+## visualise observation model fit
+pdf(paste(pathToOut,"/fig_predictions_o.pdf",sep=""))
+plotModel_o(TS,alpha_i,Yhat_o,ddt.Yhat_o)
+dev.off()
+```
+
+### Storing the results
+
+``` R
+## save results
+save(Yhat_o,    file=paste(pathToOut,"/","Yhat_o.RData"    ,sep=""))
+save(ddt.Yhat_o,file=paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
+save(Omega_o,   file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
+```
+
+## Fitting process model
 
 Fit process model (i.e. explain the per-capita growth rate of the populations calculated as $1/Y*dY/dt$ as a function of the states Y(t))
 
@@ -89,6 +191,11 @@ plotModel_p(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
 dev.off()
 ```
 
+
+![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_p.png)
+
+
+
 #### Store results 
 
 ```R
@@ -99,6 +206,42 @@ save(Omega_p      ,file=paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
 ```
 
 
+## Analysing results
+
+This section describes how to run the code to obtain effects and contributions from the results obtained from the observation and process model.
+
+### Compute Jacobian matrix
+
+```R
+## compute Jacobian and contribution matrix
+MSq = function(x) mean(x^2)
+prop = function(x) x/sum(x)
+J = t(matrix(unlist(lapply(ddx.Yhat_p,function(x)apply(matrix(apply(x,2,mean),nrow=nrow(TS),byrow=T),2,mean))),ncol=ncol(TS)-1)) ## average across samples then average across time steps
+C = t(matrix(unlist(lapply(Geber_p,   function(x)apply(matrix(apply(x,2,mean),nrow=nrow(TS),byrow=T),2,MSq))),ncol=ncol(TS)-1)) ## average across samples then take mean square across time steps
+C = t(apply(C,1,prop))
+```
+
+### Formatting the Jacobian matrix
+
+``` R
+## remove effects on bot
+J[1,] = 0
+C[1,] = 0
+
+## thresholding
+J = J*(C>0.1)
+C = C*(C>0.1)
+```
+
+### Visualise the dynamical interaction plot
+
+``` R
+##
+## DYNAMICAL INTERACTION PLOT (v1)
+pdf(paste(pathToOut,"/fig_DIN_v1.pdf",sep=""),width=10,height=10)
+.plot.DIN(J,C,colnames(TS)[-1])
+dev.off()
+```
 
 ### Notes 
 
