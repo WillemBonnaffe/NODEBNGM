@@ -118,6 +118,13 @@ par(mfrow=c(1,1))
 
 ![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_time_series.png)
 
+### Create the output folder
+
+``` R
+pathToOut = "out"
+system(paste("mkdir",pathToOut))
+```
+
 
 ## Fitting observation model
 
