@@ -5,6 +5,13 @@
 
 Fit neural ordinary differential equations (NODE) by Bayesian neural gradient matching (BNGM) to nonparametrically infer ecological interactions between the variables in the time series.
 
+The data time series consists of abundance estimates from an experimental system featuring an algae, flagellate, and rotifer population.
+The time series were obtained from digitalisation of the figures of the original paper (Hiltunen et al. 2013).
+
+The outcomes of the approach are nonparametric estimates of the per-capita growth rates of each species, as well as effects and contributions of the three species to the dynamics of the other species in the system.
+
+Hiltunen, T., Jones, L.E., Ellner, S.P. and Hairston Jr, N.G., 2013. Temporal dynamics of a simple community with intraguild predation: an experimental test. Ecology, 94(4), pp.773-779.
+
 ### Framework inputs:
 * time series of population densities (strictly positive)
 * parameters of the observation (interpolation) and process model (NODE)
