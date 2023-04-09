@@ -22,6 +22,8 @@ Each method provides the following quantities:
 * the `contributions` of each species to the dynamics of another
 * the `runtimes` in seconds required to execute the methods
 
+These outputs are combined into benchmark figures that compare the accuracies and runtimes of the four approaches.
+
 
 ## Installation
 
