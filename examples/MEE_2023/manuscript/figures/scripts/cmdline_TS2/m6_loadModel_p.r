@@ -19,8 +19,9 @@ source("f_NODE_GM.r")
 source("m5_loadData_p.r")
 
 ## parameters process model
-t_train =                1:(round(2/3*n))
-t_test  = (round(2/3*n)+1):n
+train_split = 2/3
+t_train     = 1:(round(train_split*n))
+t_test      = (round(train_split*n + 1)):n
 K_p   = 30
 W_p   = rep(10,N)
 N_p   = 2 * W_p * (2+N)
