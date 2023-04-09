@@ -43,7 +43,7 @@ In the script `m6_loadModel_p.r`, specify the parametes of the observation model
 train_split = 2/3 # train validation split proportion
 K_p         = 30 # number of ensemble samples
 W_p         = rep(10,N) # number of nodes in hidden layer of network
-sd2_p       = as.list(rep(0.025,N)) # standard deviation of the prior distribution of the network parameters
+sd2_p       = list(0.05,0.05,0.05) # standard deviation of the prior distribution of the network parameters
 ```
 
 
