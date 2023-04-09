@@ -36,7 +36,7 @@ W_o      = rep(100,N) # number of nodes in the hidden layer of the networks
 sd2_o    = rep(0.01,N) # standard deviation of the prior distribution of the network parameters
 ```
 
-In the script `m2_loadModel_p.r`, specify the parametes of the observation model:
+In the script `m6_loadModel_p.r`, specify the parametes of the observation model:
 
 ``` R
 ## parameters process model
