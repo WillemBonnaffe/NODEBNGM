@@ -279,7 +279,7 @@ C = C*(C>0.1)
 </p>
 
 
-## File description 
+## Files description 
 
 ### Main files: 
 * `f_NODE_GM_RStudio.r` contains all the functions necessary to running the scripts
