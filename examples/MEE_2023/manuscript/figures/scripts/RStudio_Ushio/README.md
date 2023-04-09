@@ -280,3 +280,29 @@ C = C*(C>0.1)
 
 
 ## File description 
+
+### Main files: 
+* `f_NODE_GM_RStudio.r` contains all the functions necessary to running the scripts
+* `m0_main_RStudio.r` contains the commands to run the scripts in the right order to fit NODEs by BNGM 
+
+### Data:
+* `data` contains the time series data as csv files
+* `data/TS.csv` contains the time series of aquatic species community of the Maizuru bay in Japan
+
+### Output files:
+* `out` contains the output of the scripts 
+* `out_repeat` contains repeat results of the analysis to assess repeatability of the results 
+* `out/crossVal_p.RData` contains the likelihood of the predictions of the model for each value of the regularisation hyperparameter
+* `out/ddt.Yhat_o.RData` contains the interpolated dynamics of the state variables 
+* `out/ddx.Yhat_p.RData` contains the sensitivity of the per-capita growth rate of variables with respect to the each state variable
+* `out/fig_crossVal_p.pdf` displays the cross validation results 
+* `out/fig_DIN_v1.pdf` displays the dynamical interaction graph (version 1)
+* * `out/fig_DIN_v1.pdf` displays the dynamical interaction graph (version 2)
+* `out/fig_predictions_o.pdf` displays results of the observation model, i.e. the interpolation of states and dynamics of each variable
+* `out/fig_predictions_p.pdf` displays results of the process model, i.e. the effects and contribution of each variable to the dynamics of the system 
+* `out/fig_time_series.pdf` displays time series of the variables
+* `out/Geber_p.RData` contains the contributions of each variable to the dynamics of the system 
+* `out/Omega_o.RData` contains the ensemble of parameters of the observation model 
+* `out/Omega_p.RData` contains the ensemble of parameters of the process model
+* `out/Yhat_o.RData` contains the interpolated state variables 
+* `out/Yhat_p.RData` contains the interpolated per-capita growth rate of each state variable
