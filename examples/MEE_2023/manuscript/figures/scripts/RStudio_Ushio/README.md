@@ -126,7 +126,9 @@ for(i in 2:ncol(TS))
 par(mfrow=c(1,1))
 ```
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_time_series.png)
+<p align="center">
+<img align="middle" src="./assets/https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_time_series.png" alt="ODE Demo" width="500" height="250" />
+</p>
 
 ### Create the output folder
 
