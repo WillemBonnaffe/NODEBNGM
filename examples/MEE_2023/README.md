@@ -16,7 +16,9 @@ The method works in two steps (see figure below):
 * interpolating the time series data with neural networks (observation models), which provides an approximation of the dynamics and state of the variables 
 * approximating the interpolated dynamics of the variables with neural networks (process model) which take as input the interpolated states
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_graphical_abstract_1.png)
+<p align="center">
+<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_graphical_abstract_1.png" alt="overview" width="750" height="750" />
+</p>
 
 
 ## Outcome
