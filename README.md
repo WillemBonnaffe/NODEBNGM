@@ -39,7 +39,7 @@ The outputs of the approach are:
 * effects and contributions of each variables to the dynamics of the other variables
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/.readme_files/fig_graphical_abstract_2.png" alt="" width="750" height="500" />
+<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/.readme_files/fig_DIN.png" alt="" width="750" height="500" />
 </p>
 
 
