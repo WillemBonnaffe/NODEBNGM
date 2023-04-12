@@ -40,7 +40,7 @@ The repository contains all the files for the manuscript:
 * `manuscript/figures/scripts` with the R scripts that generate the results used for the figures of the manuscript
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_repo_overview.png" alt="" width="750" height="500" />
+<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_repo_overview.png" alt="" width="750" height="250" />
 </p>
 
 
