@@ -50,6 +50,7 @@ The outputs of the approach are:
 ## Repository structure
 
 The folder `manuscripts` contains all the files necessary for the manuscript and the preprint: 
+* `preprint` folder with the latex files, figures, and scripts to compile the arXiv preprint
 * `manuscript/` folder with the latex files to compile the manuscript, figures, and references
 * `manuscript/figures/` folder with the latex files to compile the figures
 * `manuscript/figures/scripts` with the R scripts that generate the results used for the figures of the manuscript
