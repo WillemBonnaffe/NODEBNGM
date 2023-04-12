@@ -5,13 +5,6 @@
 
 Fit neural ordinary differential equations (NODE) by Bayesian neural gradient matching (BNGM) to nonparametrically infer ecological interactions between the variables in the time series.
 
-The data time series consists of 90 years of pelt counts of hare and lynx in the Hudson bay area. 
-We used the dataset from our previous study (Bonnaffe et al. 2021).
-
-The outcome of the approach is nonparametrci estimates of the per-capita growth rate of lynx and hare, as well as mutual effects and contributions to the dynamics of these two species.
-
-Bonnaffé, W., Sheldon, B.C. and Coulson, T., 2021. Neural ordinary differential equations for ecological and evolutionary time‐series analysis. Methods in Ecology and Evolution, 12(7), pp.1301-1315.
-
 ### Framework inputs:
 * time series of population densities (strictly positive)
 * parameters of the observation (interpolation) and process model (NODE)
@@ -20,10 +13,11 @@ Bonnaffé, W., Sheldon, B.C. and Coulson, T., 2021. Neural ordinary differential
 * interpolated states and dynamics (temporal change in population densities)
 * effects and contributions of variable dynamics on each other
 
+
 ## Installation
 
 Requirements:
-* R (v4.2.0 or later)
+* R (v4.0.0 or later)
 
 
 ## Initialising BNGM
