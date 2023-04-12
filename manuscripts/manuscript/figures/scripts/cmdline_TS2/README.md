@@ -22,7 +22,7 @@ Hiltunen, T., Jones, L.E., Ellner, S.P. and Hairston Jr, N.G., 2013. Temporal dy
 ## Installation
 
 Requirements:
-* R (v4.2.0 or later)
+* R (v4.0.0 or later)
 
 
 ## Initialising BNGM
@@ -30,7 +30,7 @@ Requirements:
 In the script `m1_loadData_o.r`, specify the path to the time series: 
 
 ``` R
-TS = read.table("data/TS_1.csv",sep=";",header=T)
+TS = read.table("data/TS_2.csv",sep=";",header=T)
 ```
 
 In the script `m2_loadModel_o.r`, specify the following parameters of the observation model:

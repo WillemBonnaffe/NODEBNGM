@@ -23,7 +23,7 @@ Hiltunen, T., Jones, L.E., Ellner, S.P. and Hairston Jr, N.G., 2013. Temporal dy
 ## Installation
 
 Requirements:
-* R (v4.2.0 or later)
+* R (v4.0.0 or later)
 
 
 ## Initialising BNGM
