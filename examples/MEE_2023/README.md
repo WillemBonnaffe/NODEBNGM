@@ -44,8 +44,6 @@ The repository contains all the files for the manuscript:
 </p>
 
 
-
-
 ## Installation
 
 `Latex` is required to compile the latex files of the manuscript and figures and `R` is required to run the scripts.
