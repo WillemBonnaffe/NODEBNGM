@@ -37,12 +37,8 @@
      }
 
 \title{Fast fitting of neural ordinary differential equations by Bayesian neural gradient matching to infer ecological interactions from time series data}
-% \title{Inferring ecological interactions from time series data using neural ordinary differential equations fitted by Bayesian neural gradient matching}
 \author{Willem Bonnaff\'e$^{1,2}$ \& Tim Coulson$^2$}
 \date{}
-
-%% to do
-% - check proof all manuscript
 
 \begin{document}
 \maketitle
@@ -117,9 +113,7 @@ Ecologists have had a longstanding interest in finding laws that govern populati
 Population dynamics can be characterised by a logistic growth, or similar forms, limited by ecological interactions with other organisms, and by the state of the environment (\cite{Turchin2001c,Berryman2003}).
 Intra-specific interactions correspond to interactions between individuals of different sex, age or size classes, belonging to the same species (\cite{Turchin2001c}).
 Inter-specific interactions are interactions between individuals from different species, be it competitors, preys, predators, or pathogens (\cite{Turchin2001c,Berryman2003}).
-% Depending on their direction, interactions fall into broad categories, such as cooperative, competitive, predatory (\cite{Berryman2003}).
 These interactions can cause populations to have lagged effects impacting their own growth, often called feedback effects, mediated by their impact on the other populations they interact with (\cite{Berryman1997}).
-% Characterising ecological interactions is hence the key to understanding and forecasting how our ecosystems change.
 
 Characterising these interactions has been a longtime challenge. 
 Ecologists started analysing time series data with parametric models (\cite{Royama1984,Kendall1999,Ives2003,Gross2005}), as time series of population counts are the most commonly collected long-term data in biology (\cite{Kendall1999}).
@@ -168,7 +162,7 @@ We then demonstrate that NODEs are highly accurate in recovering ecological inte
 Finally, we conclude the work by characterising ecological interactions in three replicates of an experimental three-species prey-predator system with an algae, flagellate, and rotifer (\cite{Hiltunen2013}), in the classic hare and lynx time series (\cite{Odum1972}), as well as in the larger aquatic community of the Maizuru bay in Japan (\cite{Ushio2018}).
 We find that only main interactions, between the algae and the rotifer, are conserved across the three replicates, and not the interactions of the flagellate with the other species.
 We also find that in most cases linear interactions are sufficient to explain the dynamics apart from nonlinearity in the effect of the prey on the top predator in both the rotifer and lynx.
-Finally, we find that the dynamics of the aquatic species of the Maizuru bay community are largely determined by a single species.
+Finally, we find that the dynamics of the aquatic species of the Maizuru bay community are largely determined by a single species, the chameleon goby, and by an indirect effect of temperature via its impact on goby population dynamics.
 
 %% 
 \section{Material and Methods}
@@ -230,7 +224,7 @@ We solve this issue by introducing BNGM, a computationally efficient approach to
 The approach involves two steps (Fig. 1).
 First, we interpolate the state variables and their dynamics with neural networks (Fig. 1, red boxes).
 Second, we train each NODE to satisfy the interpolated state and dynamics (Fig. 1, blue boxes).
-This bypasses the costly numerical integration of the NODE system and provides a fully mathematically tractable expression for the posterior distribution of the parameter vector $\theta$. 
+This bypasses the costly numerical integration of the NODE system and provides a fully mathematically tractable expression for the posterior distribution of the parameter vector $\theta$, and hence analytical expressions for the gradients. 
 We coin the term BNGM to emphasise two important refinements of the standard gradient matching algorithm (\cite{Ellner2002}). 
 The first is that we use neural networks as interpolation functions, and the second is that we use Bayesian regularisation to limit overfitting and estimate uncertainty around parameters (\cite{Cawley2007}).
 
@@ -285,8 +279,7 @@ To account for this, we introduce Bayesian regularisation, which allows us to co
 First, we define a simple Bayesian model to fit the interpolation functions (Eq. 3) to the time series data.
 We assume normal distributions for the observation error, $\epsilon^{(o)}_{ij} \sim \mathcal{N}(0,\sigma_i)$, and for the parameters, $\omega_{ij} \sim \mathcal{N}(0,\gamma_{ij})$.
 Here, we are only interested in interpolating the time series accurately, irrespective of the value of $\sigma_i$ and $\gamma_{ij}$.
-% So we perform inference on the second level, by optimising the marginal posterior distribution.
-Therefore, we use the approach developed by Cawley and Talbot to average out the value of the parameters $\sigma_i$ and $\gamma_{ij}$ in the full posterior distribution (\cite{Cawley2007}), assuming gamma hyperpriors $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi/2\right\}$ for both parameters.
+Therefore, we use the approach developed by Cawley and Talbot to average out the value of the parameters $\sigma_i$ and $\gamma_{ij}$ in the full posterior distribution (\cite{Cawley2007}), assuming hyperpriors $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi/2\right\}$ for both parameters.
 This yields the following expression for the log marginal posterior density of the parameters,
 
 \vspace{-0.5cm}
@@ -334,7 +327,7 @@ Finally, we estimate uncertainty in parameter values by anchored ensembling, whi
 This involves sampling a parameter vector from the prior distributions, $\theta_{i} \sim \mathcal{N}(0,\delta_{i})$, and then optimising the posterior distribution from this starting point, $\theta^*_i = \underset{\theta_i}{argmax}~\log p(\theta_i~|~\omega)$.
 By repeatedly taking samples, the sampled distribution $\theta^*$ approaches the posterior distribution and provides estimates and error around the quantities that can be derived from the models.
 The expectation and uncertainty around derived quantities can then be obtained by computing the mean and variance of the approximated posterior distributions.
-The great strength of this approach is that it is unlikely to get stuck in local maxima hence providing a more thorough exploration of the parameter space.
+The strength of this approach is that it is unlikely to get stuck in local maxima hence providing a more thorough exploration of the parameter space.
 
 %%
 \subsection{Analysing NODEs}
@@ -358,7 +351,7 @@ We hence compute the strength of the interaction by multiplying the dynamics of 
 \end{equation}
 
 To summarise results across the entire time series we can compute the mean effects $e_{ij}$ by averaging $e_{ijt}$ across all time steps, $e_{ij} = 1/N^{(p)} \sum_t e_{ijt}$, as well as the relative total contribution, $c_{ij}$, of a variable to the dynamics of another by computing the relative sum of square contributions, $c_{ij} = \left( \sum_{ijt} c_{ijt}^{2} \right)^{-1} \sum_t c_{ijt}^2$. 
-By computing the direction and strength of interactions between all the variables in the system we can build dynamically informed ecological interaction networks (e.g. fig. 5).
+By computing the direction and strength of interactions between all the variables in the system we can build dynamically informed ecological interaction networks (e.g. Fig. 5).
 Other metrics can be computed by analysing the NODEs, such as equilibrium states, these are discussed in our previous work (\cite{Bonnaffe2021a}). 
 
 %%
@@ -405,7 +398,6 @@ In order to nonparametrically learn the per-capita growth rate of each species, 
 \end{aligned} \end{equation}
 
 where the per-capita growth rates $r_R$, $r_G$, and $r_B$ are neural network functions of the density $R$, $G$, $B$ of each species (function $f_p$, Eq. 2).
-% The parameter vectors $\beta_i$ control the shape of the growth rates.
 We choose a combination of linear and exponential activation functions $f_{\sigma, j\leq J/2}(x) = x$, and $f_{\sigma, j>J/2}(x) = \exp(x)$.
 This allows us to progressively switch from a simple linear model to a nonlinear model by releasing the constraint on the parameters of the network during cross-validation.
 The number of units in the hidden layer $J$ is chosen to be 10, as this is a commonly used number for systems of that size (e.g. \cite{Wu2005,Bonnaffe2021a}). 
@@ -417,7 +409,7 @@ We interpolate the time series using the neural network described in section 2.3
 We set the number of neurons in the network to $J=30$.
 We use sinusoid activation functions, $f_\sigma(x) = sin(x)$, so that the weights $\omega^{(1)}_{ij}$, $\omega^{(2)}_{ij}$, and $\omega^{(3)}_{ij}$ control the amplitude, shift, and frequency of the oscillations in the time series, respectively.
 Given that the population densities are strictly positive $R,~G,~B \in \mathcal{R^{+}}$, we use an exponential link function, $f_\lambda(x) = \exp (x)$. 
-We then approximate the marginal posterior distribution of the interpolation parameters, and thereby of interpolated states and dynamics, by taking 100 samples from the log marginal posterior distribution (Eq. 7) via anchored ensembling. % $\omega^*_{i} = \underset{\omega}{argmax} ~\log P(\omega_i ~|~ Y_i)$, where $Y_i$ denotes the observed time series of either $R$, $G$, and $B$.
+We then approximate the marginal posterior distribution of the interpolation parameters, and thereby of interpolated states and dynamics, by taking 100 samples from the log marginal posterior distribution (Eq. 7) via anchored ensembling. 
 In practice, the high number of parameters in the neural network equation may impede the fit of the time series, especially for short time series. 
 We found that dividing the number of parameters $M^{(o)}$ (Eq. 7) by the number of neurons in the network $J$ (Eq. 2) yields consistent fitting results.
 Interpolated states and dynamics are presented in Figure 2.
@@ -432,10 +424,9 @@ Averaging across multiple interpolations ensures an overall smoother and robust 
 In addition, we standardise the response and explanatory variables with respect the their mean and standard deviation (i.e. $Z=(Y-\mu)/\sigma$).
 This is to facilitate the training of the NODE by equalizing the scale of the different parameters in the neural network.
 Then, we identify the optimal regularisation parameter $\delta$ (Eq. 8) by cross-validation.
-To do that, we split the data in three thirds, train NODEs on the first third, and calculate the log likelihood of the validation set for increasing values of $\delta$, from $0.01$ (linear) to $0.3$ (highly nonlinear), by increments of $0.025$.
+To do that, we split the data in three thirds, train NODEs on the first third, and calculate the log likelihood of the validation set for increasing values of $\delta$, from $0.1$ (linear) to $1.0$ (highly nonlinear), by increments of $0.1$.
 This allows us to identify the maximum degree of nonlinearity, $\delta$, in the per-capita growth rate that ensures generalisability throughout the time series.
 Then, we approximate the posterior distribution of the NODE parameters by taking 30 samples from the posterior distribution (Eq. 8).
-% Finally, we perform model selection by removing variables that do not result in a significant decrease in the log likelihood of the model (assessed by comparing log likelihood confidence intervals).
 We ensure moderate temporal autocorrelation and normality by visualising the residuals of the models.
 We also ensure results repeatability by running the entire fitting process a second time.
 
@@ -457,7 +448,7 @@ For this purpose, we focus on the artificial time series, as this offers the pos
 
 We first consider a standard NODE model (\cite{Bonnaffe2021a}), as our BNGM approach seeks to alleviate the computational cost of fitting NODEs.
 We define the per capita growth rate as an ANN with a single layer, 3 inputs, 10 hidden nodes, and exponential activation functions.
-We use a Bayesian model, assuming log normal distributions for species density $Y_i \sim \log\mathcal{N}(y_i,\theta_i)$, and uniform uninformative prior distributions for the network parameters $\theta_i \sim \mathcal{U}(-10,10)$, initial densities $y_{i0} \sim \mathcal{U}(0,10)$, and variance $\sigma_i \sim \log\mathcal{N}(0.5,0.5)$.
+We use a Bayesian model, assuming log normal distributions for species density $Y_i \sim \log\mathcal{N}(y_i,\sigma_i)$, and uniform uninformative prior distributions for the network parameters $\theta_i \sim \mathcal{U}(-10,10)$, initial densities $y_{i0} \sim \mathcal{U}(0,10)$, and variance $\sigma_i \sim \log\mathcal{N}(0.5,0.5)$.
 Our implementation of standard NODEs differs from our BNGM approach in three ways.
 First, the standard NODE ANN has 3 outputs instead of one, as variables are fitted jointly.
 Second, computing the posterior density of the parameters requires to solve the NODE system with a numerical ODE solver (Runge-Kutta, package \textit{deSolve}).
@@ -502,7 +493,7 @@ We digitised these time series by extracting by hand the coordinates of every po
 We apply the same analysis as performed on the artificial tri-trophic prey-predator oscillations.
 This allows us to recover a nonparametric approximation of the growth rate of each species, and then derive the direction and strength of the ecological interactions that underpin their dynamics.
 We present detailed results of the analysis of the second time series (Fig. 5), and a summary comparison of the three time series (Fig. 6).
-Complementary results, including cross-validation plots, and detailed results for the other two replicates can be found in the supplementary material (Supplementary C-D).
+Complementary results, including cross-validation plots, and detailed results for the other two replicates can be found in the supplementary material (Supplementary C-E).
 
 %%
 \subsection{Case study 3: real di-trophic prey-predator oscillations}
@@ -524,7 +515,7 @@ We apply the same analysis as previously described, to the exception that the NO
 Results are presented in Figure 7.
 
 %%
-\subsection{Case study 4: fish community from the Maizuru Bay}
+\subsection{Case study 4: Maizuru bay aquatic community}
 
 Finally, we demonstrate the capacity of NODEs to analyse the drivers of the dynamics of a larger community by analysing the time series of the Maizuru bay community (\cite{Ushio2018}).
 
@@ -564,7 +555,6 @@ Similarly, we find that the NODE approximation of the per-capita growth rate of 
 We find negative nonlinear effects of the two predators on the growth rate of the algae (Fig. 3, b., blue and purple lines).
 This nonlinear pattern is mirrored by the effect of the algae on the growth rate of the predators (Fig. 3, e. and h., red line).
 The interaction between the two predators is also well-recovered (Fig. 3, e., blue line, and h., purple line), in spite of a slight tendency for overestimating the degree of nonlinearity of effects.
-% We find that removing the intra-specific dependence in the growth rate of the predators did not affect the fit of the model (Fig. e., purple line, and h., blue line).
 The BNGM approach hence accurately recovers the dynamical characteristics of the artificial system.
 
 %%
@@ -576,7 +566,7 @@ Standard NODEs provide similar estimation accuracies, but take over 15 minutes t
 CCM is the fastest technique, as results are obtained in under a second, but is relatively less accurate.
 Parametric ODEs are found to be both slow and less accurate.
 
-We present a detailed breakdown of the runtime of fitting NODEs by BNGM for each system in table 1.
+We present a detailed breakdown of the runtime of fitting NODEs by BNGM for each system in Table 1.
 We find that it takes on average 5.35 minutes to fit NODEs by BNGM on the smaller systems with 3 or less species, and about 23 minutes to fit the larger system from the Maizuru bay, which features 12 variables.
 This includes performing $100 \times I$ and $30 \times I$ full optimisations of the posterior distribution of the interpolation and NODE parameters, respectively. 
 This amounts to about 5.37 second to sample each variable of the NODE system once in the smaller systems, and about 28 seconds for the Maizuru bay community.
@@ -588,16 +578,15 @@ This is over a 100 fold improvement over standard NODE models, which take on ave
 We present an in-depth analysis of the drivers of the dynamics of the algae, flagellate, and rotifer population in replicate B (Fig. 5).
 We find slightly positive nonlinear intra-specific density dependence in algal growth (Fig. 5, b., red line), and negative nonlinear inter-specific effects of the two predators (purple and blue line).
 We find that the growth rate of the flagellate is driven by a positive effect of algal density, a negative effect of predation by the rotifer and intra-specific density dependence (Fig. 5, e. and f.).
-The rotifer population is almost solely driven by a positive nonlinear effect of flagellate density (Fig. 5, h., purple line).
-Overall, comparing results across the three replicates reveals that the effect of the rotifer population on the flagellate and algae, and the effect of the algae on the rotifer, are the strongest and most consistent interactions (Fig. 6, table 2).
-The interactions of the flagellate with the algae, and its effect on the rotifer population varies substantially across replicates (Fig. 6, table 2). 
-Interestingly, intra-specific density dependence in rotifer and algae is also found to be inconsistent across the three replicates.
+The rotifer population is almost solely driven by a positive nonlinear effect of algal density (Fig. 5, h., red line).
+Overall, comparing results across the three replicates reveals that the effect of the rotifer population on the flagellate and algae, and the effect of the algae on the rotifer, are the strongest and most consistent interactions (Fig. 6, Table 2).
+The interactions of the flagellate with the algae, and its effect on the rotifer population varies substantially across replicates (Fig. 6, Table 2). 
 
 %%
 \subsection{Case study 3: real di-trophic prey-predator oscillations}
 
 We present the analysis of the drivers of the hare-lynx population dynamics in Figure 7.
-Cross-validation provides support for nonlinear effects in the per-capita growth rate of the hare and lynx.
+Cross-validation provides weak support for nonlinear effects in the per-capita growth rate of the hare and lynx.
 We find that the hare population growth rate is mostly determined by a nonlinear negative effect of the lynx population (Fig. 7, b. and c. blue line), and by weak nonlinear positive density dependence (red line). 
 The lynx growth rate is determined by a positive nonlinear effect of the hare (Fig. 7, e. and f., red line), and to a lesser extent by negative nonlinear intra-specific density dependence (blue line).
 
@@ -605,7 +594,7 @@ The lynx growth rate is determined by a positive nonlinear effect of the hare (F
 \subsection{Case study 4: drivers of the Maizuru bay community dynamics}
 
 We show the results of the NODE analysis of the drivers of the dynamics Maizuru bay community in Figure 8.
-Our main finding is that the chameleon goby (\textit{Tridentiger trigonocephalus}) has a strong negative effect on 8 of the 11 dominant species of the community. 
+Our main finding is that the chameleon goby (\textit{T. trigonocephalus}) has a strong negative effect on 8 of the 11 dominant species of the community. 
 We find that \textit{E. ercodes} also has a strong negative impact on other species in the community, although relatively smaller than that of the chamelon goby.
 We find a positive effect of sea bottom temperature on the growth rate of the chameleon goby.
 Other effects are found to be mostly positive and have a relatively smaller impact on community dynamics.
@@ -641,15 +630,8 @@ CCM remains faster than our approach in recovering estimates of ecological inter
 A possible explanation for this comes from the fact that CCM computes the sensitivity of the total population growth rate, rather than the per-capita growth rate, which can change estimated effects.
 Additionally, CCM relies on piecewise linear reconstructions of the state space (\cite{Deyle2015}), whereas NODEs computes a global nonlinear approximation of the per-capita growth rate on the entire range covered by the data.
 We view the former as potentially more sensitive to local noise in the state space (\cite{Cenci2019a}), compared to the latter, which uses all evidence available to inform local inference.
-% This approach is similar to Sugihara's maps (S-maps, \cite{Sugihara2012}), which estimate interactions in time series by approximating the Jacobian matrix nonparametrically via locally linear approximations of the state space (\cite{Deyle2015}).
-% However, because S-maps are locally linear, they do not assume the existence of a latent trajectory generated by an overarching model.
-% This creates two caveats, the first being that they are more sensitive to noise in the time series (\cite{Cenci2018}), the second being that they have no theoretical grounding given that they are at heart linear functions defined piecewise on the state space.
-% NODEs remain in essence deterministic ODE models, assuming an overarching model driving the populations through the entire state-space, which can hence incorporate parametric assumptions regarding the driving processes (\cite{Bonnaffe2021a}).
-% For instance, we model the per capita growth rate of populations explicitly in NODEs, while S-maps approximate the population-level growth. 
-% Overall, this makes NODEs more suitable than S-maps for fitting noisy data or exploring theory by testing specific assumptions.
 
 Our BNGM approach extends standard gradient matching, by using artificial neural networks (ANNs) as interpolating functions, and Bayesian regularisation to control the nonlinearity of the processes (\cite{Cawley2007}).
-% This allows us to accurately fit NODEs within seconds, making it potentially the most efficient current fitting technique available (see also \cite{Treven2021}). 
 The use of ANNs as interpolating functions sets it apart from the initial approach of Ellner et al., who use splines to interpolate the time series before approximating the ODEs (\cite{Ellner2002}).
 ANNs are more general and flexible than splines, as well as being easier to manipulate given that they are defined continuously on the state space, which is especially useful when handling multiple interactions between variables.
 Our approach is related to that of Wu et al., who use ANNs to approximate both the states and ODEs of prey-predator systems (\cite{Wu2005}), as well as that of Treven and colleagues, who developed the Gaussian process equivalent (\cite{Treven2021}).
@@ -658,7 +640,6 @@ One of the downsides of this approach is that misestimating one of the state var
 To avoid this, we fit each interpolation and NODE independently to each time series.
 In addition, this makes it possible to parallelise the code, resulting in potentially even faster computation.
 
-% Our approach removes the main limitation of using NODEs, allowing for quick and extensive model comparison, cross-validation, and uncertainty quantification around estimates.
 Our approach opens new possibilities for nonparametric inference of ecological interactions from time series data.
 The lower fitting times makes it possible to tackle larger systems, quick and extensive model comparison, cross-validation, and apply more thorough statistical treatments of the uncertainty of these models, for instance by implementing Markov-chain Monte-Carlo (MCMC) sampling.
 
@@ -684,13 +665,13 @@ This dynamical coupling comes at a cost, if one variable is not explained well b
 Here, the time series of lynx and hare are analysed independently, each state variable is interpolated as closely as desired, its effects on the dynamics of other variables are hence even more robust to model misspecification than before.
 
 We applied our approach to analyse the drivers of the dynamics of 11 species in the Maizuru bay (\cite{Ushio2018}).
-We inferred $11 \times 12$ ecological interactions, and 11 dependencies on water temperature.
+We inferred $11 \times 11$ ecological interactions, and 11 dependencies on water temperature.
 We found that the chameleon goby had a strong negative impact on the other species of the system, showing a strong competitive potential.
 This species is viewed as an aggressive competitor (\cite{Ushio2018}), and is considered an invasive species in places where it has been introduced (\cite{Goren2009}).
 We also find a positive effect of temperature on the growth rate of the chameleon goby, which suggests that warming could have indirect negative effects on many species on Maizuru bay by favouring the reproduction of the goby.
 
 Surprisingly, our results differ substantially from those obtained by Ushio et al. in their original analysis of the system with convergent cross mapping (\cite{Ushio2018}).
-This may be due to a multitude of factors.
+This may be due to a several factors.
 First, we considered a different set of species, as some of the time series that Ushio and colleagues used were too sparse to be suitable for our analysis.
 Additionally, this difference may be explained by the disparity in the estimation accuracies revealed by our benchmark analysis, relating to fundamental mathematical differences between the two approaches, as discussed previously.
 If nothing else, our analysis of the Maizuru community dynamics demonstrates the usefulness of our BNGM method for fitting NODEs to a larger, more realistic system.
@@ -699,8 +680,6 @@ Overall, our approach provides a novel and powerful way of estimating interactio
 The benefit of using NODEs is that they make no assumptions about the nature of the ecological interactions that drive the dynamics of the species (\cite{Chen2018,Bonnaffe2021a}). 
 Hence, we have a better chance at estimating the actual value of the interactions, knowing that it is not subjected to potential incorrect model specifications (\cite{Jost2000,Ellner2002,Wu2005,Kendall2005,Adamson2013}).
 
-%% note: talk about nonlinearity as evidence of unobserved variables.
-
 %%
 \textbf{Limits and prospects}
 
@@ -708,7 +687,6 @@ One of the main difficulty in quantifying ecological interactions is to identify
 Our approach allows for the quantification of context dependence, which shows as nonlinear fluctuations of interactions throughout the time series.
 In the present work, we only report nonlinearity as evidence for context dependence in the interactions, but we do not attempt to understand what it is attributable to.
 For instance, we identify nonlinear density dependence in the effect of the algae on the rotifer, but we do not know whether this is due to a change in the effect with algae density or rotifer density, or both. 
-% The former would be consistent with the biology of the system, as algae tend to form anti-predation clumps at higher density.
 In order to disentangle these higher order effects we could compute the Hessian of the system, namely the second order derivative of the dynamics with respect to the different state variables. 
 Though this procedure is simple mathematically, it would result in 27 second order effects to analyse for the simple 3 species system considered here.
 This type of analysis would get rapidly out of hand for larger systems.
@@ -721,15 +699,7 @@ Our method only accounts for observed variables, so that time series for all imp
 One interesting prospect would hence be to incorporate unobserved/latent state variables into the NODE system (\cite{Dupont2019,Zhang2019,Frank2022}).
 Careful thought has to be given here as whether to use an ODE or NODE for the latent states given that they are not constrained by observations. 
 
-% In addition, as stated before, we fit NODEs independently to each time series.
-% % So that the results obtained are not dynamically consistent, namely they are not the output of a dynamical system.
-% This means that a dynamical system simulated with the fitted NODEs may not reproduce the observed trajectories for the state variables.
-% Though this is not a problem if we are only interested in understanding the drivers of each time series, this could become problematic when it comes to forecasting.
-% Hence, other studies have taken the approach of fitting the interpolations and NODEs together (\cite{Wu2005,Treven2021}). 
-% However, to our knowledge, no studies have provided a Bayesian framework to perform explicitly the interpolation and fitting step together.
-% As a further development to the present work, we hence propose building a Bayesian framework combining both the neural interpolation and NODE fitting, in order to generate interpolations that are consistent with the dynamical model.
-
-A further question is whether we could use similar approaches to analyse systems larger than the ones considered on this study.
+A further question is whether we could use similar approaches to analyse systems larger than the ones considered in this study.
 In particular, microbial communities feature thousands of species, and hence potentially millions of interactions, which poses a real problem for inference with dynamical models (\cite{Ridenhour2017}).
 Even the simplest linear ODE model would contain millions of parameters, hence entering deep learning territory.
 We believe that our success there is more readily limited by the availability of time series sufficiently long to identify this many interactions, rather than by our models.
@@ -785,7 +755,6 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
     Interpolated dynamics of populations can then be computed by taking the derivative of the ANN with respect to time, $\partial\tilde{R}/\partial t$ and $\partial\tilde{N}/\partial t$.
     In a second step, we fit each NODE, $dR/dt$ and $dN/dt$ (blue boxes), to the interpolated dynamics.
     To do that we fit an ANN, which takes as input the interpolated variables $\tilde{R}(t)$ and $\tilde{N}(t)$, to the interpolated dynamics $\partial\tilde{R}/\partial t$ and $\partial\tilde{N}/\partial t$, via Bayesian regularisation.
-    % It takes on average 5.37 seconds to fit NODEs by BNGM, compared to 30 mins in a previous study (\cite{Bonnaffe2021a}), which corresponds to a 335 fold increase in speed.
 }
 \end{figure}
 \newpage
@@ -821,7 +790,7 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
     It displays the NODE nonparametric approximations of the per-capita growth rate of prey (a., b., c.), intermediate (d., e., f.), and top predators (g., h., i.).
     We obtain the NODE approximations (a., d., g., solid line) by fitting the interpolated per-capita growth rates (black dots) with ANNs that take population densities as input.
     We then estimate the direction of ecological interactions (effects, b., e., h.) by computing the derivative of the NODE approximations with respect to each density.
-    Finally, we compute the strength of ecological interactions (contributions, c., f., i.) by multiplying the interpolated dynamics of each population (fig. 1, b., d., f.) with its effects.
+    Finally, we compute the strength of ecological interactions (contributions, c., f., i.) by multiplying the interpolated dynamics of each population (Fig. 1, b., d., f.) with its effects.
     Dashed lines correspond to ground truth, obtained from the original trajectories of the tri-trophic ODE model. 
     The shaded area shows the 90\% confidence interval, obtained by approximately sampling the posterior distributions. 
 }
@@ -844,7 +813,7 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
     We computed runtimes as the mean time (in seconds) required to train a single model. 
     Using the best identified model, we predicted the growth rate and effects on the train and test set. 
     We computed accuracies as the mean squared error of predictions vs ground truth (known from the equations that generated the data) (see Fig. S1-5 for more details). 
-    At the top, we show the dynamical interaction network of the system predicted by the best models, where G, B, R correspond to the prey, intermediate and top predator, respectively,
+    At the top, we show the dynamical interaction network of the system predicted by the best models, where G, B, R correspond to the prey, intermediate and top predator, respectively.
     Green and red colours correspond to positive and negative interactions, the width of arrows is proportional to relative total contribution to the growth rate of the population computed following the Geber method (\cite{Hairston2005,Bonnaffe2021a}).
 }
 \end{center}
@@ -876,13 +845,13 @@ Tim Coulson led investigations, provided input for the manuscript, commented on 
 \caption{
     \textbf{Interaction networks inferred from 3 replicated time series of algae, flagellate, and rotifers.}
     This figure shows the direction and strength of ecological interactions inferred from 3 replicated sets of time series of algae, flagellate, and rotifer, using NODEs fitted by BNGM.
-    The replicates A and C were analysed in the same way as replicate B (see fig. 5 for details).
+    The replicates A and C were analysed in the same way as replicate B (see Fig. 5 for details).
     Red and purple arrows correspond to negative or positive mean effects. 
     We estimated mean effects by averaging effects (i.e. derivative of NODE approximated per-capita growth rates with respect to each population density) across the time series.
     The width of the arrows is proportional to the relative strength of the ecological interaction. 
     We compute the relative strength as the \% of total contributions attributable to either algae, flagellate, or rotifer, obtained from summing the square of contributions of each species throughout the time series.
-    For instance in replicate A, the relative strength of the effect of rotifer on algae is found by summing the square of the blue line in fig. 5 c., and comparing it to the sum of square of all contributions (Fig. 5 c., red, purple and blue lines).
-    We provide the value of the mean effects and relative strengths in table 2.
+    For instance in replicate A, the relative strength of the effect of rotifer on algae is found by summing the square of the blue line in Fig. 5 c., and comparing it to the sum of square of all contributions (Fig. 5 c., red, purple and blue lines).
+    We provide the value of the mean effects and relative strengths in Table 2.
     The replicated time series were obtained by digitising the time series in Hiltunen et al. (2013).
 }
 \end{figure}
@@ -944,7 +913,7 @@ These results were obtained on a macbook pro M1 MAX 2022, in base R (v4.0.2), wi
 & & & \multicolumn{2}{c}{Interpolation} & \multicolumn{2}{c}{NODE fit} & &  \\
 & & & \multicolumn{2}{c}{-------------------------} & \multicolumn{2}{c}{-------------------------} & &  \\
 % & \\
-System & N var. & N steps & N fits & time (s) & N fits & time (s) & total & total p. fit \\
+System & N var. & N t. steps & N fits & time (s) & N fits & time (s) & total & total p. fit \\
 & \\
 \hline
 & \\
@@ -1041,8 +1010,6 @@ The fitting of the models is performed in a Bayesian framework, considering norm
 \end{equation}
 
 where $\theta$ is the parameter vector of the model, and $\mathcal{D}$ the evidence, namely the data that the model is fitted to.
-% In the case of the interpolation, the evidence is the population densities, either $R(t)$, $G(t)$, or $B(t)$, and the parameters are the weights $\Omega$ in the sinusoid SLPs.
-% In the case of fitting the NODE model to the interpolated data, the evidence is the interpolated per-capita growth rate of each population, either $\tilde{r}_R$, $\tilde{r}_G$, or $\tilde{r}_B$, and the parameters are the weights $\beta_R$, $\beta_G$, and $\beta_B$ in the nonparametric per-capita growth rates $r_R$, $r_G$, and $r_B$.
 Assuming a normal likelihood for the residuals given the evidence we get
 
 \vspace{-0.5cm}
@@ -1051,9 +1018,8 @@ Assuming a normal likelihood for the residuals given the evidence we get
 \end{equation}
 
 where $e_i(\mathcal{D},\omega)$ are the residuals of the model given the parameters, and the evidence. 
-In the case of the interpolation, the residuals correspond to the observation error $\epsilon^{(o)}$ (equation 3).
-In the case of the NODE approximation, they correspond to the process error $\epsilon^{(p)}$ (equation 7).
-% The dispersion term $\sigma$ in the likelihood is measured by the parameters $\sigma_1$ in the case of the interpolation, and $\sigma_2$ in the case of the NODE fitting.
+In the case of the interpolation, the residuals correspond to the observation error $\epsilon^{(o)}$ (Eq. 3).
+In the case of the NODE approximation, they correspond to the process error $\epsilon^{(p)}$ (Eq. 7).
 $N$ is the number of data points, either observations in the case of the interpolation, $N^{(o)}$, or interpolated points in the case of the NODE fitting, $N^{(p)}$.
 
 The prior probability density functions for the parameters are given by
@@ -1066,10 +1032,10 @@ The prior probability density functions for the parameters are given by
 where $M$ is the number of parameters in the models.
 The parameter $\delta_j$ controls the dispersion of the priors, and thereby the complexity/level of constraint of the model.
 
-Bayesian regularisation simply amounts to constraining the values of the parameters in the model to be close to a desired value. 
+Bayesian regularisation consists in constraining the values of the parameters in the model to be close to a desired value. 
 Usually, parameters are constrained by choosing normal priors centered about 0.
-In this case, the standard deviation of the normal priors governs the range of values that the parameters can take, and hence constrains more or less strongly the behaviour of the model (\cite{Cawley2007}).
-There is no standard approach for choosing $\delta$.
+In this case, the standard deviation of the normal priors, $\delta$, governs the range of values that the parameters can take, and hence constrains more or less strongly the behaviour of the model (\cite{Cawley2007}).
+% There is no standard approach for choosing $\delta$.
 Low values of dispersion may increase constraint on parameters too drastically, which would lead to underfitting, and result in a reduction of the variance of parameter estimates and bias mean estimates towards 0.
 In contrast, too high values of dispersion may lead to overfitting, by allowing for more complex shapes.
 To account for this, we optimise models on the second-level of inference.
@@ -1078,7 +1044,7 @@ This means that we are finding the optimal value of $\delta$, in addition to opt
 
 In practice, choosing the level of constraint is difficult, Cawley and Talbot hence developed a criterion to perform model selection on the second level of inference.
 They proposed to optimise the marginal posterior distribution by averaging out the dispersion of the priors.
-With an appropriate choice of prior, the dispersion can be integrated out, leaving us with a formula for the posterior that only depends on the parameters of the model,
+With an improper Jeffrey's hyperprior, $p(\xi) \propto \frac{1}{\xi}$, on the dispersion parameters, the dispersion can be integrated out, leaving us with a formula for the posterior that only depends on the parameters of the model,
 
 \vspace{-0.5cm}
 \begin{equation}
@@ -1088,7 +1054,7 @@ With an appropriate choice of prior, the dispersion can be integrated out, leavi
 where $P(\omega|\mathcal{D})$ denotes the marginal posterior density, $\mathcal{D}$ denotes the evidence, $N$ and $M$ denote the number of data points and parameters, respectively, $e_i$ denote the residuals, and $\omega$ denote the parameters of the model.
 The construction is elegant because it is not sensitive to the choice of prior hyperparameters, and simple as it amounts to optimising the log of the sum of squares, rather than the sum of squares (in the case of normal ordinary least square).
 
-The issue with this formula is that the marginal posterior density is not finite when the parameters are 0, which can lead to underfitting.
+One of the drawbacks of this construction is that the marginal posterior density is not finite when the parameters are 0, which can lead to underfitting.
 In this paper we use a modified criterion, which corrects for that problem,
 
 \vspace{-0.5cm}
@@ -1097,7 +1063,7 @@ In this paper we use a modified criterion, which corrects for that problem,
 \end{equation}
 
 where the marginal posterior density depends only on the residuals of the model when the parameters are equal to 0, and otherwise depends on both the parameters and the residuals. 
-This construction can be obtained simply by assuming a gamma prior for the parameters $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi/2 \right\}$, where $\xi$ is the regularisation parameter, instead of the improper Jeffreys' prior that Cawley and Talbot used in their original study, namely $p(\xi) \propto \frac{1}{\xi}$. 
+This construction can be obtained by adding an exponential correction to the improper Jeffrey's hyperprior that Cawley and Talbot used in their original study, namely $p(\xi) \propto \frac{1}{\xi} \exp\left\{- \xi/2 \right\}$, where $\xi$ is the regularisation parameter. 
 
 We provide below details of the calculation of this modified criterion, starting by averaging out the regularisation parameter.
 We let $\xi := 1/\delta^2$, assuming that all parameters are controlled by the same regularisation parameter, which gives the following equation for the prior distribution,
@@ -1107,7 +1073,7 @@ We let $\xi := 1/\delta^2$, assuming that all parameters are controlled by the s
     p(\omega | \xi) = \prod_{j=1}^{M} \frac{1}{\sqrt{2\pi/\xi}}  \exp \left\{ -\frac{\xi}{2} \omega_j^2 \right\}.
 \end{equation}
 
-To follow the proof given by Cawley and Talbot we further use the following notation, $d = M$, $Z_\Omega := \left( 2\pi / \xi \right)^{d/2}$, and $\Omega := \sum_j \omega_j^2$, which yields
+To follow the proof given by Cawley and Talbot we further use the following notation, $d := M$, $Z_\Omega := \left( 2\pi / \xi \right)^{d/2}$, and $\Omega := \sum_j \omega_j^2$, which yields
 
 \vspace{-0.5cm}
 \begin{equation}
@@ -1226,7 +1192,7 @@ The same procedure can be applied to derive the marginal likelihood, by noting $
 \includegraphics[width=1\linewidth,page=13]{figures/main.pdf}
 \caption{
     \textbf{Effects and contributions inferred by CCM.}
-    The CCM method nonparametrically approximates the state space from which it derives the sensitivity of population dynamics to a change in the density of the species.
+    The CCM method nonparametrically approximates the state space from which it derives the sensitivity of population dynamics to a change in the density of the each species.
     We use the rEDM implementation and derived our code from the three species example provided in the package tutorial (v1.13.1, \cite{Sugihara2012}).
     We calculated the dynamics and per capita growth rate using finite differences, as the standard library does not readily provide estimates.
     The effects correspond to the s-map coefficients.
@@ -1262,10 +1228,10 @@ The same procedure can be applied to derive the marginal likelihood, by noting $
     \textbf{Cross-validation plot of the NODE analysis of replicate A.}
     The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs.
     Small values of standard deviation correspond to a linear model, while higher values (towards 0.5) correspond to a highly nonlinear model.
-    Time series of algae, flagellate, and rotifer are split in half to create a train set and a test set. 
-    The model is fitted to the train set for increasing value of standard deviation (from 0.05 to 0.5 by 0.05 increments), and evaluated on the test set.
+    Time series are split in three thirds to create a train, validation, and test set. 
+    The model is fitted to the train set for increasing value of standard deviation (from 0.05 to 0.5 by 0.05 increments), and evaluated on the validation set.
     Graph a., c., and e. show the log likelihood of the NODE system fitted by BNGM to the train set of algae, flagellate, and rotifer, respectively.
-    Graph b., d., and f. show the log likelihood of the fitted NODE, evaluated on the corresponding test set.
+    Graph b., d., and f. show the log likelihood of the fitted NODE, evaluated on the corresponding validation set.
     The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (\cite{Pearce2018}).
 }
 \end{figure}
@@ -1310,14 +1276,14 @@ The same procedure can be applied to derive the marginal likelihood, by noting $
 \begin{figure}[H]
 \includegraphics[width=1\linewidth,page=18]{figures/main.pdf}
 \caption{
-\textbf{Cross-validation plot of the NODE analysis of replicate B.}
-The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs.
-Small values of standard deviation correspond to a linear model, while higher values (towards 0.5) correspond to a highly nonlinear model.
-Time series of algae, flagellate, and rotifer are split in half to create a train set and a test set. 
-The model is fitted to the train set for increasing value of standard deviation (from 0.05 to 0.5 by 0.05 increments), and evaluated on the test set.
-Graph a., c., and e. show the log likelihood of the NODE system fitted by BNGM to the train set of algae, flagellate, and rotifer, respectively.
-Graph b., d., and f. show the log likelihood of the fitted NODE, evaluated on the corresponding test set.
-The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (\cite{Pearce2018}).
+    \textbf{Cross-validation plot of the NODE analysis of replicate B.}
+    The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs.
+    Small values of standard deviation correspond to a linear model, while higher values (towards 0.5) correspond to a highly nonlinear model.
+    Time series are split in three thirds to create a train, validation, and test set. 
+    The model is fitted to the train set for increasing value of standard deviation (from 0.05 to 0.5 by 0.05 increments), and evaluated on the validation set.
+    Graph a., c., and e. show the log likelihood of the NODE system fitted by BNGM to the train set of algae, flagellate, and rotifer, respectively.
+    Graph b., d., and f. show the log likelihood of the fitted NODE, evaluated on the corresponding validation set.
+    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (\cite{Pearce2018}).
 }
 \end{figure}
 \newpage
@@ -1364,10 +1330,10 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
     \textbf{Cross-validation plot of the NODE analysis of replicate C.}
     The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs.
     Small values of standard deviation correspond to a linear model, while higher values (towards 0.5) correspond to a highly nonlinear model.
-    Time series of algae, flagellate, and rotifer are split in half to create a train set and a test set. 
-    The model is fitted to the train set for increasing value of standard deviation (from 0.05 to 0.5 by 0.05 increments), and evaluated on the test set.
+    Time series are split in three thirds to create a train, validation, and test set. 
+    The model is fitted to the train set for increasing value of standard deviation (from 0.05 to 0.5 by 0.05 increments), and evaluated on the validation set.
     Graph a., c., and e. show the log likelihood of the NODE system fitted by BNGM to the train set of algae, flagellate, and rotifer, respectively.
-    Graph b., d., and f. show the log likelihood of the fitted NODE, evaluated on the corresponding test set.
+    Graph b., d., and f. show the log likelihood of the fitted NODE, evaluated on the corresponding validation set.
     The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (\cite{Pearce2018}).
 }
 \end{figure}
@@ -1414,11 +1380,11 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
 \caption{
     \textbf{Cross-validation plot of the NODE analysis of the hare-lynx system.}
     The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs.
-    Small values of standard deviation correspond to a linear model, while higher values (towards 0.5) correspond to a highly nonlinear model.
-    Time series of algae, flagellate, and rotifer are split in half to create a train set and a test set. 
-    The model is fitted to the train set for increasing value of standard deviation (from 0.0 to 0.2 by 0.025 increments), and evaluated on the test set.
-    Graph a., c., and e. show the log likelihood of the NODE system fitted by BNGM to the train set of algae, flagellate, and rotifer, respectively.
-    Graph b., d., and f. show the log likelihood of the fitted NODE, evaluated on the corresponding test set.
+    Small values of standard deviation correspond to a linear model, while higher values (towards 0.2) correspond to a highly nonlinear model.
+    Time series are split in three thirds to create a train, validation, and test set. 
+    The model is fitted to the train set for increasing value of standard deviation (from 0.0 to 0.2 by 0.025 increments), and evaluated on the validation set.
+    Graph a. and c. show the log likelihood of the NODE system fitted by BNGM to the train set of hare and lynx, respectively.
+    Graph b. and d. show the log likelihood of the fitted NODE, evaluated on the corresponding validation set.
     The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (\cite{Pearce2018}).
 }
 \end{figure}
@@ -1448,11 +1414,12 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
 \begin{figure}[H]
 \includegraphics[width=1\linewidth,page=26]{figures/main.pdf}
 \caption{
-    \textbf{Time series of the fish community in Ushio et al. 2018.}
+    \textbf{Time series of the aquatic community in Ushio et al. 2018.}
     The time series was collected for 12-years on a fortnightly basis, for 15 dominant species in the Maizuru bay in Japan. 
     We focus on the 11 species and the 100 time steps with the least sparse abundance records. 
     Bot.t corresponds to water temperature near the bottom. 
     The main species are \textit{Aurelia sp.}, \textit{Sebastes inermis}, \textit{Trachurus japonicus}, \textit{Girella punctata}, \textit{Pseudolabrus sieboldi}, \textit{Halichoeres poecilopterus}, \textit{Halichoeres tenuispinnis}, \textit{Pterogobius zonoleucus}, \textit{Tridentiger trigonocephalus}, \textit{Sphyraena pinguis}, and \textit{Rudarius ercodes}. 
+    Variables are normalised with respect to minimum and maximum values.
 }
 \end{figure}
 \newpage
@@ -1462,10 +1429,10 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
 \begin{figure}[H]
 \includegraphics[width=1\linewidth,page=27]{figures/main.pdf}
 \caption{
-    \textbf{Interpolation of state and dynamics of species abundance in the Maizuru bay community.}
-    Graphs a. display the neural interpolations of the population density (obtained with Eq. 7). 
+    \textbf{Interpolation of state and dynamics of temperature and species abundance in the Maizuru bay community.}
+    Graphs a. display the neural interpolations of the population density (obtained with Eq. 7), apart from graph 1a. which corresponds to sea bottom temperature. 
     Graphs b. show the corresponding interpolated dynamics, obtained by differentiating the interpolation of the states with respect to time (Eq. 5). 
-    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log marginal posterior distribution (Eq. 7)
+    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log marginal posterior distribution (Eq. 8).
 }
 \end{figure}
 \newpage
@@ -1478,7 +1445,7 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
     \textbf{Interpolation of state and dynamics of species abundance in the Maizuru bay community.}
     Graphs a. display the neural interpolations of the population density (obtained with Eq. 7). 
     Graphs b. show the corresponding interpolated dynamics, obtained by differentiating the interpolation of the states with respect to time (Eq. 5). 
-    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log marginal posterior distribution (Eq. 7)
+    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log marginal posterior distribution (Eq. 8).
 }
 \end{figure}
 \newpage
@@ -1491,7 +1458,7 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
     \textbf{Interpolation of state and dynamics of species abundance in the Maizuru bay community.}
     Graphs a. display the neural interpolations of the population density (obtained with Eq. 7). 
     Graphs b. show the corresponding interpolated dynamics, obtained by differentiating the interpolation of the states with respect to time (Eq. 5). 
-    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log marginal posterior distribution (Eq. 7)
+    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log marginal posterior distribution (Eq. 8).
 }
 \end{figure}
 \newpage
@@ -1504,7 +1471,7 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
     \textbf{Interpolation of state and dynamics of species abundance in the Maizuru bay community.}
     Graphs a. display the neural interpolations of the population density (obtained with Eq. 7). 
     Graphs b. show the corresponding interpolated dynamics, obtained by differentiating the interpolation of the states with respect to time (Eq. 5). 
-    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log marginal posterior distribution (Eq. 7)
+    The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log marginal posterior distribution (Eq. 8).
 }
 \end{figure}
 \newpage
@@ -1518,7 +1485,7 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
     The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs. 
     Small values of standard deviation correspond to a linear model, while higher values correspond to a highly nonlinear model. 
     Time series are split in three thirds to create a train, validation, and test set. 
-    The model is fitted to the train set (i.e. first third) for increasing value of standard deviation (from 0.0 to 0.1 by 0.01 increments), and evaluated on the validation set. 
+    The model is fitted to the train set (i.e. first third) for increasing value of standard deviation (from 0.005 to 0.05 by 0.005 increments), and evaluated on the validation set. 
     The operation is repeated by swapping the training and validation set. 
     The graphs show the log likelihood of the NODE system fitted by BNGM to the train set (in orange), and evaluated on the corresponding validation set (in red). 
     The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (Pearce et al. 2018).
@@ -1535,7 +1502,7 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
     The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs. 
     Small values of standard deviation correspond to a linear model, while higher values correspond to a highly nonlinear model. 
     Time series are split in three thirds to create a train, validation, and test set. 
-    The model is fitted to the train set (i.e. first third) for increasing value of standard deviation (from 0.0 to 0.1 by 0.01 increments), and evaluated on the validation set. 
+    The model is fitted to the train set (i.e. first third) for increasing value of standard deviation (from 0.005 to 0.05 by 0.005 increments), and evaluated on the validation set. 
     The operation is repeated by swapping the training and validation set. 
     The graphs show the log likelihood of the NODE system fitted by BNGM to the train set (in orange), and evaluated on the corresponding validation set (in red). 
     The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (Pearce et al. 2018).
@@ -1552,7 +1519,7 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
     The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs. 
     Small values of standard deviation correspond to a linear model, while higher values correspond to a highly nonlinear model. 
     Time series are split in three thirds to create a train, validation, and test set. 
-    The model is fitted to the train set (i.e. first third) for increasing value of standard deviation (from 0.0 to 0.1 by 0.01 increments), and evaluated on the validation set. 
+    The model is fitted to the train set (i.e. first third) for increasing value of standard deviation (from 0.005 to 0.05 by 0.005 increments), and evaluated on the validation set. 
     The operation is repeated by swapping the training and validation set. 
     The graphs show the log likelihood of the NODE system fitted by BNGM to the train set (in orange), and evaluated on the corresponding validation set (in red). 
     The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (Pearce et al. 2018).
@@ -1569,7 +1536,7 @@ The shaded areas represent the 90\% confidence interval on estimates, obtained b
     The x-axis of the graphs correspond to the standard deviation of the prior distribution of the NODE parameters, which constrains the nonlinearity of the nonparametric approximation of the NODEs. 
     Small values of standard deviation correspond to a linear model, while higher values correspond to a highly nonlinear model. 
     Time series are split in three thirds to create a train, validation, and test set. 
-    The model is fitted to the train set (i.e. first third) for increasing value of standard deviation (from 0.0 to 0.1 by 0.01 increments), and evaluated on the validation set. 
+    The model is fitted to the train set (i.e. first third) for increasing value of standard deviation (from 0.005 to 0.05 by 0.005 increments), and evaluated on the validation set. 
     The operation is repeated by swapping the training and validation set. 
     The graphs show the log likelihood of the NODE system fitted by BNGM to the train set (in orange), and evaluated on the corresponding validation set (in red). 
     The shaded areas represent the 90\% confidence interval on estimates, obtained by anchored ensembling of the log posterior distribution (Eq. 8) (Pearce et al. 2018).
