@@ -17,7 +17,7 @@ The method works in two steps (see figure below):
 * approximating the interpolated dynamics of the variables with neural networks (process model) which take as input the interpolated states
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_graphical_abstract_1.png" alt="overview" width="750" height="750" />
+<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_graphical_abstract_1.png" alt="overview" width="750" height="500" />
 </p>
 
 
