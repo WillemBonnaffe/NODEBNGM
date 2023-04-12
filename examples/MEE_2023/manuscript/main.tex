@@ -112,8 +112,8 @@ This is a crucial step availing quick NODE fitting, cross-validation, and uncert
 %%
 \section{Introduction}
 
-The concept of population is central in ecology (\cite{Berryman2002}).
-Ecologists have had a longstanding interest in finding laws that govern population dynamics, namely changes in the number of individuals in the populations (\cite{Lawton1999,Turchin1999a}).
+The concepts of population and community (i.e. groups of populations) are central in ecology (\cite{Berryman2002}).
+Ecologists have had a longstanding interest in finding laws that govern population and community dynamics, namely changes in the number of individuals in the populations present in a community (\cite{Lawton1999,Turchin1999a}).
 Population dynamics can be characterised by a logistic growth, or similar forms, limited by ecological interactions with other organisms, and by the state of the environment (\cite{Turchin2001c,Berryman2003}).
 Intra-specific interactions correspond to interactions between individuals of different sex, age or size classes, belonging to the same species (\cite{Turchin2001c}).
 Inter-specific interactions are interactions between individuals from different species, be it competitors, preys, predators, or pathogens (\cite{Turchin2001c,Berryman2003}).
@@ -165,9 +165,10 @@ In this manuscript, we first introduce a novel fitting technique for NODEs, Baye
 The method extends gradient matching by using neural networks to interpolate the time series data instead of splines (\cite{Ellner2002}), and Bayesian regularisation to fit NODEs to the interpolated dynamics (\cite{Cawley2007}). 
 This cuts down the fitting time of NODEs to only a few seconds, compared to about 30 minutes in our previous work (\cite{Bonnaffe2021a}), allowing for efficient cross-validation, and uncertainty quantification.
 We then demonstrate that NODEs are highly accurate in recovering ecological interactions in an artificial three-species prey-predator system where truth is known.
-Finally, we conclude the work by characterising ecological interactions in three replicates of an experimental three-species prey-predator system with an algae, flagellate, and rotifer (\cite{Hiltunen2013}), as well as in the classic hare and lynx time series (\cite{Odum1972}).
+Finally, we conclude the work by characterising ecological interactions in three replicates of an experimental three-species prey-predator system with an algae, flagellate, and rotifer (\cite{Hiltunen2013}), in the classic hare and lynx time series (\cite{Odum1972}), as well as in the larger aquatic community of the Maizuru bay in Japan (\cite{Ushio2018}).
 We find that only main interactions, between the algae and the rotifer, are conserved across the three replicates, and not the interactions of the flagellate with the other species.
 We also find that in most cases linear interactions are sufficient to explain the dynamics apart from nonlinearity in the effect of the prey on the top predator in both the rotifer and lynx.
+Finally, we find that the dynamics of the aquatic species of the Maizuru bay community are largely determined by a single species.
 
 %% 
 \section{Material and Methods}
@@ -321,9 +322,10 @@ This approach allows us to limit overfitting by adjusting the constraint on the 
 We could set small values of $\delta$ to limit the degree of nonlinearity in the response, or to eliminate specific variables from the model by constraining their parameters to be close to zero.
 We identify the appropriate degree of constraint $\delta_{i}$ on NODE parameters via cross-validation. 
 We split the interpolated data into a train, validation, and test set, for instance, in three thirds.
-We train the NODE model on the train set and predict the validation set.
+We fit the NODE model to the train set and predict the validation set.
 We repeat this process for increasing values of $\delta_{i}$, until we find the value that maximises the log likelihood of the validation data.
 We can perform multiple folds of validation by swapping the train and validation set, or by varying the size of the train/validation split.
+Ultimately, once we have identified the appropriate value of the constraint parameters $\delta_{i}$, we fit the model to both the training and validation set, and assess the accuarcy of the predictions on the test data, which is never seen by the model during training.
 
 %%
 \subsection{Inference and uncertainty quantification}
@@ -389,7 +391,7 @@ $\mu$ and $\nu$ are the intrinsic mortality of the intermediate and top predator
 
 We simulate a case of invasion, by introducing the top predator at a low density, with a set of parameters that result in dampening prey-predator oscillations, namely $\alpha = 1$, $\beta = 2.5$, $\gamma = 1.5$, $\kappa = 3$, $\delta = \phi = \mu = \nu = 1$.
 We focus on the middle section of the time series, $t \in [20,50]$, as in the initial section the top predator is rare, and in the later section populations have attained a fixed equilibrium point.
-The resulting time series are presented in figure 2.
+The resulting time series are presented in Figure 2.
 
 \textbf{NODE model}
 
@@ -418,7 +420,7 @@ Given that the population densities are strictly positive $R,~G,~B \in \mathcal{
 We then approximate the marginal posterior distribution of the interpolation parameters, and thereby of interpolated states and dynamics, by taking 100 samples from the log marginal posterior distribution (Eq. 7) via anchored ensembling. % $\omega^*_{i} = \underset{\omega}{argmax} ~\log P(\omega_i ~|~ Y_i)$, where $Y_i$ denotes the observed time series of either $R$, $G$, and $B$.
 In practice, the high number of parameters in the neural network equation may impede the fit of the time series, especially for short time series. 
 We found that dividing the number of parameters $M^{(o)}$ (Eq. 7) by the number of neurons in the network $J$ (Eq. 2) yields consistent fitting results.
-Interpolated states and dynamics are presented in figure 2.
+Interpolated states and dynamics are presented in Figure 2.
 
 %%
 \textbf{Fitting NODEs to the interpolated time series}
@@ -477,7 +479,7 @@ For all four methods, we compute the runtime as the average time required to tra
 Using the best preforming model on the train set, we then predict the population dynamics, growth rate, and ecological effects for the entire time series, including the test set.
 We compute the accuracy of the predictions by computing the mean sum of squared error (MSE) of predictions versus the truth for both the per capita growth rate and ecological effects, on the train and test set.
 We also build the corresponding dynamical interaction networks, using the inferred mean effects and total contributions, and compare them to the true network of interactions.
-Results are shown in figure 4 and presented in detail in supplementary figures (Fig. S1-5).
+Results are shown in Figure 4 and presented in detail in supplementary figures (Fig. S1-5).
 
 %%
 \subsection{Case study 2: real tri-trophic prey-predator oscillations}
@@ -519,7 +521,7 @@ The time series displays characteristic 10-year long prey-predator oscillations.
 \textbf{NODE analysis}
 
 We apply the same analysis as previously described, to the exception that the NODE system only features two variables, $H$ and $L$, instead of 3.
-Results are presented in figure 7.
+Results are presented in Figure 7.
 
 %%
 \subsection{Case study 4: fish community from the Maizuru Bay}
@@ -556,7 +558,7 @@ The time series of effects and contributions are presented in greater details in
 %%
 \subsection{Case study 1: artificial tri-trophic system}
 
-We present the results of fitting NODEs by BNGM to the artificial tri-trophic time series in figure 2 and 3.
+We present the results of fitting NODEs by BNGM to the artificial tri-trophic time series in Figure 2 and 3.
 We find that both the interpolation of the state variables and dynamics are highly accurate (Fig. 2), given that they closely match the ground truth, known from the equations of the ODE model that we used to generate the time series (Eq. 11).
 Similarly, we find that the NODE approximation of the per-capita growth rate of each species also closely matches the ground truth (Fig. 3, a., d., g.). 
 We find negative nonlinear effects of the two predators on the growth rate of the algae (Fig. 3, b., blue and purple lines).
@@ -594,7 +596,7 @@ Interestingly, intra-specific density dependence in rotifer and algae is also fo
 %%
 \subsection{Case study 3: real di-trophic prey-predator oscillations}
 
-We present the analysis of the drivers of the hare-lynx population dynamics in figure 7.
+We present the analysis of the drivers of the hare-lynx population dynamics in Figure 7.
 Cross-validation provides support for nonlinear effects in the per-capita growth rate of the hare and lynx.
 We find that the hare population growth rate is mostly determined by a nonlinear negative effect of the lynx population (Fig. 7, b. and c. blue line), and by weak nonlinear positive density dependence (red line). 
 The lynx growth rate is determined by a positive nonlinear effect of the hare (Fig. 7, e. and f., red line), and to a lesser extent by negative nonlinear intra-specific density dependence (blue line).
@@ -602,7 +604,7 @@ The lynx growth rate is determined by a positive nonlinear effect of the hare (F
 %%
 \subsection{Case study 4: drivers of the Maizuru bay community dynamics}
 
-We show the results of the NODE analysis of the drivers of the dynamics Maizuru bay community in figure 8.
+We show the results of the NODE analysis of the drivers of the dynamics Maizuru bay community in Figure 8.
 Our main finding is that the chameleon goby (\textit{Tridentiger trigonocephalus}) has a strong negative effect on 8 of the 11 dominant species of the community. 
 We find that \textit{E. ercodes} also has a strong negative impact on other species in the community, although relatively smaller than that of the chamelon goby.
 We find a positive effect of sea bottom temperature on the growth rate of the chameleon goby.
