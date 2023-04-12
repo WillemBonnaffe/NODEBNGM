@@ -3,10 +3,14 @@
 #######################
 
 ## goal: 
-## - use gradient matching (GM) to fit neural ordinary differential equation model (NODE) to time series 
+## - use Bayesian neural gradient matching (BNGM) to fit neural ordinary differential equation model (NODE) to time series 
 ## - analyse NODE to derive interactions and contributions between variables (sensitivities, Geber method)
 
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
+
+## update log:
+## 01-12-2022 - created v0_0
+## 12-04-2023 - implemented more than two fold cross validation
 
 #
 ###
@@ -88,25 +92,6 @@ dev.off()
 #
 ###
 
-# #########################
-# ## STANDARD DIFFERENCE ##
-# #########################
-# 
-# ##
-# Yhat_o_     = TS[,-1]
-# ddt.Yhat_o_ = apply(TS[,-1],2,diff)
-# ddt.Yhat_o_ = rbind(ddt.Yhat_o_,ddt.Yhat_o_[nrow(ddt.Yhat_o_),])
-# Yhat_o = list()
-# ddt.Yhat_o = list()
-# for(i in 1:N)
-# {
-#   Yhat_o[[i]] = t(Yhat_o_[,i])
-#   ddt.Yhat_o[[i]] = t(ddt.Yhat_o_[,i])
-# }
-# 
-# #
-# ###
-
 ###########################
 ## FIT OBSERVATION MODEL ##
 ###########################
@@ -155,12 +140,12 @@ load(file=paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
 load(file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 
 ## parameters of process model
-K_p   = 30                                                      # number of models to fit
-W_p   = rep(10,N)                                               # number of neurons in single layer perceptron (SLP)
-N_p   = 2 * W_p * (2+N)                                         # number of parameters in process model
-sd1_p = 0.1                                                     # standard deviation of model likelihood
-sd2_p = as.list(rep(0.03,N))                                    # standard deviation of prior distributions (second half concerns nonlinear functions)
-          
+K_p   = 30                     # number of models to fit
+W_p   = rep(10,N)              # number of neurons in single layer perceptron (SLP)
+N_p   = 2 * W_p * (2+N)        # number of parameters in process model
+sd1_p = 0.1                    # standard deviation of model likelihood
+sd2_p = as.list(rep(0.03,N))   # standard deviation of prior distributions (second half concerns nonlinear functions)
+         
 ## train process model
 runtime_p = system.time({
     model_p    = trainModel_p(Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,trainSplit=2/3)
@@ -260,8 +245,11 @@ load(file=paste(pathToOut,"/","ddt.Yhat_o.RData",sep=""))
 load(file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 
 ## parameters for cross-validation
-K_p             = 3                                      # number of models to fit per folds and regularisation parameter
-folds           = list(c(0,1/3,1/3,2/3),c(1/3,2/3,0,1/3))              # proportion of the data that should be considered for training and validation
+K_p             = 3                                        # number of models to fit per folds and regularisation parameter
+max_fold        = 2/3                                      # beginning of test set
+folds           = list(c(0,1/3)*max_fold, 
+                       c(1/3,2/3)*max_fold, 
+                       c(2/3,1)*max_fold)  # proportion of the data that should be considered for training and validation
 crossValParVect = seq(0.005,0.05,0.005)
 
 ## run cross-validation

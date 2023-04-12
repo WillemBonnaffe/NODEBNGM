@@ -4,18 +4,19 @@
 
 ## goal: supporting functions to implement gradient matching (GM) fitting of neural ordinary differential equations (NODEs)
 ##       the repository is designed with RStudio in mind 
-##       see associated script for implementing the approach ("m0_mainRStudio.r")
+##       see associated script for implementing the approach ("m0_main_RStudio.r")
 
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## method:
-## 1. interpolate the time series with sin ANN functions
-## 2. estimate linear and non-linear coupling between the time series
+## 1. interpolate the time series with neural networks with sinusoid activation functions
+## 2. estimate linear and non-linear coupling between the time series with neural networks
 
 ## update log:
 ## 09-06-2022 - created v0_0
 ## 31-10-2022 - created v0_1
-##            - corrected idexing of figures
+##            - corrected indexing of figures
+## 12-04-2023 - implemented more than two-fold validation
 
 ###################
 ## FUNCTIONS SLP ##
@@ -793,13 +794,20 @@ crossVal_p = function(TS,alpha_i,Yhat_o,ddt.Yhat_o,N_p,sd1_p,sd2_p,K_p,folds,cro
                     ## dataloader
                     attach(loadData_o(TS,alpha_i),warn.conflicts=F)
     
-                    ## split training/test
-                    s_l   = round(folds[[u]][1]*n+1):round(folds[[u]][2]*n)
-                    s_t   = round(folds[[u]][3]*n+1):round(folds[[u]][4]*n)
-                    X_l = X_[s_l,]
-                    Y_l = Y_[s_l,]
-                    X_t = X_[s_t,]
-                    Y_t = Y_[s_t,]
+                    ## split training/test (v0_1)
+                    s_val  = round(folds[[u]][1]*n+1):round(folds[[u]][2]*n)
+                    X_l    = X_[-s_val,]
+                    Y_l    = Y_[-s_val,]
+                    X_t    = X_[s_val,]
+                    Y_t    = Y_[s_val,]
+                    
+                    # ## split training/test (v0_0)
+                    # s_l   = round(folds[[u]][1]*n+1):round(folds[[u]][2]*n)
+                    # s_t   = round(folds[[u]][3]*n+1):round(folds[[u]][4]*n)
+                    # X_l = X_[s_l,]
+                    # Y_l = Y_[s_l,]
+                    # X_t = X_[s_t,]
+                    # Y_t = Y_[s_t,]
     
                     ## TO MODULARISE ##
                     sd2_p[[i]] = crossValParVect[k] # for linear and nonlinear part of network

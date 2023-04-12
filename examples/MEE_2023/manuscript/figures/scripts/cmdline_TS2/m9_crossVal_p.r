@@ -7,6 +7,9 @@
 ## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ## update log:
+## 09-04-2022 - created v0_0
+## 01-07-2022 - changed message to print
+## 12-04-2023 - implement more than 2 folds
 
 ##############
 ## INITIATE ##
@@ -19,7 +22,8 @@ source("m6_loadModel_p.r")
 
 ## parameters
 K_p             = 10
-folds           = list(c(0,1/3,1/3,2/3),c(1/3,2/3,0,1/3)) 
+max_folds       = 2/3 # begining of test set
+folds           = list(c(0,1/3) * max_folds, c(1/3,2/3) * max_folds, c(2/3,1) * max_folds) # folds of the train-validation set 
 crossValParVect = seq(0.01,.5,0.025)
 
 #
@@ -62,16 +66,23 @@ for(i in 1:N)
                 ## dataloader
                 source("m5_loadData_p.r")
                 
-                ## split training/test
-                s_train   = round(folds[[u]][1]*n+1):round(folds[[u]][2]*n)
-                s_val     = round(folds[[u]][3]*n+1):round(folds[[u]][4]*n)
-                X_l = X_[s_train,]
-                Y_l = Y_[s_train,]
-                X_t = X_[s_val,]
-                Y_t = Y_[s_val,]
+                ## split training/test (v0_1)
+                s_val  = round(folds[[u]][1]*n+1):round(folds[[u]][2]*n)
+                X_l    = X_[-s_val,]
+                Y_l    = Y_[-s_val,]
+                X_t    = X_[s_val,]
+                Y_t    = Y_[s_val,]
+ 
+                # ## split training/test (v0_0)
+                # s_train   = round(folds[[u]][1]*n+1):round(folds[[u]][2]*n)
+                # s_val     = round(folds[[u]][3]*n+1):round(folds[[u]][4]*n)
+                # X_l = X_[s_train,]
+                # Y_l = Y_[s_train,]
+                # X_t = X_[s_val,]
+                # Y_t = Y_[s_val,]
                 
                 ## regularisation
-                sd2_p[[i]] = rep(crossValParVect[k],N_p[i]) 
+                sd2_p[[i]] = crossValParVect[k]
                 #
                 ## regularisation on nonlinear part of model
                 # sd2_p[[i]][(N_p[i]/2+1):N_p[i]] = rep(crossValParVect[k],N_p[i]/2) 
