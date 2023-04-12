@@ -17,7 +17,7 @@ The method works in two steps (see figure below):
 * approximating the interpolated dynamics of the variables with neural networks (process model) which take as input the interpolated states
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_graphical_abstract_1.png" alt="overview" width="750" height="500" />
+<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_graphical_abstract_1.png" alt="" width="750" height="500" />
 </p>
 
 
@@ -27,7 +27,9 @@ The outputs of the approach are:
 * interpolations of the state and dynamics of the variables
 * effects and contributions of each variables to the dynamics of the other variables
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_graphical_abstract_2.png)
+<p align="center">
+<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_graphical_abstract_2.png" alt="" width="750" height="500" />
+</p>
 
 
 ## Repository structure
@@ -37,7 +39,11 @@ The repository contains all the files for the manuscript:
 * `manuscript/figures/` folder with the latex files to compile the figures
 * `manuscript/figures/scripts` with the R scripts that generate the results used for the figures of the manuscript
 
-![alt text](https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_repo_overview.png)
+<p align="center">
+<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/.readme_files/fig_repo_overview.png" alt="" width="750" height="500" />
+</p>
+
+
 
 
 ## Installation
