@@ -1,6 +1,8 @@
-############
-## main.R ##
-############
+##############
+## m_ODE2.r ##
+##############
+
+## goal: fit parametric ODE models (polynomial functions) to time series by BFGS optimisation
 
 ## contact: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
@@ -469,11 +471,11 @@ print(time)
 #
 ###
 
-#################
-## DEMC CHAINS ##
-#################
+##################
+## OPTIMISATION ##
+##################
 
-## RCpp implementation of DEMCO
+## initiate optimisation 
 t_train      = 1:20
 t_val        = 21:30
 n_iterations = 60

@@ -40,7 +40,7 @@ install.packages("rEDM")
 ### Generating the artificial time series
 
 Generating the artificial time series can be done within the `GT` (ground truth) repository.
-This can be achieved by running the script `m_3DLV_v0_5.r`.
+This can be achieved by running the script `m_3DLV.r`.
 This script creates the time series in csv format `out/TS_3DLV.csv`.
 
 ### Running NODE via BNGM

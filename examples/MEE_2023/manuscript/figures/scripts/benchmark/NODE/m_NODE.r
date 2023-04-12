@@ -1,6 +1,8 @@
-############
-## main.R ##
-############
+##############
+## m_NODE.r ##
+##############
+
+## goal: fit standard NODEs to time series data with BGFS optimisation
 
 ## contact: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
@@ -467,62 +469,62 @@ print(time)
 #
 ###
 
-# #################
-# ## DEMC CHAINS ##
-# #################
-# 
-# ## RCpp implementation of DEMCO
-# t_train      = 1:20
-# t_val        = 21:30
-# n_iterations = 60
-# n_chains     = 30
-# chainList    = list()
-# timeVect     = rep(0,n_chains)
-# for(l in 1:n_chains)
-# {
-#   timeVect[l] = system.time({
-# 
-#       ## initiate
-#       dTarget = function(x) - model.dLogPost_wrapper(TS=TS[c(t_train),],x)
-#       Theta_0 = Theta  = model.initiate()
-#       dTarget_0 = - dTarget(Theta_0)
-# 
-#       ## training
-#       try(expr = {
-#         res     = optim(Theta,dTarget,method="BFGS",control = list("trace"=1,"REPORT"=1,"maxit"=n_iterations))
-#         Theta = res$par
-#       })
-#       
-#       ## initiate
-#       # dTarget = function(x) - model.dLogPost_wrapper(TS=TS[c(t_train,t_val),],x)
-#       
-#       # ## training
-#       # try(expr = {
-#       #   res     = optim(Theta,dTarget,method="BFGS",control = list("trace"=1,"REPORT"=1,"maxit"=n_iterations))
-#       #   Theta = res$par
-#       # })
-# 
-#       ## store in change
-#       Theta_f = Theta
-#       dTarget_f = - dTarget(Theta_f)
-#       chainList[[l]] = rbind(c(dTarget_0,Theta_0),c(dTarget_f,Theta_f))
-# 
-#       # ## visualise
-#       # model.plot(TS,model.predict_wrapper(Theta))
-#       # print(model.dLogPost_wrapper(TS=TS[t_train,], Theta=Theta))
-#       # print(model.dLogPost_wrapper(TS=TS[t_val,], Theta=Theta))
-# 
-#     })[3]
-# }
-# 
-# ## store chains
-# system(paste("rm -r ",output,sep=""))
-# system(paste("mkdir ",output,sep=""))
-# chainList.write(chainList,output)
-# write(x = timeVect, file = paste(output,"/runtimes.txt",sep=""))
-# 
-# #
-# ###
+#########################
+## OPTIMISATION CHAINS ##
+#########################
+
+## initiate optimisation 
+t_train      = 1:20
+t_val        = 21:30
+n_iterations = 60
+n_chains     = 30
+chainList    = list()
+timeVect     = rep(0,n_chains)
+for(l in 1:n_chains)
+{
+  timeVect[l] = system.time({
+
+      ## initiate
+      dTarget = function(x) - model.dLogPost_wrapper(TS=TS[c(t_train),],x)
+      Theta_0 = Theta  = model.initiate()
+      dTarget_0 = - dTarget(Theta_0)
+
+      ## training
+      try(expr = {
+        res     = optim(Theta,dTarget,method="BFGS",control = list("trace"=1,"REPORT"=1,"maxit"=n_iterations))
+        Theta = res$par
+      })
+      
+      ## initiate
+      # dTarget = function(x) - model.dLogPost_wrapper(TS=TS[c(t_train,t_val),],x)
+      
+      # ## training
+      # try(expr = {
+      #   res     = optim(Theta,dTarget,method="BFGS",control = list("trace"=1,"REPORT"=1,"maxit"=n_iterations))
+      #   Theta = res$par
+      # })
+
+      ## store in change
+      Theta_f = Theta
+      dTarget_f = - dTarget(Theta_f)
+      chainList[[l]] = rbind(c(dTarget_0,Theta_0),c(dTarget_f,Theta_f))
+
+      # ## visualise
+      # model.plot(TS,model.predict_wrapper(Theta))
+      # print(model.dLogPost_wrapper(TS=TS[t_train,], Theta=Theta))
+      # print(model.dLogPost_wrapper(TS=TS[t_val,], Theta=Theta))
+
+    })[3]
+}
+
+## store chains
+system(paste("rm -r ",output,sep=""))
+system(paste("mkdir ",output,sep=""))
+chainList.write(chainList,output)
+write(x = timeVect, file = paste(output,"/runtimes.txt",sep=""))
+
+#
+###
 
 ######################
 ## CHAIN PROCESSING ##

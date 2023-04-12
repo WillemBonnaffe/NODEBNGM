@@ -1,6 +1,10 @@
-#####
-## ## 
-#####
+#############
+## m_CCM.r ## 
+#############
+
+## goal: perform convergent cross mapping analysis of artificial tri-trophic system
+
+## author: Willem Bonnaffe (w.bonnaffe@gmail.com)
 
 ###############
 ## FUNCTIONS ##
@@ -54,7 +58,7 @@
 ## INITIATE ##
 ##############
 
-## 
+## libraries
 library(rEDM)
 
 #
