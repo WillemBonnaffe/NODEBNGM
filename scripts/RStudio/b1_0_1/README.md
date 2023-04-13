@@ -295,7 +295,7 @@ C = C*(C>0.1)
 * `out/ddx.Yhat_p.RData` contains the sensitivity of the per-capita growth rate of variables with respect to the each state variable
 * `out/fig_crossVal_p.pdf` displays the cross validation results 
 * `out/fig_DIN_v1.pdf` displays the dynamical interaction graph (version 1)
-* * `out/fig_DIN_v1.pdf` displays the dynamical interaction graph (version 2)
+* `out/fig_DIN_v1.pdf` displays the dynamical interaction graph (version 2)
 * `out/fig_predictions_o.pdf` displays results of the observation model, i.e. the interpolation of states and dynamics of each variable
 * `out/fig_predictions_p.pdf` displays results of the process model, i.e. the effects and contribution of each variable to the dynamics of the system 
 * `out/fig_time_series.pdf` displays time series of the variables
