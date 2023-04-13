@@ -127,7 +127,7 @@ par(mfrow=c(1,1))
 ```
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_time_series.png" alt="Time series" width="750" height="750" />
+<img align="middle" src="out/fig_time_series.png" alt="Time series" width="750" height="750" />
 </p>
 
 ### Create the output folder
@@ -169,7 +169,7 @@ plotModel_o(TS,alpha_i,Yhat_o,ddt.Yhat_o)
 ```
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.png" alt="Observation model" width="750" height="750" />
+<img align="middle" src="out/fig_predictions_o.png" alt="Observation model" width="750" height="750" />
 </p>
 
 ### Storing the results
@@ -222,7 +222,7 @@ plotModel_p(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
 ```
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_p.png" alt="Observation model" width="750" height="750" />
+<img align="middle" src="out/fig_predictions_p.png" alt="Observation model" width="750" height="750" />
 </p>
 
 ### Store results 
@@ -275,7 +275,7 @@ C = C*(C>0.1)
 ```
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_DIN_v1.png" alt="Observation model" width="750" height="750" />
+<img align="middle" src="out/fig_DIN_v1.png" alt="Observation model" width="750" height="750" />
 </p>
 
 
