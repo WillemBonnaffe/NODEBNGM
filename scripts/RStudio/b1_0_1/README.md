@@ -196,7 +196,7 @@ load(file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 ### Parameters of process model
 
 ```R
-K_p   = 10                                            # number of models to fit
+K_p   = 3                                             # number of models to fit
 W_p   = rep(10,N)                                     # number of neurons in single layer perceptron (SLP)
 N_p   = 2 * W_p * (2+N)                               # number of parameters in process model
 sd1_p = 0.1                                           # standard deviation of model likelihood
