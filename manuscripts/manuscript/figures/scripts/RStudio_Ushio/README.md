@@ -1,10 +1,11 @@
 # NODEBNGM analysis of Ushio system
 
+Author: Willem Bonnaffé (w.bonnaffe@gmail.com)
 
 ## Aim
 
 The aim of this analysis is to estimate the effects and contributions of each species to the dynamics of the populations in the Maizuru bay community (Ushio et al. 2018).
-The system consists in 12 years long time series of fortnight abundance estimates of 15 of dominant species of the aquatic community of the Maizuru bay in Japan.
+The system consists of 12 years long time series of fortnight abundance estimates of 15 of dominant species of the aquatic community of the Maizuru bay in Japan.
 The time series are analysed by fitting neural ordinary differential equations (NODE) via Bayesian neural gradient matching (BNGM), which provide interpolations of the state and dynamics of the species, as well as nonparametric estimates of the per-capita growth rates of the species as a function of species density. 
 By computing the sensitivity of the per-capita growth rates with respect to each species density, we were able to derive effects and contributions to the dynamics of the species on each other.
 
@@ -15,12 +16,12 @@ Ushio, M., Hsieh, C.H., Masuda, R., Deyle, E.R., Ye, H., Chang, C.W., Sugihara, 
 
 ### Data
 
-The first input is the time series data, formatted as a csv file, which contains abundance estimates of the species (counts) and environmental variables (sea-bottom temperature in degrees celsius here).
+The first user input is the time series data, formatted as a csv file, which contains abundance estimates of the species (counts) and environmental variables (sea-bottom temperature in degrees celsius here).
 All variables need to be strictly positive.
 
 ### Parameters of the observation process model
 
-The second input is the parameters of the observation model (i.e. the neural networks that interpolates the time series) and process model (the NODEs that approximate the per-capita growth rate based on the interpolated variables).
+The second user input is the parameters of the observation model (i.e. the neural networks that interpolates the time series) and process model (the NODEs that approximate the per-capita growth rate based on the interpolated variables).
 See below for instructions on how to specify the parameters and run the code.
 
 
@@ -34,7 +35,7 @@ The interpolated dynamics are obtained by deriving the interpolation of the stat
 
 ### Effects and contributions of variables to the dynamics of other variables
 
-The process model provides nonparametric approximations of the per-capita growth rate of the variables with respect to all variables in the system.
+The process model provides nonparametric approximations of the per-capita growth rate of the variables as a function of all variables in the system.
 The effects of a variable on another can be computed by calculating the sensitivity of the per-capita growth rate with respect to a change in the variables.
 Contributions are then obtained by multiplying the dynamics of the effector variable with its effect on the affected variable.
 
@@ -127,7 +128,7 @@ par(mfrow=c(1,1))
 ```
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_time_series.png" alt="Time series" width="750" height="750" />
+<img align="middle" src="out/fig_time_series.png" alt="Time series" width="750" height="750" />
 </p>
 
 ### Create the output folder
@@ -169,7 +170,7 @@ plotModel_o(TS,alpha_i,Yhat_o,ddt.Yhat_o)
 ```
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_o.png" alt="Observation model" width="750" height="750" />
+<img align="middle" src="out/fig_predictions_o.png" alt="Observation model" width="750" height="750" />
 </p>
 
 ### Storing the results
@@ -196,13 +197,11 @@ load(file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 ### Parameters of process model
 
 ```R
-K_p   = 10                                            # number of models to fit
-W_p   = rep(10,N)                                     # number of neurons in single layer perceptron (SLP)
-N_p   = 2 * W_p * (2+N)                               # number of parameters in process model
-sd1_p = 0.1                                           # standard deviation of model likelihood
-sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.15,N_p[1]/2)),  # standard deviation of prior distributions (second half concerns nonlinear functions)
-             c(rep(1.0,N_p[2]/2),rep(.01,N_p[2]/2)),
-             c(rep(1.0,N_p[3]/2),rep(.075,N_p[3]/2)))
+K_p   = 30                     # number of models to fit
+W_p   = rep(10,N)              # number of neurons in single layer perceptron (SLP)
+N_p   = 2 * W_p * (2+N)        # number of parameters in process model
+sd1_p = 0.1                    # standard deviation of model likelihood
+sd2_p = as.list(rep(0.03,N))   # standard deviation of prior distributions
 ```
 
 ### Train process model
@@ -222,7 +221,7 @@ plotModel_p(TS,alpha_i,Yhat_p,ddx.Yhat_p,Geber_p)
 ```
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_predictions_p.png" alt="Observation model" width="750" height="750" />
+<img align="middle" src="out/fig_predictions_p.png" alt="Observation model" width="750" height="750" />
 </p>
 
 ### Store results 
@@ -275,34 +274,39 @@ C = C*(C>0.1)
 ```
 
 <p align="center">
-<img align="middle" src="https://github.com/WillemBonnaffe/NODEBNGM/blob/main/examples/MEE_2023/manuscript/figures/scripts/RStudio_Ushio/out/fig_DIN_v1.png" alt="Observation model" width="750" height="750" />
+<img align="middle" src="out/fig_DIN_v1.png" alt="Observation model" width="750" height="750" />
 </p>
 
 
 ## Files description 
 
 ### Main files: 
-* `f_NODE_GM_RStudio.r` contains all the functions necessary to running the scripts
-* `m0_main_RStudio.r` contains the commands to run the scripts in the right order to fit NODEs by BNGM 
+* `f_NODE_GM_RStudio.r` contains all the functions necessary to run the scripts
+* `m0_main_RStudio.r` contains the commands to run the script to fit NODEs by BNGM 
 
 ### Data:
 * `data` contains the time series data as csv files
-* `data/TS.csv` contains the time series of aquatic species community of the Maizuru bay in Japan
+* `data/TS.csv` contains the formatted time series of aquatic species community of the Maizuru bay in Japan
+* `data/Maizuru_dominant_sp.csv` contains the original time series from the supplementary material of Ushio et al. 2018
+* `data/Maizuru_dominant_sp_handformatted.csv` handformatted time series with time step column
 
 ### Output files:
 * `out` contains the output of the scripts 
 * `out_repeat` contains repeat results of the analysis to assess repeatability of the results 
+* `out_threefold` contains repeat results obtained with threefold cross-validation (instead of twofold)
 * `out/crossVal_p.RData` contains the likelihood of the predictions of the model for each value of the regularisation hyperparameter
 * `out/ddt.Yhat_o.RData` contains the interpolated dynamics of the state variables 
 * `out/ddx.Yhat_p.RData` contains the sensitivity of the per-capita growth rate of variables with respect to the each state variable
 * `out/fig_crossVal_p.pdf` displays the cross validation results 
 * `out/fig_DIN_v1.pdf` displays the dynamical interaction graph (version 1)
-* * `out/fig_DIN_v1.pdf` displays the dynamical interaction graph (version 2)
+* `out/fig_DIN_v2.pdf` displays the dynamical interaction graph (version 2)
 * `out/fig_predictions_o.pdf` displays results of the observation model, i.e. the interpolation of states and dynamics of each variable
 * `out/fig_predictions_p.pdf` displays results of the process model, i.e. the effects and contribution of each variable to the dynamics of the system 
 * `out/fig_time_series.pdf` displays time series of the variables
-* `out/Geber_p.RData` contains the contributions of each variable to the dynamics of the system 
+* `out/Geber_p.RData` contains the contributions of each variable to the dynamics of other variables 
 * `out/Omega_o.RData` contains the ensemble of parameters of the observation model 
 * `out/Omega_p.RData` contains the ensemble of parameters of the process model
+* `out/runtime_o.txt` contains the runtime of fitting the observation model
+* `out/runtime_p.txt` contains the runtime of fitting the process model
 * `out/Yhat_o.RData` contains the interpolated state variables 
 * `out/Yhat_p.RData` contains the interpolated per-capita growth rate of each state variable
