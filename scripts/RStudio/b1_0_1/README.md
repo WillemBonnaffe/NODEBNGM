@@ -146,7 +146,7 @@ Fitting the observation model corresponds in interpolating the variables in the 
 
 ``` R
 N       = ncol(TS) - 1
-K_o     = 100                # number of ensemble elements
+K_o     = 3                  # number of ensemble elements
 W_o     = rep(30,N)          # number of neurons in observation model, by default a single layer perceptron (equivalent to number of elements in Fourier series)
 N_o     = W_o*3              # total number of parameters in observation model
 rho     = 1                  # proportion of best samples to reject (to refine quality of fit if necessary)
