@@ -49,7 +49,7 @@ TS[,-1] = apply(TS[,-1], 2, normalise)
 for(i in 2:ncol(TS)) TS[,i][which(TS[,i] < 0.005)] = 0.005
 
 ## visualise time series
-pdf(paste(pathToOut,"/fig_time_series.pdf",sep=""))
+png(paste(pathToOut,"/fig_time_series.png",sep=""))
 plotTimeSeries(TS)
 dev.off()
 
@@ -79,7 +79,7 @@ ddt.Yhat_o  = model_o$ddt.Yhat_o
 Omega_o     = model_o$Omega_o
 
 ## visualise observation model fit
-pdf(paste(pathToOut,"/fig_predictions_o.pdf",sep=""))
+png(paste(pathToOut,"/fig_predictions_o.png",sep=""))
 plotModel_o(TS, alpha_i, Yhat_o, ddt.Yhat_o)
 dev.off()
 
@@ -120,7 +120,7 @@ Geber_p    = model_p$Geber_p
 Omega_p    = model_p$Omega_p   
 
 ## visualise process model
-pdf(paste(pathToOut,"/fig_predictions_p.pdf",sep=""))
+png(paste(pathToOut,"/fig_predictions_p.png",sep=""))
 plotModel_p(TS, alpha_i, Yhat_p, ddx.Yhat_p, Geber_p)
 dev.off()
 
@@ -156,7 +156,7 @@ J = J*(C>0.1)
 C = C*(C>0.1)
 
 ## dynamical interaction plot (v1)
-pdf(paste(pathToOut,"/fig_DIN.pdf",sep=""),width=10,height=10)
+png(paste(pathToOut,"/fig_DIN.png",sep=""),width=10,height=10)
 plotDIN(J, C, colnames(TS)[-1])
 dev.off()
 
@@ -186,7 +186,7 @@ crossValParVect = seq(0.005,0.05,0.005)        # vector of values of the regular
 resultsCrossVal_p = crossVal_p(TS, alpha_i, Yhat_o, ddt.Yhat_o, N_p, sd1_p, sd2_p, K_p, folds, crossValParVect)
 
 ## visualise
-pdf(paste(pathToOut,"/fig_crossVal_p.pdf",sep=""))
+png(paste(pathToOut,"/fig_crossVal_p.png",sep=""))
 plotCrossVal_p(resultsCrossVal_p)
 dev.off()
 
