@@ -156,7 +156,7 @@ J = J*(C>0.1)
 C = C*(C>0.1)
 
 ## dynamical interaction plot (v1)
-png(paste(pathToOut,"/fig_DIN.png",sep=""),width=10,height=10)
+png(paste(pathToOut,"/fig_DIN.png",sep=""))
 plotDIN(J, C, colnames(TS)[-1])
 dev.off()
 
