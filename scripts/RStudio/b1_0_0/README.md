@@ -36,7 +36,7 @@ The interpolated dynamics are obtained by deriving the interpolation of the stat
 
 ### Effects and contributions of variables to the dynamics of other variables
 
-The process model provides nonparametric approximations of the per-capita growth rate of the variables with respect to all variables in the system.
+The process model provides nonparametric approximations of the per-capita growth rate of the variables as a function of all variables in the system.
 The effects of a variable on another can be computed by calculating the sensitivity of the per-capita growth rate with respect to a change in the variables.
 Contributions are then obtained by multiplying the dynamics of the effector variable with its effect on the affected variable.
 
