@@ -42,7 +42,7 @@ W_o      = rep(100,N) # number of nodes in the hidden layer of the networks
 sd2_o    = rep(0.001,N) # standard deviation of the prior distribution of the network parameters
 ```
 
-In the script `m6_loadModel_p.r`, specify the parametes of the observation model:
+In the script `m6_loadModel_p.r`, specify the parametes of the process model:
 
 ``` R
 ## parameters process model
@@ -62,7 +62,7 @@ When the initialisation is complete, all modules necessary to perform the analys
 source("m3_trainModel_o.r")
 source("m4_plotModel_o.r")
 
-## goal: cross validation on process model
+## goal: cross-validation on process model
 source("m9_crossVal_p.r")
 source("m10_plotCrossVal_p.r")
 
@@ -98,19 +98,20 @@ Rscript m0_main.r
 * `m6_loadModel_p.r` loads the process model (i.e. neural networks that approximates dynamics as function of interpolated states) 
 * `m7_trainModel_p.r` trains the process model 
 * `m8_plotModel_p.r` visualises outputs of the process model (i.e. model fit, effects, and contributions)
-* `m9_crossVal_p.r` performs k-fold cross validation of the process model 
-* `m10_plotCrossVal_p.r` visualises outputs of k-fold cross validation of the process model
+* `m9_crossVal_p.r` performs k-fold cross-validation of the process model 
+* `m10_plotCrossVal_p.r` visualises outputs of k-fold cross-validation of the process model
 
 ### Output files:
 * `out` contains the output of the scripts 
 * `out_repeat` contains repeat results of the analysis to assess repeatability of the results 
+* `out_threefold` contains repeat results obtained with threefold cross-validation (instead of twofold)
 * `out/contribTable.csv` contains the contributions of each variable to the dynamics 
 * `out/crossVal_p-Omega_p.RData` contains parameters of the process model for each value of the regularisation hyperparameter 
 * `out/crossVal_p.RData` contains the likelihood of the predictions of the model for each value of the regularisation hyperparameter
 * `out/ddt.Yhat_o.RData` contains the interpolated dynamics of the state variables 
 * `out/ddx.Yhat_p.RData` contains the sensitivity of the per-capita growth rate of variables with respect to the each state variable
 * `out/effectsTable.csv` contains the effects of each variable on the dynamics 
-* `out/fig_crossVal_p.pdf` displays the cross validation results 
+* `out/fig_crossVal_p.pdf` displays the cross-validation results 
 * `out/fig_predictions_o.pdf` displays results of the observation model, i.e. the interpolation of states and dynamics of each variable
 * `out/fig_predictions_p.pdf` displays results of the process model, i.e. the effects and contribution of each variable to the dynamics of the system 
 * `out/Geber_p.RData` contains the contributions of each variable to the dynamics of the system 
