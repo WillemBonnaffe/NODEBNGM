@@ -146,7 +146,7 @@ Fitting the observation model corresponds in interpolating the variables in the 
 
 ``` R
 N       = ncol(TS) - 1
-K_o     = 100                # number of ensemble elements
+K_o     = 3                  # number of ensemble elements
 W_o     = rep(30,N)          # number of neurons in observation model, by default a single layer perceptron (equivalent to number of elements in Fourier series)
 N_o     = W_o*3              # total number of parameters in observation model
 rho     = 1                  # proportion of best samples to reject (to refine quality of fit if necessary)
@@ -196,13 +196,12 @@ load(file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 ### Parameters of process model
 
 ```R
-K_p   = 10                                            # number of models to fit
-W_p   = rep(10,N)                                     # number of neurons in single layer perceptron (SLP)
-N_p   = 2 * W_p * (2+N)                               # number of parameters in process model
-sd1_p = 0.1                                           # standard deviation of model likelihood
-sd2_p = list(c(rep(1.0,N_p[1]/2),rep(.15,N_p[1]/2)),  # standard deviation of prior distributions (second half concerns nonlinear functions)
-             c(rep(1.0,N_p[2]/2),rep(.01,N_p[2]/2)),
-             c(rep(1.0,N_p[3]/2),rep(.075,N_p[3]/2)))
+K_p   = 3                      # number of models to fit
+W_p   = rep(10,N)              # number of neurons in single layer perceptron (SLP)
+N_p   = 2 * W_p * (2+N)        # number of parameters in process model
+sd1_p = 0.1                    # standard deviation of model likelihood
+sd2_p = as.list(rep(0.03, N))  # standard deviation of prior distributions (second half concerns nonlinear functions)
+             
 ```
 
 ### Train process model
