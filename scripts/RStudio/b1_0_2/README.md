@@ -1,6 +1,7 @@
 # NODEBNGM analysis of Ushio system
 
 
+--------------
 ## Aim
 
 The aim of this analysis is to estimate the effects and contributions of each species to the dynamics of the populations in the Maizuru bay community (Ushio et al. 2018).
@@ -11,6 +12,7 @@ By computing the sensitivity of the per-capita growth rates with respect to each
 Ushio, M., Hsieh, C.H., Masuda, R., Deyle, E.R., Ye, H., Chang, C.W., Sugihara, G. and Kondoh, M., 2018. Fluctuating interaction network and time-varying stability of a natural fish community. Nature, 554(7692), pp.360-363.
 
 
+--------------
 ## Inputs
 
 ### Data
@@ -24,6 +26,7 @@ The second input is the parameters of the observation model (i.e. the neural net
 See below for instructions on how to specify the parameters and run the code.
 
 
+--------------
 ## Outputs
 
 ### Interpolated time series and dynamics
@@ -43,6 +46,8 @@ Contributions are then obtained by multiplying the dynamics of the effector vari
 Relative total contributions are obtained by summing the square of contributions of variables across the entire time series and normalising them by the total contributions (of all variables together).
 These, together with the mean effect of a variable can be used to build dynamical interaction networks, which show the effect and contributions of variables to the dynamics of other variables.
 
+
+--------------
 ## Installation
 
 The approach can be used simply by installing R (v4.0.2 or later) and loading the NODEBNGM function library
@@ -52,6 +57,7 @@ source("f_NODE_GM_Rstudio.r")
 ```
 
 
+--------------
 ## Preparing the data
 
 ### Loading data
@@ -138,6 +144,7 @@ system(paste("mkdir",pathToOut))
 ```
 
 
+--------------
 ## Fitting observation model
 
 Fitting the observation model corresponds in interpolating the variables in the time series to get an approximation of the states and dynamics of each variable.
@@ -181,6 +188,7 @@ save(Omega_o,   file=paste(pathToOut,"/","Omega_o.RData"   ,sep=""))
 ```
 
 
+--------------
 ## Fitting process model
 
 Fit process model (i.e. explain the per-capita growth rate of the populations calculated as $1/Y*dY/dt$ as a function of the states Y(t))
@@ -234,6 +242,7 @@ save(Omega_p      ,file=paste(pathToOut,"/","Omega_p.RData"   ,sep=""))
 ```
 
 
+--------------
 ## Analysing results
 
 This section describes how to run the code to obtain effects and contributions from the results obtained from the observation and process model.
@@ -278,6 +287,7 @@ C = C*(C>0.1)
 </p>
 
 
+--------------
 ## Files description 
 
 ### Main files: 
