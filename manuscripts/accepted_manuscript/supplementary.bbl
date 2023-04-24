@@ -1,0 +1,388 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{Bonnaffe2021a}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BW}{%
+         family={Bonnaffé},
+         familyi={B\bibinitperiod},
+         given={Willem},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=SBC}{%
+         family={Sheldon},
+         familyi={S\bibinitperiod},
+         given={Ben\bibnamedelima C.},
+         giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=CT}{%
+         family={Coulson},
+         familyi={C\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \keyw{article type,artificial neural networks,dynamics,ecological
+  dynamics,evolutionary dynamics,geber,method,neural ordinary differential
+  equations,ordinary differential equations,prey-predator,research article,time
+  series analysis}
+    \strng{namehash}{BWSBCCT1}
+    \strng{fullhash}{BWSBCCT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \verb{doi}
+    \verb 10.1111/2041-210x.13606
+    \endverb
+    \field{issn}{2041-210X}
+    \field{note}{Note<br/>- You know what is in it because it is your paper}
+    \field{pages}{1\bibrangedash 46}
+    \field{title}{Neural ordinary differential equations for ecological and
+  evolutionary time series analysis}
+    \field{volume}{2}
+    \field{journaltitle}{Methods in Ecology and Evolution}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Cawley2007}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CGC}{%
+         family={Cawley},
+         familyi={C\bibinitperiod},
+         given={Gavin\bibnamedelima C.},
+         giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=TNLC}{%
+         family={Talbot},
+         familyi={T\bibinitperiod},
+         given={Nicola L.\bibnamedelima C.},
+         giveni={N\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim
+  C\bibinitperiod},
+      }}%
+    }
+    \keyw{Bayesian regularisation,Kernel methods,Model selection}
+    \strng{namehash}{CGCTNLC1}
+    \strng{fullhash}{CGCTNLC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2007}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{abstract}{%
+    While the model parameters of a kernel machine are typically given by the
+  solution of a convex optimisation problem, with a single global optimum, the
+  selection of good values for the regularisation and kernel parameters is much
+  less straightforward. Fortunately the leave-one-out cross-validation
+  procedure can be performed or a least approximated very efficiently in closed
+  form for a wide variety of kernel learning methods, providing a convenient
+  means for model selection. Leave-one-out cross-validation based estimates of
+  performance, however, generally exhibit a relatively high variance and are
+  therefore prone to over-fitting. In this paper, we investigate the novel use
+  of Bayesian regularisation at the second level of inference, adding a
+  replarisation term to the model selection criterion corresponding to a prior
+  over the hyper-parameter values, where the additional regularisation
+  parameters are integrated out analytically. Results obtained on a suite of
+  thirteen real-world and synthetic benchmark data sets clearly demonstrate the
+  benefit of this approach.%
+    }
+    \field{issn}{15324435}
+    \field{pages}{841\bibrangedash 861}
+    \field{title}{Preventing over-fitting during model selection via bayesian
+  regularisation of the hyper-parameters}
+    \field{volume}{8}
+    \field{journaltitle}{Journal of Machine Learning Research}
+    \field{year}{2007}
+  \endentry
+
+  \entry{Hiltunen2013}{article}{}
+    \name{author}{4}{}{%
+      {{hash=HT}{%
+         family={Hiltunen},
+         familyi={H\bibinitperiod},
+         given={Teppo},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=JLE}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Laura\bibnamedelima E.},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=ESP}{%
+         family={Ellner},
+         familyi={E\bibinitperiod},
+         given={Stephen\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=HNGJ}{%
+         family={Hairston},
+         familyi={H\bibinitperiod},
+         given={Nelson G.\bibnamedelima Jr.},
+         giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+    }
+    \keyw{algae,brachionus plicatilis,chemostat,chlorella
+  autrophica,flagellates,intermediate,laboratory microcosm,mathematical
+  models,oxyrrhis marina,predator,prey dynamics,rotifers,tri-trophic food web}
+    \strng{namehash}{HT+1}
+    \strng{fullhash}{HTJLEESPHNGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2013}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{issue}{4}
+    \field{note}{- Only if you need an example of dynamics from which to infer
+  trophic interactions.<br/><br/>* Notes<br/>- The author adress how intraguild
+  predation affects prey-predator cycles.<br/>- They claim that they
+  demonstrate dynamics that are in accordance with theory algae -> flagellate
+  -> rotifer. But they state that flagellate growth rate is primarily driven by
+  rotifers, rather than by algae.<br/>- I can use this paper to justify using a
+  three-species trophic network, because it is a fundamental component of
+  natural food webs.<br/>- The author state that there are few empirical
+  demonstrations of population dynamics for three-species systems. I deduce
+  from it that at that point, it was not even possible to assess
+  generalisation.<br/>- Flagellates did tend to go extinct, so they pumped them
+  artificially at around 4 % pday.<br/>- The authors state that they reported
+  only runs with no evidence of prey defense evolution, but that evolution was
+  common in their runs.<br/>- Looking at their equations I realised I did not
+  consider the possibility for fluctuations in resource availability. This is
+  one of the hidden variables. I will need to think about that.<br/>- Overall,
+  they state that results are "exactly" as predicted. I would argue that
+  qualitatively this is seems correct but quantitatively the story may be
+  different.<br/>- They state that the peak of flagellate being so close to the
+  algae can be due to a strong dominant drive by the rotifer population, though
+  they only hypothesise that. This seems to be the case in other
+  microzooplankton systems. Your results confirm this and potentially increase
+  the complexity of the interactions.<br/>- They still argue that prey
+  evolution played at best a minor role in explaining the dynamics. However,
+  they do admit that they did not have direct evidence for supporting constant
+  interaction strength. I can see that being useful in your paper which seems
+  to point in fact at quite important implications for evolution in explaining
+  differences across replicates and preventing generalisation.}
+    \field{pages}{773\bibrangedash 779}
+    \field{title}{Temporal dynamics of a simple community with intraguild
+  predation: an experimental test}
+    \field{volume}{94}
+    \field{journaltitle}{Ecology}
+    \field{year}{2013}
+  \endentry
+
+  \entry{Odum1972}{article}{}
+    \name{author}{2}{}{%
+      {{hash=OEP}{%
+         family={Odum},
+         familyi={O\bibinitperiod},
+         given={Eugene\bibnamedelima P.},
+         giveni={E\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=BGW}{%
+         family={Barrett},
+         familyi={B\bibinitperiod},
+         given={Gary\bibnamedelima W.},
+         giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{OEPBGW1}
+    \strng{fullhash}{OEPBGW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1972}
+    \field{labeldatesource}{}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \verb{doi}
+    \verb 10.2307/3799291
+    \endverb
+    \field{issn}{0022541X}
+    \field{issue}{4}
+    \field{pages}{1372}
+    \field{title}{Fundamentals of Ecology}
+    \field{volume}{36}
+    \field{journaltitle}{The Journal of Wildlife Management}
+    \field{year}{1972}
+  \endentry
+
+  \entry{Pearce2018}{article}{}
+    \name{author}{5}{}{%
+      {{hash=PT}{%
+         family={Pearce},
+         familyi={P\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=LF}{%
+         family={Leibfried},
+         familyi={L\bibinitperiod},
+         given={Felix},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Brintrup},
+         familyi={B\bibinitperiod},
+         given={Alexandra},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=ZM}{%
+         family={Zaki},
+         familyi={Z\bibinitperiod},
+         given={Mohamed},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=NA}{%
+         family={Neely},
+         familyi={N\bibinitperiod},
+         given={Andy},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PT+1}
+    \strng{fullhash}{PTLFBAZMNA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{abstract}{%
+    Understanding the uncertainty of a neural network's (NN) predictions is
+  essential for many purposes. The Bayesian framework provides a principled
+  approach to this, however applying it to NNs is challenging due to large
+  numbers of parameters and data. Ensembling NNs provides an easily
+  implementable, scalable method for uncertainty quantification, however, it
+  has been criticised for not being Bayesian. This work proposes one
+  modification to the usual process that we argue does result in approximate
+  Bayesian inference; regularising parameters about values drawn from a
+  distribution which can be set equal to the prior. A theoretical analysis of
+  the procedure in a simplified setting suggests the recovered posterior is
+  centred correctly but tends to have an underestimated marginal variance, and
+  overestimated correlation. However, two conditions can lead to exact
+  recovery. We argue that these conditions are partially present in NNs.
+  Empirical evaluations demonstrate it has an advantage over standard
+  ensembling, and is competitive with variational methods.%
+    }
+    \field{pages}{1\bibrangedash 10}
+    \field{title}{Uncertainty in Neural Networks: Approximately Bayesian
+  Ensembling}
+    \verb{url}
+    \verb http://arxiv.org/abs/1810.05546
+    \endverb
+    \field{journaltitle}{arXiv}
+    \field{year}{2018}
+  \endentry
+
+  \entry{Sugihara2012}{article}{}
+    \name{author}{7}{}{%
+      {{hash=SG}{%
+         family={Sugihara},
+         familyi={S\bibinitperiod},
+         given={George},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=MR}{%
+         family={May},
+         familyi={M\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=YH}{%
+         family={Ye},
+         familyi={Y\bibinitperiod},
+         given={Hao},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=HCH}{%
+         family={Hsieh},
+         familyi={H\bibinitperiod},
+         given={Chih\bibnamedelima Hao},
+         giveni={C\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=DE}{%
+         family={Deyle},
+         familyi={D\bibinitperiod},
+         given={Ethan},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=FM}{%
+         family={Fogarty},
+         familyi={F\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MS}{%
+         family={Munch},
+         familyi={M\bibinitperiod},
+         given={Stephan},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SG+1}
+    \strng{fullhash}{SGMRYHHCHDEFMMS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    Identifying causal networks is important for effective policy and
+  management recommendations on climate, epidemiology, financial regulation,
+  and much else. We introduce a method, based on nonlinear state space
+  reconstruction, that can distinguish causality from correlation. It extends
+  to nonseparable weakly connected dynamic systems (cases not covered by the
+  current Granger causality paradigm). The approach is illustrated both by
+  simple models (where, in contrast to the real world, we know the underlying
+  equations/relations and so can check the validity of our method) and by
+  application to real ecological systems, including the controversial
+  sardine-anchovy-temperature problem.%
+    }
+    \verb{doi}
+    \verb 10.1126/science.1227079
+    \endverb
+    \field{issn}{10959203}
+    \field{issue}{6106}
+    \field{note}{* Preliminary read<br/>- The authors seem to stress that
+  observation of the dynamics of systems can be used to separate correlation
+  from causation.<br/>- They also state that apparent synchrony can be mistaken
+  for causation. I see this as a possible explanation for the finch time
+  series, when population and phenotypic change are coupled, possibly because
+  of external forcing by weather.<br/>- Does not seem to allow for rebuilding a
+  causative map throughout the time series.<br/>- I do not like the fact that
+  it discusses causation disconnectedly from the biology of the systems, namely
+  without demonstrating what this causality represents. It does not also seem
+  to account for self dependence in dynamics. Also in the prey predator system
+  it does not give the direction nor the shape of the interaction.<br/>-
+  Overall the algorithm is quite opaque but seems to build local temporal
+  extrapolation of the two time series and look for predicting the effected
+  states based on local changes in the potential effector state.<br/>- I do not
+  find this to be an intuitive way of thinking about causality.}
+    \field{pages}{496\bibrangedash 500}
+    \field{title}{Detecting causality in complex ecosystems}
+    \field{volume}{338}
+    \field{journaltitle}{Science}
+    \field{year}{2012}
+  \endentry
+\enddatalist
+\endinput

@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {A}Bayesian regularisation}{1}{}%
+\contentsline {section}{\numberline {B}Complementary results benchmark analysis}{4}{}%
+\contentsline {section}{\numberline {C}Complementary results case study 2 replicate A}{9}{}%
+\contentsline {section}{\numberline {D}Complementary results case study 2 replicate B}{12}{}%
+\contentsline {section}{\numberline {E}Complementary results case study 2 replicate C}{15}{}%
+\contentsline {section}{\numberline {F}Complementary results case study 3}{18}{}%
+\contentsline {section}{\numberline {G}Complementary results case study 4}{21}{}%
