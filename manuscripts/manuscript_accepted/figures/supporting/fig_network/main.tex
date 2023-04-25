@@ -18,7 +18,8 @@
 \def\col{black!75}
 \def\dx{6}
 \def\colNeg{red}
-\def\colPos{violet}
+% \def\colPos{violet}
+\def\colPos{green}
 \def\colNul{white}
 
 %
@@ -118,8 +119,8 @@
                 \begin{tikzpicture} 
                     \node [] at ( 1,0) {Negative interaction};
                     \node [] at ( 6,0) {Positive interaction};
-                    \draw [->,>=stealth,line width=0.1cm,red]       (-2,0) to (-1,0);
-                    \draw [->,>=stealth,line width=0.1cm,violet]    ( 3,0) to ( 4,0);
+                    \draw [->,>=stealth,line width=0.1cm,\colNeg]    (-2,0) to (-1,0);
+                    \draw [->,>=stealth,line width=0.1cm,\colPos]    ( 3,0) to ( 4,0);
                 \end{tikzpicture}
             };
             %
